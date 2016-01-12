@@ -1,0 +1,97 @@
+\documentclass[12pt]{article}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[margin=2in]{geometry}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\title{\bf HW \#1}
+\author{\bf Sam Fleischer}
+\date{\bf January 15, 2015}
+
+\pgfplotsset{compat=1.12}
+
+\begin{document}
+\textbf{MATH 201B \hfill Analysis \ \ \ \hfill Winter 2016\ \ \ }
+
+{\let\newpage\relax\maketitle}
+
+\section*{Problem 1}
+\textit{Complete the proof of the the Monotone Class Theorem.}
+
+\begin{lemma}
+    \label{monotone_class_lemma}
+    The arbitrary intersection of monotone classes in a monotone class.
+\end{lemma}
+\begin{proof}
+    Let $\mathcal{S}$ be the arbitrary intersection of monotone classes $M_j$ for $j \in J$, where $J$ is an index set.  Then let $S_1 \subset S_2 \subset S_3 \subset \dots$ and $S_i \in \mathcal{S}\ \forall i = 1, 2, \dots$.  Then since each $S_i \in M_j$ for each $M_j$ and each $M_j$ is a monotone class, then $\bigcup_{i=1}^\infty S_i \in M_j$ for each $M_j$.  Thus $\bigcup_{i=1}^\infty S_i \in \mathcal{S}$.  Now let $S_1 \supset S_2 \supset S_3 \supset \dots$ and $S_i \in \mathcal{S}\ \forall i = 1, 2, \dots$.  Then since $S_i in M_j$ for each $M_j$ and each $M_j$ is a monotone class, then $\bigcap_{i=1}^\infty S_i \in M_j$ for each $M_j$.  Thus $\bigcap_{i=1}^\infty S_i \in \mathcal{S}$.  Thus $\mathcal{S}$ is a monotone class.
+\end{proof}
+
+\begin{theorem}[Monotone Class Theorem]
+    Let $\Omega$ be a set a let $\mathcal{A}$ be an algebra of subsets of $\Omega$ such that $\Omega, \emptyset \in \mathcal{A}$.  Then there exists a smallest monotone class $\mathcal{S}$ that contain $\mathcal{A}$.  That class, $\mathcal{S}$, is also the smallest sigma-algebra that contains $\mathcal{A}$.
+\end{theorem}
+
+\begin{proof}
+    Let $S$ be the intersection of all monotone classes $M_i$ that contain $\mathcal{A}$.  By Lemma \ref{monotone_class_lemma}, $S$ is a monotone class, and thus the smallest monotone class containing $\mathcal{A}$.
+
+    Pick $A \in \mathcal{A}$ and construct $C(A) = \{B \in\mathcal{ S}\ |\ B \cup A \in\mathcal{ S}\}$.  By construction, $C(A) \subset\mathcal{ S}$.  Since $\mathcal{A}$ is an algebra, $\mathcal{A}$ is closed under finite unions, and thus $\mathcal{A} \subset C(A)$.  Now we show $C(A)$ is a monotone class, which would show $\mathcal{S} \subset C(A)$, implying $C(A) = \mathcal{S}$.  Take $B_1 \subset B_2 \subset B_3 \subset \dots$ and $B_i \in C(A)\ \forall i = 1, 2, \dots$.  Then $B_i \cup A \in \mathcal{S}\ \forall i = 1, 2, \dots$ and $(B_1 \cup A) \subset (B_2 \cup A) \subset \dots$.  Then since $\mathcal{S}$ is a monotone class, $\bigcup_{i=1}^\infty (B_i \cup A) \in \mathcal{S}$, but $\bigcup_{i=1}^\infty (B_i \cup A) = \qty(\bigcup_{i=1}^\infty B_i) \cup A$.  Thus $\bigcup_{i=1}^\infty B_i \in C(A)$.  Similarly, take $D_1 \supset D_2 \supset \dots$ and $D_i \in C(A)\ \forall i = 1, 2, \dots$.  Then $D_i \cup A \in \mathcal{S}\ \forall i = 1, 2, \dots$ and $(D_1 \cup A) \supset (D_2 \cup A) \supset \dots$.  Then since $\mathcal{S}$ is a monotone class, $\bigcap_{i=1}^\infty (D_i \cup A) \in \mathcal{S}$, but $\bigcap_{i=1}^\infty (D_i \cup A) = \qty(\bigcap_{i=1}^\infty D_i) \cup A$.  Thus $\bigcap_{i=1}^\infty D_i \in C(A)$.  This proves that $C(A)$ is a monotone class, and thus $C(A) = \mathcal{S}$.
+
+    Now we extend the definition of $C(A)$ to be defined for any $A \in \mathcal{S}$.  Pick $A' \in \mathcal{S}$.  Then since $A' \in C(A)\ \forall A \in \mathcal{A}$, then $A \in C(A')\ \forall A' \in \mathcal{A}$.  Thus $\mathcal{A} \subset C(A')$.  Now we show $C(A')$ is a monotone class, which would show $\mathcal{S} \subset C(A')$, implying $C(A') = \mathcal{S}$.  Take $B_1 \subset B_2 \subset B_3 \subset \dots$ and $B_i \in C(A')\ \forall i = 1, 2, \dots$.  Then $B_i \cup A' \in \mathcal{S}\ \forall i = 1, 2, \dots$ and $(B_1 \cup A') \subset (B_2 \cup A') \subset \dots$.  Then since $\mathcal{S}$ is a monotone class, $\bigcup_{i=1}^\infty (B_i \cup A') \in \mathcal{S}$, but $\bigcup_{i=1}^\infty (B_i \cup A') = \qty(\bigcup_{i=1}^\infty B_i) \cup A'$.  Thus $\bigcup_{i=1}^\infty B_i \in C(A')$.  Similarly, take $D_1 \supset D_2 \supset \dots$ and $D_i \in C(A')\ \forall i = 1, 2, \dots$.  Then $D_i \cup A' \in \mathcal{S}\ \forall i = 1, 2, \dots$ and $(D_1 \cup A') \supset (D_2 \cup A') \supset \dots$.  Then since $\mathcal{S}$ is a monotone class, $\bigcap_{i=1}^\infty (D_i \cup A') \in \mathcal{S}$, but $\bigcap_{i=1}^\infty (D_i \cup A') = \qty(\bigcap_{i=1}^\infty D_i) \cup A'$.  Thus $\bigcap_{i=1}^\infty D_i \in C(A')$.  This proves that $C(A')$ is a monotone class, and thus $C(A') = \mathcal{S}$.  Thus $\mathcal{S}$ is closed under finite unions.
+
+    Now define $C = \{B \in \mathcal{S}\ |\ B^C \in \mathcal{S}\}$.  Since $\mathcal{A}$ is an algebra, $\mathcal{A}$ is closed under complimentation, and thus $\mathcal{A} \subset C$.  Now take $B_1 \subset B_2 \subset \dots$ and $B_i \in C\ \forall i = 1, 2, \dots$.  Then since $B_1^C \supset B_2^C \supset \dots$ and $B_i^C \in \mathcal{S}\ \forall i = 1, 2, \dots$, and since $\mathcal{S}$ is a monotone class, then $\bigcap_{i=1}^\infty \qty(B_i^C) \in S$.  However, $\bigcap_{i=1}^\infty \qty(B_i^C) = \qty(\bigcup_{i=1}^\infty B_i)^C$, and thus $\bigcup_{i=1}^\infty B_i \in C$.  Then take $D_1 \supset D_2 \supset \dots$ and $D_i \in C\ \forall i = 1, 2, \dots$.  Then since $D_1^C \subset D_2^C \subset \dots$ and $D_i^C \in \mathcal{S}$, and since $\mathcal{S}$ is a monotone class, then $\bigcup_{i=1}^\infty \qty(D_1^C) \in S$.  However, $\bigcup_{i=1}^\infty \qty(D_i^C) = \qty(\bigcap_{i=1}^\infty D_C)^C$, and thus $\bigcap_{i=1}^\infty D_i \in C$.  Thus $C$ is a monotone class containing $\mathcal{A}$, and thus $\mathcal{S} \subset C$, proving $C = \mathcal{S}$.  Thus $\mathcal{S}$ is closed under complementation.
+
+    Now we show $\mathcal{S}$ is closed under countable unions and intersections.  Consider a sequene of sets $\{A_i\}_{i=1}^\infty \in \mathcal{S}$.  Then form $B_n = \bigcup_{i=1}^n$.  Since each $B_n$ is a finite union of elements in $\mathcal{S}$, then each $B_n \in \mathcal{S}$.  Also, $B_1 \subset B_2 \subset \dots$.  Since $\mathcal{S}$ is a monotone class, $\bigcup_{n=1}^\infty B_n \in \mathcal{S}$, but $\bigcup_{i=1}^\infty A_i = \bigcup_{n=1}^\infty B_n$, and thus $\mathcal{S}$ is closed under countable unions.  Similarly, form $D_n = \bigcup_{i=1}^n A_i^C$.  Since each $D_i$ is a finite union of elements in $\mathcal{S}$ ($\mathcal{S}$ is closed under complementation), then each $D_i \in \mathcal{S}$.  Also, $D_1 \subset D_2 \subset \dots$.  Since $\mathcal{S}$ is a monotone class, $\bigcup_{n=1}^\infty D_n \in S$, but $\bigcup_{n=1}^\infty D_n = \bigcup_{i=1}^\infty \qty(A_i^C) = \qty(\bigcap_{i=1}^\infty A_i)^C$.  Again, since $\mathcal{S}$ is closed under complementation, $\bigcap_{i=1}^\infty A_i \in \mathcal{S}$.  Thus $\mathcal{S}$ is closed under countable unions and intersections.
+
+    This proves $\mathcal{S}$ is a $\sigma$-algebra.  However, every $\sigma$-algebra is a monotone class, and thus $\mathcal{S}$ must be the smallest $\sigma$-algebra containing $\mathcal{A}$ since it is defined as the smallest monotone class containing $\mathcal{A}$.
+\end{proof}
+
+\section*{Problem 2}
+\textit{With regard to the remark about continuous functions in Section 1.5, show that $f$ is continuous (in the sense of the usual $\varepsilon, \delta$ definition) if and only if $f$ is both upper and lower semicontinuous.  Show that $f$ is upper semicontinuous at $x$ if and only if, for every sequence $x_1, x_2, \dots$ converging to $x$, we have $f(x) \geq \overline{\lim}_{n\rightarrow \infty} f(x_n)$.}
+
+\begin{definition}
+    Consider $f\ :\ \Omega \rightarrow \mathbb{R}$, and define $L_f(t) = \{x \in \Omega\ |\ f(x) > t\}$ and $U_f(t) = \{x \in \Omega\ |\ f(x) < t\}$.  Then $f$ is \textit{lower semicontinuous} if $L_f(t)$ is open $\forall t \in \mathbb{R}$ and $f$ is \textit{upper semicontinous} if $U_f(t)$ is open $\forall t \in \mathbb{R}$.
+\end{definition}
+\begin{theorem}
+    Let $f\ :\ \Omega \rightarrow \mathbb{R}$.  Then $f$ is continuous if and only if $f$ is both upper and lower semincontinuous.
+\end{theorem}
+\begin{proof}
+    Let $f$ a continuous function.  Then $\forall x \in \Omega$ and $\varepsilon > 0$, $\exists \delta > 0$ such that $f(B_\delta(x)) \subset B_\varepsilon(f(x))$.  Fix $t \in \mathbb{R}$ and let $x_L \in L_f(t)$.  Then $f(x_L) = t + \ell$ for some $\ell > 0$.  Now take $\varepsilon = \ell$.  Then by the continuity of $f$, $\exists \delta_\ell$ such that $f(B_{\delta_\ell}(x_L)) \subset B_\ell(t + \ell)$.  But since $t_0 \in B_\ell(t + \ell) \implies t_0 > t$, then $B_{\delta_\ell}(x_L) \subset L_f(t)$.  Thus $L_f(t)$ is open.  Now let $x_U \in U_f(t)$.  Then $f(x_U) = t - u$ for some $u > 0$.  Again, take $\varepsilon = u$, and again by the continuity of $f$, $\exists \delta_u$ such that $f(B_{\delta_u}(x_U)) \subset B_u(f(x_U))$.  But since $t_0 \in B_u(t - u) \implies t_0 < t$, then $B_{\delta_u}(x_U) \subset U_f(t)$.  Thus $U_f(t)$ is open.  Thus $f$ is both upper and lower semicontinuous.
+
+    Now let $f$ be both upper and lower semicontinuous.  Thus $\forall t \in \mathbb{R}$, $L_f(t)$ and $U_f(t)$ are open.  Then pick $x \in \Omega$ and let $t = f(x)$.  Choose $\varepsilon > 0$ and let $t_1 = t - \varepsilon$ and $t_2 = t + \varepsilon$.  Then $x \in L_f(t_2)$ and $x \in U_f(t_1)$.  Since $L_f(t_2)$ and $U_f(t_1)$ are open, then $\exists \delta_L$ and $\delta_U$ such that $f(B_{\delta_L}(x)) \subset B_\varepsilon(t_2)$ and $f(B_{\delta_U}(x)) \subset B_\varepsilon(t_1)$.  Choose $\delta = \min(\delta_L, \delta_U)$ and let $x_0 \in B_\delta(x)$.  Then $t_1 < f(x_0) < t_2$, which shows $f(x_0) \in B_\varepsilon(t)$, and thus $f$ is continuous.
+
+    Thus $f$ is continuous if and only if $f$ is both lower and upper semicontinuous.
+\end{proof}
+
+\begin{theorem}
+    Let $f\ :\ \Omega \rightarrow \mathbb{R}$.  Then $f$ is upper semicontinuous at $x$ if and only if for every sequence $\{x_i\}_i \rightarrow x$, we have $f(x) \geq \overline{\lim}_{n\rightarrow \infty}f(x_n)$.
+\end{theorem}
+
+\end{document}
