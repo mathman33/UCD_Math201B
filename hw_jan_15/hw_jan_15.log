@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  13 JAN 2016 14:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 JAN 2016 00:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1931,46 +1931,57 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Try loading font information for U+bbold on input line 80.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/bbold/Ubbold.fd) [2]
-Overfull \hbox (12.19315pt too wide) in paragraph at lines 127--129
+Overfull \hbox (2.00432pt too wide) in paragraph at lines 109--111
+\OT1/cmr/m/n/12 Thus, by con-tra-pos-i-tive, for ev-ery se-quence $\OMS/cmsy/m/
+n/12 f\OML/cmm/m/it/12 x[]\OMS/cmsy/m/n/12 g 2 \OT1/cmr/m/n/12 
+$ such that $\OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12 ! \OML/cmm/m/it/12 x$\OT1/cm
+r/m/n/12 , we have $\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/c
+mr/m/n/12 ) \OMS/cmsy/m/n/12 ^^U [][]\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cm
+m/m/it/12 x[]\OT1/cmr/m/n/12 )$.
+ []
+
+[3]
+Overfull \hbox (12.19315pt too wide) in paragraph at lines 134--136
 \OT1/cmr/m/n/12 Thus, since $^^F$ is closed un-der count-able unions, count-abl
 e in-ter-sec-tions, and com-ple-ments, $\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 ((\
 OML/cmm/m/it/12 a; b\OT1/cmr/m/n/12 )) \OMS/cmsy/m/n/12 2
  []
 
-[3] [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 133.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 133.
+[4] [5] [6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 238.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 238.
 (/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_jan_15/hw_jan_15.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 133.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 133.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 238.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 238.
 Package rerunfilecheck Info: File `hw_jan_15.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 133.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 238.
  ) 
 Here is how much of TeX's memory you used:
- 33165 strings out of 493089
- 762384 string characters out of 6134842
- 945252 words of memory out of 5000000
- 36142 multiletter control sequences out of 15000+600000
- 13608 words of font info for 53 fonts, out of 8000000 for 9000
+ 33181 strings out of 493089
+ 762523 string characters out of 6134842
+ 946250 words of memory out of 5000000
+ 36146 multiletter control sequences out of 15000+600000
+ 14436 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,12n,83p,10464b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,13n,83p,10464b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
 Output written on /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_jan_15/hw_j
-an_15.pdf (4 pages, 134165 bytes).
+an_15.pdf (6 pages, 152419 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 66 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
+ 104 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
+ 22 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

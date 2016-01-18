@@ -94,13 +94,20 @@
     Let $f\ :\ \Omega \rightarrow \mathbb{R}$.  Then $f$ is upper semicontinuous at $x$ if and only if for every sequence $\{x_i\} \in \Omega$ such that $x_i \rightarrow x$, we have $f(x) \geq \overline{\lim}_{i\rightarrow \infty}f(x_i)$.
 \end{theorem}
 \begin{proof}
-    Fix $x \in \Omega$ and let $f$ by upper semicontinuous at $x$.  Then $\forall \varepsilon > 0$, $\exists \delta > 0$ such that $d_\Omega(x, y) < \delta \implies f(y) - f(x) < \varepsilon$, i.e.~$f(y) < f(x) + \varepsilon$.  Now consider a sequence $\{x_i\} \in \Omega$ such that $x_i \rightarrow x$.  Then consider a sequence $\varepsilon_k$ such that $\varepsilon_k \rightarrow 0$.  By the upper semicontinuity of $f$, $\exists I_k$ such that $\sup_{i \geq I_k}\{f(x_i)\} \leq f(x) + \varepsilon_k$ for each $k = 1, 2, \dots$.  Form a sequence $L_k = \max\{k, I_k\}$ and note $L_k \rightarrow \infty$, $L_k \geq I_k$, and $L_k \geq k$ for each $k = 1, 2, \dots$.  Then
+    Fix $x \in \Omega$ and let $f$ by upper semicontinuous at $x$.  Then $\forall \varepsilon > 0$, $\exists \delta > 0$ such that $d_\Omega(x, y) < \delta \implies f(y) - f(x) < \varepsilon$, i.e.~$f(y) < f(x) + \varepsilon$.  Now consider a sequence $\{x_i\} \in \Omega$ such that $x_i \rightarrow x$.  Then consider a sequence $\varepsilon_k$ such that $\varepsilon_k \rightarrow 0$.  By the upper semicontinuity of $f$, then for each $k = 1, 2, \dots$, $\exists \delta_k$ such that $d_\Omega(x,y) < \delta \implies f(y) < f(x) + \varepsilon$.  But by the convergence of $\{x_i\}$, $\exists I_k$ such that $\forall i \geq I_k$, $d_\Omega(x, x_i) < \delta_k$ for each $k = 1, 2, \dots$.  This is equivalent to $\sup_{i \geq I_k}\{f(x_i)\} \leq f(x) + \varepsilon_k$ for each $k = 1, 2, \dots$.  Since we cannot guarantee $I_k \rightarrow \infty$, form a sequence $L_k = \max\{k, I_k\}$ and note $L_k \rightarrow \infty$, $L_k \geq I_k$, and $L_k \geq k$ for each $k = 1, 2, \dots$.  Then
     \begin{align*}
         \sup_{i \geq L_k}\{f(x_i)\} &\leq \sup_{i \geq I_k}\{f(x_i)\} \leq f(x) + \varepsilon_k \\
         \implies \lim_{k \rightarrow \infty}\qty(\sup_{i \geq L_k}\{f(x_i)\}) &\leq \lim_{k \rightarrow \infty} \qty(f(x) + \varepsilon_k) \\
         \implies \lim_{k \rightarrow \infty}\qty(\sup_{i \geq k}\{f(x_i)\}) &\leq f(x) + 0 = f(x) \\
         \implies \overline{\lim}_{i \rightarrow \infty} f(x_i) &\leq f(x)
     \end{align*}
+
+    Now assume $f$ is not upper semicontinuous at $x$.  Then $\exists \varepsilon$ such that $\forall \delta$, $\exists y$ such that $d_\Omega(x,y) < \delta$ and $f(x) + \varepsilon \leq f(y)$.  Consider $\{\delta_k\}$ such that $\delta_k \rightarrow 0$.  For each $\delta_k$, pick $x_k$ such that $d_\Omega(x, x_k) < \delta_k$ but $f(x) + \varepsilon \leq f(x_k)$.  Then clearly $x_k \rightarrow x$ but $\lim_{k\rightarrow \infty} f(x_k) \geq f(x) + \varepsilon$.  Then
+    \begin{align*}
+        \lim_{k\rightarrow \infty} f(x_k) &\geq f(x) + \varepsilon \\
+        \implies \overline{\lim}_{k \rightarrow \infty} f(x_k) &\geq f(x) + \varepsilon > f(x)
+    \end{align*}
+    Thus, by contrapositive, for every sequence $\{x_i\} \in \Omega$ such that $x_i \rightarrow x$, we have $f(x) \geq \overline{\lim}_{k \rightarrow \infty} f(x_k)$.
 \end{proof}
 
 \section*{Exercise 1.3}
@@ -127,7 +134,105 @@
     \end{align*}
     Thus, since $\Sigma$ is closed under countable unions, countable intersections, and complements, $f^{-1}((a,b)) \in \Sigma$.
 
-    Now consider $A \in \mathcal{B}$.  Then since $\mathcal{B}$ is the smallest $\sigma$-algebra containing the open balls, then $A$ is countably $\sigma$-algebraicly generated from open balls.  However, preimages are closed under arbitrary unions, arbitrary intersections, and complements, and thus $f^{-1}(A) = P_A \in \Sigma$.  Thus $P_A$ is $\Sigma$-measurable whenever $f$ is $\Sigma$-measurable.
+    Now consider the set $L = \{B \in \mathcal{B}\ |\ f^{-1}(B) \in \Sigma\}$.  Next we show $L$ is a monotone class.
+
+    Consider $L_1 \subset L_2 \subset \dots$ where $L_i \in L$ for $i = 1, 2, \dots$.  Then $f^{-1}(L_i) \in \Sigma$ for each $i$.  Since $\Sigma$ is a $\sigma$-algebra, $\bigcup_{i=1}^\infty\qty[f^{-1}(L_i)] \in \Sigma$.  But by the properties of preimages, $f^{-1}\qty(\bigcup_{i=1}^\infty L_i) = \bigcup_{i=1}^\infty\qty[f^{-1}(L_i)]$, and thus $f^{-1}\qty(\bigcup_{i=1}^\infty L_i) \in \Sigma$, showing $\bigcup_{i=1}^\infty L_i \in L$.
+
+    Now consider $L_1 \supset L_2 \supset \dots$ where $L_i \in L$ for $i = 1, 2, \dots$.  Then $f^{-1}(L_i) \in \Sigma$ for each $i$.  Since $\Sigma$ is a $\sigma$-algebra, $\bigcap_{i=1}^\infty\qty[f^{-1}(L_i)] \in \Sigma$.  But by the properties of preimages, $f^{-1}\qty(\bigcap_{i=1}^\infty L_i) = \bigcap_{i=1}^\infty\qty[f^{-1}(L_i)]$, and thus $f^{-1}\qty(\bigcap_{i=1}^\infty L_i) \in \Sigma$, showing $\bigcap_{i=1}^\infty L_i \in L$.
+
+    Thus, $L$ is a monotone class.  By the above calculation, we know $B_r(x) \in L$ for all $r > 0$ and $x \in \mathbb{R}$.  Thus $L$ contains all open intervals.  But $\mathcal{B}$ is, by definition, the smallest $\sigma$-algebra (and hence smallest monotone class) containing the open intervals.  Thus $L = \mathcal{B}$.
+
+    This shows $f^{-1}(A)$ is measurable whenever $f$ is measurable.
+\end{proof}
+
+\section*{Problem 4}
+\textit{Let $\phi\ :\ \mathbb{C} \rightarrow \mathbb{C}$ be a Borel measurable function and let the complex-valued function $f$ be $\Sigma$-measurable.  Prove that $\phi(f(x))$ is $\Sigma$-measurable.}
+
+\begin{lemma}
+    Let $f\ :\ \Omega \rightarrow \mathbb{C}$.  Let $\mathcal{B}_\mathbb{C}$ be the Borel $\sigma$-algebra on $\mathbb{C}$ and let $A \in \mathcal{B}_\mathbb{C}$.  Then the set $P_A = \{x\ |\ f(x) \in A\} = f^{-1}(A)$ is $\Sigma$-measurable whenever $f$ is $\Sigma$-measurable.
+\end{lemma}
+\begin{proof}
+    Assume $f$ is $\Sigma$-measurable and let $f_\mathbb{R} + i f_\mathbb{C} = f$ where $f_\mathbb{R}\ :\ \Omega \rightarrow \mathbb{R}$ and $f_\mathbb{C}\ :\ \Omega \rightarrow \mathbb{R}$.  By the definition of measurable complex-valued functions, $f_\mathbb{R}$ and $f_\mathbb{C}$ are measurable, and thus $\forall t \in \mathbb{R}$, $f_\mathbb{R}^{-1}((t, \infty)) \in \Sigma$ and $f_\mathbb{C}^{-1}((t, \infty)) \in \Sigma$.
+
+    Consider the set $L = \{A \in \mathcal{B}_\mathbb{C}\ :\ f^{-1}(A)\in\Sigma\}$ and an arbitrary rectangle $R_{a,b,c,d} = \{x + iy \in \mathbb{C}\ :\ x\in A_1\ \text{and}\ y\in A_2\}$ where $A_1, A_2 \in \mathcal{B}$.  Since $f_\mathbb{R}$ and $f_\mathbb{C}$ are measurable, $f_\mathbb{R}^{-1}(A_1) \in \Sigma$ and $f_\mathbb{C}^{-1}(A_2) \in \Sigma$.  Then $f^{-1}(R_{a,b,c,d}) = f_\mathbb{R}^{-1}((a,b)) \cup f_\mathbb{C}^{-1}((c,d)) \in \Sigma$ since $\Sigma$ is closed under countable unions.  Thus $L$ contains all rectangles in $\mathcal{B}\times\mathcal{B}$.
+
+    Now consider $L_1 \subset L_2 \subset \dots$ where $L_i \in L$ for each $i$.  Then $f^{-1}(L_i) \in \Sigma$ for each $i$.  Then $f^{-1}\qty[\bigcup_{i=1}^\infty L_i] = \bigcup_{i=1}^\infty f^{-1}(L_i) \in \Sigma$.  Thus $\bigcup_{i=1}^\infty L_i \in L$.
+
+    Then consider $L_1 \supset L_2 \supset \dots$ where $L_i \in L$ for each $i$.  Then $f^{-1}(L_i) \in \Sigma$ for each $i$.  Then $f^{-1}\qty[\bigcap_{i=1}^\infty L_i] = \bigcap_{i=1}^\infty f^{-1}(L_i) \in \Sigma$.  Thus $\bigcap_{i=1}^\infty L_i \in L$.
+
+    Thus $L$ is a monotone class.  Since $L$ is a subset of $B_\mathbb{C}$, which is defined as the smallest $\sigma$-algebra containing rectangles, and since the rectangles are contained in $L$, then by the Monotone Class Theorem, $L = \mathcal{B}_\mathbb{C}$.
+
+    This shows $f^{-1}(A)$ is $\Sigma$-measurable whenever $f$ is $\Sigma$-measurable.
+\end{proof}
+\begin{theorem}
+    Let $\phi\ :\ \mathbb{C} \rightarrow \mathbb{C}$ be a Borel measurable function and let $f\ :\ \Omega \rightarrow \mathbb{C}$ be $\Sigma$-measurable.  Prove that $\phi(f(x))$ is $\Sigma$-measurable.
+\end{theorem}
+\begin{proof}
+    Pick $A \in \mathcal{B}_\mathbb{C}$.  Then since $\phi$ is a Borel measurable function, $\phi^{-1}(A) \in \mathcal{B}_\mathbb{C}$.  Then, by Lemma 2, $f^{-1}(\phi^{-1}(A))\in \Sigma$.  However, $f^{-1}(\phi^{-1}(A)) = \qty[\phi f]^{-1}(A)$.  Thus $\phi f$ is $\Sigma$-measurable.
+\end{proof}
+
+\section*{Problem 5}
+\textit{Prove eauation (2) in Theorem 1.6 (monotone convergence)}
+
+\begin{theorem}
+    Let $f_1, f_2, \dots$ be an increasing sequence of summable functions on $(\Omega, \Sigma, \mu)$, with $f$ equal to the pointwise limit of $f_j$ ($f(x) = \lim_{j\rightarrow \infty}f_j(x)$) and $I = \lim_{j\rightarrow \infty} I_j = \lim_{j\rightarrow \infty} \int_{\Omega}f_j \dd \mu$.  Then $f$ is measurable and, moreover, $I$ is finite if and only if $f$ is summable, in which case $I = \int_{\Omega} f \dd \mu$.
+\end{theorem}
+\textit{Show the following:}
+\begin{equation}\tag{2}
+    \lim_{j\rightarrow \infty} \int_0^\infty F_{f_j}(t) \dd t = \int_0^\infty F_f(t) \dd t
+\end{equation}
+where
+\begin{align*}
+    F_{f_j}(t) = \mu(f^{-1}_j(t, \infty))
+\end{align*}
+\begin{proof}
+    Consider the case where $\int_\Omega f\dd\mu < \infty$.  Then $\forall \varepsilon > 0$, $\exists B_\varepsilon \in \mathbb{R}$, $B_\varepsilon > 0$, such that $F_f(B_\varepsilon) = \mu(f^{-1}(B_\varepsilon, \infty)) < \varepsilon$.  However, since $f_j(x) \leq f(x)$ for each $j$, $F_{f_j}(B_\varepsilon) = \mu(f_j^{-1}(B_\varepsilon, \infty)) \leq F_f(B_\varepsilon) < \varepsilon$ for each $j$.  Since $F_f$, and each $F_{f_j}$, is non-negative and monotone decreasing, $F_{f_j}(t) \leq F_f(t) < \varepsilon$ $\forall t \geq B_\varepsilon$.  Thus,
+    \begin{align*}
+        \int_\Omega f\dd\mu &= \int_0^\infty F_f(t) \dd t = \int_0^{B_\varepsilon} F_f(t) \dd t + \int_{B_\varepsilon}^\infty F_f(t) \dd t,\ \text{and, for each $j$,} \\
+        \int_\Omega f_j\dd\mu &= \int_0^\infty F_{f_j}(t) \dd t = \int_0^{B_\varepsilon} F_{f_j}(t)\dd t + \int_{B_\varepsilon}^\infty F_{f_j}(t)\dd t
+    \end{align*}
+    Since $\int_\Omega f\dd\mu < \infty$, then $\int_{B_\varepsilon}^\infty F_{f_j}(t) \dd t < \infty$ and $\int_{B_\varepsilon}^\infty F_f(t) \dd t < \infty$.  In fact, as $\varepsilon \rightarrow 0$, then $\int_{B_\varepsilon}^\infty F_{f_j}(t) \dd t \rightarrow 0$ and $\int_{B_\varepsilon}^\infty F_f(t) \dd t \rightarrow 0$.
+
+    So we need only consider the integrals with finite limits, and thus we can approximate $\int_\Omega f \dd \mu$ with Riemann sums.  Denote the upper Riemann sums of a function $g$ under partition $P$ as $R_U(g, P)$ and the lower Riemann sums of a function $g$ under partition $P$ as $R_L(g, P)$.
+
+    Now, choose any $\varepsilon > 0$ and a partition $P_\varepsilon$ of $[0, B]$ such $R_U(F_f, P_\varepsilon) - R_L(F_f, P_\varepsilon) < \varepsilon$.  Then consider the integral
+    \begin{align*}
+        \int_0^B F_f(t) - F_{f_j}(t) \dd t
+    \end{align*}
+    Note that since $\{f_j\}_j$ is an increasing sequence for each $x \in \Omega$, that $\{F_{f_j}\}_j$ is an increasing sequence of $t$ for each $t \in [0, B]$.  Thus,
+    \begin{align*}
+        \int_0^B F_f(t) - F_{f_j}(t) \dd t &\leq R_U(F_f, P_\varepsilon) - R_L(F_{f_j}, P_\varepsilon) \\
+        \implies \lim_{j \rightarrow \infty} \qty[\int_0^B F_f(t) - F_{f_j}(t) \dd t] &\leq \lim_{j \rightarrow \infty} \qty[R_U(F_f, P_\varepsilon) - R_L(F_{f_j}, P_\varepsilon)] \\
+        \implies \lim_{j \rightarrow \infty} \qty[\int_0^B F_f(t) - F_{f_j}(t) \dd t] &\leq R_U(F_f, P_\varepsilon) - R_L(F_f, P_\varepsilon), \ \text{by the linearity of limits} \\
+        \implies \lim_{j \rightarrow \infty} \qty[\int_0^B F_f(t) - F_{f_j}(t) \dd t] &< \varepsilon
+    \end{align*}
+    Since $\varepsilon$ was arbitrary,
+    \begin{align*}
+        \lim_{j \rightarrow \infty} \qty[\int_0^B F_f(t) - F_{f_j}(t)] &= 0 \\
+        \implies \lim_{j\rightarrow \infty}\int_0^B F_f(t) \dd t &= \lim_{j\rightarrow \infty}\int_0^B F_{f_j}(t) \dd t \\
+        \implies \lim_{j\rightarrow \infty} \int_0^B F_{f_j}(t) \dd t &= \int_0^B F_f(t) \dd t
+    \end{align*}
+    Thus,
+    \begin{align*}
+        \lim_{j\rightarrow \infty} \int_\Omega f_j \dd \mu = \lim_{j\rightarrow \infty} \int_0^B F_{f_j}(t) \dd t &= \int_0^B F_f(t) \dd t = \int_\Omega f\dd \mu
+    \end{align*}
+    Now consider the case when $\int_\Omega f \dd \mu = \infty$.  Since $F_{f_j}$ is nonnegative,
+    \begin{align*}
+        \int_0^n F_{f_j}(t) \dd t &\leq \int_0^\infty F_{f_j}(t) \dd t \\
+        \implies \lim_{j\rightarrow \infty} \int_0^n F_{f_j}(t) \dd t &\leq \lim_{j\rightarrow \infty} \int_0^\infty F_{f_j}(t) \dd t
+    \end{align*}
+    By the first case, limits can pass through integrals with finite limits.
+    \begin{align*}
+        \int_0^n F_f(t) \dd t &\leq \lim_{j\rightarrow \infty} \int_0^\infty F_{f_j}(t) \dd t \\
+        \implies \lim_{n \rightarrow \infty} \qty[\int_0^n F_f(t) \dd t] &\leq \lim_{n \rightarrow \infty} \qty[\lim_{j\rightarrow \infty} \int_0^\infty F_{f_j}(t) \dd t] \\
+        \implies \int_0^\infty F_f(t) \dd t &\leq \lim_{j\rightarrow \infty} \int_0^\infty F_{f_j}(t) \dd t \\
+        \implies \infty = \int_0^\infty F_f(t) \dd t &\leq \lim_{j\rightarrow \infty} \int_0^\infty F_{f_j}(t) \dd t \\
+        \implies \lim_{j\rightarrow \infty} \int_0^\infty F_{f_j}(t) \dd t &= \infty = \int_0^\infty F_f(t) \dd t
+    \end{align*}
+    Thus,
+    \begin{align*}
+        \lim_{j\rightarrow \infty} \int_\Omega f_j \dd\mu = \lim_{j\rightarrow \infty}\int_0^\infty F_{f_j}(t) \dd t = \int_0^\infty F_f(t) \dd t = \int_\Omega f \dd \mu
+    \end{align*}
 \end{proof}
 
 \end{document}
