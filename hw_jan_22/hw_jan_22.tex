@@ -1,0 +1,147 @@
+\documentclass[12pt]{article}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\title{\bf HW \#2}
+\author{\bf Sam Fleischer}
+\date{\bf January 22, 2015}
+
+\pgfplotsset{compat=1.12}
+
+\begin{document}
+\textbf{MATH 201B \hfill Analysis \ \ \hfill Winter 2016\ \ \ }
+
+{\let\newpage\relax\maketitle}
+
+\section*{Exercise 1.9}
+\textit{Verify the linearity of the integral as given in 1.5(7) by completing the steps outlined below.  In what follows, $f$ and $g$ are nonnegative summable functions.}
+
+\subsubsection*{ a)}
+\textit{Show that $f + g$ is also summable.  In fact, by a simple argument $\int(f + g) \leq 2\qty(\int f + \int g)$.} \\
+
+To show $\int (f + g) \leq 2\qty(\int f + \int g)$, first note that
+\begin{align*}
+    S_{f + g}(t) = \{x\ :\ (f+g)(x) > t\} \subset \left\{x\ :\ f(x) > \frac{t}{2}\right\} \cup \left\{x\ :\ g(x) > \frac{t}{2}\right\} = S_f\qty(\frac{t}{2}) \cup S_g\qty(\frac{t}{2})
+\end{align*}
+Since if $f(x) \leq \frac{t}{2}$ and $g(x) \leq \frac{t}{2}$ then $(f + g)(x) = f(x) + g(x) \leq t$.  By properties of measures, 
+\begin{align*}
+    \mu(S_{f + g}(t)) \leq \mu\qty(S_f\qty(\frac{t}{2}) \cup S_g\qty(\frac{t}{2})) &\leq \mu\qty(S_f\qty(\frac{t}{2})) + \mu\qty(S_g\qty(\frac{t}{2})) \\
+    \implies \int_0^\infty \mu(S_{f + g}(t)) \dd t &\leq \int_0^\infty \mu\qty(S_f\qty(\frac{t}{2}))\dd t + \int_0^\infty \mu\qty(S_g\qty(\frac{t}{2}))\dd t
+\end{align*}
+Note the integral on the right hand side can split linearly because it is a Riemann integral.  By $u$-substitution with $u = \frac{t}{2}$, we get
+\begin{align*}
+    \int_0^\infty \mu(S_{f + g}(t))\dd t \leq 2\int_0^\infty S_f(t)\dd t + 2\int_0^\infty S_g(t)\dd t
+\end{align*}
+Note the constant $2$ can be factored of each integral on the right hand side linearly because they are Riemann integrals.  Thus, by definition,
+\begin{align*}
+    \int (f + g) \leq 2\qty(\int f + \int g)
+\end{align*}
+and since $f$ and $g$ are summable, $\int f$ and $\int g$ are finite, which proves $\int (f + g)$ is finite, i.e.~$f + g$ is summable. \hfill $\square$
+
+\subsubsection*{ b)}
+\textit{For any integer $N$ find two functions $f_N$ and $g_N$ that take only finitely many values, such that $|\int f - \inf f_N| \leq \frac{C}{N}$, $|\int g - \int g_N| \leq \frac{C}{N}$, $|int(f + g) - \int(f_N - g_N)| \leq \frac{C}{N}$ for some constant $C$ independent of $N$.}
+
+\subsubsection*{ c)}
+\textit{Show that for $f_N$ and $g_N$ as above $\int(f_N + g_N) = \int f_N + \int g_N$, thus proving the addivitivity of te integral for nonnegative functions.}
+
+\subsubsection*{ d)}
+\textit{In a similar fashion, show that for $f, g \geq 0$, $\int(f - g) = \int f - \int g$.}
+
+\subsubsection*{ e)}
+\textit{Now use c) and d) to prove the linearity of the integral.}
+
+\section*{Exercise 1.12}
+\textit{Find a simple condition for $f_n(x)$ so that}
+\begin{align*}
+    \sum_{n=0}^\infty \int_\Omega f_n(x) \mu(\dd x) = \int_\Omega \qty[\sum_{n=0}^\infty f_n(x)]\mu(\dd x)
+\end{align*}
+
+\section*{Exercise 1.13}
+\textit{Let $f$ be the function on $\mathbb{R}^n$ defined by $f(x) = |x|^{-p}\mathcal{X}_{\{|x| < 1\}}(x)$.  Compute $\int f \dd \mathcal{L}^n$ in two ways: (i) Use polar coordinates and compute the integral by the standard calculus method.  (ii) Compute $\mathcal{L}^n\qty(\{x\ :\ f(x) > a\})$ and then use Lebesgue's definition.}
+\begin{enumerate}[(i)]
+    \item
+        First note that
+        \begin{align*}
+            f(x) =
+            \begin{cases} 
+                |x|^{-p} & \text{if $|x| < 1$} \\
+                0 & \text{else}
+            \end{cases}
+        \end{align*}
+        Then note that polar coordinates on $\mathbb{R}^n$ are $(r, \phi, \theta_1, \theta_2, \dots, \theta_{n-2})$ where $r \in [0, \infty)$, $\phi \in [0, 2\pi)$, and $\theta_i \in [0, \pi)$ for $i = 1, 2, \dots, n - 2$.
+        \begin{align*}
+            \int f \dd \mathcal{L}^n &= \int_0^\pi \int_0^\pi \dots \int_0^\pi \int_0^{2\pi} \int_0^\infty r^{-p}\ \dd r\ \dd \phi\ \dd \theta_1 \dots\ \dd \theta_{n-3}\ \dd \theta_{n-2}
+        \end{align*}
+        We can use Fubini's theorem since each of these integrals are Riemann integrals.  Thus,
+        \begin{align*}
+            \int f \dd \mathcal{L}^n = 2\pi^{n-1}\int_0^\infty r^{-p} \dd r = 2\pi^{n-1}\int_0^1 r^{-p} \dd r
+        \end{align*}
+        since we know $f(x) = 0$ whenever $r = |x| \geq 1$.  This integral is dependent on $p$ in the following way:
+        \begin{align*}
+            \int f \dd \mathcal{L}^n = \begin{cases}
+                2\pi^{n-1}\frac{1}{1 - p} & \text{if $p < 1$} \\
+                +\infty & \text{if $p \geq 1$}
+            \end{cases}
+        \end{align*}
+    \item
+        If $0 < p < 1$, $f$ is a decreasing function of modulus and $f\rightarrow\infty$ as $x\rightarrow 0$.  If $p < 0$, $f$ is an increasing function of modulus and $f \rightarrow \infty$ as $|x|\rightarrow 1$.  Thus it should be intuitive that $f^{-1}(a, \infty)$ is either a smaller $n$-sphere if $0 < p < 1$ or a shell of an $n$-sphere if $p < 0$.
+        \begin{align*}
+            \mathcal{L}^n(\{x\ :\ f(x) > a\}) &= \mathcal{L}^n(\{x \in B_1(0)\ :\ |x|^{-p} > a\}) \\
+            &= \begin{cases}
+                \mathcal{L}^n(\{x\ \in B_1(0)\ :\ |x| < a^{-\frac{1}{p}}\}) & \text{if $0 < p < 1$} \\
+                \mathcal{L}^n(\{x\ \in B_1(0)\ :\ |x| > a^{-\frac{1}{p}}\}) & \text{if $p < 0$}
+            \end{cases} \\
+            &= \begin{cases}
+                \mathcal{L}^n(B_{a^{-\frac{1}{p}}}(0)) & \text{if $0 < p < 1$} \\
+                \mathcal{L}^n(B_1(0)) - \mathcal{L}^n(B_{a^{-\frac{1}{p}}}(0)) & \text{if $p < 0$}
+            \end{cases}
+        \end{align*}
+        But the Lebesgue measures of balls are relatively simple to compute:
+        \begin{align*}
+            \mathcal{L}^n(B_r(x)) = \frac{2\pi^{\frac{n}{2}}r^n}{n\Gamma(\frac{n}{2})}
+        \end{align*}
+        Thus,
+        \begin{align*}
+            \mathcal{L}^n(\{x\ :\ f(x) > a\}) &= \begin{cases}
+                \dfrac{2\pi^{\frac{n}{2}}a^{-\frac{n}{p}}}{n\Gamma(\frac{n}{2})} & \text{if $0 < p < 1$} \\
+                \dfrac{2\pi^{\frac{n}{2}}}{n\Gamma(\frac{n}{2})} - \dfrac{2\pi^{\frac{n}{2}}a^{-\frac{n}{p}}}{n\Gamma(\frac{n}{2})} & \text{if $p < 0$}
+            \end{cases} \\
+            &= \begin{cases}
+                \dfrac{2\pi^{\frac{n}{2}}a^{-\frac{n}{p}}}{n\Gamma(\frac{n}{2})} & \text{if $0 < p < 1$} \\
+                \dfrac{2\pi^{\frac{n}{2}}}{n\Gamma(\frac{n}{2})}\qty(1 - a^{-\frac{n}{p}}) & \text{if $p < 0$}
+            \end{cases}
+        \end{align*}
+\end{enumerate}
+
+\end{document}
