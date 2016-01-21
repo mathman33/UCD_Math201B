@@ -47,27 +47,179 @@
 \section*{Exercise 1.9}
 \textit{Verify the linearity of the integral as given in 1.5(7) by completing the steps outlined below.  In what follows, $f$ and $g$ are nonnegative summable functions.}
 
+\begin{definition}[Definition: Simple Function]
+    Let $(\Omega, \Sigma, \mu)$ be a measure space.  A \emph{simple function} is a function $\phi\ :\ \Omega \rightarrow [0, \infty)$ given by
+    \begin{align*}
+        \phi = \sum_{i=1}^N c_i \mathcal{X}_{E_i}
+    \end{align*}
+    where $c_i \geq 0$, $E_i \in \Sigma$ for $i = 1, \dots, N$, and $E_i \cap E_j = \emptyset$ for $i \neq j$.  The integral of a simple function is given by
+    \begin{align*}
+        \int_\Omega \phi \dd \mu = \sum_{i = 1}^N c_i \mu(E_i)
+    \end{align*}
+    Define $\mathcal{S}_\Omega$ as the set of all simple functions on $\Omega$, i.e.
+    \begin{align*}
+        \mathcal{S}_\Omega = \{\phi \in [\Omega \rightarrow [0, \infty)]\ :\ \phi \text{ \rm is a simple function }\}
+    \end{align*}
+\end{definition}
+\begin{definition}[Definition 1: Lebesgue Integral]
+    Let $f\ :\ \Omega \rightarrow [0, \infty)$ be a positive, measurable real-valued function on a measure space $(\Omega, \Sigma, \mu)$.  Then
+    \begin{align*}
+        \int_\Omega f \dd \mu = \int_0^\infty F_f(t) \dd t
+    \end{align*}
+    where $F_f(t) = \mu(f^{-1}(t, \infty))$.
+\end{definition}
+\begin{definition}[Definition 2: Lebesgue Integral]
+    Let $f\ :\ \Omega \rightarrow [0, \infty)$ be a positive, measurable real-valued function on a measure space $(\Omega, \Sigma, \mu)$.  Then
+    \begin{align*}
+        \int_\Omega f \dd \mu = \sup_{\substack{0\leq\phi\leq f \\ \phi \in \mathcal{S}_\Omega}} \left\{\int_\Omega \phi \dd \mu\right\}
+    \end{align*}
+\end{definition}
+\begin{lemma}[Equivalence of Definitions for Simple Functions]
+    Let $\Phi$ be a simple function on a measure space $(\Omega, \Sigma, \mu)$.  Then
+    \begin{align*}
+        \int_0^\infty F_\Phi(t) \dd t = \sup_{\substack{0 \leq \phi \leq \Phi \\[.05cm] \phi \in \mathcal{S}_\Omega}} \left\{\int_\Omega \phi \dd \mu\right\}
+    \end{align*}
+    where $F_\Phi(t) = \mu(\Phi^{-1}(t, \infty))$.  In other words, the two definitions for Lebesgue integral are equivalent for simple functions.
+\end{lemma}
+\begin{proof}
+    Since $\Phi$ is a simple function, then
+    \begin{align*}
+        \sup_{\substack{0 \leq \phi \leq \Phi \\[.05cm] \phi \in \mathcal{S}_\Omega}}\left\{\int_\Omega \phi \dd \mu\right\} = \int_\Omega \Phi \dd \mu = \sum_{i = 1}^N c_i \mu(E_i)
+    \end{align*}
+    where $c_i$ and $E_i$, $i = 1, \dots, N$ are defined for $\Phi$.  Since $E_i \cap  E_j = \emptyset$ for $i \neq j$, then the maximum of $\Phi$ is the maximum of the coefficients $\{c_i\}$, denoted $c_\Phi$.
+    \begin{align*}
+        c_\Phi = \max_{x \in \Omega} \Phi(x) = \max_{1 \leq i \leq N} \{c_i\}
+    \end{align*}
+    This shows that $\Phi^{-1}(t, \infty) = \emptyset$ for $t \geq c_\Phi$, and thus
+    \begin{align*}
+        \int_0^\infty F_\Phi(t) \dd t = \int_0^{c_\Phi} F_\Phi(t) \dd t
+    \end{align*}
+    We can construct a set $\{d_i\}$ such that $\{d_i\} = \{c_i\}$ but $d_1 \leq d_2 \leq \dots \leq d_N = c_\Phi$.  In other words, the set $\{d_i\}$ is simply the set $\{c_i\}$ ordered from least to greatest.  Then
+    \begin{align*}
+        \int_0^{c_\Phi} F_\Phi(t) \dd t = \int_0^{d_1} F_\Phi(t) \dd t + \int_{d_1}^{d_2} F_\Phi(t) \dd t + \dots + \int_{d_{N-1}}^{d_N} F_\Phi(t) \dd t = \sum_{k = 1}^N \int_{d_{k - 1}}^{d_k} F_\Phi(t) \dd t
+    \end{align*}
+    where, for ease, we define $d_0 = 0$.  We can easily form the set $\{D_i\}$ such that $D_i$ corresponds to $d_i$.  In other words, we can write $\int_\Omega \Phi \dd \mu = \sum_{i=1}^N d_i \mu(D_i)$.  Note that for $t \in (0, d_1)$ we have
+    \begin{align*}
+        F_\Phi(t) = \mu\qty(\bigcup_{i=1}^ND_i) = \sum_{i=1}^N \mu(D_i)
+    \end{align*}
+    In general, for $t \in (d_{k-1}, d_k)$ we have
+    \begin{align*}
+        F_\Phi(t) = \mu\qty(\bigcup_{i=k}^N D_i) = \sum_{i=k}^N \mu(D_i)
+    \end{align*}
+    Thus,
+    \begin{align*}
+        \int_0^{c_\Phi} F_\Phi(t) \dd t &= \sum_{k = 1}^N \int_{d_{k - 1}}^{d_k} F_\Phi(t) \dd t \\
+        &= \sum_{k=1}^N\int_{d_{k-1}}^{d_k}\sum_{i=k}^N \mu(D_i) \dd t \\
+        &= \sum_{k=1}^N \sum_{i=k}^N \qty[\mu(D_i) \int_{d_{k-1}}^{d_k} \dd t ]\ \ \ \ \ \text{by linearity of Riemann integrals}\\
+        &= \sum_{k=1}^N \sum_{i=k}^N \qty[\mu(D_i)\qty(d_k - d_{k-1})] \\
+        &= \sum_{k=1}^N \qty(d_k - d_{k-1}) \sum_{i=k}^N \mu(D_i) \\
+        &= (d_1  - 0)\qty[\mu(D_1) + \dots + \mu(D_N)] + (d_2 - d_1)\qty[\mu(D_2) + \dots + \mu(D_N)] + \dots \\
+        &\ \ \ \dots + (d_{N-1} - d_{N-2})\qty[\mu(D_{N-1}) + \mu(D_N)] + (d_N - d_{N-1})\mu(D_N) \\
+        &= d_1\mu(D_1) + d_2\mu(D_2) + \dots + d_N\mu(D_N)\ \ \ \ \ \text{by combining like-terms} \\
+        &= \sum_{i=1}^N c_i \mu(E_i)
+    \end{align*}
+    which completes the proof.
+\end{proof}
+\begin{lemma}[Equivalence of Definitions for Arbitrary Functions]
+    Let $f$ be a measurable function on a measure space $(\Omega, \Sigma, \mu)$.  Then
+    \begin{align*}
+        \int_0^\infty F_f(t) \dd t = \sup_{\substack{0 \leq \phi \leq f \\[.05cm] \phi \in \mathcal{S}_\Omega}} \left\{\int_\Omega \phi \dd \mu\right\}
+    \end{align*}
+    where $F_f(t) = \mu(f^{-1}(t, \infty))$.  In other words, the two definitions for Lebesgue integral are equivalent.
+\end{lemma}
+\begin{proof}
+    Consider the set $E_{n,k} = \left\{x\ :\ f(x) > \frac{k}{2^n}\right\}$ for $n \in \{1, 2, \dots\}$ and $k \in \{1, 2, \dots, 4^n\}$.  Define $\{\phi_n\}_{n=1}^\infty$ by
+    \begin{align*}
+        \phi_n = \frac{1}{2^n}\sum_{k=1}^{4^n}\mathcal{X}_{E_{n,k}}
+    \end{align*}
+    Note that $E_{n,a} \subset E_{n,b}$ if $a > b$.  Then note that for any $x$, either $x \in E_{n, 4^n}$ or $\exists\ell$ such that $x \in E_{n, \ell}$ but $x \not\in E_{n, \ell+1}$.
+
+    If $x \in E_{n, 4^n}$, then by its definition, $f(x) > \frac{4^n}{2^n} = 2^n$ and $\phi_n(x) = \frac{1}{2^n}\sum_{k=1}^{4^n} 1 = 2^n$.  If $x \in E_{n,\ell}$ but $x \not \in E_{n,\ell+1}$, then by its definition $\frac{\ell + 1}{2^n} > f(x) > \frac{\ell}{2^n}$, but $\phi_n(x) = \frac{\ell}{2^n}$.  In either case, $\phi_n \leq f$ for each $n = 1, 2, 3, \dots$.
+
+    Next we show $\phi_{n+1} \geq \phi_n$.  Suppose $f(x) < 2^n$.  Then $\exists \ell \in \{1, 2, \dots, 4^n\}$ such that $\frac{\ell}{2^n} \leq f(x) < \frac{\ell + 1}{2^n}$.  Then either $\frac{2\ell}{2^{n+1}} < \frac{2\ell + 1}{2^{n+1}} \leq f(x) < \frac{2\ell + 2}{2^{n+1}}$ (in which case $\phi_{n+1}(x) = \frac{2\ell + 1}{2^{n+1}} > \phi_n$) or $\frac{2\ell}{2^{n+1}} \leq f(x) \leq \frac{2\ell + 1}{2^{n+1}} < \frac{2\ell + 2}{2^{n+1}}$ (in which case $\phi_{n+1}(x) = \frac{2\ell}{2^{n+1}} = \phi_n(x)$).
+
+    Suppose $f(x) = 2^n$.  Then $\phi_{n+1}(x) = 2^n = \phi_n(x) = f(x)$.
+
+    Suppose $f(x) > 2^n = \phi_n(x)$.  Then either $f(x) \geq 2^n + \frac{1}{2^{n+1}}$ or $f(x) < 2^n + \frac{1}{2^{n+1}}$.  If $f(x) \geq 2^n + \frac{1}{2^{n+1}}$, the $\phi_{n+1}(x) \geq 2^n + \frac{1}{2^{n+1}} > \phi_n(x)$.  If $f(x) < 2^n + \frac{1}{2^{n+1}}$, then $\phi_{n+1}(x) = 2^n = \phi_n(x)$.
+
+    In all cases, $\phi_{n+1}(x) \geq \phi_n(x)$ for all $x$ and $n$.  Thus, we that \emph{(i)} $f$ is the pointwise limit of $\phi_n$, and \emph{(ii)} $\{\phi_n\}_n$ is a non-decreasing sequence of functions.  These are the two hypotheses of the monotone convergence theorem, and so
+    \begin{align*}
+        \int_\Omega f \dd \mu = \lim_{n\rightarrow \infty} \int_\Omega \phi_n \dd \mu
+    \end{align*}
+    where the above integrals are defined using the second defintion of Lebesgue integrals.
+
+    Now note that
+    \begin{align*}
+        f^{-1}(t, \infty) = \bigcup_{n=1}^\infty\{\phi_n^{-1}(t, \infty)\}
+    \end{align*}
+    since $f > \phi_n$ for all $n$ and $\phi_n \rightarrow f$, and
+    \begin{align*}
+        \bigcup_{n=1}^\infty\{\phi_n^{-1}(t, \infty)\} = \lim_{n\rightarrow \infty} \phi_n^{-1}(t, \infty)
+    \end{align*}
+    since $\{\phi_n\}_n$ is an increasing function.  Thus,
+    \begin{align*}
+        F_f(t) = \mu(f^{-1}(t, \infty)) = \mu(\lim_{n\rightarrow \infty} \phi_n^{-1}(t, \infty)) = \lim_{n\rightarrow \infty}F_{\phi_n}(t, \infty)
+    \end{align*}
+    However, $\{F_{\phi_n}(t, \infty)\}_n$ is monotone increasing to $F_f(t, \infty) \in \mathbb{R}$, and thus again by the monotone convergence theorem,
+    \begin{align*}
+        \int_0^\infty F_f(t) \dd t = \lim_{n\rightarrow \infty}\int_0^\infty F_{\phi_n}(t)\dd t
+    \end{align*}
+    By Lemma 1, the two definitions of Lebesgue integration are equivalent for simple functions, and thus
+    \begin{align*}
+        \int_0^\infty F_{\phi_n}(t) \dd t = \int_\Omega \phi_n(t)
+    \end{align*}
+    for all $n$.  Then by the result above,
+    \begin{align*}
+        \lim_{n\rightarrow \infty}\qty[\int_0^\infty F_{\phi_n}(t) \dd t] &= \lim_{n\rightarrow \infty}\qty[\int_\Omega \phi_n(t)] \\
+        \implies \int_0^\infty F_f(t) \dd t &= \sup_{\substack{0 \leq \phi\leq f \\ \phi \in S_\Omega}}\left\{\int_\Omega \phi \dd \mu\right\}
+    \end{align*}
+\end{proof}
+
 \subsubsection*{ a)}
 \textit{Show that $f + g$ is also summable.  In fact, by a simple argument $\int(f + g) \leq 2\qty(\int f + \int g)$.} \\
 
-To show $\int (f + g) \leq 2\qty(\int f + \int g)$, first note that
+Suppose $f$ and $g$ are summable.  Thus
 \begin{align*}
-    S_{f + g}(t) = \{x\ :\ (f+g)(x) > t\} \subset \left\{x\ :\ f(x) > \frac{t}{2}\right\} \cup \left\{x\ :\ g(x) > \frac{t}{2}\right\} = S_f\qty(\frac{t}{2}) \cup S_g\qty(\frac{t}{2})
+    \int f < \infty\ \ \ \ \ \ \text{and}\ \ \ \ \ \ \int g < \infty
 \end{align*}
-Since if $f(x) \leq \frac{t}{2}$ and $g(x) \leq \frac{t}{2}$ then $(f + g)(x) = f(x) + g(x) \leq t$.  By properties of measures, 
+By the simple function definition of Lebesgue integrals,
 \begin{align*}
-    \mu(S_{f + g}(t)) \leq \mu\qty(S_f\qty(\frac{t}{2}) \cup S_g\qty(\frac{t}{2})) &\leq \mu\qty(S_f\qty(\frac{t}{2})) + \mu\qty(S_g\qty(\frac{t}{2})) \\
-    \implies \int_0^\infty \mu(S_{f + g}(t)) \dd t &\leq \int_0^\infty \mu\qty(S_f\qty(\frac{t}{2}))\dd t + \int_0^\infty \mu\qty(S_g\qty(\frac{t}{2}))\dd t
+    \sup_{\substack{0 \leq \phi \leq f \\ \phi \in S_\Omega}}\left\{\int \phi \right\} < \infty\ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \sup_{\substack{0 \leq \psi \leq g \\ \psi \in S_\Omega}}\left\{\int \psi \right\} <  \infty
 \end{align*}
-Note the integral on the right hand side can split linearly because it is a Riemann integral.  By $u$-substitution with $u = \frac{t}{2}$, we get
+Thus construct two sequences of simple functions $\{\phi_n\}_n$ and $\{\psi_n\}_n$ such that $\int \phi_n \rightarrow \int f$ and $\int \psi_n \rightarrow \int g$.  Then choose any arbitrary $\varepsilon$.  Then
 \begin{align*}
-    \int_0^\infty \mu(S_{f + g}(t))\dd t \leq 2\int_0^\infty S_f(t)\dd t + 2\int_0^\infty S_g(t)\dd t
+    \exists N_\phi, N_\psi\ \ \text{ such that if }\ \ n \geq \max\{N_\phi, N_\psi\},\ \ \text{ then }\ \ \int f - \int \phi_n < \frac{\varepsilon}{2}\ \ \text{ and }\ \ \int g - \int \psi_n < \frac{\varepsilon}{2}
 \end{align*}
-Note the constant $2$ can be factored of each integral on the right hand side linearly because they are Riemann integrals.  Thus, by definition,
+
+By the definition of the integration of simple functions, there are disjoint sets $\{E_i\}_{i = 1}^{N_E}$ and $\{F_j\}_{j = 1}^{N_F}$ such that
 \begin{align*}
-    \int (f + g) \leq 2\qty(\int f + \int g)
+    \int \phi_n = \sum_{i = 1}^{N_E} c_i\mathcal{X}_{E_i}\ \ \ \ \ \ \text{and}\ \ \ \ \ \ \int \psi_n = \sum_{j = 1}^{N_F} d_j\mathcal{X}_{F_j}
 \end{align*}
-and since $f$ and $g$ are summable, $\int f$ and $\int g$ are finite, which proves $\int (f + g)$ is finite, i.e.~$f + g$ is summable. \hfill $\square$
+However we can construct the set $\{G_{i,j}\} = \{E_i \cap F_j\ :\ 1 \leq i \leq N_E, 1 \leq j \leq N_F\}$, and thus
+\begin{align*}
+    \int \phi_n = \sum_{i = 1}^{N_E}\sum_{j = 1}^{N_F} c_i\mathcal{X}_{G_{i,j}}\ \ \ \ \ \ \text{and}\ \ \ \ \ \ \int \psi_n = \sum_{j = 1}^{N_F}\sum_{i = 1}^{N_E} d_j\mathcal{X}_{G_{i,j}}
+\end{align*}
+By linearity of finite sums,
+{\color{red} omg finish up}
+
+% To show $\int (f + g) \leq 2\qty(\int f + \int g)$, first note that
+% \begin{align*}
+%     S_{f + g}(t) = \{x\ :\ (f+g)(x) > t\} \subset \left\{x\ :\ f(x) > \frac{t}{2}\right\} \cup \left\{x\ :\ g(x) > \frac{t}{2}\right\} = S_f\qty(\frac{t}{2}) \cup S_g\qty(\frac{t}{2})
+% \end{align*}
+% Since if $f(x) \leq \frac{t}{2}$ and $g(x) \leq \frac{t}{2}$ then $(f + g)(x) = f(x) + g(x) \leq t$.  By properties of measures, 
+% \begin{align*}
+%     \mu(S_{f + g}(t)) \leq \mu\qty(S_f\qty(\frac{t}{2}) \cup S_g\qty(\frac{t}{2})) &\leq \mu\qty(S_f\qty(\frac{t}{2})) + \mu\qty(S_g\qty(\frac{t}{2})) \\
+%     \implies \int_0^\infty \mu(S_{f + g}(t)) \dd t &\leq \int_0^\infty \mu\qty(S_f\qty(\frac{t}{2}))\dd t + \int_0^\infty \mu\qty(S_g\qty(\frac{t}{2}))\dd t
+% \end{align*}
+% Note the integral on the right hand side can split linearly because it is a Riemann integral.  By $u$-substitution with $u = \frac{t}{2}$, we get
+% \begin{align*}
+%     \int_0^\infty \mu(S_{f + g}(t))\dd t \leq 2\int_0^\infty S_f(t)\dd t + 2\int_0^\infty S_g(t)\dd t
+% \end{align*}
+% Note the constant $2$ can be factored of each integral on the right hand side linearly because they are Riemann integrals.  Thus, by definition,
+% \begin{align*}
+%     \int (f + g) \leq 2\qty(\int f + \int g)
+% \end{align*}
+% and since $f$ and $g$ are summable, $\int f$ and $\int g$ are finite, which proves $\int (f + g)$ is finite, i.e.~$f + g$ is summable. \hfill $\square$
 
 \subsubsection*{ b)}
 \textit{For any integer $N$ find two functions $f_N$ and $g_N$ that take only finitely many values, such that $|\int f - \inf f_N| \leq \frac{C}{N}$, $|\int g - \int g_N| \leq \frac{C}{N}$, $|int(f + g) - \int(f_N - g_N)| \leq \frac{C}{N}$ for some constant $C$ independent of $N$.}
