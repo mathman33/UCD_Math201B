@@ -1,0 +1,691 @@
+\documentclass[12pt]{article}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\newcommand{\E}{\varepsilon}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\title{\bf HW \#2}
+\author{\bf Sam Fleischer}
+\date{\bf January 29, 2015}
+
+\pgfplotsset{compat=1.12}
+
+\begin{document}
+\textbf{MATH 201B \hfill Analysis \ \ \hfill Winter 2016\ \ \ }
+
+{\let\newpage\relax\maketitle}
+
+\section*{Lieb and Loss Exercise 1.9}
+\emph{Verify the linearity of the integral as given in 1.5(7) by completing the steps outlined below.  In what follows, $f$ and $g$ are nonnegative summable functions.}
+
+% \begin{definition}[Definition: Simple Function]
+%     Let $(\Omega, \Sigma, \mu)$ be a measure space.  A \emph{simple function} is a function $\phi\ :\ \Omega \rightarrow [0, \infty)$ given by
+%     \begin{align*}
+%         \phi = \sum_{i=1}^N c_i \mathcal{X}_{E_i}
+%     \end{align*}
+%     where $c_i \geq 0$, $E_i \in \Sigma$ for $i = 1, \dots, N$, and $E_i \cap E_j = \emptyset$ for $i \neq j$.  The integral of a simple function is given by
+%     \begin{align*}
+%         \int_\Omega \phi \dd \mu = \sum_{i = 1}^N c_i \mu(E_i)
+%     \end{align*}
+%     Define $\mathcal{S}_\Omega$ as the set of all simple functions on $\Omega$, i.e.
+%     \begin{align*}
+%         \mathcal{S}_\Omega = \{\phi \in [\Omega \rightarrow [0, \infty)]\ :\ \phi \text{ \rm is a simple function }\}
+%     \end{align*}
+% \end{definition}
+% \begin{definition}[Definition 1: Lebesgue Integral]
+%     Let $f\ :\ \Omega \rightarrow [0, \infty)$ be a positive, measurable real-valued function on a measure space $(\Omega, \Sigma, \mu)$.  Then
+%     \begin{align*}
+%         \int_\Omega f \dd \mu = \int_0^\infty F_f(t) \dd t
+%     \end{align*}
+%     where $F_f(t) = \mu(f^{-1}(t, \infty))$.
+% \end{definition}
+% \begin{definition}[Definition 2: Lebesgue Integral]
+%     Let $f\ :\ \Omega \rightarrow [0, \infty)$ be a positive, measurable real-valued function on a measure space $(\Omega, \Sigma, \mu)$.  Then
+%     \begin{align*}
+%         \int_\Omega f \dd \mu = \sup_{\substack{0\leq\phi\leq f \\ \phi \in \mathcal{S}_\Omega}} \left\{\int_\Omega \phi \dd \mu\right\}
+%     \end{align*}
+% \end{definition}
+% \begin{lemma}[Equivalence of Definitions for Simple Functions]
+%     Let $\Phi$ be a simple function on a measure space $(\Omega, \Sigma, \mu)$.  Then
+%     \begin{align*}
+%         \int_0^\infty F_\Phi(t) \dd t = \sup_{\substack{0 \leq \phi \leq \Phi \\[.05cm] \phi \in \mathcal{S}_\Omega}} \left\{\int_\Omega \phi \dd \mu\right\}
+%     \end{align*}
+%     where $F_\Phi(t) = \mu(\Phi^{-1}(t, \infty))$.  In other words, the two definitions for Lebesgue integral are equivalent for simple functions.
+% \end{lemma}
+% \begin{proof}
+%     Since $\Phi$ is a simple function, then
+%     \begin{align*}
+%         \sup_{\substack{0 \leq \phi \leq \Phi \\[.05cm] \phi \in \mathcal{S}_\Omega}}\left\{\int_\Omega \phi \dd \mu\right\} = \int_\Omega \Phi \dd \mu = \sum_{i = 1}^N c_i \mu(E_i)
+%     \end{align*}
+%     where $c_i$ and $E_i$, $i = 1, \dots, N$ are defined for $\Phi$.  Since $E_i \cap  E_j = \emptyset$ for $i \neq j$, then the maximum of $\Phi$ is the maximum of the coefficients $\{c_i\}$, denoted $c_\Phi$.
+%     \begin{align*}
+%         c_\Phi = \max_{x \in \Omega} \Phi(x) = \max_{1 \leq i \leq N} \{c_i\}
+%     \end{align*}
+%     This shows that $\Phi^{-1}(t, \infty) = \emptyset$ for $t \geq c_\Phi$, and thus
+%     \begin{align*}
+%         \int_0^\infty F_\Phi(t) \dd t = \int_0^{c_\Phi} F_\Phi(t) \dd t
+%     \end{align*}
+%     We can construct a set $\{d_i\}$ such that $\{d_i\} = \{c_i\}$ but $d_1 \leq d_2 \leq \dots \leq d_N = c_\Phi$.  In other words, the set $\{d_i\}$ is simply the set $\{c_i\}$ ordered from least to greatest.  Then
+%     \begin{align*}
+%         \int_0^{c_\Phi} F_\Phi(t) \dd t = \int_0^{d_1} F_\Phi(t) \dd t + \int_{d_1}^{d_2} F_\Phi(t) \dd t + \dots + \int_{d_{N-1}}^{d_N} F_\Phi(t) \dd t = \sum_{k = 1}^N \int_{d_{k - 1}}^{d_k} F_\Phi(t) \dd t
+%     \end{align*}
+%     where, for ease, we define $d_0 = 0$.  We can easily form the set $\{D_i\}$ such that $D_i$ corresponds to $d_i$.  In other words, we can write $\int_\Omega \Phi \dd \mu = \sum_{i=1}^N d_i \mu(D_i)$.  Note that for $t \in (0, d_1)$ we have
+%     \begin{align*}
+%         F_\Phi(t) = \mu\qty(\bigcup_{i=1}^ND_i) = \sum_{i=1}^N \mu(D_i)
+%     \end{align*}
+%     In general, for $t \in (d_{k-1}, d_k)$ we have
+%     \begin{align*}
+%         F_\Phi(t) = \mu\qty(\bigcup_{i=k}^N D_i) = \sum_{i=k}^N \mu(D_i)
+%     \end{align*}
+%     Thus,
+%     \begin{align*}
+%         \int_0^{c_\Phi} F_\Phi(t) \dd t &= \sum_{k = 1}^N \int_{d_{k - 1}}^{d_k} F_\Phi(t) \dd t \\
+%         &= \sum_{k=1}^N\int_{d_{k-1}}^{d_k}\sum_{i=k}^N \mu(D_i) \dd t \\
+%         &= \sum_{k=1}^N \sum_{i=k}^N \qty[\mu(D_i) \int_{d_{k-1}}^{d_k} \dd t ]\ \ \ \ \ \text{by linearity of Riemann integrals}\\
+%         &= \sum_{k=1}^N \sum_{i=k}^N \qty[\mu(D_i)\qty(d_k - d_{k-1})] \\
+%         &= \sum_{k=1}^N \qty(d_k - d_{k-1}) \sum_{i=k}^N \mu(D_i) \\
+%         &= (d_1  - 0)\qty[\mu(D_1) + \dots + \mu(D_N)] + (d_2 - d_1)\qty[\mu(D_2) + \dots + \mu(D_N)] + \dots \\
+%         &\ \ \ \dots + (d_{N-1} - d_{N-2})\qty[\mu(D_{N-1}) + \mu(D_N)] + (d_N - d_{N-1})\mu(D_N) \\
+%         &= d_1\mu(D_1) + d_2\mu(D_2) + \dots + d_N\mu(D_N)\ \ \ \ \ \text{by combining like-terms} \\
+%         &= \sum_{i=1}^N c_i \mu(E_i)
+%     \end{align*}
+%     which completes the proof.
+% \end{proof}
+% \begin{lemma}[Equivalence of Definitions for Arbitrary Functions]
+%     Let $f$ be a measurable function on a measure space $(\Omega, \Sigma, \mu)$.  Then
+%     \begin{align*}
+%         \int_0^\infty F_f(t) \dd t = \sup_{\substack{0 \leq \phi \leq f \\[.05cm] \phi \in \mathcal{S}_\Omega}} \left\{\int_\Omega \phi \dd \mu\right\}
+%     \end{align*}
+%     where $F_f(t) = \mu(f^{-1}(t, \infty))$.  In other words, the two definitions for Lebesgue integral are equivalent.
+% \end{lemma}
+% \begin{proof}
+%     Consider the set $E_{n,k} = \left\{x\ :\ f(x) > \frac{k}{2^n}\right\}$ for $n \in \{1, 2, \dots\}$ and $k \in \{1, 2, \dots, 4^n\}$.  Define $\{\phi_n\}_{n=1}^\infty$ by
+%     \begin{align*}
+%         \phi_n = \frac{1}{2^n}\sum_{k=1}^{4^n}\mathcal{X}_{E_{n,k}}
+%     \end{align*}
+%     Note that $E_{n,a} \subset E_{n,b}$ if $a > b$.  Then note that for any $x$, either $x \in E_{n, 4^n}$ or $\exists\ell$ such that $x \in E_{n, \ell}$ but $x \not\in E_{n, \ell+1}$.
+
+%     If $x \in E_{n, 4^n}$, then by its definition, $f(x) > \frac{4^n}{2^n} = 2^n$ and $\phi_n(x) = \frac{1}{2^n}\sum_{k=1}^{4^n} 1 = 2^n$.  If $x \in E_{n,\ell}$ but $x \not \in E_{n,\ell+1}$, then by its definition $\frac{\ell + 1}{2^n} > f(x) > \frac{\ell}{2^n}$, but $\phi_n(x) = \frac{\ell}{2^n}$.  In either case, $\phi_n \leq f$ for each $n = 1, 2, 3, \dots$.
+
+%     Next we show $\phi_{n+1} \geq \phi_n$.  Suppose $f(x) < 2^n$.  Then $\exists \ell \in \{1, 2, \dots, 4^n\}$ such that $\frac{\ell}{2^n} \leq f(x) < \frac{\ell + 1}{2^n}$.  Then either $\frac{2\ell}{2^{n+1}} < \frac{2\ell + 1}{2^{n+1}} \leq f(x) < \frac{2\ell + 2}{2^{n+1}}$ (in which case $\phi_{n+1}(x) = \frac{2\ell + 1}{2^{n+1}} > \phi_n$) or $\frac{2\ell}{2^{n+1}} \leq f(x) \leq \frac{2\ell + 1}{2^{n+1}} < \frac{2\ell + 2}{2^{n+1}}$ (in which case $\phi_{n+1}(x) = \frac{2\ell}{2^{n+1}} = \phi_n(x)$).
+
+%     Suppose $f(x) = 2^n$.  Then $\phi_{n+1}(x) = 2^n = \phi_n(x) = f(x)$.
+
+%     Suppose $f(x) > 2^n = \phi_n(x)$.  Then either $f(x) \geq 2^n + \frac{1}{2^{n+1}}$ or $f(x) < 2^n + \frac{1}{2^{n+1}}$.  If $f(x) \geq 2^n + \frac{1}{2^{n+1}}$, the $\phi_{n+1}(x) \geq 2^n + \frac{1}{2^{n+1}} > \phi_n(x)$.  If $f(x) < 2^n + \frac{1}{2^{n+1}}$, then $\phi_{n+1}(x) = 2^n = \phi_n(x)$.
+
+%     In all cases, $\phi_{n+1}(x) \geq \phi_n(x)$ for all $x$ and $n$.  Thus, we that \emph{(i)} $f$ is the pointwise limit of $\phi_n$, and \emph{(ii)} $\{\phi_n\}_n$ is a non-decreasing sequence of functions.  These are the two hypotheses of the monotone convergence theorem, and so
+%     \begin{align*}
+%         \int_\Omega f \dd \mu = \lim_{n\rightarrow \infty} \int_\Omega \phi_n \dd \mu
+%     \end{align*}
+%     where the above integrals are defined using the second defintion of Lebesgue integrals.
+
+%     Now note that
+%     \begin{align*}
+%         f^{-1}(t, \infty) = \bigcup_{n=1}^\infty\{\phi_n^{-1}(t, \infty)\}
+%     \end{align*}
+%     since $f > \phi_n$ for all $n$ and $\phi_n \rightarrow f$, and
+%     \begin{align*}
+%         \bigcup_{n=1}^\infty\{\phi_n^{-1}(t, \infty)\} = \lim_{n\rightarrow \infty} \phi_n^{-1}(t, \infty)
+%     \end{align*}
+%     since $\{\phi_n\}_n$ is an increasing function.  Thus,
+%     \begin{align*}
+%         F_f(t) = \mu(f^{-1}(t, \infty)) = \mu(\lim_{n\rightarrow \infty} \phi_n^{-1}(t, \infty)) = \lim_{n\rightarrow \infty}F_{\phi_n}(t, \infty)
+%     \end{align*}
+%     However, $\{F_{\phi_n}(t, \infty)\}_n$ is monotone increasing to $F_f(t, \infty) \in \mathbb{R}$, and thus again by the monotone convergence theorem,
+%     \begin{align*}
+%         \int_0^\infty F_f(t) \dd t = \lim_{n\rightarrow \infty}\int_0^\infty F_{\phi_n}(t)\dd t
+%     \end{align*}
+%     By Lemma 1, the two definitions of Lebesgue integration are equivalent for simple functions, and thus
+%     \begin{align*}
+%         \int_0^\infty F_{\phi_n}(t) \dd t = \int_\Omega \phi_n(t)
+%     \end{align*}
+%     for all $n$.  Then by the result above,
+%     \begin{align*}
+%         \lim_{n\rightarrow \infty}\qty[\int_0^\infty F_{\phi_n}(t) \dd t] &= \lim_{n\rightarrow \infty}\qty[\int_\Omega \phi_n(t)] \\
+%         \implies \int_0^\infty F_f(t) \dd t &= \sup_{\substack{0 \leq \phi\leq f \\ \phi \in S_\Omega}}\left\{\int_\Omega \phi \dd \mu\right\}
+%     \end{align*}
+% \end{proof}
+
+\subsubsection*{ a)}
+\emph{Show that $f + g$ is also summable.  In fact, by a simple argument $\int(f + g) \leq 2\qty(\int f + \int g)$.} \\
+
+% Suppose $f$ and $g$ are summable.  Thus
+% \begin{align*}
+%     \int f < \infty\ \ \ \ \ \ \text{and}\ \ \ \ \ \ \int g < \infty
+% \end{align*}
+% By the simple function definition of Lebesgue integrals,
+% \begin{align*}
+%     \sup_{\substack{0 \leq \phi \leq f \\ \phi \in S_\Omega}}\left\{\int \phi \right\} < \infty\ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \sup_{\substack{0 \leq \psi \leq g \\ \psi \in S_\Omega}}\left\{\int \psi \right\} <  \infty
+% \end{align*}
+% Thus construct two sequences of simple functions $\{\phi_n\}_n$ and $\{\psi_n\}_n$ such that $\int \phi_n \rightarrow \int f$ and $\int \psi_n \rightarrow \int g$.  Then choose any arbitrary $\E$.  Then
+% \begin{align*}
+%     \exists N_\phi, N_\psi\ \ \text{ such that if }\ \ n \geq \max\{N_\phi, N_\psi\},\ \ \text{ then }\ \ \int f - \int \phi_n < \frac{\E}{2}\ \ \text{ and }\ \ \int g - \int \psi_n < \frac{\E}{2}
+% \end{align*}
+
+% By the definition of the integration of simple functions, there are disjoint sets $\{E_i\}_{i = 1}^{N_E}$ and $\{F_j\}_{j = 1}^{N_F}$ such that
+% \begin{align*}
+%     \int \phi_n = \sum_{i = 1}^{N_E} c_i\mathcal{X}_{E_i}\ \ \ \ \ \ \text{and}\ \ \ \ \ \ \int \psi_n = \sum_{j = 1}^{N_F} d_j\mathcal{X}_{F_j}
+% \end{align*}
+% However we can construct the set $\{G_{i,j}\} = \{E_i \cap F_j\ :\ 1 \leq i \leq N_E, 1 \leq j \leq N_F\}$, and thus
+% \begin{align*}
+%     \int \phi_n = \sum_{i = 1}^{N_E}\sum_{j = 1}^{N_F} c_i\mathcal{X}_{G_{i,j}}\ \ \ \ \ \ \text{and}\ \ \ \ \ \ \int \psi_n = \sum_{j = 1}^{N_F}\sum_{i = 1}^{N_E} d_j\mathcal{X}_{G_{i,j}}
+% \end{align*}
+% By linearity of finite sums,
+% {\color{red} omg finish up}
+
+To show $\int (f + g) \leq 2\qty(\int f + \int g)$, first note that
+\begin{align*}
+    S_{f + g}(t) = \{x\ :\ (f+g)(x) > t\} \subset \left\{x\ :\ f(x) > \frac{t}{2}\right\} \cup \left\{x\ :\ g(x) > \frac{t}{2}\right\} = S_f\qty(\frac{t}{2}) \cup S_g\qty(\frac{t}{2})
+\end{align*}
+Since $f(x) \leq \frac{t}{2}$ and $g(x) \leq \frac{t}{2}$ implies $(f + g)(x) = f(x) + g(x) \leq t$.  By properties of measures, 
+\begin{align*}
+    \mu(S_{f + g}(t)) \leq \mu\qty(S_f\qty(\frac{t}{2}) \cup S_g\qty(\frac{t}{2})) &\leq \mu\qty(S_f\qty(\frac{t}{2})) + \mu\qty(S_g\qty(\frac{t}{2})) \\
+    \implies \int_0^\infty \mu(S_{f + g}(t)) \dd t &\leq \int_0^\infty \mu\qty(S_f\qty(\frac{t}{2}))\dd t + \int_0^\infty \mu\qty(S_g\qty(\frac{t}{2}))\dd t
+\end{align*}
+Note the integral on the right hand side can split linearly because it is a Riemann integral.  By $u$-substitution with $u = \frac{t}{2}$, we get
+\begin{align*}
+    \int_0^\infty \mu(S_{f + g}(t))\dd t \leq 2\int_0^\infty S_f(t)\dd t + 2\int_0^\infty S_g(t)\dd t
+\end{align*}
+Note the constant $2$ can be factored of each integral on the right hand side linearly because they are Riemann integrals.  Thus, by definition,
+\begin{align*}
+    \int (f + g) \leq 2\qty(\int f + \int g)
+\end{align*}
+and since $f$ and $g$ are summable, $\int f$ and $\int g$ are finite, which proves $\int (f + g)$ is finite.  Next we confirm $S_{f + g}(t) \in \Sigma$.  Construct a function $A\ :\ \Omega \rightarrow \mathbb{R}^2$ by
+\begin{align*}
+    A(x) = (f(x), g(x))
+\end{align*}
+and a function $B\ :\ \mathbb{R}^2 \rightarrow \mathbb{R}$ by
+\begin{align*}
+    B(x, y) = x + y
+\end{align*}
+Since $A$ and $B$ are measurable, then $B\circ A$ is measurable (since the composition of measurable functions is measurable).  Thus $\{x\ :\ (f + g)(x) > t\} = \{x\ :\ B(A(x)) > t\}$ is measurable, and hence $S_{f + g}(t) \in \Sigma$.  Thus $f + g$ is summable. \hfill $\square$
+
+\subsubsection*{ b)}
+\emph{For any integer $N$ find two functions $f_N$ and $g_N$ that take only finitely many values, such that $|\int f - \inf f_N| \leq \frac{C}{N}$, $|\int g - \int g_N| \leq \frac{C}{N}$, $|\int(f + g) - \int(f_N - g_N)| \leq \frac{C}{N}$ for some constant $C$ independent of $N$.}
+
+\subsubsection*{ c)}
+\emph{Show that for $f_N$ and $g_N$ as above $\int(f_N + g_N) = \int f_N + \int g_N$, thus proving the addivitivity of te integral for nonnegative functions.} \\
+
+Since $f_N$ and $g_N$ are simple functionsm they take on finitely many values, i.e.
+\begin{align*}
+    f_N &= \sum_{i = 1}^M c_i \mu(E_i) \ \ \text{and} \\
+    g_N &= \sum_{j = 1}^M d_j \mu(D_j)
+\end{align*}
+Note both summations can be written with the same limit since we can always add finitely many terms where either $c_i$ or $d_j$ are zero.
+\begin{align*}
+    \int_\Omega f_N \dd \mu &= \int_0^\infty F_{f_N} \dd t = \sum_{i = 1}^M c_i \mu(E_i)\ \ \text{and} \\
+    \int_\Omega g_N \dd \mu &= \int_0^\infty F_{g_N} \dd t = \sum_{j = 1}^M d_j \mu(D_j) \\
+\end{align*}
+  Then
+\begin{align*}
+    \int_\Omega (f_N + g_N) &= \int_\Omega \sum_{i = 1}^M (c_i \mu(E_i) + d_i \mu(D_i))
+    % &= \int_\Omega \sum_{i = 1}^M (c_i + d_i) \qty(\mu(E_i) + \mu(D_i))
+\end{align*}
+
+% \begin{definition}[Definition 2: Lebesgue Integral]
+%     Let $f\ :\ \Omega \rightarrow [0, \infty)$ be a positive, measurable real-valued function on a measure space $(\Omega, \Sigma, \mu)$.  Then
+%     \begin{align*}
+%         \int_\Omega f \dd \mu = \sup_{\substack{0\leq\phi\leq f \\ \phi \in \mathcal{S}_\Omega}} \left\{\int_\Omega \phi \dd \mu\right\}
+%     \end{align*}
+% \end{definition}
+% \begin{lemma}[Equivalence of Definitions for Simple Functions]
+%     Let $\Phi$ be a simple function on a measure space $(\Omega, \Sigma, \mu)$.  Then
+%     \begin{align*}
+%         \int_0^\infty F_\Phi(t) \dd t = \sup_{\substack{0 \leq \phi \leq \Phi \\[.05cm] \phi \in \mathcal{S}_\Omega}} \left\{\int_\Omega \phi \dd \mu\right\}
+%     \end{align*}
+%     where $F_\Phi(t) = \mu(\Phi^{-1}(t, \infty))$.  In other words, the two definitions for Lebesgue integral are equivalent for simple functions.
+% \end{lemma}
+% \begin{proof}
+%     Since $\Phi$ is a simple function, then
+%     \begin{align*}
+%         \sup_{\substack{0 \leq \phi \leq \Phi \\[.05cm] \phi \in \mathcal{S}_\Omega}}\left\{\int_\Omega \phi \dd \mu\right\} = \int_\Omega \Phi \dd \mu = \sum_{i = 1}^N c_i \mu(E_i)
+%     \end{align*}
+%     where $c_i$ and $E_i$, $i = 1, \dots, N$ are defined for $\Phi$.  Since $E_i \cap  E_j = \emptyset$ for $i \neq j$, then the maximum of $\Phi$ is the maximum of the coefficients $\{c_i\}$, denoted $c_\Phi$.
+%     \begin{align*}
+%         c_\Phi = \max_{x \in \Omega} \Phi(x) = \max_{1 \leq i \leq N} \{c_i\}
+%     \end{align*}
+%     This shows that $\Phi^{-1}(t, \infty) = \emptyset$ for $t \geq c_\Phi$, and thus
+%     \begin{align*}
+%         \int_0^\infty F_\Phi(t) \dd t = \int_0^{c_\Phi} F_\Phi(t) \dd t
+%     \end{align*}
+%     We can construct a set $\{d_i\}$ such that $\{d_i\} = \{c_i\}$ but $d_1 \leq d_2 \leq \dots \leq d_N = c_\Phi$.  In other words, the set $\{d_i\}$ is simply the set $\{c_i\}$ ordered from least to greatest.  Then
+%     \begin{align*}
+%         \int_0^{c_\Phi} F_\Phi(t) \dd t = \int_0^{d_1} F_\Phi(t) \dd t + \int_{d_1}^{d_2} F_\Phi(t) \dd t + \dots + \int_{d_{N-1}}^{d_N} F_\Phi(t) \dd t = \sum_{k = 1}^N \int_{d_{k - 1}}^{d_k} F_\Phi(t) \dd t
+%     \end{align*}
+%     where, for ease, we define $d_0 = 0$.  We can easily form the set $\{D_i\}$ such that $D_i$ corresponds to $d_i$.  In other words, we can write $\int_\Omega \Phi \dd \mu = \sum_{i=1}^N d_i \mu(D_i)$.  Note that for $t \in (0, d_1)$ we have
+%     \begin{align*}
+%         F_\Phi(t) = \mu\qty(\bigcup_{i=1}^ND_i) = \sum_{i=1}^N \mu(D_i)
+%     \end{align*}
+%     In general, for $t \in (d_{k-1}, d_k)$ we have
+%     \begin{align*}
+%         F_\Phi(t) = \mu\qty(\bigcup_{i=k}^N D_i) = \sum_{i=k}^N \mu(D_i)
+%     \end{align*}
+%     Thus,
+%     \begin{align*}
+%         \int_0^{c_\Phi} F_\Phi(t) \dd t &= \sum_{k = 1}^N \int_{d_{k - 1}}^{d_k} F_\Phi(t) \dd t \\
+%         &= \sum_{k=1}^N\int_{d_{k-1}}^{d_k}\sum_{i=k}^N \mu(D_i) \dd t \\
+%         &= \sum_{k=1}^N \sum_{i=k}^N \qty[\mu(D_i) \int_{d_{k-1}}^{d_k} \dd t ]\ \ \ \ \ \text{by linearity of Riemann integrals}\\
+%         &= \sum_{k=1}^N \sum_{i=k}^N \qty[\mu(D_i)\qty(d_k - d_{k-1})] \\
+%         &= \sum_{k=1}^N \qty(d_k - d_{k-1}) \sum_{i=k}^N \mu(D_i) \\
+%         &= (d_1  - 0)\qty[\mu(D_1) + \dots + \mu(D_N)] + (d_2 - d_1)\qty[\mu(D_2) + \dots + \mu(D_N)] + \dots \\
+%         &\ \ \ \dots + (d_{N-1} - d_{N-2})\qty[\mu(D_{N-1}) + \mu(D_N)] + (d_N - d_{N-1})\mu(D_N) \\
+%         &= d_1\mu(D_1) + d_2\mu(D_2) + \dots + d_N\mu(D_N)\ \ \ \ \ \text{by combining like-terms} \\
+%         &= \sum_{i=1}^N c_i \mu(E_i)
+%     \end{align*}
+%     which completes the proof.
+% \end{proof}
+
+
+\subsubsection*{ d)}
+\emph{In a similar fashion, show that for $f, g \geq 0$, $\int(f - g) = \int f - \int g$.}
+
+\subsubsection*{ e)}
+\emph{Now use c) and d) to prove the linearity of the integral.}
+
+\section*{Lieb and Loss Exercise 1.10}
+\emph{Prove that when we add and subtract the subsets of sets of zero measure to the sets of a sgma-algebra then the result is again a sigma-algebra and the extended measure is again a measure.}
+
+\section*{Lieb and Loss Exercise 1.12}
+\emph{Find a simple condition for $f_n(x)$ so that}
+\begin{align*}
+    \sum_{n=0}^\infty \int_\Omega f_n(x) \mu(\dd x) = \int_\Omega \qty[\sum_{n=0}^\infty f_n(x)]\mu(\dd x)
+\end{align*}
+
+Let ${f_n}_n$ be a sequence of positive functions.  Then let
+\begin{align*}
+    g_n = \sum_{i = 0}^n f_i
+\end{align*}
+be the $n$th partial sum of $\sum_{n = 0}^\infty f_n$.  Then $g_n$ is an increasing sequence of functions that converges pointwise to $\sum_{n = 0}^\infty f_n$ in $\Omega$.  Then by the monotone convergence theorem,
+\begin{align*}
+    \int_\Omega \sum_{n = 0}^\infty f_n \dd \mu= \lim_{n\rightarrow \infty}\int_\Omega g_n \dd \mu
+\end{align*}
+and thus
+\begin{align*}
+    \int_\Omega \qty[\sum_{n = 0}^\infty f_n] \dd \mu &= \lim_{n\rightarrow \infty}\int_\Omega \qty[\sum_{i=0}^n f_i] \dd \mu \\
+    &= \lim_{n\rightarrow \infty} \sum_{i = 0}^n \int_\Omega f_i \dd \mu \\
+    &= \sum_{n = 0}^\infty \int_\Omega f_n \dd \mu
+\end{align*}
+which proves the result.
+
+\section*{Lieb and Loss Exercise 1.13}
+\emph{Let $f$ be the function on $\mathbb{R}^n$ defined by $f(x) = |x|^{-p}\mathcal{X}_{\{|x| < 1\}}(x)$.  Compute $\int f \dd \mathcal{L}^n$ in two ways: (i) Use polar coordinates and compute the integral by the standard calculus method.  (ii) Compute $\mathcal{L}^n\qty(\{x\ :\ f(x) > a\})$ and then use Lebesgue's definition.}
+\begin{enumerate}[(i)]
+    \item
+        First note that
+        \begin{align*}
+            f(x) =
+            \begin{cases} 
+                |x|^{-p} & \text{if $|x| < 1$} \\
+                0 & \text{else}
+            \end{cases}
+        \end{align*}
+        Then note that polar coordinates on $\mathbb{R}^n$ are $(r, \phi, \theta_1, \theta_2, \dots, \theta_{n-2})$ where $r \in [0, \infty)$, $\phi \in [0, 2\pi)$, and $\theta_i \in [0, \pi)$ for $i = 1, 2, \dots, n - 2$.  When transforming rectangular coordinates to polar coordinates in $n$ dimensions, we multiply by the determinant of the Jacobian matrix, and so
+        \begin{align*}
+            \int f \dd \mathcal{L}^n &= \int_0^\pi \int_0^\pi \dots \int_0^\pi \int_0^{2\pi} \int_0^\infty r^{-p} \qty[\frac{1}{r^{1-n}}\prod_{k=1}^{n-2} \sin^{n-k-1}(\theta_{k})]\ \dd r\ \dd \phi\ \dd \theta_1 \dots\ \dd \theta_{n-3}\ \dd \theta_{n-2}
+        \end{align*}
+        The integrand is separable, and thus
+        \begin{align*}
+            \int f \dd \mathcal{L}^n &= \int_0^\infty \frac{1}{r^{p-n+1}} \dd r\qty[\prod_{k=1}^{n-2}\int_0^\pi \sin^{n-k-1}(\theta_k)\dd \theta_k] \int_0^{2\pi}\dd \phi \\
+            &= 2\pi \qty[\prod_{k=1}^{n-2}\int_0^\pi \sin^{n-k-1}(\theta_k)\dd \theta_k] \int_0^\infty \frac{1}{r^{p-n+1}} \dd r
+        \end{align*}
+        But
+        \begin{align*}
+            \left|\mathbb{S}^{n-1}\right| = 2\pi\prod_{k=1}^{n-2}\int_0^\pi \sin^{n-k-1}(\theta_k)\dd \theta_k
+        \end{align*}
+        where $|\mathbb{S}^{n-1}|$ is the surface area of an $n$-dimensional sphere of radius $1$.  Thus,
+        \begin{align*}
+            \int f \dd \mathcal{L}^n = |\mathbb{S}^{n-1}|\int_0^1 \frac{1}{r^{p-n+1}} \dd r = \begin{cases}
+                |\mathbb{S}^{n-1}|\frac{1}{n-p} &,\ n > p \\
+                +\infty &,\ n \leq p
+            \end{cases}
+        \end{align*}
+    %     since we know $f(x) = 0$ whenever $r = |x| \geq 1$.  This integral is dependent on $p$ in the following way:
+    %     \begin{align*}
+    %         \int f \dd \mathcal{L}^n = \begin{cases}
+    %             2\pi^{n-1}\frac{1}{1 - p} & \text{if $p < 1$} \\
+    %             +\infty & \text{if $p \geq 1$}
+    %         \end{cases}
+    %     \end{align*}
+    % \item
+    %     If $0 < p < 1$, $f$ is a decreasing function of modulus and $f\rightarrow\infty$ as $x\rightarrow 0$.  If $p < 0$, $f$ is an increasing function of modulus and $f \rightarrow \infty$ as $|x|\rightarrow 1$.  Thus it should be intuitive that $f^{-1}(a, \infty)$ is either a smaller $n$-sphere if $0 < p < 1$ or a shell of an $n$-sphere if $p < 0$.
+    %     \begin{align*}
+    %         \mathcal{L}^n(\{x\ :\ f(x) > a\}) &= \mathcal{L}^n(\{x \in B_1(0)\ :\ |x|^{-p} > a\}) \\
+    %         &= \begin{cases}
+    %             \mathcal{L}^n(\{x\ \in B_1(0)\ :\ |x| < a^{-\frac{1}{p}}\}) & \text{if $0 < p < 1$} \\
+    %             \mathcal{L}^n(\{x\ \in B_1(0)\ :\ |x| > a^{-\frac{1}{p}}\}) & \text{if $p < 0$}
+    %         \end{cases} \\
+    %         &= \begin{cases}
+    %             \mathcal{L}^n(B_{a^{-\frac{1}{p}}}(0)) & \text{if $0 < p < 1$} \\
+    %             \mathcal{L}^n(B_1(0)) - \mathcal{L}^n(B_{a^{-\frac{1}{p}}}(0)) & \text{if $p < 0$}
+    %         \end{cases}
+    %     \end{align*}
+    %     But the Lebesgue measures of balls are relatively simple to compute:
+    %     \begin{align*}
+    %         \mathcal{L}^n(B_r(x)) = \frac{2\pi^{\frac{n}{2}}r^n}{n\Gamma(\frac{n}{2})}
+    %     \end{align*}
+    %     Thus,
+    %     \begin{align*}
+    %         \mathcal{L}^n(\{x\ :\ f(x) > a\}) &= \begin{cases}
+    %             \dfrac{2\pi^{\frac{n}{2}}a^{-\frac{n}{p}}}{n\Gamma(\frac{n}{2})} & \text{if $0 < p < 1$} \\
+    %             \dfrac{2\pi^{\frac{n}{2}}}{n\Gamma(\frac{n}{2})} - \dfrac{2\pi^{\frac{n}{2}}a^{-\frac{n}{p}}}{n\Gamma(\frac{n}{2})} & \text{if $p < 0$}
+    %         \end{cases} \\
+    %         &= \begin{cases}
+    %             \dfrac{2\pi^{\frac{n}{2}}a^{-\frac{n}{p}}}{n\Gamma(\frac{n}{2})} & \text{if $0 < p < 1$} \\
+    %             \dfrac{2\pi^{\frac{n}{2}}}{n\Gamma(\frac{n}{2})}\qty(1 - a^{-\frac{n}{p}}) & \text{if $p < 0$}
+    %         \end{cases}
+    %     \end{align*}
+\end{enumerate}
+
+\section*{Lieb and Loss Exercise 1.17}
+\emph{Show that the infimum of a family of continuous functions is upper semi-continuous.} \\
+
+Let $\mathcal{F} = \{f_i \in \qty[\Omega \rightarrow \mathbb{R}]\ :\ f_i \text{ is continuous, and } i \in I\}$ where $I$ is some index set.  Then define $f \in \qty[\Omega \rightarrow \mathbb{R}]$ by
+\begin{align*}
+    f(x) = \inf_{i \in I}f_i(x)
+\end{align*}
+Assume $f$ is not upper semi-continuous.  Then there is at least one $x$ such that for any sequence $\{x_n\}_n \rightarrow x$,
+\begin{align*}
+    \overline{\lim_{x_n \rightarrow x}} f(x_n) > f(x)
+\end{align*}
+% Then there is some $\E > 0$ such that
+% \begin{align*}
+%     \overline{\lim_{x_n \rightarrow x}}f(x_n) = f(x) + \E
+% \end{align*}
+By the definition of the infimum, there is a sequence of functions in $\mathcal{F}$ whose values at $x$ approach $f(x)$, i.e.~$\{f_j(x)\}_j \rightarrow f(x)$.  Consider a sequence $\{\E_n\}_n = 2^{-n}$.  Then for each $\E_n$, $\exists J_n$ such that for all $j \geq J_n$, $|f_j(x) - f(x)| < \E_n$.  So let $j \geq J$, and by the continuity of $f_j$, choose $\delta_n$ such that $|x - x_0| < \delta_n \implies |f_j(x) - f_j(x_0)| < \E_n$.  Also make sure $\delta_{n+1} < \delta_n$.  Then let $y_n \in B_{\delta_n}(x)\setminus\{x\}$.  Thus $\{y_n\}_n$ is a sequence approaching $x$ where
+\begin{align*}
+    \overline{\lim_{y_n\rightarrow x}}f(y_n) = \overline{\lim_{y_n\rightarrow x}}\inf_{i\in I}f_i(y_n) = f(x)
+\end{align*}
+which is a contradiction.  Thus $f$ is upper semi-continuous.
+
+\section*{Lieb and Loss Exercise 1.18}
+\emph{Simple facts about measure:}
+
+\subsubsection*{ a)}
+\emph{Show that the condition $\{x\ :\ f(x) > a\}$ is measureiable for all $a \in \mathbb{R}$ holds if and only if it holds for all rational $a$.} \\
+
+Suppose $\{x\ :\ f(x) > a\} \in \Sigma$ for all $a \in \mathbb{Q}$.  Then for $a \in \mathbb{R} \setminus \mathbb{Q}$, let $\{a_i\}_i$ be an increasing sequence in $\mathbb{Q}$ such that $\{a_i\} \rightarrow a$.  Then
+\begin{align*}
+    \{x\ :\ f(x) > a\} = \bigcap_{n=1}^\infty\{x\ :\ f(x) > a_n\} \in \Sigma
+\end{align*}
+because $\Sigma$ is closed under countable intersections.
+
+\subsubsection*{ b)}
+\emph{For rational $a$, show that}
+\begin{align*}
+    \{x\ :\ f(x) + g(x) > a\} = \bigcup_{b \in \mathbb{Q}} \qty(\{x\ :\ f(x) > b\} \cap \{x\ :\ g(x) > a - b\})
+\end{align*}
+For ease, define $A = \{x\ :\ f(x) + g(x) > a\}$ and $B = \bigcup_{b \in \mathbb{Q}} \qty(\{x\ :\ f(x) > b\} \cap \{x\ :\ g(x) > a - b\})$.
+
+Suppose $x \in A$.  Then $f(x) + g(x) > a$.  Then $\exists \E > 0$ such that $f(x) + g(x) = a + \E$.  Now choose $b \in \mathbb{Q}\cap(f(x) - \E, f(x))$.  Then $f(x) - \E < b < f(x)$, i.e.~$f(x) < b + \E < f(x) + \E$.  If $g(x) \leq a - b$, then $f(x) + g(x) \leq f(x) + a - b < b + \E + a - b = a + \E$, which is a contradiction since $f(x) + g(x) = a + \E$.  Thus $x \in B$, showing $A \subset B$.
+
+Suppose $x \in B$.  Then $\exists b \in \mathbb{Q}$ such that $f(x) > b$ and $g(x) > a - b$.  Then $f(x) + g(x) > b + a - b = a$, and thus $x \in A$, showing $B \subset A$.
+
+Thus,
+\begin{align*}
+    \{x\ :\ f(x) + g(x) > a\} = \bigcup_{b \in \mathbb{Q}} \qty(\{x\ :\ f(x) > b\} \cap \{x\ :\ g(x) > a - b\})
+\end{align*}
+
+\subsubsection*{ c)}
+\emph{In a similar way, prove that $fg$ is measurable if $f$ and $g$ are measurable.} \\
+
+We want to show if $f^{-1}(t, \infty) \in \Sigma$ and $g^{-1}(t, \infty) \in \Sigma$, then $(fg)^{-1}(t, \infty) \in \Sigma$.  We will show this for $t \in \mathbb{Q}$, but by part \textbf{b)}, this is equivalent to showing it for $t \in \mathbb{R}$.
+
+To show $(fg)^{-1}(t, \infty) \in \Sigma$, we will show
+\begin{align*}
+    (fg)^{-1}(t, \infty) = \bigcup_{b \in \mathbb{Q}}\qty(f^{-1}(b, \infty)\cap g^{-1}\qty(\frac{a}{b}, \infty))
+\end{align*}
+For ease, define $A = (fg)^{-1}(t, \infty)$ and $B = \bigcup_{b \in \mathbb{Q}}\qty(f^{-1}(b, \infty)\cap g^{-1}\qty(\frac{a}{b}, \infty))$.
+
+Suppose $x \in A$.  Then $f(x) + g(x) > a$.  Then $\exists \E > 0$ such that $fg(x) = a(1 + \E)$.  Now choose $b \in \mathbb{Q}\cap\qty(\dfrac{f(x)}{1 + \E}, f(x))$.  Then $\dfrac{f(x)}{1 + \E} < b < f(x)$, i.e.~$f(x) < b(1 + \E) < f(x)(1 + \E)$.  If $g(x) \leq \dfrac{a}{b}$, then $(fg)(x) \leq \dfrac{af(x)}{b} < \dfrac{ab(1 + \E)}{b} = a(1 + \E)$, which is a contradiction since $(fg)(x) = a(1 + \E)$.  Thus $x \in B$, showing $A \subset B$.
+
+Suppose $x \in B$.  Then $\exists b \in \mathbb{Q}$ such that $f(x) > b$ and $g(x) > \dfrac{a}{b}$.  Then $(fg)(x) > \dfrac{ba}{b} = a$, and thus $x \in A$, showing $B \subset A$.
+
+Thus, for $t \in \mathbb{Q}$,
+\begin{align*}
+    (fg)^{-1}(t, \infty) = \bigcup_{b \in \mathbb{Q}}\qty(f^{-1}(b, \infty)\cap g^{-1}\qty(\frac{a}{b}, \infty))
+\end{align*}
+Then since $\mathbb{Q}$ is countable and $(fg)^{-1}(t, \infty)$ is a countable union and intersection of elements in $\Sigma$, then $(fg)^{-1}(t, \infty) \in \Sigma$.  By part \textbf{a)}, this shows the above holds for $t \in \mathbb{R}$ and thus $f, g$ measurable imply $fg$ is measurable.
+
+\section*{Hunter and Nachtergaele Exercise 6.1}
+\emph{Prove that a closed, convex subset of a Hilbert space has a unique point of minimum norm.} \\
+
+Let $A$ be a closed and convex subset of a Hilbert space $\mathcal{H}$.  Let $d$ be the distance of $\vec{0}$ from $A$,
+\begin{align*}
+    d = \inf_{x \in A}\{\norm{x}\}
+\end{align*}
+First we prove that there is a closest point $z \in A$ at which this infimum is attained.  From the definition of $d$, there is a sequence of elements $z_n \in A$ such that
+\begin{align*}
+    \lim_{n\rightarrow \infty}\norm{z_n} = d
+\end{align*}
+Thus $\forall \E$, $\exists N_\E$ such that
+\begin{align*}
+    \norm{z_n} \leq d + \E\ \ \ \ \ \text{ when } n \geq N_\E
+\end{align*}
+Next we will show $\{z_n\}_n$ is Cauchy.  Let $n,m \geq N_\E$.  The parallelogram law implies
+\begin{align*}
+    \norm{z_m - z_n}^2 + \norm{z_m + z_n}^2 = 2\norm{z_n}^2 + 2\norm{z_m}^2
+\end{align*}
+Since $A$ is convex, $\frac{z_m + z_n}{2} \in A$, and thus
+\begin{align*}
+    \norm{\frac{z_m + z_n}{2}} \leq d
+\end{align*}
+by the definition of $d$.  Thus,
+\begin{align*}
+    \norm{z_m + z_n}^2 \leq 4d^2
+\end{align*}
+which implies
+\begin{align*}
+    \norm{z_m - z_n}^2 + 4d^2 &\leq 2\norm{z_m}^2 + 2\norm{z_n}^2 \\
+    \implies \norm{z_m - z_n}^2 &\leq 2(d + \E)^2 + 2(d + \E)^2 - 4d^2 \\
+    &= 4\E(2d + \E)
+\end{align*}
+which is arbitrarily small as $\E \rightarrow 0$.  Thus $\{z_n\}_n$ is Cauchy.  The completeness of Hilbert spaces implies $\{z_n\}_n$ converges to a limit, but since $A$ is closed, $\lim_{n \rightarrow \infty} z_n = z \in A$.  By the continuity of $\norm{\cdot}$,
+\begin{align*}
+    \norm{z} = \norm{\lim_{n\rightarrow\infty}z_n} = \lim_{n\rightarrow\infty}\norm{z_n} = d
+\end{align*}
+Thus there is a point at which $A$ achieves minimum norm.  Next, we prove uniqueness.  Suppose $\norm{z_1} = \norm{z_2} = 0$.  Then by the parallelogram law,
+\begin{align*}
+    2\norm{z_1}^2 + 2\norm{z_2}^2 = \norm{z_1 + z_2}^2 + \norm{z_1 - z_2}^2
+\end{align*}
+Again, the convexity of $A$ implies $\frac{z_1 + z_2}{2} \in A$, and thus
+\begin{align*}
+    \norm{z_1 - z_2}^2 = 4d^2 - 4\norm{\frac{z_1 + z_2}{2}}^2 \leq 4d^2 - 4d^2 = 0
+\end{align*}
+But norm is non-negative, i.e.~$\norm{z_1 - z_2} = 0$.  Thus $z_1 = z_2$.  Thus the point of minimum norm is unique.
+
+\section*{Hunter and Nachtergaele Exercise 6.3}
+\emph{If $A$ is a subset of a Hilbert space, prove that $$A^\perp = \overline{A}^\perp,$$ where $\overline{A}$ is the closure of $A$.  If $\mathcal{M}$ is a linear subspace of a Hilbert space, prove that $$\mathcal{M}^{\perp\perp} = \overline{\mathcal{M}}.$$}
+
+Let $x \in A^\perp$ and choose any $y \in \overline{A}$.  Then $\exists \{y_n\}_n \in A$ such that $y_n \rightarrow y$.  But since $y_n \in A$, $x\perp y_n$ for all $n$.  Thus, by the continuity of inner products,
+\begin{align*}
+    \langle x, y \rangle = \langle x, \lim_{n\rightarrow \infty} y_n \rangle = \lim_{n\rightarrow\infty} \langle x, y_n \rangle = \lim_{n\rightarrow \infty} 0 = 0
+\end{align*}
+and thus $x \perp y$, which shows $x \in \overline{A}^\perp$, and hence $A^\perp \subset \overline{A}^\perp$.
+
+Now let $x \in \overline{A}^\perp$.  Then $x \perp y$ $\forall y \in \overline{A}$.  But $A \subset \overline{A}$, and thus trivially, $x \perp y$ $\forall y \in A$, i.e.~$x \in A^\perp$.  Hence $\overline{A}^\perp \subset A^\perp$.
+
+Thus, $A^\perp = \overline{A}^\perp$.
+
+Let $\mathcal{M}$ be a linear subspace of $\mathcal{H}$.  Assume $x \in \overline{\mathcal{M}}$.  Then there is a sequence $x_n \in \mathcal{M}$ such that $x_n \rightarrow x$.  Then $\langle x_n, y \rangle = 0$ $\forall y \in \mathcal{M}^\perp$.  Then by continuity of inner products,
+\begin{align*}
+    \langle x, y \rangle = \langle \lim_{n\rightarrow \infty} x_n, y \rangle = \lim_{n\rightarrow \infty} \langle x_n, y \rangle = \lim_{n\rightarrow \infty} 0 = 0\ \ \ \ \ \forall y \in \mathcal{M}^\perp
+\end{align*}
+Then $x \in \mathcal{M}^{\perp\perp}$, which shows $\overline{\mathcal{M}} \subset \overline{M}^{\perp\perp}$.
+
+Now assume $x \not\in \overline{\mathcal{M}}$.  Since $\overline{\mathcal{M}}$ is closed, the by the Projection Theorem, $\exists y \in \overline{\mathcal{M}}$ such that $(x - y) \perp \overline{\mathcal{M}}$.  Since $y \in \overline{\mathcal{M}}$, $\langle x - y, y \rangle = 0$.  Since $x \neq y$ ($x \not\in \overline{\mathcal{M}}$ and $y \in \overline{\mathcal{M}}$), then $\langle x - y, x - y \rangle \neq 0$.  However, $\langle x - y, x - y \rangle = \langle x - y, x\rangle - \langle x - y, y \rangle = \langle x - y, x \rangle$.  Since $x - y \perp \overline{\mathcal{M}}$, then $x - y \perp \mathcal{M}$, i.e.~$x - y \in \mathcal{M}^\perp$.  Then since $\langle x - y, x \rangle \neq 0$, then $x \not\in \overline{\mathcal{M}}^{\perp\perp} = \mathcal{M}^{\perp\perp}$, which shows $\mathcal{M}^{\perp\perp} \subset \overline{\mathcal{M}}$.
+
+Thus $\overline{\mathcal{M}} = \mathcal{M}^{\perp\perp}$.
+
+\section*{Hunter and Nachtergaele Exercise 6.5}
+\emph{Suppose that $\{\mathcal{H}_n\ :\ n \in \mathbb{N}\}$ is a set of orthogonal closed subspaces of a Hilbert space $\mathcal{H}$.  We define the infinite direct sum $$\bigoplus_{n=1}^\infty \mathcal{H}_n = \left\{\sum_{n=1}^\infty x_n\ |\ x_n \in \mathcal{H}_n\ \text{ and }\ \sum_{n=1}^\infty \norm{x_n}^2 < + \infty\right\}.$$  Prove that $\bigoplus_{n=1}^\infty \mathcal{H}_n$ is a closed linear subspace of $\mathcal{H}$.} \\
+
+First we show $\bigoplus_{n=1}^\infty \mathcal{H}_n$ is linear.  Consider $x, y \in \bigoplus_{n=1}^\infty \mathcal{H}_n$ where
+\begin{align*}
+    x = \sum_{n=1}^\infty x_n\ \ \ \ \ \text{and}\ \ \ \ \ y = \sum_{n=1}^\infty y_n
+\end{align*}
+Then since each $\mathcal{H}_n$ is linear, then $c_n = ax_n + by_n \in \mathcal{H}_n$ for each $n$.  Thus
+\begin{align*}
+    ax + by = a\sum_{n=1}^\infty x_n + b\sum_{n=1}^\infty y_n = \sum_{n=1}^\infty \qty(ax_n + by_n) = \sum_{n=1}^\infty c_n
+\end{align*}
+Now we need to show $\sum_{n=1}^\infty \norm{c_n}^2 < \infty$.  Consider $x^{(N)}$ and $y^{(N)}$ where
+\begin{align*}
+    x^{(N)} = \sum_{n=1}^N x_n\ \ \ \ \ \text{and}\ \ \ \ \ y^{(N)} = \sum_{n=1}^N y_n
+\end{align*}
+Then
+\begin{align*}
+    \norm{ax^{(N)} + by^{(N)}}^2 = \norm{\sum_{n=1}^N\qty(ax_n + by_n)}^2 = \norm{\sum_{n=1}^N c_n}^2 = \sum_{n=1}^N\norm{c_n}^2
+\end{align*}
+by the pythagorean theorem.  However, since the norm is continuous,
+\begin{align*}
+    \lim_{N\rightarrow\infty}\norm{ax^{(N)} + by^{(N)}}^2 = \norm{ax + by}^2 = \sum_{n=1}^\infty \norm{c_n}^2
+\end{align*}
+Since $ax + by \in \mathcal{H}$, then $\norm{ax + by} \in \mathbb{R}$ by the definition of norm.  Thus $\norm{ax + by}^2 \in \mathbb{R}$ and hence $< \infty$.  Thus $ax + by \in \bigoplus_{n=1}^\infty \mathcal{H}_n$, which shows $\bigoplus_{n=1}^\infty \mathcal{H}_n$ is a linear subspace.
+
+% Next we show $\bigoplus_{n=1}^\infty \mathcal{H}_n$ is closed.  Consider a convergent sequence $\{x_i\}_i \rightarrow x$ in $\bigoplus_{n=1}^\infty\mathcal{H}_n$.  Then
+% \begin{align*}
+%     x_i = \sum_{n=1}^\infty x_{i,n}
+% \end{align*}
+% where $x_{i,n} \in \mathcal{H}_n$ for each $i$ and $n$.  Consider the sequence $\{x_{i,n}\}_i \in \mathcal{H}_n$ and let $\E > 0$.  Then
+% \begin{align*}
+%     \norm{x_{i,n} - x_{j,n}}
+% \end{align*}
+
+\section*{Hunter and Nachtergaele Exercise 6.8}
+\emph{Let $\mathcal{X} = \{x_n\ :\ n \in \mathbb{N}\}$ be an orthonormal set in a Hilbert space.  Show that the sum $\displaystyle\sum_{n=1}^\infty \dfrac{x_n}{n}$ converges unconditionally but not absolutely.} \\
+
+Let $y_n = \dfrac{x_n}{n}$ and let $\mathcal{Y} = \{y_n\ :\ n \in \mathbb{N}\}$.  Since each $y_n$ is a scalar multiple of $x_n$ for all $n$, and since $\mathcal{X}$ is an orthonomal set, then $\mathcal{Y}$ is an orthogonal set.  Thus by the Pythagorean Theorem, $\sum_{n=1}^\infty y_n$ converges unconditionally if and only if $\sum_{n=1}^\infty \norm{y_n}^2$ converges.  But
+\begin{align*}
+    \sum_{n=1}^\infty \norm{y_n}^2 = \sum_{n=1}^\infty \frac{\norm{x_n}^2}{n^2} = \sum_{n=1}^\infty \frac{1}{n^2} < \infty
+\end{align*}
+by the $p$-series test.  Thus $\sum_{n=1}^\infty y_n = \sum_{n=1}^\infty\frac{x_n}{n}$ converges unconditionally.  However,
+\begin{align*}
+    \sum_{n=1}^\infty \norm{\frac{x_n}{n}} = \sum_{n=1}^\infty \frac{\norm{x_n}}{n} = \sum_{n=1}^\infty \frac{1}{n} \rightarrow \infty
+\end{align*}
+And so $\sum_{n=1}^\infty \frac{x_n}{n}$ does not converge absolutely.
+
+\section*{Hunter and Nachtergaele Exercise 6.12}
+\emph{Define the \emph{Legendre polynomials} $P_n$ by $$P_n(x) = \frac{1}{2^n n!}\frac{\dd^n}{\dd x^n}(x^2 - 1)^n.$$}
+\begin{enumerate}[(a)]
+    \item
+        \emph{Compute the first few Legendre polynomials, and compare with what you get by Gram-Schmidt orthogonalization of the monomials $\{1, x, x^2, \dots\}$ in $L^2([-1,1])$.}
+
+        \begin{align*}
+            P_0(x) &= \frac{1}{2^0 0!} (x^2 - 1)^0 = 1 \\
+            P_1(x) &= \frac{1}{2^1 1!} \frac{\dd}{\dd x}(x^2 - 1)^1 = \frac{1}{2} 2x = x \\
+            P_2(x) &= \frac{1}{2^2 2!} \frac{\dd^2}{\dd x^2}(x^2 - 1)^2 = \frac{1}{8}\frac{\dd^2}{\dd x^2}(x^4 - 2x^2 + 1) = \frac{1}{8}(12x^2 - 4) = \frac{3}{2}x^2 - \frac{1}{2} \\
+            P_3(x) &= \frac{1}{2^3 3!}\frac{\dd^3}{\dd x^3}(x^2 - 1)^3 = \frac{1}{48}\frac{\dd^3}{\dd x^3}(x^6 - 3x^4 + 3x^2 - 1) = \frac{1}{48}(120x^3 - 72x) = \frac{5}{2}x^3 - \frac{3}{2}x
+        \end{align*}
+        These polynomials are scalar multiples of the results of the Gram-Schmidt orthogonalization of the monomials $\{1, x, x^2, \dots\}$ in $L^2([-1,1])$.
+    \item
+        \emph{Show that the Legendre polynomials are orthogonal in $L^2([-1, 1])$, and that they are obtained by Gram-Schmidt orthongonalization of the monomials}
+
+        Fix $n$ and pick $m < n$.  Then
+        \begin{align*}
+            \langle x^m, P_n \rangle &= \int_{-1}^1 x^m P_n \dd x \\
+            &= \int_{-1}^1 x^m \frac{1}{2^n n!}\frac{\dd^n}{\dd x^n}(x^2 - 1)^n \dd x \\
+            \implies 2^n n!\langle x^m, P_n \rangle &= \int_{-1}^{1} x^m \frac{\dd^n}{\dd x^n}(x^2 - 1)^n \dd x \\
+            &= (-1)^m m! \int_{-1}^1 \frac{\dd^{n-m}}{\dd x^{n-m}}(x^2 - 1)\dd x\ \ \ \text{through integration by parts $m$ times} \\
+            &= (-1)^m m! \qty[\frac{\dd^{n-m-1}}{\dd x^{n-m-1}}(x^2 - 1)^n]_{-1}^1 \\
+            &= 0
+        \end{align*}
+        because $x^2 - 1$ is a factor of $\dfrac{\dd^{n-m-1}}{\dd x^{n-m-1}}(x^2 - 1)^n$.  Thus $x^m \perp P_n$ for all $m < n$.  However $P_m$ is a linear combination of elements from $\{1, x, \dots, x^m\}$, and thus $P_m \perp P_n$.  Thus the Legendre polynomials are orthogonal in $L^2([-1,1])$.
+    \item
+        \emph{Show that $$\int_{-1}^1 P_n(x)^2 \dd x = \frac{2}{2n + 1}.$$}
+
+        \begin{align*}
+            \int_{-1}^1 P_n(x)^2 \dd x &= \int_{-1}^1 \qty(\frac{1}{2^n n!}\frac{\dd^n}{\dd x^n}(x^2 - 1)^n)^2\dd x \\
+            &= \frac{1}{2^{2n}(n!)^2}\int_{-1}^1\qty(\frac{\dd^n}{\dd x^n}(x^2 - 1)^n)^2 \dd x \\
+            &= \frac{(-1)^n}{2^{2n}(n!)^2}\int_{-1}^1 (x^2 - 1)^n \frac{\dd^{2n}}{\dd x^{2n}}(x^2 - 1)^n \dd x &\text{through integration by parts $n$ times} \\
+            &= \frac{(-1)^n(2n)!}{2^{2n}(n!)^2}\int_{-1}^1(x^2 - 1)^n \dd x &\text{through integration by parts $2n$ times}
+        \end{align*}
+        Now just consider the integral
+        \begin{align*}
+            \int_{-1}^1 (x^2 - 1)^n \dd x &= \int_{-1}^1 (x-1)^n (x+1)^n \dd x \\
+            &= \frac{(n!)^2(-1)^n}{(2n)!}\int_{-1}^1 (x+1)^{2n}\dd x &\text{through integration by parts $n$ times} \\
+            &= \frac{(n!)^2(-1)^n}{(2n)!}\qty[\frac{(x + 1)^{2n+1}}{2n+1}]_{-1}^1 \\
+            &= \frac{(n!)^2(-1)^n 2^{2n+1}}{(2n)!(2n+1)}
+        \end{align*}
+        Thus,
+        \begin{align*}
+            \int_{-1}^1 P_n(x)^2 \dd x &= \frac{(-1)^n(2n)!}{2^{2n}(n!)^2}\int_{-1}^1(x^2 - 1)^n \\
+            &= \frac{(-1)^n(2n)!}{2^{2n}(n!)^2}\cdot\frac{(n!)^2(-1)^n 2^{2n+1}}{(2n)!(2n+1)} \\
+            &= \frac{2}{2n + 1}
+        \end{align*}
+    \item
+        \emph{Prove that the Legendre polynomials form an orthogonal basis of $L^2([-1, 1])$.  Suppose that $f \in L^2([-1,1])$ is given by $$f(x) = \sum_{n=0}^\infty c_n P_n(x).$$  Compute $c_n$ and say explicitly in what sense the series converges.} \\
+
+        Since $\{P_n\}_n$ can be obtained using the Gram-Schmidt from an orthogonal basis (namely the monomials $\{1, x, x^2, \dots\}$), the $\{P_n\}_n$ is an orthogonal basis of $L^2([-1,1])$.
+
+        Bessel's inequality says that since $\{P_n\}_n$ is an orthogonal basis, then
+        \begin{align*}
+            c_n = \left\langle \frac{P_n}{\norm{P_n}}, f \right\rangle
+        \end{align*}
+    \item
+        \emph{Prove that the Legendre polynomial $P_n$ is an eigenfunction of the differential operator $$L = -\frac{\dd}{\dd x}(1 - x^2) \frac{\dd}{\dd x}$$ with eigenvalue $\lambda_n = n(n+1)$, meaning that $$LP_n = \lambda_n P_n.$$}
+
+        Let $u(x) = (x^2 - 1)^n$ and let $D$ be the differential operator.  Then note that
+        \begin{align*}
+            (x^2 - 1)Du = (x^2 - 1)n(x^2 - 1)^{n-1} \cdot 2x = 2nxu
+        \end{align*}
+        Apply $D^{n+1}$ to both sides and use Liebnitz's Rule for $(fg)^{(n)}$ to acheive
+        \begin{align*}
+            \frac{(n+1)n}{2}\cdot 2\cdot D^{n-1}Du + (n+1)2x D^n Du + (x^2 - 1)D^{n+1}Du &= 2n(n+1)D^nu + 2nxD^{n+1}u \\
+            \implies 2xD^{n+1}u + (x^2 - 1)D^{n+2}u = n(n+1)D^n u\\
+            \implies LD^nu = n(n+1)D^n u
+        \end{align*}
+        which shows $D^n$ is an eigenfunction of $L$ with eigenvalue $\lambda_n = n(n-1)$.  Since $2^n n! P_n = D^nu$ (i.e.~$P_n$ is linearly dependent on $D^n$), then $P_n$ is an eigenfunction of $L$ with eigenvalue $\lambda_n = n(n+1)$.
+\end{enumerate}
+
+\section*{Extra Problem: Convolution is Continuous}
+\emph{Prove that the convolution of two continuous functions on the unit circle in continuous.} \\
+
+Choose $x \in [0, 2 \pi]$ and let $\E > 0$.  The continuity of $g$ implies $\exists \delta$ such that
+\begin{align*}
+    |x - x_0| < \delta \implies |g(x) - g(x_0)| < \E
+\end{align*}
+Then let $|x - x_0| < \delta$ (which also means $|(x-y) - (x_0-y)| < \delta$).  Then
+\begin{align*}
+    |(f*g)(x) - (f*g)(x_0)| &= \left|\int_0^{2\pi}f(y)g(x-y) - f(y)g(x_0 - y) \dd y\right| \\
+    &= \left|\int_0^{2\pi} f(y)\qty[g(x-y) - g(x_0 - y)]\dd y\right| \\
+    &\leq \int_0^{2\pi} |f(y)|\ |g(x-y) - g(x_0 - y)| \dd y \\
+    &< \int_0^{2\pi}|f(y)| \E \dd x
+\end{align*}
+But by the continuity of $f$, $f$ is bounded on $[0, 2\pi]$ since $[0, 2\pi]$ is compact.  Thus $|f(y)| \leq C$ for some $C \in \mathbb{R}^+$.  Thus
+\begin{align*}
+    |(f*g)(x) - (f*g)(x_0)| &< C\E\int_0^{2\pi}\dd x \\
+    &= 2\pi C\E
+\end{align*}
+Since $\E$ was arbitrary, this shows that $f*g$ is continuous.
+
+\end{document}
