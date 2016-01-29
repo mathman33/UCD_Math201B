@@ -232,7 +232,7 @@ and a function $B\ :\ \mathbb{R}^2 \rightarrow \mathbb{R}$ by
 Since $A$ and $B$ are measurable, then $B\circ A$ is measurable (since the composition of measurable functions is measurable).  Thus $\{x\ :\ (f + g)(x) > t\} = \{x\ :\ B(A(x)) > t\}$ is measurable, and hence $S_{f + g}(t) \in \Sigma$.  Thus $f + g$ is summable. \hfill $\square$
 
 \subsubsection*{ b)}
-\emph{For any integer $N$ find two functions $f_N$ and $g_N$ that take only finitely many values, such that $|\int f - \inf f_N| \leq \frac{C}{N}$, $|\int g - \int g_N| \leq \frac{C}{N}$, $|\int(f + g) - \int(f_N - g_N)| \leq \frac{C}{N}$ for some constant $C$ independent of $N$.}
+\emph{For any integer $N$ find two functions $f_N$ and $g_N$ that take only finitely many values, such that $|\int f - \int f_N| \leq \frac{C}{N}$, $|\int g - \int g_N| \leq \frac{C}{N}$, $|\int(f + g) - \int(f_N - g_N)| \leq \frac{C}{N}$ for some constant $C$ independent of $N$.}
 
 \subsubsection*{ c)}
 \emph{Show that for $f_N$ and $g_N$ as above $\int(f_N + g_N) = \int f_N + \int g_N$, thus proving the addivitivity of te integral for nonnegative functions.} \\
@@ -308,10 +308,19 @@ Note both summations can be written with the same limit since we can always add 
 
 
 \subsubsection*{ d)}
-\emph{In a similar fashion, show that for $f, g \geq 0$, $\int(f - g) = \int f - \int g$.}
+\emph{In a similar fashion, show that for $f, g \geq 0$, $\int(f - g) = \int f - \int g$.} \\
 
 \subsubsection*{ e)}
 \emph{Now use c) and d) to prove the linearity of the integral.}
+
+\begin{align*}
+    \int(f + g) &= \int(f^+ - f^- + g^+ - g^-) \\
+    &= \int((f^+ + g^+) - (f^- + g^-)) \\
+    &= \int(f^+ + g^+) - \int(f^- + g^-)\ \ \ \ \ \ \ \ \text{by part \textbf{d)}} \\ 
+    &= \int f^+ + \int g^+ - \int f^- - \int g^-\ \ \ \ \ \text{by approximation and part \textbf{c)}} \\
+    &= \int (f^+ - f^-) + \int(g^+ - g^-) \\
+    &= \int f + \int g
+\end{align*}
 
 \section*{Lieb and Loss Exercise 1.10}
 \emph{Prove that when we add and subtract the subsets of sets of zero measure to the sets of a sgma-algebra then the result is again a sigma-algebra and the extended measure is again a measure.} \\
@@ -811,11 +820,11 @@ And so $\sum_{n=1}^\infty \frac{x_n}{n}$ does not converge absolutely.
 \section*{Extra Problem: Convolution is Continuous}
 \emph{Prove that the convolution of two continuous functions on the unit circle in continuous.} \\
 
-Choose $x \in [0, 2 \pi]$ and let $\E > 0$.  The continuity of $g$ implies $\exists \delta$ such that
+Let $\E > 0$.  $g$ is continuous on a compact set $[0, 2\pi]$, which implies $g$ is uniformly continuous.  Thus $\exists \delta$ such that
 \begin{align*}
     |x - x_0| < \delta \implies |g(x) - g(x_0)| < \E
 \end{align*}
-Then let $|x - x_0| < \delta$ (which also means $|(x-y) - (x_0-y)| < \delta$).  Then
+for $x, x_0\in [0, 2\pi]$.  Then let $|x - x_0| < \delta$ (which implies $|(x-y) - (x_0-y)| < \delta$).  Then
 \begin{align*}
     |(f*g)(x) - (f*g)(x_0)| &= \left|\int_0^{2\pi}f(y)g(x-y) - f(y)g(x_0 - y) \dd y\right| \\
     &= \left|\int_0^{2\pi} f(y)\qty[g(x-y) - g(x_0 - y)]\dd y\right| \\
