@@ -318,11 +318,11 @@ Note both summations can be written with the same limit since we can always add 
 
 Consider a measure space $(\Omega, \Sigma, \mu)$ and let $\mathcal{A}$ be the collection of measurable sets of measure zero:
 \begin{align*}
-    \mathcal{A} = \{\sigma \in \Sigma\ :\ \mu(\sigma) = 0\}
+    \mathcal{A} = \{A \in \Sigma\ :\ \mu(A) = 0\}
 \end{align*}
 For each $A \in \mathcal{A}$, let $\mathbb{P}(A)$ be the power set of $A$, i.e.
 \begin{align*}
-    \mathbb{P}(A) = \{a \in A\ :\ a \subset A\}
+    \mathbb{P}(A) = \{a\ :\ a \subset A\}
 \end{align*}
 Next, let $\overline{\Sigma}$ be a superset of $\Sigma$, consisting of the ``addition'' and ``subtraction'' of the subsets of sets of measure to each set:
 \begin{align*}
@@ -343,86 +343,115 @@ Let $\overline{\mu}$ map sets in $\overline{\Sigma}$ to the nonnegative reals, i
         \mu(\sigma) & \text{if } \overline{\sigma} \in \Sigma^+ \cup \Sigma^- \text{ where $\sigma$ is defined in (\ref{Sigmas})}
     \end{cases}
 \end{align*}
-We want to show $(\Omega, \overline{\Sigma}, \overline{\mu})$ is a measure space.  To do this, we must show $\overline{\Sigma}$ is a $\sigma$-algebra and $\overline{\mu}$ is a measure on $\overline{\Sigma}$.
-
-First, we will show $\overline{\Sigma}$ is a $\sigma$-algebra.  To do this we must show (i) it is closed under complementation, (ii) it is closed under countable unions, and (iii) $\Omega \in \overline{\Sigma}$.
+We want to show $(\Omega, \overline{\Sigma}, \overline{\mu})$ is a measure space.  To do this, we must show $\overline{\Sigma}$ is a $\sigma$-algebra and $\overline{\mu}$ is a measure on $\overline{\Sigma}$.  First we will show $\overline{\Sigma} = \Sigma^+$ by showing (i) $\Sigma \subset \Sigma^+$ and (ii) $\Sigma^- \subset \Sigma^+$.
 \begin{enumerate}[(i)]
     \item
-        Let $x \in \overline{\Sigma}$.  Then either $x \in \Sigma$, $x \in \Sigma^+$, or $x \in \Sigma^-$.  If $x \in \Sigma$, then since $\Sigma$ is a $\sigma$-algebra, $x^C \in \Sigma \subset \overline{\Sigma}$.  If $x \in \Sigma^+$, then $x = \sigma \cup a$ for some $\sigma \in \Sigma$ and $a \in \mathbb{P}(A)$.  Since $\sigma^C \in \Sigma$, then
+        Since $\emptyset$ is a subset of all sets, then for $\sigma \in\Sigma$, $\sigma = \sigma \cup \emptyset \in \Sigma^+$.  Thus $\Sigma \subset \Sigma^+$.
+    \item
+        Let $\sigma \setminus a \in \Sigma^-$.  Then $a \subset A$ for some $A \in \mathcal{A}$.  Also, $A \setminus a \subset A$, and
+        \begin{align*}
+            \sigma \setminus a &= \sigma \cap (a^C) \\
+            &= \sigma \cap (A^C \cup (A \setminus a)) \\
+            &= (\sigma \cap A^C) \cup (\sigma \cap (A \setminus a))
+        \end{align*}
+        But $\Sigma$ is a $\sigma$-algebra, which implies it is closed under finite intersections, and thus $\sigma$, $A^C \in \Sigma$ implies $\hat{\sigma} = \sigma \cap A^C \in \Sigma$.  Also, $\hat{a} = \sigma \cap (A \setminus a) \subset A \setminus a \subset A$.  Thus
+        \begin{align*}
+            \sigma \setminus a = \hat{\sigma} \cup \hat{a} \in \Sigma^+
+        \end{align*}
+        which proves $\Sigma^- \subset \Sigma^+$.
+\end{enumerate}
+This shows
+\begin{align*}
+    \overline{\Sigma} = \Sigma^+
+\end{align*}
+
+Next we will show $\overline{\Sigma}$ is a $\sigma$-algebra.  To do this we must show (i) it is closed under complementation, (ii) it is closed under countable unions, and (iii) $\Omega \in \overline{\Sigma}$.
+\begin{enumerate}[(i)]
+    \item
+        Let $x \in \overline{\Sigma} = \Sigma^+$.  Then $x = \sigma \cup a$ for some $\sigma \in \Sigma$ and $a \in \mathbb{P}(A)$.  Since $\sigma^C \in \Sigma$, then
         \begin{align*}
             x^C = \qty(\sigma \cup a)^C = \sigma^C \cap a^C = \sigma^C \setminus a \in \Sigma^- \subset \overline{\Sigma}
         \end{align*}
-        If $x \in \Sigma^-$, then $x = \sigma \setminus a$ for some $\sigma \in \Sigma$ and $a \in \mathbb{P}(A)$.  Then
-        \begin{align*}
-            x^C = \qty(\sigma \setminus a)^C = \qty(\sigma \cap a^C)^C = \sigma^C \cup a \in \Sigma^+ \subset \overline{\Sigma}
-        \end{align*}
-        Thus $\overline{\Sigma}$ is closed under complementation.
     \item
-        Let $x = \bigcup_{n=1}^\infty \overline{\sigma}_n$ where $\overline{\sigma}_n \in \overline{\Sigma}$ for $n = 1, 2, \dots$.  Each $\overline{\sigma}_n$ is in one or more of $\Sigma$, $\Sigma^+$, and $\Sigma^-$.  This means that by the commutativity of unions, we can write $x$ as
+        Let $x = \bigcup_{n=1}^\infty \overline{\sigma}_n$ where $\overline{\sigma}_n \in \overline{\Sigma} =\Sigma^+$ for $n = 1, 2, \dots$.  Each $\overline{\sigma}_n$ can be written as
         \begin{align*}
-            x = \bigcup_{n=1}^\infty \overline{\sigma}_n = \bigcup_{i=1}^\infty \sigma_i \cup \bigcup_{j=1}^\infty (\sigma_j \cup a_j) \cup \bigcup_{k=1}^\infty (\sigma_k \setminus a_k)
+            \overline{\sigma}_n = \sigma_n \cup a_n
         \end{align*}
-        where $\sigma_i$, $\sigma_j$, $\sigma_k \in \Sigma$ for $i,j,k = 1, 2, \dots$ and $a_j \in \mathbb{P}(A_j)$, $a_k \in \mathbb{P}(A_k)$ and $A_i$, $A_j \in \mathcal{A}$ for $j, k = 1, 2, \dots$.  Since $\Sigma$ is closed under countable unions,
+        for some $\sigma_n \in \Sigma$ and $a_n \subset A_n$ for some $A_n \in \mathcal{A}$.  This means that by the commutativity of unions, we can write $x$ as
         \begin{align*}
-            \bigcup_{i=1}^\infty \sigma_i \in \Sigma \subset \overline{\Sigma}
+            x = \bigcup_{n=1}^\infty \overline{\sigma}_n = \bigcup_{n=1}^\infty (\sigma_n \cup a_n) = \bigcup_{n=1}^\infty \sigma_n \cup \bigcup_{n=1}^\infty a_n = \hat{\sigma} \cup \bigcup_{n=1}^\infty a_n
         \end{align*}
-        Next we consider the countable union of elements of $\Sigma^+$,
-        \begin{align*}
-            \bigcup_{j=1}^\infty (\sigma_j \cup a_j) = \bigcup_{j=1}^\infty \sigma_j \cup \bigcup_{j=1}^\infty a_j = \hat{\sigma} \cup \bigcup_{j=1}^\infty a_j
-        \end{align*}
-        where $\hat{\sigma} \in \Sigma$ since $\Sigma$ is closed under countable unions.  Since $\mu$ is a measure, it has the property of countable additivity, which means
+        where $\hat{\sigma} = \bigcup_{n=1}^\infty \sigma_n \in \Sigma$ since $\Sigma$ is closed under countable unions.  Since $\mu$ is a measure, it has the property of countable additivity, which means
         \begin{align*}
             \mu\qty(\bigcup \mathcal{A}) = \mu\qty(\bigcup_{A\in\mathcal{A}}A) = \sum_{A\in \mathcal{A}}\mu(A) = \sum_{A\in\mathcal{A}}0 = 0
         \end{align*}
         This means $\bigcup \mathcal{A} \in \mathcal{A}$ since it has measure zero.  Thus
         \begin{align*}
-            &\bigcup_{j=1}^\infty a_j \subset \bigcup_{j=1}^\infty A_j \subset \bigcup \mathcal{A} \in \mathcal{A} \\
+            &\bigcup_{n=1}^\infty a_n \subset \bigcup_{n=1}^\infty A_n \subset \bigcup \mathcal{A} \in \mathcal{A} \\
         \end{align*}
-        Defining $b = \bigcup_{j=1}^\infty a_j \in \mathbb{P}\qty(\bigcup\mathcal{A})$, we can write
+        Defining $b = \bigcup_{n=1}^\infty a_n \in \mathbb{P}\qty(\bigcup\mathcal{A})$, we can write
         \begin{align*}
-            \bigcup_{j=1}^\infty (\sigma_j \cup a_j) = \hat{\sigma} \cup \bigcup_{j=1}^\infty a_j = \hat{\sigma} \cup b \in \Sigma^+
+            \bigcup_{n=1}^\infty (\sigma_n \cup a_n) = \hat{\sigma} \cup \bigcup_{n=1}^\infty a_n = \hat{\sigma} \cup b \in \Sigma^+
         \end{align*}
-        Now consider the countable intersection of elements of $\Sigma^+$,
-        \begin{align*}
-            \bigcap_{j=1}^\infty (\sigma_j \cup a_j)\dots
-        \end{align*}
-        {\color{red} somehow, this is in $\Sigma^+$?} \\
-        Next we consider the complement of a countable union of elements of $\Sigma^-$,
-        \begin{align*}
-            \qty[\bigcup_{k=1}^\infty \qty(\sigma_k \setminus a_k)]^C = \bigcap_{k=1}^\infty \qty(\sigma_k \setminus a_k)^C = \bigcap_{k=1}^\infty \qty(\sigma_k \cap a_k^C)^C = \bigcap_{k=1}^\infty (\sigma_k^C \cup a_k)
-        \end{align*}
-        {\color{red} This is an intersection of elements in $\Sigma+$, which we have shown is in $\Sigma^+$.  Since the complements of elements in $\Sigma^+$ are in $\Sigma^-$, this shows
-        \begin{align*}
-            \bigcup_{k=1}^\infty \qty(\sigma_k \setminus a_k) \in \Sigma^-
-        \end{align*}
-        }
-        Next, we consider the finite union of $(\sigma_1 \cup a_1) \in \Sigma^+$ and $(\sigma_2 \setminus a_2) \in \Sigma^-$,
-        \begin{align*}
-            (\sigma_1 \cup a_1) \cup (\sigma_2 \setminus a_2) &= (\sigma_1 \cup a_1) \cup (\sigma_2 \cap a_2^C) \\
-            &= ((\sigma_1 \cup a_1) \cup \sigma_2) \cap ((\sigma_1 \cup a_1) \cap a_2^C) \\
-            &= ((\sigma_1 \cup \sigma_2) \cup a_1) \cap ((\sigma_1 \cap a_2^C) \cup (a_1 \setminus a_2)) \\
-            &= (\sigma_3 \cup a_1) \cap ((\sigma_1 \setminus a_2) \cup a_3)
-        \end{align*}
-        where $\sigma_3 = \sigma_1 \cup \sigma_2$ and $a_3 = a_1 \setminus a_2$.
+        Thus $\overline{\Sigma} = \Sigma^+$ is closed under countable unions.
     \item
         Since $\Sigma$ is a $\sigma$-algebra, $\Omega \in \Sigma \subset \overline{\Sigma}$.
 \end{enumerate}
-Next we show $\overline{\mu}$ is a measure on $\overline{\Sigma}$.  We have to show (i) $\overline{\mu}(\emptyset) = 0$ and (ii) $\overline{\mu}$ has the property of countable additivity.
+Next we will show $\overline{\mu}$ is a measure on $\overline{\Sigma} = \Sigma^+$.  We have to show (i) $\overline{\mu}(\emptyset) = 0$, (ii) $\overline{\mu}$ has the property of countable additivity, and (iii) $\overline{\mu}$ is well-defined.
 \begin{enumerate}[(i)]
     \item
         Since $\emptyset \in \Sigma$, then $\overline{\mu}(\emptyset) = \mu(\emptyset) = 0$ since $\mu$ is a measure on $\Sigma$.
     \item
-        Let $\overline{\sigma}_1, \overline{\sigma}_2, \dots$ be a sequence of disjoint sets in $\overline{\Sigma}$.  Then
+        Let $\overline{\sigma}_1, \overline{\sigma}_2, \dots$ be a sequence of disjoint sets in $\overline{\Sigma}$.  Then for each $n$,
         \begin{align*}
-            \overline{\mu}(\overline{\sigma}_n) = \mu(\sigma_n)
+            \overline{\sigma}_n = \sigma_n \cup a_n
         \end{align*}
-        where $\sigma_n$ is defined in (\ref{Sigmas}) if $\overline{\sigma}_n \in \Sigma^+ \cup \Sigma^-$ or $\sigma_n = \overline{\sigma}_n$ if $\overline{\sigma}_n \in \Sigma$.  Then
+        for some $\sigma_n \in \Sigma$ and $a_n \subset A_n$ for some $A_n \in \mathcal{A}$.  This means that $\{\sigma_n\}_n$ is a sequence of disjoint sets and $\{a_n\}_n$ is a sequence of disjoint sets.  We showed earlier that
         \begin{align*}
-            \overline{\mu}\qty(\bigcup_{n=1}^\infty \overline{\sigma}_n) &= \overline{\mu}\qty(\bigcup_{i=1}^\infty \sigma_i \cup \bigcup_{j=1}^\infty \qty(\sigma_j \cup a_j) \cup \bigcup_{k=1}^\infty \qty(\sigma_k \setminus a_k)) \\
-            &= \overline{\mu}\qty(\hat{\sigma} \cup (\tilde{\sigma} \cup \tilde{a}) \cup (\breve{\sigma} \setminus \breve{a}))
+            \bigcup_{n=1}^\infty a_n \subset \bigcup \mathcal{A}
         \end{align*}
-        where $\hat{\sigma} \in \Sigma$, $\tilde{\sigma} \cup \tilde{a} \in \Sigma^+$, and $\breve{\sigma} \setminus \breve{a} \in \Sigma^-$. {\color{red} then what...}
+        so denote $b = \bigcup_{n=1}^\infty a_n$ and note
+        \begin{align*}
+            \bigcup_{n=1}^\infty \sigma_n \in \Sigma
+        \end{align*}
+        Then
+        \begin{align*}
+            \overline{\mu}\qty(\bigcup_{n=1}^\infty \overline{\sigma}_n) = \overline{\mu}\qty(\bigcup_{n=1}^\infty \qty(\sigma_n \cup a_n)) = \overline{\mu}\qty(\bigcup_{n=1}^\infty \sigma_n \cup \bigcup_{n=1}^\infty a_n) = \overline{\mu}\qty(\bigcup_{n=1}^\infty \sigma_n \cup b) = \mu\qty(\bigcup_{n=1}^\infty \sigma_n)
+        \end{align*}
+        by the definition of $\overline{\mu}$.  Thus by the countable additivity of $\mu$,
+        \begin{align*}
+            \overline{\mu}\qty(\bigcup_{n=1}^\infty \overline{\sigma}_n) = \mu\qty(\bigcup_{n=1}^\infty \sigma_n) = \sum_{n=1}^\infty \mu\qty(\sigma_n) = \sum_{n=1}^\infty \overline{\mu}\qty(\sigma_n \cup a_n) = \sum_{n=1}^\infty \overline{\mu}(\overline{\sigma}_n)
+        \end{align*}
+        This shows $\overline{\mu}$ has countable additivity.
+    \item
+        Let $\overline{\sigma} \in \overline{\Sigma}$ be represented in two arbitrary ways:
+        \begin{align*}
+            \overline{\sigma} = \sigma_1 \cup a_1 = \sigma_2 \cup a_2
+        \end{align*}
+        for $a_1 \subset A_1$ and $a_2 \subset A_2$ for some $A_1, A_2 \in \mathcal{A}$.  Then let $A = A_1 \cup A_2$ and note that $\sigma_1 \subset A$ and $\sigma_2 \subset A$.  Note
+        \begin{align*}
+            A = \qty[(A \setminus A_1) \cup (A \setminus A_2)] \cup (A_1 \cap A_2)
+        \end{align*}
+        Then
+        \begin{align*}
+            \sigma_1 \cup \qty[(A_1 \setminus A_2) \cup (A_1 \cup A_2)] = \sigma_1 \cup A_1 = \sigma_2 \cup A_2 = \sigma_2 \cup \qty[(A_2 \setminus A_1) \cup (A_2 \cup A_1)]
+        \end{align*}
+        but
+        \begin{align*}
+            &A_1 \setminus A_2 \subset (A \setminus A_1) \cup (A \setminus A_2)\ \ \ \ \text{and} \\
+            &A_2 \setminus A_1 \subset (A \setminus A_1) \cup (A \setminus A_2)
+        \end{align*}
+        and thus
+        \begin{align*}
+            \sigma_1 \cup A = \sigma_1 \cup \qty[(A \setminus A_1) \cup (A \setminus A_2)] \cup (A_1 \cap A_2) = \sigma_2 \cup \qty[(A \setminus A_1) \cup (A \setminus A_2)] \cup (A_1 \cap A_2) = \sigma_2 \cup A
+        \end{align*}
+        This implies
+        \begin{align*}
+            \mu(\sigma_1) = \mu(\sigma_1) + \mu(A) = \mu(\sigma_1 \cup A) = \mu(\sigma_2 \sup A) = \mu(\sigma_2) + \mu(A) = \mu(\sigma_2)
+        \end{align*}
+        This shows that $\overline{\mu}(\overline{\sigma})$ well-defined regardless of how it is represented.
 \end{enumerate}
+Thus $\overline{\mu}$ is a measure on $\overline{\Sigma}$.
 
 \section*{Lieb and Loss Exercise 1.12}
 \emph{Find a simple condition for $f_n(x)$ so that}
@@ -440,9 +469,7 @@ be the $n$th partial sum of $\sum_{n = 0}^\infty f_n$.  Then $g_n$ is an increas
 \end{align*}
 and thus
 \begin{align*}
-    \int_\Omega \qty[\sum_{n = 0}^\infty f_n] \dd \mu &= \lim_{n\rightarrow \infty}\int_\Omega \qty[\sum_{i=0}^n f_i] \dd \mu \\
-    &= \lim_{n\rightarrow \infty} \sum_{i = 0}^n \int_\Omega f_i \dd \mu \\
-    &= \sum_{n = 0}^\infty \int_\Omega f_n \dd \mu
+    \int_\Omega \qty[\sum_{n = 0}^\infty f_n] \dd \mu = \lim_{n\rightarrow \infty}\int_\Omega \qty[\sum_{i=0}^n f_i] \dd \mu = \lim_{n\rightarrow \infty} \sum_{i = 0}^n \int_\Omega f_i \dd \mu = \sum_{n = 0}^\infty \int_\Omega f_n \dd \mu
 \end{align*}
 which proves the result.
 
@@ -473,46 +500,46 @@ which proves the result.
         \end{align*}
         where $|\mathbb{S}^{n-1}|$ is the surface area of an $n$-dimensional sphere of radius $1$.  Thus,
         \begin{align*}
-            \int f \dd \mathcal{L}^n = |\mathbb{S}^{n-1}|\int_0^1 \frac{1}{r^{p-n+1}} \dd r = \begin{cases}
+            \int f \dd \mathcal{L}^n = |\mathbb{S}^{n-1}|\int_0^\infty \frac{1}{r^{p-n+1}} \dd r = |\mathbb{S}^{n-1}|\int_0^1 \frac{1}{r^{p-n+1}} \dd r = \begin{cases}
                 |\mathbb{S}^{n-1}|\frac{1}{n-p} &,\ n > p \\
                 +\infty &,\ n \leq p
             \end{cases}
         \end{align*}
-    %     since we know $f(x) = 0$ whenever $r = |x| \geq 1$.  This integral is dependent on $p$ in the following way:
-    %     \begin{align*}
-    %         \int f \dd \mathcal{L}^n = \begin{cases}
-    %             2\pi^{n-1}\frac{1}{1 - p} & \text{if $p < 1$} \\
-    %             +\infty & \text{if $p \geq 1$}
-    %         \end{cases}
-    %     \end{align*}
-    % \item
-    %     If $0 < p < 1$, $f$ is a decreasing function of modulus and $f\rightarrow\infty$ as $x\rightarrow 0$.  If $p < 0$, $f$ is an increasing function of modulus and $f \rightarrow \infty$ as $|x|\rightarrow 1$.  Thus it should be intuitive that $f^{-1}(a, \infty)$ is either a smaller $n$-sphere if $0 < p < 1$ or a shell of an $n$-sphere if $p < 0$.
-    %     \begin{align*}
-    %         \mathcal{L}^n(\{x\ :\ f(x) > a\}) &= \mathcal{L}^n(\{x \in B_1(0)\ :\ |x|^{-p} > a\}) \\
-    %         &= \begin{cases}
-    %             \mathcal{L}^n(\{x\ \in B_1(0)\ :\ |x| < a^{-\frac{1}{p}}\}) & \text{if $0 < p < 1$} \\
-    %             \mathcal{L}^n(\{x\ \in B_1(0)\ :\ |x| > a^{-\frac{1}{p}}\}) & \text{if $p < 0$}
-    %         \end{cases} \\
-    %         &= \begin{cases}
-    %             \mathcal{L}^n(B_{a^{-\frac{1}{p}}}(0)) & \text{if $0 < p < 1$} \\
-    %             \mathcal{L}^n(B_1(0)) - \mathcal{L}^n(B_{a^{-\frac{1}{p}}}(0)) & \text{if $p < 0$}
-    %         \end{cases}
-    %     \end{align*}
-    %     But the Lebesgue measures of balls are relatively simple to compute:
-    %     \begin{align*}
-    %         \mathcal{L}^n(B_r(x)) = \frac{2\pi^{\frac{n}{2}}r^n}{n\Gamma(\frac{n}{2})}
-    %     \end{align*}
-    %     Thus,
-    %     \begin{align*}
-    %         \mathcal{L}^n(\{x\ :\ f(x) > a\}) &= \begin{cases}
-    %             \dfrac{2\pi^{\frac{n}{2}}a^{-\frac{n}{p}}}{n\Gamma(\frac{n}{2})} & \text{if $0 < p < 1$} \\
-    %             \dfrac{2\pi^{\frac{n}{2}}}{n\Gamma(\frac{n}{2})} - \dfrac{2\pi^{\frac{n}{2}}a^{-\frac{n}{p}}}{n\Gamma(\frac{n}{2})} & \text{if $p < 0$}
-    %         \end{cases} \\
-    %         &= \begin{cases}
-    %             \dfrac{2\pi^{\frac{n}{2}}a^{-\frac{n}{p}}}{n\Gamma(\frac{n}{2})} & \text{if $0 < p < 1$} \\
-    %             \dfrac{2\pi^{\frac{n}{2}}}{n\Gamma(\frac{n}{2})}\qty(1 - a^{-\frac{n}{p}}) & \text{if $p < 0$}
-    %         \end{cases}
-    %     \end{align*}
+    \item
+        First note the Lebesgue measure of $f^{-1}(t, \infty)$ for a fixed $t$.
+        \begin{align*}
+            \mathcal{L}^n(f^{-1}(t, \infty)) &= \mathcal{L}^n(\{x\ :\ f(x) > t\}) \\
+            &= \mathcal{L}^n(\{x \in B_1(0)\ :\ |x| < t^{-1/p}\}) \\
+            &= \begin{cases}
+                \mathcal{L}^n(B_1(0)) & \text{ if } t^{-1/p} \geq 1 \\
+                \mathcal{L}^n(B_{t^{-1/p}}(0)) & \text{ if } t^{-1/p} < 1
+            \end{cases} \\
+            &= \begin{cases}
+                \frac{1}{n}|\mathbb{S}^{n-1}| & \text{ if } t^{-1/p} \geq 1 \\
+                \frac{1}{n}|\mathbb{S}^{n-1}|t^{-n/p} & \text{ if } t^{-1/p} < 1
+            \end{cases}
+        \end{align*}
+        Now integrate over $t \in [0, \infty]$:
+        \begin{align*}
+            \int_0^\infty \mathcal{L}^{n-1}(f^{-1}(t, \infty)) &= \int_0^1 \qty[\frac{1}{n}|\mathbb{S}^{n-1}|]\dd t + \int_1^\infty \qty[\frac{1}{n}|\mathbb{S}^{n-1}|t^{-n/p}]\dd t \\
+            &= \frac{1}{n}|\mathbb{S}^{n-1}|\qty(1 + \qty[\frac{t^{-\frac{n}{p} + 1}}{-\frac{n}{p} + 1}]_1^\infty)
+        \end{align*}
+        If $p \geq n$,
+        \begin{align*}
+            \qty(1 + \qty[\frac{t^{-\frac{n}{p} + 1}}{-\frac{n}{p} + 1}]_1^\infty) = \infty
+        \end{align*}
+        but if $p < n$,
+        \begin{align*}
+            \qty(1 + \qty[\frac{t^{-\frac{n}{p} + 1}}{-\frac{n}{p} + 1}]_1^\infty) = \frac{p}{p-n}
+        \end{align*}
+        Thus,
+        \begin{align*}
+            \int_0^\infty \mathcal{L}^{n-1}(f^{-1}(t, \infty)) &= \begin{cases}
+                \infty & \text{ if } p \geq n \\
+                \frac{1}{n - p} & \text{ if } p < n
+            \end{cases}
+        \end{align*}
+        which matches with our answer in part (i).
 \end{enumerate}
 
 \section*{Lieb and Loss Exercise 1.17}
