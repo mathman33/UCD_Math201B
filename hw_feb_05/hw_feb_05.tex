@@ -1,0 +1,109 @@
+\documentclass[12pt]{article}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\newcommand{\E}{\varepsilon}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\title{\bf HW \#2}
+\author{\bf Sam Fleischer}
+\date{\bf January 29, 2015}
+
+\pgfplotsset{compat=1.12}
+
+\begin{document}
+\textbf{MATH 201B \hfill Analysis \ \ \hfill Winter 2016\ \ \ }
+
+{\let\newpage\relax\maketitle}
+
+\section*{Hunter and NachterGaele 7.1}
+\emph{Let $\phi_n$ be the functions defined in (7.7) $$\phi_n(x) = c_n(1 + \cos x)^n$$ where $c_n$ is chosen such that $$\int_\mathbb{T}\phi_n = 1$$ for all $n$.}
+\begin{enumerate}[ (a)]
+    \item
+        \emph{Prove (7.5).  $$\lim_{n\rightarrow \infty}\int_{\delta\leq|x|\leq \pi}\phi_n(x) \dd x = 0$$ for every $\delta > 0$.}
+    \item
+        \emph{Prove that if the set $\mathcal{P}$ of trigonometric polynomials is dense in the space of periodic continuous functions on $\mathbb{T}$ with the uniform norm, then $\mathcal{P}$ is dense in the space of all continuous functions on $\mathbb{T}$ with the $L^2$-norm.}
+    \item
+        \emph{Is $\mathcal{P}$ dense in the space of all continuous functions on $[0, 2\pi]$ with the uniform norm?}
+\end{enumerate}
+
+\section*{Hunter and NachterGaele 7.2}
+\emph{Suppose that $f\ :\ \mathbb{T} \rightarrow \mathbb{C}$ is a continuous function, and $$S_N = \frac{1}{\sqrt{2\pi}}\sum_{n=-N}^N \hat{f_n}e^{inx}$$ is the $N$\textsuperscript{th} partial sum of its Fourier seriers.}
+\begin{enumerate}[ (a)]
+    \item
+        \emph{Show that $S_N = D_N * f$, where $D_N$ is the \emph{Dirichlet kernel} $$D_N(x) = \frac{1}{2\pi}\frac{\sin\qty[(N+\frac{1}{2})x]}{\sin \qty(\frac{x}{2})}.$$}
+    \item
+        \emph{Let $T_N$ be the mean of the first $N+1$ partial sums, $$T_N = \frac{1}{N+1}.$$  Show that $T_N = F_N * f$, where $F_N$ is the \emph{Fej\'{e}r kernel} $$F_N(x) = \frac{1}{2\pi(N + 1)}\qty(\frac{\sin\qty[(N + 1)\frac{x}{2}]}{\sin\qty(\frac{x}{2})})^2.$$}
+    \item
+        \emph{Which of the families $(D_N)$ and $(F_N)$ are approximate identities as $N\rightarrow \infty$?  What can you say about the uniform convergence of the partial sums $S_N$ and the averaged partial sums $T_N$ to $f$?}
+\end{enumerate}
+
+\section*{Hunter and NachterGaele 7.3}
+\emph{Prove that the sets $\{e_n\ |\ n \geq 1\}$ defined by $$e_n(x) = \sqrt{\frac{2}{\pi}}\sin nx,$$ and $\{f_n\ :\ n \geq 1\}$ defined by $$f_0(x) = \sqrt{\frac{1}{\pi}},\ \ \ \ \ f_n(x) = \sqrt{\frac{2}{\pi}}\cos nx\ \ \ \ \text{ for } n \geq 1,$$ are both orthonormal bases of $L^2([0,1])$.}
+
+\section*{Hunter and NachterGaele 7.4}
+\emph{Let $T, S \in L^2(\mathbb{T})$ be the triangular and square wave, respectively, defined by}
+\begin{align*}
+    T(x) = |x|,\ \ \ \ \text{ if } |x| \leq \pi,\ \ \ \ S(x) = \begin{cases}
+        1 & \text{ if } 0 < x < \pi \\
+        -1 & \text{ if } -\pi < x < 0
+    \end{cases}
+\end{align*}
+\begin{enumerate}[ (a)]
+    \item
+        \emph{Compute the Fourier series of $T$ and $S$.}
+    \item
+        \emph{Show that $T \in H^1(\mathbb{T})$ and $T' = S$.}
+    \item
+        \emph{Show that $S \not\in H^1(\mathbb{T})$.}
+\end{enumerate}
+
+\section*{Hunter and NachterGaele 7.5}
+\emph{Consider $f\ :\ \mathbb{T}^d \rightarrow \mathbb{C}$ defined by $$f(x) = \sum_{n\in\mathbb{Z}^d}a_n e^{i n \cdot x},$$ where $x = (x_1, x_2, \dots, x_d)$, $n = (n_1, n_2, \dots, n_d)$, and $n\cdot x = n_1x_1 + n_2x_2 + \dots + n_dx_d$.  Prove that if $$\sum_{n\in\mathbb{Z}^d}|n|^{2k}|a_n|^2 <\infty$$ for some $k > \frac{d}{2}$, then $f$ is continuous.}
+
+\section*{Hunter and NachterGaele 7.6}
+\emph{Suppose that $f \in H^1([a,b])$ and $f(a) = f(b) = 0$.  Prove the \emph{Poincar\'{e} inequality} $$\int_a^b|f(x)|^2 \dd x \leq \frac{(b-a)^2}{\pi^2}\int_a^b|f'(x)|^2 \dd x.$$}
+
+\section*{Hunter and NachterGaele 7.7}
+\emph{Solve the following initial-boundary value problem for the hear equation,}
+\begin{align*}
+    \begin{array}{ll}
+    u_t = u_{xx}, & \\
+    u(0, t) = 0,\ \ \ u(L,t) = 0 & \text{ for } t > 0 \\
+    u(x, 0) = f(x) & \text{ for } 0 \leq x \leq L
+    \end{array}
+\end{align*}
+
+
+
+\end{document}
