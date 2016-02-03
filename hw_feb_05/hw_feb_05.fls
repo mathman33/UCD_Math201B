@@ -1,4 +1,4 @@
-PWD /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05
+PWD /Users/samuelfleischer/School/UCD/UCD_Math201B
 INPUT /usr/local/texlive/2015/texmf.cnf
 INPUT /usr/local/texlive/2015/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -89,6 +89,8 @@ INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/bbold/bbold.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/bbold/bbold.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/cancel/cancel.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/cancel/cancel.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/physics/physics.sty
@@ -333,9 +335,13 @@ INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/bbold/Ubbold.fd
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/bbold/bbold12.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/bbold/bbold8.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/bbold/bbold6.tfm
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmti8.tfm
 INPUT /usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmti8.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/bbold/bbold5.tfm
 INPUT /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_feb_05.aux
 INPUT /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_feb_05.out
 INPUT /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_feb_05.out

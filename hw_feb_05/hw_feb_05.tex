@@ -12,6 +12,7 @@
 \usepackage{hyperref}
 \usepackage{textcomp}
 \usepackage{bbold}
+\usepackage{cancel}
 \usepackage{alltt}
 \usepackage{physics}
 \usepackage{mathtools}
@@ -47,10 +48,51 @@
 {\let\newpage\relax\maketitle}
 
 \section*{Hunter and NachterGaele 7.1}
-\emph{Let $\phi_n$ be the functions defined in (7.7) $$\phi_n(x) = c_n(1 + \cos x)^n$$ where $c_n$ is chosen such that $$\int_\mathbb{T}\phi_n = 1$$ for all $n$.}
-\begin{enumerate}[ (a)]
+\emph{Let $\phi_n$ be the functions defined in (7.7) $$\phi_n(x) = c_n(1 + \cos x)^n$$ where $c_n$ is chosen such that $$\int_\mathbb{T}\phi_n(x) \dd x = 1$$ for all $n$.}
+\begin{enumerate}[\bf (a)]
     \item
-        \emph{Prove (7.5).  $$\lim_{n\rightarrow \infty}\int_{\delta\leq|x|\leq \pi}\phi_n(x) \dd x = 0$$ for every $\delta > 0$.}
+        \emph{Prove (7.5).  $$\lim_{n\rightarrow \infty}\int_{\delta\leq|x|\leq \pi}\phi_n(x) \dd x = 0$$ for every $\delta > 0$.} \\
+
+        Let $\delta > 0$ and for ease, define $\mathbb{D} = [-\pi, -\delta]\cup[\delta, \pi]$.  
+        \begin{align*}
+            \int_\mathbb{D} \phi_n(x)\dd x = \frac{\int_\mathbb{D} (1 + \cos x)^n \dd x}{\int_\mathbb{T} (1 + \cos x)^n\dd x}
+        \end{align*}
+        since
+        \begin{align*}
+            c_n = \frac{1}{\int_\mathbb{T}(1 + \cos x)^n\dd x}
+        \end{align*}
+        Note that
+        \begin{align*}
+            \phi_n'(x) = -nc_n(1 + \cos x)^{n-1}\sin x
+        \end{align*}
+        which is positive on $[-\pi, 0)$ and negative on $(0, \pi]$, and thus
+        \begin{align*}
+            \max_{x \in \mathbb{D}}\phi_n(x) = \phi_n(\delta)
+        \end{align*}
+        So,
+        \begin{align*}
+            \int_\mathbb{D}\phi_n(x) \dd x = \frac{\int_\mathbb{D} (1 + \cos x)^n \dd x}{\int_\mathbb{T} (1 + \cos x)^n \dd x} \leq \frac{2\pi (1 + \cos \delta)^n}{\int_\mathbb{E}(1 + \cos x)^n \dd x}
+        \end{align*}
+        where $\mathbb{E} = [-\frac{\delta}{2}, \frac{\delta}{2}]$.  Again, since $\phi_n$ is decreasing on $\left(0, \frac{\pi}{2}\right]$ and $\phi$ is an even function,
+        \begin{align*}
+            \min_{x\in\mathbb{E}}\phi_n(x) = \phi_n\qty(\frac{\delta}{2})
+        \end{align*}
+        Thus,
+        \begin{align*}
+            \int_\mathbb{D}\phi_n(x) \dd x \leq \frac{2\pi (1 + \cos \delta)^n}{\int_\mathbb{E}(1 + \cos x)^n \dd x} \leq \frac{2\pi}{\delta}\qty(\frac{1 + \cos \delta}{1 + \cos \frac{\delta}{2}})^n
+        \end{align*}
+        but
+        \begin{align*}
+            \frac{1 + \cos \delta}{1 + \cos \frac{\delta}{2}} < 1
+        \end{align*}
+        since $\cos$ is a decreasing function on $[0, \pi]$.  Thus,
+        \begin{align*}
+            \lim_{n\rightarrow \infty}\frac{2\pi}{\delta}\qty(\frac{1 + \cos \delta}{1 + \cos \frac{\delta}{2}})^n = 0
+        \end{align*}
+        and by the comparison test,
+        \begin{align*}
+            \lim_{n\rightarrow \infty}\int_\mathbb{D}\phi_n(x) \dd x = 0
+        \end{align*}
     \item
         \emph{Prove that if the set $\mathcal{P}$ of trigonometric polynomials is dense in the space of periodic continuous functions on $\mathbb{T}$ with the uniform norm, then $\mathcal{P}$ is dense in the space of all continuous functions on $\mathbb{T}$ with the $L^2$-norm.}
     \item
@@ -59,7 +101,7 @@
 
 \section*{Hunter and NachterGaele 7.2}
 \emph{Suppose that $f\ :\ \mathbb{T} \rightarrow \mathbb{C}$ is a continuous function, and $$S_N = \frac{1}{\sqrt{2\pi}}\sum_{n=-N}^N \hat{f_n}e^{inx}$$ is the $N$\textsuperscript{th} partial sum of its Fourier seriers.}
-\begin{enumerate}[ (a)]
+\begin{enumerate}[\bf (a)]
     \item
         \emph{Show that $S_N = D_N * f$, where $D_N$ is the \emph{Dirichlet kernel} $$D_N(x) = \frac{1}{2\pi}\frac{\sin\qty[(N+\frac{1}{2})x]}{\sin \qty(\frac{x}{2})}.$$}
     \item
@@ -69,7 +111,39 @@
 \end{enumerate}
 
 \section*{Hunter and NachterGaele 7.3}
-\emph{Prove that the sets $\{e_n\ |\ n \geq 1\}$ defined by $$e_n(x) = \sqrt{\frac{2}{\pi}}\sin nx,$$ and $\{f_n\ :\ n \geq 1\}$ defined by $$f_0(x) = \sqrt{\frac{1}{\pi}},\ \ \ \ \ f_n(x) = \sqrt{\frac{2}{\pi}}\cos nx\ \ \ \ \text{ for } n \geq 1,$$ are both orthonormal bases of $L^2([0,1])$.}
+\emph{Prove that the sets $\{e_n\ |\ n \geq 1\}$ defined by $$e_n(x) = \sqrt{\frac{2}{\pi}}\sin nx,$$ and $\{f_n\ :\ n \geq 1\}$ defined by $$f_0(x) = \sqrt{\frac{1}{\pi}},\ \ \ \ \ f_n(x) = \sqrt{\frac{2}{\pi}}\cos nx\ \ \ \ \text{ for } n \geq 1,$$ are both orthonormal bases of $L^2([0,\pi])$.} \\
+
+First we show $\{e_n\}_{n=1}^\infty$ and $\{f_n\}_{n=0}^\infty$ are orthonormal.  Suppose $n \neq m$.  Then
+\begin{align*}
+    \langle e_n, e_m \rangle &= \int_0^\pi e_n(x)e_m(x) \dd x \\
+    &= \frac{2}{\pi}\int_0^\pi \sin(nx) \sin (mx) \dd x\\
+    &= \frac{2}{\pi}\int_0^\pi \frac{1}{2}\qty[\cos(nx - mx) - \cos(nx + mx)]\dd x \\
+    &= \frac{1}{\pi}\int_0^\pi\cos(x(n-m))\dd x - \frac{1}{\pi}\int_0^\pi\cos(x(n+m)) \\
+    &= \frac{1}{\pi}\qty[\frac{\sin(x(n-m))}{n-m} - \frac{\sin(x(n+m))}{n+m}]_0^\pi \\
+    &= 0
+    % &= \frac{1}{\pi}\qty[\frac{n\sin(n-m) + m\sin(n-m) - n\sin(n+m) + m\sin(n+m)}{n^2 - m^2}] \\
+    % &= \frac{1}{\pi}\qty[\frac{(n+m)(\sin n \cos m - \cos n \sin m) - (n-m)(\sin n \cos m + \cos n \sin m)}{n^2 - m^2}] \\
+    % &= \frac{1}{\pi}\qty[\frac{2m\sin n \cos m - 2n\cos n \sin m}{n^2 - m^2}]
+\end{align*}
+Also,
+\begin{align*}
+    \langle e_n, e_n \rangle &= \frac{2}{\pi}\int_0^\pi \sin^2(nx)\dd x \\
+    &= \frac{1}{\pi} \int_0^\pi 1 - \cos\qty(2nx) \dd x \\
+    &= \frac{1}{\pi} \qty[\pi - \frac{1}{2n}\sin(2n\pi)] \\
+    &= \frac{1}{\pi}\pi\\ 
+    &= 1
+\end{align*}
+Thus $\{e_n\}_{n=1}^\infty$ is orthonormal.
+
+Let $f \in L^2([0, 1])$.  Then extend $f$ to its odd expansion $\tilde{f} \in L^2([-1, 1])$ by
+\begin{align*}
+    \tilde{f}(x) = \begin{cases}
+        f(x) & \text{ if } x \in (0, 1) \\
+        0 & \text{ if } x = 0 \\
+        -f(x) & \text{ if } x \in (-1, 0)
+    \end{cases}
+\end{align*}
+Then $\{e_n\}_{n=1}^\infty \cup \{f_n\}_{n=0}^\infty$.
 
 \section*{Hunter and NachterGaele 7.4}
 \emph{Let $T, S \in L^2(\mathbb{T})$ be the triangular and square wave, respectively, defined by}
@@ -79,9 +153,65 @@
         -1 & \text{ if } -\pi < x < 0
     \end{cases}
 \end{align*}
-\begin{enumerate}[ (a)]
+\begin{enumerate}[\bf (a)]
     \item
-        \emph{Compute the Fourier series of $T$ and $S$.}
+        \emph{Compute the Fourier series of $T$ and $S$.} \\
+
+        Since $T$ is an even function, we can represent $T$ with a cosine series
+        \begin{align*}
+            T(x) = \frac{1}{2}\hat{T}_0 + \sum_{n=1}^\infty \hat{T}_n\cos(n x)
+        \end{align*}
+        where
+        \begin{align*}
+            \hat{T}_0 &= \frac{1}{\pi}\int_\mathbb{T} T(x) \dd x\ \ \ \text{and}\\
+            \hat{T}_n &= \frac{1}{\pi}\int_\mathbb{T} T(x) \cos (nx) \dd x,\ \ \ n = 1, 2, \dots
+        \end{align*}
+        Because $\cos$ is even and $T$ is even, $T \sin$ is even, and so
+        \begin{align*}
+            \hat{T}_0 = \frac{1}{\pi}\int_\mathbb{T} T(x) \dd x = \frac{2}{\pi}\int_0^\pi x \dd x = \frac{2}{\pi}\frac{\pi^2}{2} = \pi
+        \end{align*}
+        and for $n = 1, 2, \dots$,
+        \begin{align*}
+            \hat{T}_n &= \frac{2}{\pi}\int_0^\pi x\cos(nx) \dd x
+        \end{align*}
+        Utilizing integration by parts, we find
+        \begin{align*}
+            \hat{T}_n &= \frac{2}{\pi}\int_0^\pi x \cos (nx) \dd x \\
+            &= \frac{2}{\pi}\qty[\qty(\frac{x}{n}\sin (nx))\Big|_0^\pi -\frac{1}{n}\int_0^\pi \sin(nx)\dd x] \\
+            &= \frac{2}{\pi}\qty[\frac{1}{n^2}\cos (nx)]_0^\pi \\
+            &= \frac{2}{\pi}\qty[\frac{(-1)^n - 1}{n^2}] \\
+            &= \begin{cases}
+                0 & \text{ if $n$ is even} \\
+                -\dfrac{4}{\pi n^2} & \text{ if $n$ is odd}
+            \end{cases}
+        \end{align*}
+        Thus,
+        \begin{align*}
+            \boxed{T(x) = \frac{\pi}{2} - \frac{4}{\pi}\sum_{n=1}^\infty \qty[\frac{1}{(2n-1)^2}\cos((2n-1)x)]}
+        \end{align*}
+        Since $S$ is an odd function, we can represent $S$ with a sin series
+        \begin{align*}
+            S(x) = \sum_{n=1}^\infty \hat{S}_n \sin(nx)
+        \end{align*}
+        where
+        \begin{align*}
+            \hat{S}_n = \frac{1}{\pi}\int_\mathbb{T} S(x)\sin(nx)\dd x,\ \ \ n = 1, 2, \dots
+        \end{align*}
+        Because $\sin$ is odd and $S$ is odd, $\sin S$ is even, and thus
+        \begin{align*}
+            \hat{S}_n &= \frac{1}{\pi}\int_\mathbb{T} S(x) \sin(nx) \dd x \\
+            &= \frac{2}{\pi}\int_0^\pi \sin(nx)\dd x \\
+            &= \frac{2}{\pi}\qty[-\frac{1}{n}\cos(nx)]_0^\pi \\
+            &= -\frac{2}{\pi n}\qty((-1)^n - 1) \\
+            &= \begin{cases}
+                0 & \text{ if $n$ is even} \\
+                \dfrac{4}{\pi n} & \text{ if $n$ is odd}
+            \end{cases}
+        \end{align*}
+        Thus,
+        \begin{align*}
+            \boxed{S(x) = \frac{4}{\pi}\sum_{n=1}^\infty\qty[\frac{1}{(2n-1)}\sin((2n-1)x)]}
+        \end{align*}
     \item
         \emph{Show that $T \in H^1(\mathbb{T})$ and $T' = S$.}
     \item
@@ -95,7 +225,7 @@
 \emph{Suppose that $f \in H^1([a,b])$ and $f(a) = f(b) = 0$.  Prove the \emph{Poincar\'{e} inequality} $$\int_a^b|f(x)|^2 \dd x \leq \frac{(b-a)^2}{\pi^2}\int_a^b|f'(x)|^2 \dd x.$$}
 
 \section*{Hunter and NachterGaele 7.7}
-\emph{Solve the following initial-boundary value problem for the hear equation,}
+\emph{Solve the following initial-boundary value problem for the heat equation,}
 \begin{align*}
     \begin{array}{ll}
     u_t = u_{xx}, & \\
@@ -104,6 +234,24 @@
     \end{array}
 \end{align*}
 
-
+Suppose $u(x,t) = F(x)G(t)$ is a solution.  Then
+\begin{align*}
+    u_t &= u_{xx} \\
+    \implies F(x)G'(t) &= F''(x)G(t) \\
+    \implies \frac{F''(x)}{F(x)} &= \frac{G'(t)}{G(t)}
+\end{align*}
+Since the left hand side is a function of $x$ and the right hand side is a function of $t$, they can only be equal if they are both constant, i.e.
+\begin{align*}
+    \frac{F''(x)}{F(x)} = C = \frac{G'(t)}{G(t)}
+\end{align*}
+for some $C \in \mathbb{R}$.  Thus,
+\begin{align}
+    F''(x) - C F(x) &= 0,\ \ \ \text{and} \\
+    G'(t) - C G(t) &= 0
+\end{align}
+Let $\lambda = \sqrt{|C|}$.  The solutions of (1) are
+\begin{align*}
+    F(x) = c_1 e^{\lambda it} + c_2 e^{-\lambda it}
+\end{align*}
 
 \end{document}
