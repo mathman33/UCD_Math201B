@@ -246,12 +246,60 @@ Since the left hand side is a function of $x$ and the right hand side is a funct
 \end{align*}
 for some $C \in \mathbb{R}$.  Thus,
 \begin{align}
-    F''(x) - C F(x) &= 0,\ \ \ \text{and} \\
-    G'(t) - C G(t) &= 0
+    G'(t) - C G(t) &= 0,\ \ \ \text{and} \\
+    F''(x) - C F(x) &= 0
 \end{align}
-Let $\lambda = \sqrt{|C|}$.  The solutions of (1) are
+The solutions of (1) are
 \begin{align*}
-    F(x) = c_1 e^{\lambda it} + c_2 e^{-\lambda it}
+    G(t) = c_1 e^{Ct}
+\end{align*}
+Let $\lambda = \sqrt{C}$.  If $C \neq 0$, the solutions of (2) are
+\begin{align*}
+    F(x) = c_1 e^{\lambda x} + c_2 e^{-\lambda x}
+\end{align*}
+The initial condition
+\begin{align*}
+    u(0,t) = 0 \implies F(0)G(t) = 0 \implies F(0) = 0
+\end{align*}
+provided $u$ is not the trivial solution.  Similarly,
+\begin{align*}
+    F(L) = 0
+\end{align*}
+If $C > 0$,
+\begin{align*}
+    F(0) = 0 \implies 0 = c_1 + c_2 \implies F(x) = c_1\qty(e^{\lambda x} - e^{-\lambda x})
+\end{align*}
+Also,
+\begin{align*}
+    F(L) = 0 \implies 0 = c_1\qty(e^{\lambda L} - e^{-\lambda L}) \implies c_1 = 0
+\end{align*}
+Thus $u$ is the trivial solution.  If $C = 0$, then either $F'' = 0$ or $F \equiv 0$, but regardless, if $F'' = 0$, the initial conditions imply that $F \equiv 0$.  So let $C < 0$ and define $\lambda = \sqrt{-C}$.  Then
+\begin{align*}
+    F(x) = c_1 \sin(\lambda x) + c_2 \cos(\lambda x)
+\end{align*}
+Then
+\begin{align*}
+    F(0) = 0 \implies 0 = c_2 \implies F(x) = c_1 \sin(\lambda x)
+\end{align*}
+Also,
+\begin{align*}
+    F(L) = 0 \implies 0 = c_1 \sin(\lambda L) \implies \lambda L = \pi n
+\end{align*}
+for integer values $n$.  Thus $\lambda = \frac{n\pi}{L}$ for $n = \pm 1, \pm 2, \dots$.  Note $n \neq 0$ since that would imply $\lambda^2 = 0 = C$.  Thus,
+\begin{align*}
+    u(t,x) = \sum_{n=1}^\infty c_n \exp\qty(-\frac{n^2 \pi^2}{L^2}t)\sin\qty(\frac{n\pi}{L}x)
+\end{align*}
+The initial condition $u(0,x) = f(x)$ implies
+\begin{align*}
+    f(x) = \sum_{n=1}^\infty c_n\sin\qty(\frac{n\pi}{L}x)
+\end{align*}
+This is a Fourier series, and thus the coefficients $c_n$ are given by
+\begin{align*}
+    c_n = \frac{2}{L}\int_0^L f(x) \sin\qty(\frac{n\pi}{L}x)\dd x
+\end{align*}
+Thus the full solution is
+\begin{align*}
+    u(t,x) = \sum_{n=1}^\infty \qty(\exp\qty(-\frac{n^2 \pi^2}{L^2}t)\cdot\sin\qty(\frac{n\pi}{L}x)\cdot \frac{2}{L}\int_0^L \qty[f(x) \sin\qty(\frac{n\pi}{L}x)]\dd x)
 \end{align*}
 
 \end{document}
