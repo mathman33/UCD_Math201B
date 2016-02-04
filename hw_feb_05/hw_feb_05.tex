@@ -10,9 +10,9 @@
 \usepackage{array}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage[makeroom]{cancel}
 \usepackage{textcomp}
 \usepackage{bbold}
-\usepackage{cancel}
 \usepackage{alltt}
 \usepackage{physics}
 \usepackage{mathtools}
@@ -104,6 +104,15 @@
 \begin{enumerate}[\bf (a)]
     \item
         \emph{Show that $S_N = D_N * f$, where $D_N$ is the \emph{Dirichlet kernel} $$D_N(x) = \frac{1}{2\pi}\frac{\sin\qty[(N+\frac{1}{2})x]}{\sin \qty(\frac{x}{2})}.$$}
+
+        For ease, let $\omega = e^{ix}$.  Then note
+        \begin{align*}
+            \sum_{n=0}^N \omega^n = \frac{1 - \omega^{N+1}}{1 - \omega},\ \ \ \ \text{and}\ \ \ \ \sum_{n=-N}^{-1}\omega^n = \frac{\omega^{-N} - 1}{1 - \omega}
+        \end{align*}
+        Then
+        \begin{align*}
+            \sum_{n=-N}^N \omega^n = \frac{\omega^{-N} - \omega^{N+1}}{1 - \omega} = \frac{\omega^{-N - \frac{1}{2}} - \omega^{N + \frac{1}{2}}}{\omega^{-\frac{1}{2}} - \omega^{\frac{1}{2}}} = \frac{\exp[ix[N + \frac{1}{2}]] - \exp[-ix[N+\frac{1}{2}]]}{\exp[ix[\frac{1}{2}]] - \exp[-ix[\frac{1}{2}]]} = \frac{\sin[(N+\frac{1}{2})x]}{\sin[\frac{x}{2}]}
+        \end{align*}
     \item
         \emph{Let $T_N$ be the mean of the first $N+1$ partial sums, $$T_N = \frac{1}{N+1}.$$  Show that $T_N = F_N * f$, where $F_N$ is the \emph{Fej\'{e}r kernel} $$F_N(x) = \frac{1}{2\pi(N + 1)}\qty(\frac{\sin\qty[(N + 1)\frac{x}{2}]}{\sin\qty(\frac{x}{2})})^2.$$}
     \item
@@ -118,8 +127,8 @@ First we show $\{e_n\}_{n=1}^\infty$ and $\{f_n\}_{n=0}^\infty$ are orthonormal.
     \langle e_n, e_m \rangle &= \int_0^\pi e_n(x)e_m(x) \dd x \\
     &= \frac{2}{\pi}\int_0^\pi \sin(nx) \sin (mx) \dd x\\
     &= \frac{2}{\pi}\int_0^\pi \frac{1}{2}\qty[\cos(nx - mx) - \cos(nx + mx)]\dd x \\
-    &= \frac{1}{\pi}\int_0^\pi\cos(x(n-m))\dd x - \frac{1}{\pi}\int_0^\pi\cos(x(n+m)) \\
-    &= \frac{1}{\pi}\qty[\frac{\sin(x(n-m))}{n-m} - \frac{\sin(x(n+m))}{n+m}]_0^\pi \\
+    &= \frac{1}{\pi}\int_0^\pi\cos((n-m)x)\dd x - \frac{1}{\pi}\int_0^\pi\cos((n+m)x) \\
+    &= \frac{1}{\pi}\qty[\frac{\sin((n-m)x)}{n-m} - \frac{\sin((n+m)x)}{n+m}]_0^\pi \\
     &= 0
     % &= \frac{1}{\pi}\qty[\frac{n\sin(n-m) + m\sin(n-m) - n\sin(n+m) + m\sin(n+m)}{n^2 - m^2}] \\
     % &= \frac{1}{\pi}\qty[\frac{(n+m)(\sin n \cos m - \cos n \sin m) - (n-m)(\sin n \cos m + \cos n \sin m)}{n^2 - m^2}] \\
@@ -133,17 +142,68 @@ Also,
     &= \frac{1}{\pi}\pi\\ 
     &= 1
 \end{align*}
-Thus $\{e_n\}_{n=1}^\infty$ is orthonormal.
-
-Let $f \in L^2([0, 1])$.  Then extend $f$ to its odd expansion $\tilde{f} \in L^2([-1, 1])$ by
+Thus $\{e_n\}_{n=1}^\infty$ is orthonormal.  Let $n \geq 1$.
 \begin{align*}
-    \tilde{f}(x) = \begin{cases}
-        f(x) & \text{ if } x \in (0, 1) \\
+    \langle f_0, f_n\rangle &= \frac{\sqrt{2}}{\pi}\int_0^\pi\cos(nx)\dd x \\
+    &= \frac{\sqrt{2}}{\pi}\frac{1}{n}\sin(nx)\Big|_0^\pi \\
+    &= 0
+\end{align*}
+Let $1 \leq n < m$.  Then
+\begin{align*}
+    \langle f_n, f_m \rangle &= \frac{2}{\pi}\int_0^\pi \cos(nx)\cos(mx)\dd x \\
+    &= \frac{1}{\pi}\int_0^\pi \qty[\cos((n-m)x) + \cos((n+m)x)]\dd x \\
+    &= \frac{1}{\pi}\qty(\frac{\sin((n-m)x)}{n-m} + \frac{\sin((n+m)x)}{n+m})\Bigg|_0^\pi \\
+    &= 0
+\end{align*}
+Also,
+\begin{align*}
+    \langle f_0, f_0 \rangle &= \frac{1}{\pi}\int_0^\pi\dd x = \frac{\pi}{\pi} = 1
+\end{align*}
+and for $n \geq 1$,
+\begin{align*}
+    \langle f_n, f_n \rangle &= \frac{2}{\pi}\int_0^\pi \cos^2(nx)\dd x \\
+    &= \frac{1}{\pi}\int_0^\pi \qty(1 + \cos\qty(2nx)) \dd x \\
+    &= \frac{1}{\pi}\qty[\pi + \qty(\frac{1}{2}{\sin(2nx)})_0^\pi] \\
+    &= 1
+\end{align*}
+Thue $\{f_n\}_{n=0}^\infty$ is orthonormal.  Next we show $\{f_n\}_{n=0}^\infty$ and $\{e_n\}_{n=1}^\infty$ are each bases of $L^2[0, \pi]$.
+
+Let $f \in L^2([0, \pi])$.  Then extend $f$ to its odd extension $f_{\text{odd}} \in L^2([-\pi, \pi])$ by
+\begin{align*}
+    f_{\text{odd}}(x) = \begin{cases}
+        f(x) & \text{ if } x \in (0, \pi] \\
         0 & \text{ if } x = 0 \\
-        -f(x) & \text{ if } x \in (-1, 0)
+        -f(-x) & \text{ if } x \in [-\pi, 0)
     \end{cases}
 \end{align*}
-Then $\{e_n\}_{n=1}^\infty \cup \{f_n\}_{n=0}^\infty$.
+We know $\{e_n\}_{n=1}^\infty \cup \{f_n\}_{n=0}^\infty$ is an orthonormal basis of $L^2[-\pi, \pi]$ and thus $f_{\text{odd}}$ can be written as a Fourier series like so
+\begin{align*}
+    f_{\text{odd}}(x) = \frac{1}{2}f_0 + \sum_{n=1}^\infty\qty(a_nf_n + b_ne_n)
+\end{align*}
+But since $f_{\text{odd}}$ is constructed to be odd,
+\begin{align*}
+    f_{\text{odd}}(x) &= \sum_{n=1}^\infty b_ne_n
+\end{align*}
+Thus on $[0, \pi]$,
+\begin{align*}
+    f(x) = \sum_{n=1}^\infty e_n\sin(nx)
+\end{align*}
+Thus $\{e_n\}_{n=1}^\infty$ is a basis of $L^2[0, \pi]$.  Now extend $f$ to its even extension $f_{\text{even}} \in L^2[-\pi, \pi]$ be
+\begin{align*}
+    f_{\text{even}}(x) = \begin{cases}
+        f(x) & \text{ if } x \in [0, \pi] \\
+        f(-x) & \text{ if } x \in [-\pi, 0)
+    \end{cases}
+\end{align*}
+Again, we know $\{e_n\}_{n=1}^\infty \cup \{f_n\}_{n=0}^\infty$ is an orthonormal basis of $L^2[-\pi, \pi]$ and thus $f_{\text{even}}$ can be written as a Fourier series like so
+\begin{align*}
+    f_{\text{even}}(x) = \frac{1}{2}f_0 + \sum_{n=1}^\infty\qty(a_nf_n + b_ne_n)
+\end{align*}
+But since $f_{\text{even}}$ is constructed to be even,
+\begin{align*}
+    f_{\text{even}}(x) = \frac{1}{2}f_0 + \sum_{n=1}^\infty a_nf_n
+\end{align*}
+Thus $\{f_n\}_{n=0}^\infty$ is a basis of $L^2[0, \pi]$.
 
 \section*{Hunter and NachterGaele 7.4}
 \emph{Let $T, S \in L^2(\mathbb{T})$ be the triangular and square wave, respectively, defined by}
@@ -213,13 +273,90 @@ Then $\{e_n\}_{n=1}^\infty \cup \{f_n\}_{n=0}^\infty$.
             \boxed{S(x) = \frac{4}{\pi}\sum_{n=1}^\infty\qty[\frac{1}{(2n-1)}\sin((2n-1)x)]}
         \end{align*}
     \item
-        \emph{Show that $T \in H^1(\mathbb{T})$ and $T' = S$.}
+        \emph{Show that $T \in H^1(\mathbb{T})$ and $T' = S$.} \\
+
+        First we turn $T(x)$ into a a Fourier series with $\{e^{inx}\}_{n \in \mathbb{Z}}$ as the basis using
+        \begin{align*}
+            \cos x = \frac{1}{2}\qty[e^{ix} + e^{-ix}]
+        \end{align*}
+        Thus,
+        \begin{align*}
+            T(x) &= \frac{\pi}{2} - \frac{4}{\pi}\sum_{n=1}^\infty \qty[\frac{1}{(2n-1)^2}\cos((2n-1)x)] \\
+            &= \frac{\pi}{2} - \frac{2}{\pi}\sum_{n\in\mathbb{Z}} \frac{\exp[i(2n-1)x]}{(2n-1)^2} \\
+            &= \frac{1}{\sqrt{2\pi}}\qty[\frac{\pi^2}{\sqrt{2\pi}} - \frac{4}{\sqrt{2\pi}}\sum_{n\in\mathbb{Z}}\frac{\exp[i(2n-1)x]}{(2n-1)^2}]
+        \end{align*}
+        To show $T \in H^1(\mathbb{T})$, we show
+        \begin{align*}
+            \sum_{n\in\mathbb{Z}} n^2 |\hat{T}_n|^2 < \infty
+        \end{align*}
+        but this is true because
+        \begin{align*}
+            \sum_{n\in\mathbb{Z}} n^2 |\hat{T}_n|^2 &= \frac{8}{\pi}\sum_{n\in\mathbb{Z}} \frac{(2n-1)^2}{(2n-1)^4} < \infty
+        \end{align*}
+        by the comparison test.  Thus $T \in H^1(\mathbb{T})$.
+
+        Next note that $S(x)$ can be turned into a Fourier series with $\{e^{inx}\}_{n\in\mathbb{Z}}$ asa basis by using the following:
+        \begin{align*}
+            \sin x = \frac{1}{2i}\qty[e^{ix} - e^{-ix}]
+        \end{align*}
+        Thus,
+        \begin{align*}
+            S(x) &= \frac{4}{\pi}\sum_{n=1}^\infty\qty[\frac{1}{(2n-1)}\sin((2n-1)x)] \\
+            &= -\frac{2i}{\pi}\sum_{n\in\mathbb{Z}}\frac{\exp[i(2n-1)x]}{2n-1}
+        \end{align*}
+        We can explicitly calculuate $in\hat{T}_n$ for each $n$:
+        \begin{align*}
+            T' = \frac{1}{\sqrt{2\pi}}\qty[\frac{\pi^2}{\sqrt{2\pi}}(0i) - \frac{4}{\sqrt{2\pi}}\sum_{n\in\mathbb{Z}}((2n-1)i)\frac{\exp[i(2n-1)x]}{(2n-1)^2}] &= -\frac{2i}{\pi}\sum_{n\in\mathbb{Z}}\frac{\exp[i(2n-1)x]}{2n-1} = S
+        \end{align*}
     \item
-        \emph{Show that $S \not\in H^1(\mathbb{T})$.}
+        \emph{Show that $S \not\in H^1(\mathbb{T})$.} \\
+
+        To show $S \not\in H^1(\mathbb{T})$, we show
+        \begin{align*}
+            \sum_{n\in\mathbb{Z}} n^2 |\hat{S}_n|^2 < \infty
+        \end{align*}
+        but this is true because
+        \begin{align*}
+            \sum_{n\in\mathbb{Z}} n^2 |\hat{S}_n|^2 &= \frac{4}{\pi^2}\sum_{n\in\mathbb{Z}} \frac{(2n-1)^2}{(2n-1)^2} = \infty
+        \end{align*}
+        by the $n$\textsuperscript{th} term test.  Thus $S \not\in H^1(\mathbb{T})$.
 \end{enumerate}
 
 \section*{Hunter and NachterGaele 7.5}
-\emph{Consider $f\ :\ \mathbb{T}^d \rightarrow \mathbb{C}$ defined by $$f(x) = \sum_{n\in\mathbb{Z}^d}a_n e^{i n \cdot x},$$ where $x = (x_1, x_2, \dots, x_d)$, $n = (n_1, n_2, \dots, n_d)$, and $n\cdot x = n_1x_1 + n_2x_2 + \dots + n_dx_d$.  Prove that if $$\sum_{n\in\mathbb{Z}^d}|n|^{2k}|a_n|^2 <\infty$$ for some $k > \frac{d}{2}$, then $f$ is continuous.}
+\emph{Consider $f\ :\ \mathbb{T}^d \rightarrow \mathbb{C}$ defined by $$f(x) = \sum_{n\in\mathbb{Z}^d}a_n e^{i n \cdot x},$$ where $x = (x_1, x_2, \dots, x_d)$, $n = (n_1, n_2, \dots, n_d)$, and $n\cdot x = n_1x_1 + n_2x_2 + \dots + n_dx_d$.  Prove that if $$\sum_{n\in\mathbb{Z}^d}|n|^{2k}|a_n|^2 <\infty$$ for some $k > \frac{d}{2}$, then $f$ is continuous.} \\
+
+Let $f \in H^k(\mathbb{T}^d)$ with $k > \frac{1}{2}$.  Define the partial sums $S_N$ of the Fourier series of $f$ by
+\begin{align*}
+    S_N(x) = \sum_{([-N, N]\cap \mathbb{Z})^d}\hat{f}_n e^{i n \cdot x}
+\end{align*}
+and define the norm of the $k$\textsuperscript{th} weak derivative of $f$ as
+\begin{align*}
+    \norm{f^{k}}^2 = \sum_{n \in \mathbb{Z}^d}|n|^{2k}|\hat{f}_n|^2
+\end{align*}
+We will show the sequence $S_N \rightarrow f$ uniformly by showing $(S_N)_N$ is a Cauchy sequence and since $C(\mathbb{T}^d)$ is complete with respect to the supremum norm, this implies the limit of $(S_N)_N$ is contained in $C(\mathbb{T}^d)$.
+\begin{align*}
+    \norm{S_N - S_M}_\infty &= \norm{\sum_{n \in ((\pm N, \pm M]\cap \mathbb{Z})^d} \hat{f}_n e^{i n \cdot x}}_\infty \\
+    &\leq \sum_{n \in ((\pm N, \pm M]\cap \mathbb{Z})^d}|\hat{f}_n||e^{in\cdot x}| \\
+    &\qquad\text{by the Triangle Inequality} \\
+    &= \sum_{n \in ((\pm N, \pm M]\cap \mathbb{Z})^d}|\hat{f}_n| \\
+    &= \sum_{n \in ((\pm N, \pm M]\cap \mathbb{Z})^d} |n|^k |\hat{f}_n|\frac{1}{|n|^k} \\
+    &\leq \sqrt{\sum_{n \in ((\pm N, \pm M]\cap \mathbb{Z})^d}|n|^{2k}|\hat{f}_n^2|}\cdot\sqrt{\sum_{n \in ((\pm N, \pm M]\cap \mathbb{Z})^d}\frac{1}{|n|^{2k}}} \\
+    &\qquad\text{by the Cauchy-Schwarz Inequality} \\
+    &\leq \norm{f^{(k)}}\sqrt{\sum_{n \in ((\pm N, \pm M]\cap \mathbb{Z})^d}\frac{1}{|n|^{2k}}} \\
+    &\qquad\text{since the Fourier transform is an isomorphism and thus preserves norm} \\
+    &\leq \norm{f^{(k)}}_\infty\sqrt{|\mathbb{S}^{d-1}|\int_N^\infty \frac{r^{d-1}}{r^{2k}}\dd r} \\
+    &\qquad\text{where $|\mathbb{S}^{d-1}|$ is the area of the unit sphere in $d$ dimensions} \\
+    &= \norm{f^{(k)}}_\infty\sqrt{|\mathbb{S}^{d-1}|}\sqrt{\frac{r^{d-2k}}{d-2k}\Bigg|_{N}^{\infty}} \\
+    &= \begin{cases}
+        \infty & \text{ if } \frac{d}{2}\geq k \\
+        \norm{f^{(k)}}_\infty\sqrt{|\mathbb{S}^{d-1}|}\qty((2k-d)N^{2k-d})^{-\frac{1}{2}} & \text{ if } \frac{d}{2} < k
+    \end{cases}
+\end{align*}
+Supposing $\frac{d}{2} < k$,
+\begin{align*}
+    \norm{S_N - S_M}_\infty \leq \frac{\norm{f^{(k)}}_\infty\sqrt{|\mathbb{S}^{d-1}|}}{\sqrt{(2k-d)N^{2k-d}}}
+\end{align*}
+which goes to zero as $N \rightarrow \infty$.  Thus $(S_N)_N$ is a Cauchy sequence and thus converges to a limit in $C(\mathbb{T}^d)$.  But $S_N$ are the partial sums of the Fourier series of $f$, and thus $S_N \rightarrow f$.  Thus $f \in C(\mathbb{T}^d)$, i.e.~$f$ is continuous.
 
 \section*{Hunter and NachterGaele 7.6}
 \emph{Suppose that $f \in H^1([a,b])$ and $f(a) = f(b) = 0$.  Prove the \emph{Poincar\'{e} inequality} $$\int_a^b|f(x)|^2 \dd x \leq \frac{(b-a)^2}{\pi^2}\int_a^b|f'(x)|^2 \dd x.$$}
@@ -299,7 +436,7 @@ This is a Fourier series, and thus the coefficients $c_n$ are given by
 \end{align*}
 Thus the full solution is
 \begin{align*}
-    u(t,x) = \sum_{n=1}^\infty \qty(\exp\qty(-\frac{n^2 \pi^2}{L^2}t)\cdot\sin\qty(\frac{n\pi}{L}x)\cdot \frac{2}{L}\int_0^L \qty[f(x) \sin\qty(\frac{n\pi}{L}x)]\dd x)
+    u(t,x) = \sum_{n=1}^\infty \qty(\frac{2}{L}\int_0^L \qty[f(x) \sin\qty(\frac{n\pi}{L}x)]\dd x \cdot \exp\qty(-\frac{n^2 \pi^2}{L^2}t)\cdot\sin\qty(\frac{n\pi}{L}x))
 \end{align*}
 
 \end{document}

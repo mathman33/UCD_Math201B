@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  3 FEB 2016 19:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  4 FEB 2016 00:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -266,6 +266,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip48
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/cancel/cancel.sty
+Package: cancel 2013/04/12 v2.2 Cancel math terms
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
@@ -349,8 +351,6 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/bbold/bbold.sty
 Package: bbold 1994/04/06 Bbold symbol package
 LaTeX Font Info:    Redeclaring math alphabet \mathbb on input line 42.
-) (/usr/local/texlive/2015/texmf-dist/tex/latex/cancel/cancel.sty
-Package: cancel 2013/04/12 v2.2 Cancel math terms
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty
 Package: alltt 1997/06/16 v2.0g defines alltt environment
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/physics/physics.sty
@@ -1938,29 +1938,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--55
 [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 114--115
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+[3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
 
  []
 
-[4] [5] [6] [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 305.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 305.
+[5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 312--313
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
+
+ []
+
+[8] [9] [10] [11]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 442.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 442.
 (/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_feb_05.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 305.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 305.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 442.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 442.
 Package rerunfilecheck Info: File `hw_feb_05.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 305.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 442.
  ) 
 Here is how much of TeX's memory you used:
- 33218 strings out of 493089
- 763005 string characters out of 6134842
- 942076 words of memory out of 5000000
+ 33222 strings out of 493089
+ 763031 string characters out of 6134842
+ 946085 words of memory out of 5000000
  36173 multiletter control sequences out of 15000+600000
  15137 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1973,16 +1988,17 @@ b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb
 usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
 r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
 local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
 Output written on /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_f
-eb_05.pdf (7 pages, 147144 bytes).
+eb_05.pdf (11 pages, 171192 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
- 26 named destinations out of 1000 (max. 500000)
+ 138 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
