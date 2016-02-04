@@ -47,7 +47,7 @@
 
 {\let\newpage\relax\maketitle}
 
-\section*{Hunter and NachterGaele 7.1}
+\section*{Hunter and Nachtergaele 7.1}
 \emph{Let $\phi_n$ be the functions defined in (7.7) $$\phi_n(x) = c_n(1 + \cos x)^n$$ where $c_n$ is chosen such that $$\int_\mathbb{T}\phi_n(x) \dd x = 1$$ for all $n$.}
 \begin{enumerate}[\bf (a)]
     \item
@@ -99,7 +99,7 @@
         \emph{Is $\mathcal{P}$ dense in the space of all continuous functions on $[0, 2\pi]$ with the uniform norm?}
 \end{enumerate}
 
-\section*{Hunter and NachterGaele 7.2}
+\section*{Hunter and Nachtergaele 7.2}
 \emph{Suppose that $f\ :\ \mathbb{T} \rightarrow \mathbb{C}$ is a continuous function, and $$S_N = \frac{1}{\sqrt{2\pi}}\sum_{n=-N}^N \hat{f_n}e^{inx}$$ is the $N$\textsuperscript{th} partial sum of its Fourier seriers.}
 \begin{enumerate}[\bf (a)]
     \item
@@ -111,15 +111,76 @@
         \end{align*}
         Then
         \begin{align*}
-            \sum_{n=-N}^N \omega^n = \frac{\omega^{-N} - \omega^{N+1}}{1 - \omega} = \frac{\omega^{-N - \frac{1}{2}} - \omega^{N + \frac{1}{2}}}{\omega^{-\frac{1}{2}} - \omega^{\frac{1}{2}}} = \frac{\exp[ix[N + \frac{1}{2}]] - \exp[-ix[N+\frac{1}{2}]]}{\exp[ix[\frac{1}{2}]] - \exp[-ix[\frac{1}{2}]]} = \frac{\sin[(N+\frac{1}{2})x]}{\sin[\frac{x}{2}]}
+            \frac{1}{2\pi}\sum_{n=-N}^N e^{inx} &= \frac{1}{2\pi}\sum_{n=-N}^N \omega^n = \frac{1}{2\pi}\frac{\omega^{-N} - \omega^{N+1}}{1 - \omega} = \frac{1}{2\pi}\frac{\omega^{-N - \frac{1}{2}} - \omega^{N + \frac{1}{2}}}{\omega^{-\frac{1}{2}} - \omega^{\frac{1}{2}}} \\
+            &= \frac{1}{2\pi}\frac{\exp[ix[N + \frac{1}{2}]] - \exp[-ix[N+\frac{1}{2}]]}{\exp[ix[\frac{1}{2}]] - \exp[-ix[\frac{1}{2}]]} = \frac{1}{2\pi}\frac{\sin\qty[[N+\frac{1}{2}]x]}{\sin\qty[\frac{x}{2}]} = D_N(x)
+        \end{align*}
+        Then note
+        \begin{align*}
+            S_N &= \frac{1}{\sqrt{2\pi}}\sum_{n=-N}^N\hat{f}_n e^{inx} \\
+            &= \frac{1}{\sqrt{2\pi}}\sum_{n=-N}^N\qty[\frac{1}{\sqrt{2\pi}}\int_{-\pi}^\pi f(y)e^{-iny}\dd y]e^{inx} \\
+            &= \int_{-\pi}^\pi f(y)\qty(\frac{1}{2\pi}\sum_{n=-N}^N e^{in(x-y)})\dd y \\
+            &= D_N * f
         \end{align*}
     \item
-        \emph{Let $T_N$ be the mean of the first $N+1$ partial sums, $$T_N = \frac{1}{N+1}.$$  Show that $T_N = F_N * f$, where $F_N$ is the \emph{Fej\'{e}r kernel} $$F_N(x) = \frac{1}{2\pi(N + 1)}\qty(\frac{\sin\qty[(N + 1)\frac{x}{2}]}{\sin\qty(\frac{x}{2})})^2.$$}
+        \emph{Let $T_N$ be the mean of the first $N+1$ partial sums, $$T_N = \frac{1}{N+1}\qty(S_0 + S_1 + \dots + S_N) = \frac{1}{N+1}\sum_{i=0}^N S_i(x).$$  Show that $T_N = F_N * f$, where $F_N$ is the \emph{Fej\'{e}r kernel} $$F_N(x) = \frac{1}{2\pi(N + 1)}\qty(\frac{\sin\qty[(N + 1)\frac{x}{2}]}{\sin\qty(\frac{x}{2})})^2.$$}
+
+        First note the following identity:
+        \begin{align*}
+            \frac{\sin^2\qty[(N+1)\frac{x}{2}]}{\sin\qty[\frac{x}{2}]} &= \frac{1 - \cos\qty[(N+1)x]}{2\sin\qty[\frac{x}{2}]}\ \ \ \ \text{by the power-reducing formulas} \\
+            &= \frac{1}{2\sin\qty[\frac{x}{2}]}\Big(\qty[\cos(0x) - \cos(1x)] + \qty[\cos(1x) - \cos(2x)] + \dots \\
+            &\qquad\dots+ \qty[\cos((N-1)x) - \cos(Nx)] + \qty[\cos(Nx) - \cos((N+1)x)]\Big) \\
+            &\qquad\qquad\qquad\qquad\text{using a telescoping series} \\
+            &= \frac{1}{2\sin\qty[\frac{x}{2}]}2\sin\qty[\frac{x}{2}]\sum_{i=0}^\infty\sin\qty[\frac{2i+1}{2}x] \\
+            &= \sum_{i=0}^\infty\sin\qty[\frac{2i+1}{2}x]
+        \end{align*}
+        Then note that
+        \begin{align*}
+            F_N(x) &= \frac{1}{2\pi(N+1)}\qty(\frac{\sin\qty[(N+1)\frac{x}{2}]}{\sin\qty[\frac{x}{2}]})^2 \\
+            &= \frac{1}{2\pi(N+1)\sin\qty[\frac{x}{2}]}\sum_{i=0}^\infty\sin\qty[\frac{2i+1}{2}x] \\
+            &= \frac{1}{N+1}\sum_{i=0}^N\frac{1}{2\pi}\frac{\sin\qty[(i + \frac{1}{2})x]}{\sin\qty[\frac{x}{2}]} \\
+            &= \frac{1}{N+1}\sum_{i=0}^N D_i(x)
+        \end{align*}
+        Lastly,
+        \begin{align*}
+            T_N(x) &= \frac{1}{N+1}\sum_{i=0}^N S_i(x) \\
+            &= \frac{1}{N+1}\sum_{i=0}^N(D_i * f)(x)\ \ \ \ \text{by part {\bf (a)}} \\
+            &= \frac{1}{N+1}\sum_{i=0}^N\int_\mathbb{T} f(y) D_i(x-y)\dd y \\
+            &= \int_\mathbb{T} f(y) \qty[\frac{1}{N+1}\sum_{i=0}^N D_i(x-y)]\dd y \\
+            &= \int_\mathbb{T} f(y) F_N(x-y)\dd y \\
+            &= (F_N * f)(x)
+        \end{align*}
     \item
-        \emph{Which of the families $(D_N)$ and $(F_N)$ are approximate identities as $N\rightarrow \infty$?  What can you say about the uniform convergence of the partial sums $S_N$ and the averaged partial sums $T_N$ to $f$?}
+        \emph{Which of the families $(D_N)$ and $(F_N)$ are approximate identities as $N\rightarrow \infty$?  What can you say about the uniform convergence of the partial sums $S_N$ and the averaged partial sums $T_N$ to $f$?} \\
+
+        We know $(D_N)$ can not be an approximate identity since $$D_3(\pi) = \frac{1}{2\pi}\cdot\frac{\sin\qty[\frac{7}{2}\pi]}{\sin\qty[\frac{\pi}{2}]} = -\frac{1}{2\pi} < 0$$ and each function in an approximate identity must be nonnegative on $[-\pi, \pi]$.  We claim, however, that $(F_N)$ is an approximate identity.  First,
+        \begin{align*}
+            F_N(x) = \frac{1}{2\pi(N+1)}\qty(\frac{\sin\qty[(N+1)\frac{x}{2}]}{\sin\qty[\frac{x}{2}]})^2 \geq \frac{1}{2\pi(N+1)} > 0,\ \ \ \ \ \ \forall N \geq 0, \forall x \in \mathbb{T}
+        \end{align*}
+        Next we show
+        \begin{align*}
+            \int_\mathbb{T} F_N(x)\dd x = 1
+        \end{align*}
+        for all $N \geq 0$.
+        \begin{align*}
+            \int_\mathbb{T} F_N(x)\dd x &= \frac{1}{N+1}\int_\mathbb{T}\sum_{j=0}^N D_j(x)\dd x \\
+            &= \frac{1}{N+1}\int_\mathbb{T}\sum_{j=0}^N \qty[\frac{1}{2\pi}\sum_{n=-j}^j e^{inx}] \dd x \\
+            &= \frac{1}{2\pi(N+1)}\sum_{j=0}^N\sum_{n=-j}^j\int_\mathbb{T} e^{inx} \dd x\ \ \ \ \ \ \text{since the sums are finite} \\
+            &= \frac{1}{2\pi(N+1)}\sum_{j=0}^N\qty[2\pi + \sum_{\substack{n=-j\\n\neq 0}}^j \qty[\dfrac{1}{in}\qty(\cos(nx) + i\sin(nx))]_{-\pi}^\pi] \\
+            &= \frac{1}{2\pi(N+1)}\sum_{j=0}^N 2\pi \\
+            &= \frac{2\pi(N+1)}{2\pi(N+1)} \\
+            &= 1
+        \end{align*}
+        Lastly we show
+        \begin{align*}
+            \lim_{N\rightarrow \infty}\int_\mathbb{D}F_N(x) \dd x = 0
+        \end{align*}
+        where $\mathbb{D} = [-\pi, -\delta]\cup[\delta, \pi]$.  However,
+        \begin{align*}
+            \int_\mathbb{D}F_N(x) \dd x &= \int_\mathbb{D}
+        \end{align*}
 \end{enumerate}
 
-\section*{Hunter and NachterGaele 7.3}
+\section*{Hunter and Nachtergaele 7.3}
 \emph{Prove that the sets $\{e_n\ |\ n \geq 1\}$ defined by $$e_n(x) = \sqrt{\frac{2}{\pi}}\sin nx,$$ and $\{f_n\ :\ n \geq 1\}$ defined by $$f_0(x) = \sqrt{\frac{1}{\pi}},\ \ \ \ \ f_n(x) = \sqrt{\frac{2}{\pi}}\cos nx\ \ \ \ \text{ for } n \geq 1,$$ are both orthonormal bases of $L^2([0,\pi])$.} \\
 
 First we show $\{e_n\}_{n=1}^\infty$ and $\{f_n\}_{n=0}^\infty$ are orthonormal.  Suppose $n \neq m$.  Then
@@ -205,7 +266,7 @@ But since $f_{\text{even}}$ is constructed to be even,
 \end{align*}
 Thus $\{f_n\}_{n=0}^\infty$ is a basis of $L^2[0, \pi]$.
 
-\section*{Hunter and NachterGaele 7.4}
+\section*{Hunter and Nachtergaele 7.4}
 \emph{Let $T, S \in L^2(\mathbb{T})$ be the triangular and square wave, respectively, defined by}
 \begin{align*}
     T(x) = |x|,\ \ \ \ \text{ if } |x| \leq \pi,\ \ \ \ S(x) = \begin{cases}
@@ -322,7 +383,7 @@ Thus $\{f_n\}_{n=0}^\infty$ is a basis of $L^2[0, \pi]$.
         by the $n$\textsuperscript{th} term test.  Thus $S \not\in H^1(\mathbb{T})$.
 \end{enumerate}
 
-\section*{Hunter and NachterGaele 7.5}
+\section*{Hunter and Nachtergaele 7.5}
 \emph{Consider $f\ :\ \mathbb{T}^d \rightarrow \mathbb{C}$ defined by $$f(x) = \sum_{n\in\mathbb{Z}^d}a_n e^{i n \cdot x},$$ where $x = (x_1, x_2, \dots, x_d)$, $n = (n_1, n_2, \dots, n_d)$, and $n\cdot x = n_1x_1 + n_2x_2 + \dots + n_dx_d$.  Prove that if $$\sum_{n\in\mathbb{Z}^d}|n|^{2k}|a_n|^2 <\infty$$ for some $k > \frac{d}{2}$, then $f$ is continuous.} \\
 
 Let $f \in H^k(\mathbb{T}^d)$ with $k > \frac{1}{2}$.  Define the partial sums $S_N$ of the Fourier series of $f$ by
@@ -358,10 +419,10 @@ Supposing $\frac{d}{2} < k$,
 \end{align*}
 which goes to zero as $N \rightarrow \infty$.  Thus $(S_N)_N$ is a Cauchy sequence and thus converges to a limit in $C(\mathbb{T}^d)$.  But $S_N$ are the partial sums of the Fourier series of $f$, and thus $S_N \rightarrow f$.  Thus $f \in C(\mathbb{T}^d)$, i.e.~$f$ is continuous.
 
-\section*{Hunter and NachterGaele 7.6}
+\section*{Hunter and Nachtergaele 7.6}
 \emph{Suppose that $f \in H^1([a,b])$ and $f(a) = f(b) = 0$.  Prove the \emph{Poincar\'{e} inequality} $$\int_a^b|f(x)|^2 \dd x \leq \frac{(b-a)^2}{\pi^2}\int_a^b|f'(x)|^2 \dd x.$$}
 
-\section*{Hunter and NachterGaele 7.7}
+\section*{Hunter and Nachtergaele 7.7}
 \emph{Solve the following initial-boundary value problem for the heat equation,}
 \begin{align*}
     \begin{array}{ll}
