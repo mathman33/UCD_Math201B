@@ -176,8 +176,19 @@
         \end{align*}
         where $\mathbb{D} = [-\pi, -\delta]\cup[\delta, \pi]$.  However,
         \begin{align*}
-            \int_\mathbb{D}F_N(x) \dd x &= \int_\mathbb{D}
+            \int_\mathbb{D}F_N(x) \dd x &= \frac{1}{2\pi(N+1)}\int_\mathbb{D}\qty(\frac{\sin\qty[(N+1)\frac{x}{2}]}{\sin\qty[\frac{x}{2}]})^2\dd x \\
+            &\leq \frac{1}{2\pi(N+1)}\int_\mathbb{D} \qty(\frac{1}{\sin\qty[\frac{\delta}{2}]})^2 \dd x \\
+            &= \frac{\pi - \delta}{\pi(N+1)\sin^2\qty[\frac{\delta}{2}]}
         \end{align*}
+        since $\sin\qty[\frac{x}{2}]$ is a symmetric, increasing function on $[\delta, \pi]$.  But the sequence
+        \begin{align*}
+            \frac{\pi - \delta}{\pi(N+1)\sin^2\qty[\frac{\delta}{2}]} \rightarrow 0
+        \end{align*}
+        as $N \rightarrow \infty$.  Thus, by the comparison test,
+        \begin{align*}
+            \lim_{N\rightarrow\infty}\int_\mathbb{D}F_N(x)\dd x = 0
+        \end{align*}
+        This shows $(F_N)$ is an approximate identity.
 \end{enumerate}
 
 \section*{Hunter and Nachtergaele 7.3}
