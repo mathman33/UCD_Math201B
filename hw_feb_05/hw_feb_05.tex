@@ -1,17 +1,19 @@
-\documentclass[12pt]{article}
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\setcounter{secnumdepth}{0}
 
 \usepackage{amssymb, amsmath, amsfonts}
 \usepackage{moreverb}
 \usepackage{graphicx}
 \usepackage{enumerate}
-\usepackage[margin=0.75in]{geometry}
 \usepackage{graphics}
 \usepackage{color}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \usepackage{array}
 \usepackage{float}
 \usepackage{hyperref}
-\usepackage[makeroom]{cancel}
 \usepackage{textcomp}
+\usepackage[makeroom]{cancel}
 \usepackage{bbold}
 \usepackage{alltt}
 \usepackage{physics}
@@ -25,8 +27,6 @@
 \allowdisplaybreaks
 \pgfplotsset{compat=1.12}
 
-\newcommand{\E}{\varepsilon}
-
 \theoremstyle{plain}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{theorem}{Theorem}
@@ -36,18 +36,61 @@
 \newenvironment{definition}[1][Definition]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
 
-\title{\bf HW \#2}
-\author{\bf Sam Fleischer}
-\date{\bf January 29, 2015}
+\newcommand{\E}{\varepsilon}
+\def\Rl{\mathbb{R}}
+\def\Cx{\mathbb{C}}
 
-\pgfplotsset{compat=1.12}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
 
-\begin{document}
-\textbf{MATH 201B \hfill Analysis \ \ \hfill Winter 2016\ \ \ }
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
 
-{\let\newpage\relax\maketitle}
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancy} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead[L]{\bf Sam Fleischer}
+\fancyhead[C]{\bf UC Davis \\ Analysis (MAT201B)} % No page header - if you want one, create it in the same way as the footers below
+\fancyhead[R]{\bf Winter 2016}
 
-\section*{Hunter and Nachtergaele 7.1}
+\fancyfoot[L]{\bf } % Empty left footer
+\fancyfoot[C]{\bf \thepage} % Empty center footer
+\fancyfoot[R]{\bf } % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\normalfont \normalsize 
+\textsc{UC Davis, Analysis (MAT201B), Winter 2016} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{2pt} \\[0.4cm] % Thin top horizontal rule
+\Huge Homework \#3 \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{\huge Sam Fleischer} % Your name
+
+\date{February 5, 2016} % Today's date or a custom date
+
+\begin{document}\thispagestyle{empty}
+
+\maketitle % Print the title
+
+\makeatletter
+\@starttoc{toc}
+\makeatother
+
+\pagebreak
+
+\section{Hunter and Nachtergaele 7.1}
 \emph{Let $\phi_n$ be the functions defined in (7.7) $$\phi_n(x) = c_n(1 + \cos x)^n$$ where $c_n$ is chosen such that $$\int_\mathbb{T}\phi_n(x) \dd x = 1$$ for all $n$.}
 \begin{enumerate}[\bf (a)]
     \item
@@ -94,12 +137,32 @@
             \lim_{n\rightarrow \infty}\int_\mathbb{D}\phi_n(x) \dd x = 0
         \end{align*}
     \item
-        \emph{Prove that if the set $\mathcal{P}$ of trigonometric polynomials is dense in the space of periodic continuous functions on $\mathbb{T}$ with the uniform norm, then $\mathcal{P}$ is dense in the space of all continuous functions on $\mathbb{T}$ with the $L^2$-norm.}
+        \emph{Prove that if the set $\mathcal{P}$ of trigonometric polynomials is dense in the space of periodic continuous functions on $\mathbb{T}$ with the uniform norm, then $\mathcal{P}$ is dense in the space of all continuous functions on $\mathbb{T}$ with the $L^2$-norm.} \\
+
+        Let the set of trigonometric polynomials $\mathcal{P}$ be dense in the space of periodic continuous functions on $\mathbb{T}$ with the uniform norm.  Then choose $f \in \qty(C(\mathbb{T}), \norm{\cdot}_\infty)$.  Then
+        \begin{align*}
+            \exists (p_n)_n \in \mathcal{P} \text{ such that } \lim_{n\rightarrow \infty}\norm{p_n - f}_\infty = 0
+        \end{align*}
+        Choose $\E > 0$ and note $\exists N_\E$ such that $\norm{p_n - f}_\infty < \E$ whenever $n > N_\E$.  Then if $n \geq N_\E$,
+        \begin{align*}
+            \norm{p_n - f}_{L^2}^2 = \int_\mathbb{T}|p_n(x) - f(x)|^2\dd x \leq \int_\mathbb{T}\norm{p_n - f}_\infty^2\dd x = 2\pi\norm{p_n - f}_\infty^2 < 2\pi\E^2
+        \end{align*}
+        Thus for $n \geq N_\E$,
+        \begin{align*}
+            \norm{p_n - f}_{L^2} < \sqrt{2\pi}\E
+        \end{align*}
+        Since $\E$ was arbitrary, this proves there is a sequence in $\mathcal{P}$ that converges with respect to the $L^2$-norm to an arbitrary continuous function on $\mathbb{T}$.  Thus $\mathcal{P}$ is dense in $\qty(C(\mathbb{T}), \norm{\cdot}_{L^2})$.
     \item
-        \emph{Is $\mathcal{P}$ dense in the space of all continuous functions on $[0, 2\pi]$ with the uniform norm?}
+        \emph{Is $\mathcal{P}$ dense in the space of all continuous functions on $[0, 2\pi]$ with the uniform norm?} \\
+
+        No.  Consider a continuous function $f$ in which $f(0) \neq f(2\pi)$.  Since any functions $p_n \in \mathcal{P}$ are $2\pi$-periodic, then in order to approximate $f$ either $p_n(0) = p_n(2\pi) = f(0)$ or $p_n(0) = p_n(2\pi) = f(2\pi)$.  In either case,
+        \begin{align*}
+            \norm{p_n - f}_\infty \geq |f(0) - f(2\pi)|
+        \end{align*}
+        This cannot become arbitrarily small since $f(0) \neq f(2\pi)$.
 \end{enumerate}
 
-\section*{Hunter and Nachtergaele 7.2}
+\section{Hunter and Nachtergaele 7.2}
 \emph{Suppose that $f\ :\ \mathbb{T} \rightarrow \mathbb{C}$ is a continuous function, and $$S_N = \frac{1}{\sqrt{2\pi}}\sum_{n=-N}^N \hat{f_n}e^{inx}$$ is the $N$\textsuperscript{th} partial sum of its Fourier seriers.}
 \begin{enumerate}[\bf (a)]
     \item
@@ -191,7 +254,7 @@
         This shows $(F_N)$ is an approximate identity.
 \end{enumerate}
 
-\section*{Hunter and Nachtergaele 7.3}
+\section{Hunter and Nachtergaele 7.3}
 \emph{Prove that the sets $\{e_n\ |\ n \geq 1\}$ defined by $$e_n(x) = \sqrt{\frac{2}{\pi}}\sin nx,$$ and $\{f_n\ :\ n \geq 1\}$ defined by $$f_0(x) = \sqrt{\frac{1}{\pi}},\ \ \ \ \ f_n(x) = \sqrt{\frac{2}{\pi}}\cos nx\ \ \ \ \text{ for } n \geq 1,$$ are both orthonormal bases of $L^2([0,\pi])$.} \\
 
 First we show $\{e_n\}_{n=1}^\infty$ and $\{f_n\}_{n=0}^\infty$ are orthonormal.  Suppose $n \neq m$.  Then
@@ -277,7 +340,7 @@ But since $f_{\text{even}}$ is constructed to be even,
 \end{align*}
 Thus $\{f_n\}_{n=0}^\infty$ is a basis of $L^2[0, \pi]$.
 
-\section*{Hunter and Nachtergaele 7.4}
+\section{Hunter and Nachtergaele 7.4}
 \emph{Let $T, S \in L^2(\mathbb{T})$ be the triangular and square wave, respectively, defined by}
 \begin{align*}
     T(x) = |x|,\ \ \ \ \text{ if } |x| \leq \pi,\ \ \ \ S(x) = \begin{cases}
@@ -394,7 +457,7 @@ Thus $\{f_n\}_{n=0}^\infty$ is a basis of $L^2[0, \pi]$.
         by the $n$\textsuperscript{th} term test.  Thus $S \not\in H^1(\mathbb{T})$.
 \end{enumerate}
 
-\section*{Hunter and Nachtergaele 7.5}
+\section{Hunter and Nachtergaele 7.5}
 \emph{Consider $f\ :\ \mathbb{T}^d \rightarrow \mathbb{C}$ defined by $$f(x) = \sum_{n\in\mathbb{Z}^d}a_n e^{i n \cdot x},$$ where $x = (x_1, x_2, \dots, x_d)$, $n = (n_1, n_2, \dots, n_d)$, and $n\cdot x = n_1x_1 + n_2x_2 + \dots + n_dx_d$.  Prove that if $$\sum_{n\in\mathbb{Z}^d}|n|^{2k}|a_n|^2 <\infty$$ for some $k > \frac{d}{2}$, then $f$ is continuous.} \\
 
 Let $f \in H^k(\mathbb{T}^d)$ with $k > \frac{1}{2}$.  Define the partial sums $S_N$ of the Fourier series of $f$ by
@@ -430,10 +493,46 @@ Supposing $\frac{d}{2} < k$,
 \end{align*}
 which goes to zero as $N \rightarrow \infty$.  Thus $(S_N)_N$ is a Cauchy sequence and thus converges to a limit in $C(\mathbb{T}^d)$.  But $S_N$ are the partial sums of the Fourier series of $f$, and thus $S_N \rightarrow f$.  Thus $f \in C(\mathbb{T}^d)$, i.e.~$f$ is continuous.
 
-\section*{Hunter and Nachtergaele 7.6}
+\section{Hunter and Nachtergaele 7.6}
 \emph{Suppose that $f \in H^1([a,b])$ and $f(a) = f(b) = 0$.  Prove the \emph{Poincar\'{e} inequality} $$\int_a^b|f(x)|^2 \dd x \leq \frac{(b-a)^2}{\pi^2}\int_a^b|f'(x)|^2 \dd x.$$}
 
-\section*{Hunter and Nachtergaele 7.7}
+Let $f_\text{odd} \in H^1([a-(b-a),a])$ by
+\begin{align*}
+    f_\text{odd}(x) = \begin{cases}
+        f(x) & \text{ if } x \in [a,b] \\
+        f(a + (a-x)) & \text{ if } x \in [a - (b-a), a]
+    \end{cases}
+\end{align*}
+We know $f_\text{odd} \in H^1([a, b])$ because of the boundary condition $f(a) = 0$.  We can see that
+\begin{align*}
+    \frac{1}{2}\int_{a - (b-a)}^b |f_\text{odd}(x)|^2 \dd x = \int_a^b |f_\text{odd}(x)|^2 \dd x = \int_a^b |f(x)|^2 \dd x
+\end{align*}
+and since $f, f_\text{odd} \in H^1$, their derivatives exist, and moreover,
+\begin{align*}
+    \frac{1}{2}\int_{a - (b-a)}^b |f_\text{odd}'(x)|^2 \dd x = \int_a^b |f_\text{odd}'(x)|^2 \dd x = \int_a^b |f'(x)|^2 \dd x
+\end{align*}
+For ease, we define a linear transformation $L:[a - (b-a)] \rightarrow [-\pi, \pi]$ by
+\begin{align*}
+    L(x) = \qty(\frac{a\pi}{a+b}) + \qty(\frac{\pi}{a+b})x
+\end{align*}
+and note that the Fourier coefficients of the odd extension $f_\text{odd}$ are
+\begin{align*}
+    \hat{f_{\text{odd},n}'} &= \int_{a - (b-a)}^b \exp[-in L(x)]f_\text{odd}'(x)\dd x \\
+    &= \frac{\pi}{b-a}in\hat{f_{\text{odd},n}}
+\end{align*}
+Then by Parseval's Theorem,
+\begin{align*}
+    \int_a^b|f(x)|^2\dd x &= \frac{1}{2}\int_{a-(b-a)}^b |f_\text{odd}(x)|^2\dd x\\
+    &= \frac{1}{2}\cdot 2(b-a)\sum_{n\in\mathbb{Z}}\left|\hat{f_{\text{odd},n}}\right|^2 \\
+    &\leq \frac{1}{2}\cdot 2(b-a)\sum_{n\in\mathbb{Z}}|-in\hat{f_{\text{odd},n}}|^2 \\
+    &= \frac{1}{2}\cdot 2(b-a)\sum_{n\in\mathbb{Z}}\qty[\qty(\frac{\pi}{b-a})^2\Big|-in\hat{f_{\text{odd},n}}\Big|^2\qty(\frac{b-a}{\pi})^2] \\
+    &= \qty(\frac{b-a}{\pi})^2\cdot \frac{1}{2}\cdot 2(b-a)\sum_{n\in\mathbb{Z}}\Big|\hat{f_{\text{odd},n}'}\Big|^2 \\
+    &= \qty(\frac{b-a}{\pi})^2\cdot\frac{1}{2}\int_{a-(b-a)}^b|f_\text{odd}'(x)|^2\dd x \\
+    &= \qty(\frac{b-a}{\pi})^2\int_a^b|f'(x)|^2\dd x
+\end{align*}
+which proves the result.
+
+\section{Hunter and Nachtergaele 7.7}
 \emph{Solve the following initial-boundary value problem for the heat equation,}
 \begin{align*}
     \begin{array}{ll}
