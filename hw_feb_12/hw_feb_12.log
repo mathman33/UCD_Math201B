@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 FEB 2016 08:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  6 FEB 2016 23:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_feb_05.tex
-(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_feb_05.tex
+**/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_12/hw_feb_12.tex
+(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_12/hw_feb_12.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
@@ -2019,56 +2019,51 @@ les
 \f@ncyO@erf=\skip99
 \f@ncyO@olf=\skip100
 \f@ncyO@orf=\skip101
-)
+) (/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_12/hw_feb_12.aux)
+\openout1 = `hw_feb_12.aux'.
 
-LaTeX Warning: Unused global option(s):
-    [fontsize=11pt].
-
-(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_feb_05.aux)
-\openout1 = `hw_feb_05.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 84.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 84.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 97.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 97.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 84.
-LaTeX Font Info:    Try loading font information for FML+futm on input line 84.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 97.
+LaTeX Font Info:    Try loading font information for FML+futm on input line 97.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 84.
-LaTeX Font Info:    Try loading font information for FMS+futm on input line 84.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 97.
+LaTeX Font Info:    Try loading font information for FMS+futm on input line 97.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fourier/fmsfutm.fd
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
 )
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 84.
-LaTeX Font Info:    Try loading font information for FMX+futm on input line 84.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 97.
+LaTeX Font Info:    Try loading font information for FMX+futm on input line 97.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fourier/fmxfutm.fd
 File: fmxfutm.fd futm-extension
 )
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Try loading font information for T1+futs on input line 84.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Try loading font information for T1+futs on input line 97.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fourier/t1futs.fd
 File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
 ) (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -2114,7 +2109,7 @@ e
 * \oddsidemargin=18.0675pt
 * \evensidemargin=18.0675pt
 * \topmargin=-18.9325pt
-* \headheight=13.6pt
+* \headheight=25.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
@@ -2132,7 +2127,7 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box58
-Package hyperref Info: Link coloring OFF on input line 84.
+Package hyperref Info: Link coloring OFF on input line 97.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -2140,44 +2135,44 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count187
 )
-LaTeX Info: Redefining \ref on input line 84.
-LaTeX Info: Redefining \pageref on input line 84.
-LaTeX Info: Redefining \nameref on input line 84.
-(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_feb_05.out) (/User
-s/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_feb_05.out)
+LaTeX Info: Redefining \ref on input line 97.
+LaTeX Info: Redefining \pageref on input line 97.
+LaTeX Info: Redefining \nameref on input line 97.
+(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_12/hw_feb_12.out) (/User
+s/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_12/hw_feb_12.out)
 \@outlinefile=\write4
-\openout4 = `hw_feb_05.out'.
+\openout4 = `hw_feb_12.out'.
 
 ABD: EveryShipout initializing macros
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.12}).
 
-LaTeX Font Info:    Try loading font information for FML+futmi on input line 87
-.
+LaTeX Font Info:    Try loading font information for FML+futmi on input line 10
+0.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fourier/fmlfutmi.fd
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 87.
+(Font)              scaled to size 11.03998pt on input line 100.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 87.
+(Font)              scaled to size 8.27998pt on input line 100.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.43999pt on input line 87.
-LaTeX Font Info:    Try loading font information for U+msa on input line 87.
+(Font)              scaled to size 6.43999pt on input line 100.
+LaTeX Font Info:    Try loading font information for U+msa on input line 100.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 87.
+LaTeX Font Info:    Try loading font information for U+msb on input line 100.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 87.
+(Font)              scaled to size 11.03998pt on input line 100.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 87.
+(Font)              scaled to size 8.27998pt on input line 100.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.43999pt on input line 87.
-(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_feb_05.toc
+(Font)              scaled to size 6.43999pt on input line 100.
+(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_12/hw_feb_12.toc
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10> not available
 (Font)              Font shape `T1/futs/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
@@ -2194,181 +2189,54 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 5.51999pt on input line 2.
 )
 \tf@toc=\write5
-\openout5 = `hw_feb_05.toc'.
+\openout5 = `hw_feb_12.toc'.
 
 [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 97.
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 107.
 
-Underfull \hbox (badness 10000) in paragraph at lines 105--106
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
 
  []
-
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
-
- []
-
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[3]
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
-
- []
-
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[5]
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
-
- []
-
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[7]
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 382--383
-
- []
-
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 440--441
-
- []
-
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 476--477
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 497--498
-
- []
-
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[11]
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[12]
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[13]
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[14]
-
-Package Fancyhdr Warning: \headheight is too small (13.6pt): 
- Make it at least 22.13503pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 663.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 663.
-(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_feb_05.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 663.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 663.
-Package rerunfilecheck Info: File `hw_feb_05.out' has not changed.
-(rerunfilecheck)             Checksum: 6DD854AB73500CC1F59103925971321A;441.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 663.
+[3] [4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 187.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 187.
+(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_12/hw_feb_12.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 187.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 187.
+Package rerunfilecheck Info: File `hw_feb_12.out' has not changed.
+(rerunfilecheck)             Checksum: 107B2278AC1904E297E67B78B2DE2874;383.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 187.
  ) 
 Here is how much of TeX's memory you used:
- 34388 strings out of 493089
- 779216 string characters out of 6134842
- 952859 words of memory out of 5000000
- 37257 multiletter control sequences out of 15000+600000
- 131456 words of font info for 125 fonts, out of 8000000 for 9000
+ 34331 strings out of 493089
+ 778498 string characters out of 6134842
+ 945817 words of memory out of 5000000
+ 37228 multiletter control sequences out of 15000+600000
+ 106603 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,19n,83p,10464b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,12n,83p,10464b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-bb.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-mcl.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/2
 015/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2015/tex
 mf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_05/hw_f
-eb_05.pdf (15 pages, 119679 bytes).
+Output written on /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_12/hw_f
+eb_12.pdf (4 pages, 72135 bytes).
 PDF statistics:
- 162 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 95 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
+ 15 named destinations out of 1000 (max. 500000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,187 @@
+\documentclass{article} % A4 paper and 11pt font size
+\setcounter{secnumdepth}{0}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{color}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[makeroom]{cancel}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\E}{\varepsilon}
+\def\Rl{\mathbb{R}}
+\def\Cx{\mathbb{C}}
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancy} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead[L]{\bf Sam Fleischer}
+\fancyhead[C]{\bf UC Davis \\ Analysis (MAT201B)} % No page header - if you want one, create it in the same way as the footers below
+\fancyhead[R]{\bf Winter 2016}
+
+\fancyfoot[L]{\bf } % Empty left footer
+\fancyfoot[C]{\bf \thepage} % Empty center footer
+\fancyfoot[R]{\bf } % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{25pt} % Customize the height of the header
+
+\newcommand{\problem}[1]{
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \noindent\rule{5cm}{1pt}
+    \end{center}
+    \section{\bf #1}
+    \begin{center}
+        \noindent\rule{5cm}{1pt}
+    \end{center}
+    \vspace{0.25cm}
+\end{minipage}
+}
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\normalfont \normalsize 
+\textsc{UC Davis, Analysis (MAT201B), Winter 2016} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{2pt} \\[0.4cm] % Thin top horizontal rule
+\Huge Homework \#4 \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{\huge Sam Fleischer} % Your name
+
+\date{February 12, 2016} % Today's date or a custom date
+
+\begin{document}\thispagestyle{empty}
+
+\maketitle % Print the title
+
+\makeatletter
+\@starttoc{toc}
+\makeatother
+
+\pagebreak
+
+\problem{Hunder and Nachtergaele 7.9}
+\emph{Suppose that $u(t,x)$ is a smooth solution of the one-dimensional wave equation, $$u_{tt} - c^2 u_{xx} = 0.$$  Prove that $$(u_t^2 + c^2 u_x^2)_t - (2c^2 u_t u_x)_x = 0.$$  If $u(0, t) = u(1, t) = 0$ for all $t$, deduce that $$\int_0^1 |u_t(x,t)|^2 + c^2|u_x(x,t)|^2\dd x = \text{constant}.$$}
+
+\begin{proof}
+    \begin{align*}
+        u_{tt} &= c^2 u_{xx} \\
+        \iff 2u_tu_{tt} &= 2c^2 u_tu_{xx} \\
+        \iff 2u_tu_{tt} + 2c^2 u_x u_{tx} &= 2c^2u_tu_{xx} + 2c^2 u_x u_{tx} \\
+        \iff \qty(u_t^2 + c^2u_x^2)_t &= (2c^2 u_t u_x)_x
+    \end{align*}
+    Since $u(0,t) = u(1,t) = 0$ for all $t$, then $u(0,t)_t = u(1,t) = 0$ for all $t$.  Thus
+    \begin{align*}
+        0 = 2c^2\qty(u_t(1,t)u_x(1,t) - u_t(0,t)u_x(0,t)) &= (2c^2 u_tu_x)\Big|_{x=0}^1 \\
+        &= \int_0^1(2c^2 u_t u_x)_x \dd x \\
+        &= \int_0^1(u_t^2 + c^2 u_x^2)_t\dd x \\
+        &= \frac{\dd}{\dd t}\int_0^1(u_t^2 + c^2 u_x^2)\dd x \\
+        \iff \int_0^1 (u_t^2 + c^2 u_x^2)\dd x &= \text{constant}.
+    \end{align*}
+\end{proof}
+
+\problem{Hunder and Nachtergaele 7.10}
+\emph{Show that $$u(x,t) = f(x + ct) + g(x - ct)$$ is a solution of the one-dimensional wave equation $$u_{tt} - c^2u_{xx} = 0,$$ for arbitrary functions $f$ and $g$.  This solution is called \emph{d'Alembert's solution}.} \\
+
+\begin{align*}
+    u(x,t) &= f(x + ct) + g(x - ct) \\
+    \implies u_t(x,t) &= c (f'(x + ct) - g'(x - ct)) \\
+    \implies u_{tt}(x,t) &= c^2 (f''(x + ct) + g''(x - ct)) \\
+\end{align*}
+Also,
+\begin{align*}
+    u(x,t) &= f(x + ct) + g(x - ct) \\
+    \implies u_x(x,t) &= f'(x + ct) + g'(x - ct) \\
+    \implies u_{xx}(x,t) &= f''(x + ct) + g''(x - ct) \\
+\end{align*}
+Thus,
+\begin{align*}
+    u_{tt}(x,t) &= c^2 (f''(x + ct) + g''(x - ct)) = c^2 u_{xx}(x,t)
+\end{align*}
+
+\problem{Hunder and Nachtergaele 7.14}
+\emph{Consider the logistic map $$x_{n+1} = 4\mu x_n(1 - x_n),$$ where $x_n \in [0,1]$, and $\mu = 1$.  Show that the solutions may be written as $x_n = \sin^2\theta_n$ where $\theta_n \in \mathbb{T}$, and $$\theta_{n+1} = 2\theta_n.$$  What can you say about the orbits of the logistic map, the exitence of an invariant measure, and the validity of an ergodic theorem?} \\
+
+Let $x_n = \sin^2 \theta_n$ and $\theta_{n+1} = 2\theta_n$.  Then
+\begin{align*}
+    \theta_{n+1} &= 2\theta_n \\
+    \implies \sin^2(\theta_{n+1}) &= \sin^2(2\theta_n) \\
+    \implies x_{n+1} &= 4\sin^2\theta_n\cos^2\theta_n \\
+    \implies x_{n+1} &= 4\sin^2\theta_n(1 - \sin^2\theta_n) \\
+    \implies x_{n+1} &= 4x_n(1 - x_n)
+\end{align*}
+Thus
+\begin{align*}
+    x_n = \sin^2 \theta_n\ \ \ \ \ \text{where}\ \ \ \ \ \ \theta_{n+1} = 2\theta_n
+\end{align*}
+satisfies the logistic map.
+
+\problem{Hunder and Nachtergaele 7.15}
+\emph{Consider the dynamical system on $\mathbb{T}$, $$x_{n+1} = \alpha x_n \mod 1,$$ where $\alpha = (1 + \sqrt{5})/2$ is the golden ration.  Show that the orbit with initial value $x_0 = 1$ is not equidistributed on the circle, meaning that it does not satisy (7.39).}
+
+\emph{HINT.  Show that $$u_n = \qty(\frac{1 + \sqrt{5}}{2})^n + \qty(\frac{1 - \sqrt{5}}{2})^n$$ satisfies the difference equation $$u_{n+1} = u_n + u_{n-1}$$ and hence s an integer for every $n \in \mathbb{N}$.  Then use the fact that $$\qty(\frac{1 - \sqrt{5}}{2})^n \rightarrow 0\ \ \text{ as } n \rightarrow \infty.$$}
+
+\problem{Hunder and Nachtergaele 7.17}
+\emph{Let $B_n$ and $V_n$ be defined in (7.46) and (7.47).  Prove that $\bigcup_{n=0}^N B_n$ in an orthonormal basis of $V_N$.}
+
+\emph{HINT.  Prove that the set is orthonormal and count its elements.}
+
+\problem{Hunder and Nachtergaele 7.18}
+\emph{Suppose that $B = \{e_n(x)\}_{n=1}^\infty$ is an orthonormal basis for $L^2([0,1])$.  Prove the following:}
+\begin{enumerate}[ (a)]
+    \item
+        \emph{For any $a \in \Rl$, the set $B_a = \{e_n(x - a)\}_{n=1}^\infty$ is an orthonormal basis for $L^2([a, a+1])$.}
+    \item
+        \emph{For any $c > 0$, the set $B^C = \{\sqrt{c}e_n(cx)\}_{n=1}^\infty$ is an orthonormal basis for $L^2([0, c^{-1]]})$.}
+    \item
+        \emph{With the convention that functions are extended to a larger domain than their original domain by setting them equal to $0$, prove that $B \cup B_1$ is an orthonormal basis for $L^2([0,1])$.}
+    \item
+        \emph{Prove that $\bigcup_{k\in\mathbb{Z}} B_k$ is an orthonormal basis for $L^2(\Rl)$}
+\end{enumerate}
+
+
+\end{document}

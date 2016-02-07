@@ -1,4 +1,4 @@
-\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\documentclass[fontsize=11pt]{article} % A4 paper and 11pt font size
 \setcounter{secnumdepth}{0}
 
 \usepackage{amssymb, amsmath, amsfonts}
@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{enumerate}
 \usepackage{graphics}
+\usepackage[margin=1.25in]{geometry}
 \usepackage{color}
 \usepackage{tocloft}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
@@ -90,7 +91,14 @@
 
 \pagebreak
 
-\section{Hunter and Nachtergaele 7.1}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+\section{\bf Hunter and Nachtergaele 7.1}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+
 \emph{Let $\phi_n$ be the functions defined in (7.7) $$\phi_n(x) = c_n(1 + \cos x)^n$$ where $c_n$ is chosen such that $$\int_\mathbb{T}\phi_n(x) \dd x = 1$$ for all $n$.}
 \begin{enumerate}[\bf (a)]
     \item
@@ -162,7 +170,14 @@
         This cannot become arbitrarily small since $f(0) \neq f(2\pi)$.
 \end{enumerate}
 
-\section{Hunter and Nachtergaele 7.2}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+\section{\bf Hunter and Nachtergaele 7.2}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+
 \emph{Suppose that $f\ :\ \mathbb{T} \rightarrow \mathbb{C}$ is a continuous function, and $$S_N = \frac{1}{\sqrt{2\pi}}\sum_{n=-N}^N \hat{f_n}e^{inx}$$ is the $N$\textsuperscript{th} partial sum of its Fourier seriers.}
 \begin{enumerate}[\bf (a)]
     \item
@@ -254,7 +269,14 @@
         This shows $(F_N)$ is an approximate identity.
 \end{enumerate}
 
-\section{Hunter and Nachtergaele 7.3}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+\section{\bf Hunter and Nachtergaele 7.3}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+
 \emph{Prove that the sets $\{e_n\ |\ n \geq 1\}$ defined by $$e_n(x) = \sqrt{\frac{2}{\pi}}\sin nx,$$ and $\{f_n\ :\ n \geq 1\}$ defined by $$f_0(x) = \sqrt{\frac{1}{\pi}},\ \ \ \ \ f_n(x) = \sqrt{\frac{2}{\pi}}\cos nx\ \ \ \ \text{ for } n \geq 1,$$ are both orthonormal bases of $L^2([0,\pi])$.} \\
 
 First we show $\{e_n\}_{n=1}^\infty$ and $\{f_n\}_{n=0}^\infty$ are orthonormal.  Suppose $n \neq m$.  Then
@@ -340,7 +362,14 @@ But since $f_{\text{even}}$ is constructed to be even,
 \end{align*}
 Thus $\{f_n\}_{n=0}^\infty$ is a basis of $L^2[0, \pi]$.
 
-\section{Hunter and Nachtergaele 7.4}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+\section{\bf Hunter and Nachtergaele 7.4}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+
 \emph{Let $T, S \in L^2(\mathbb{T})$ be the triangular and square wave, respectively, defined by}
 \begin{align*}
     T(x) = |x|,\ \ \ \ \text{ if } |x| \leq \pi,\ \ \ \ S(x) = \begin{cases}
@@ -457,7 +486,14 @@ Thus $\{f_n\}_{n=0}^\infty$ is a basis of $L^2[0, \pi]$.
         by the $n$\textsuperscript{th} term test.  Thus $S \not\in H^1(\mathbb{T})$.
 \end{enumerate}
 
-\section{Hunter and Nachtergaele 7.5}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+\section{\bf Hunter and Nachtergaele 7.5}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+
 \emph{Consider $f\ :\ \mathbb{T}^d \rightarrow \mathbb{C}$ defined by $$f(x) = \sum_{n\in\mathbb{Z}^d}a_n e^{i n \cdot x},$$ where $x = (x_1, x_2, \dots, x_d)$, $n = (n_1, n_2, \dots, n_d)$, and $n\cdot x = n_1x_1 + n_2x_2 + \dots + n_dx_d$.  Prove that if $$\sum_{n\in\mathbb{Z}^d}|n|^{2k}|a_n|^2 <\infty$$ for some $k > \frac{d}{2}$, then $f$ is continuous.} \\
 
 Let $f \in H^k(\mathbb{T}^d)$ with $k > \frac{1}{2}$.  Define the partial sums $S_N$ of the Fourier series of $f$ by
@@ -493,7 +529,14 @@ Supposing $\frac{d}{2} < k$,
 \end{align*}
 which goes to zero as $N \rightarrow \infty$.  Thus $(S_N)_N$ is a Cauchy sequence and thus converges to a limit in $C(\mathbb{T}^d)$.  But $S_N$ are the partial sums of the Fourier series of $f$, and thus $S_N \rightarrow f$.  Thus $f \in C(\mathbb{T}^d)$, i.e.~$f$ is continuous.
 
-\section{Hunter and Nachtergaele 7.6}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+\section{\bf Hunter and Nachtergaele 7.6}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+
 \emph{Suppose that $f \in H^1([a,b])$ and $f(a) = f(b) = 0$.  Prove the \emph{Poincar\'{e} inequality} $$\int_a^b|f(x)|^2 \dd x \leq \frac{(b-a)^2}{\pi^2}\int_a^b|f'(x)|^2 \dd x.$$}
 
 Let $f_\text{odd} \in H^1([a-(b-a),a])$ by
@@ -532,7 +575,14 @@ Then by Parseval's Theorem,
 \end{align*}
 which proves the result.
 
-\section{Hunter and Nachtergaele 7.7}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+\section{\bf Hunter and Nachtergaele 7.7}
+\begin{center}
+    \noindent\rule{5cm}{1pt}
+\end{center}
+
 \emph{Solve the following initial-boundary value problem for the heat equation,}
 \begin{align*}
     \begin{array}{ll}
