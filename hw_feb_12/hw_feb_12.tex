@@ -62,6 +62,7 @@
 \setlength{\headheight}{25pt} % Customize the height of the header
 
 \newcommand{\problem}[1]{
+\vspace{.375cm}
 \begin{minipage}{\textwidth}
     \begin{center}
         \noindent\rule{5cm}{1pt}
@@ -105,21 +106,21 @@
 \pagebreak
 
 \problem{Hunder and Nachtergaele 7.9}
-\emph{Suppose that $u(t,x)$ is a smooth solution of the one-dimensional wave equation, $$u_{tt} - c^2 u_{xx} = 0.$$  Prove that $$(u_t^2 + c^2 u_x^2)_t - (2c^2 u_t u_x)_x = 0.$$  If $u(0, t) = u(1, t) = 0$ for all $t$, deduce that $$\int_0^1 |u_t(x,t)|^2 + c^2|u_x(x,t)|^2\dd x = \text{constant}.$$}
+\emph{Suppose that $u(t,x)$ is a smooth solution of the one-dimensional wave equation, $$u_{tt} - c^2 u_{xx} = 0.$$  Prove that $$\qty(u_t^2 + c^2 u_x^2)_t - \qty(2c^2 u_t u_x)_x = 0.$$  If $u(0, t) = u(1, t) = 0$ for all $t$, deduce that $$\int_0^1 |u_t(x,t)|^2 + c^2|u_x(x,t)|^2\dd x = \text{constant}.$$}
 
 \begin{proof}
     \begin{align*}
         u_{tt} &= c^2 u_{xx} \\
         \iff 2u_tu_{tt} &= 2c^2 u_tu_{xx} \\
         \iff 2u_tu_{tt} + 2c^2 u_x u_{tx} &= 2c^2u_tu_{xx} + 2c^2 u_x u_{tx} \\
-        \iff \qty(u_t^2 + c^2u_x^2)_t &= (2c^2 u_t u_x)_x
+        \iff \qty(u_t^2 + c^2u_x^2)_t &= \qty(2c^2 u_t u_x)_x
     \end{align*}
     Since $u(0,t) = u(1,t) = 0$ for all $t$, then $u(0,t)_t = u(1,t) = 0$ for all $t$.  Thus
     \begin{align*}
         0 = 2c^2\qty(u_t(1,t)u_x(1,t) - u_t(0,t)u_x(0,t)) &= (2c^2 u_tu_x)\Big|_{x=0}^1 \\
-        &= \int_0^1(2c^2 u_t u_x)_x \dd x \\
-        &= \int_0^1(u_t^2 + c^2 u_x^2)_t\dd x \\
-        &= \frac{\dd}{\dd t}\int_0^1(u_t^2 + c^2 u_x^2)\dd x \\
+        &= \int_0^1\qty(2c^2 u_t u_x)_x \dd x \\
+        &= \int_0^1\qty(u_t^2 + c^2 u_x^2)_t\dd x \\
+        &= \frac{\dd}{\dd t}\int_0^1\qty(u_t^2 + c^2 u_x^2)\dd x \\
         \iff \int_0^1 (u_t^2 + c^2 u_x^2)\dd x &= \text{constant}.
     \end{align*}
 \end{proof}
@@ -154,16 +155,37 @@ Let $x_n = \sin^2 \theta_n$ and $\theta_{n+1} = 2\theta_n$.  Then
     \implies x_{n+1} &= 4\sin^2\theta_n(1 - \sin^2\theta_n) \\
     \implies x_{n+1} &= 4x_n(1 - x_n)
 \end{align*}
-Thus
-\begin{align*}
-    x_n = \sin^2 \theta_n\ \ \ \ \ \text{where}\ \ \ \ \ \ \theta_{n+1} = 2\theta_n
-\end{align*}
+Thus $x_n = \sin^2 \theta_n$, where $\theta_{n+1} = 2\theta_n$
 satisfies the logistic map.
 
 \problem{Hunder and Nachtergaele 7.15}
 \emph{Consider the dynamical system on $\mathbb{T}$, $$x_{n+1} = \alpha x_n \mod 1,$$ where $\alpha = (1 + \sqrt{5})/2$ is the golden ration.  Show that the orbit with initial value $x_0 = 1$ is not equidistributed on the circle, meaning that it does not satisy (7.39).}
 
 \emph{HINT.  Show that $$u_n = \qty(\frac{1 + \sqrt{5}}{2})^n + \qty(\frac{1 - \sqrt{5}}{2})^n$$ satisfies the difference equation $$u_{n+1} = u_n + u_{n-1}$$ and hence s an integer for every $n \in \mathbb{N}$.  Then use the fact that $$\qty(\frac{1 - \sqrt{5}}{2})^n \rightarrow 0\ \ \text{ as } n \rightarrow \infty.$$}
+
+Let $\phi^+ = \frac{1 + \sqrt{5}}{2}$ and $\phi^- = \frac{1- \sqrt{5}}{2}$.  Clearly the dynamical system is not equidistributed on $[0,1]$ since if $x_0 = 1$, then $x_1 = \phi^+ \mod 1 = -\phi^-$ and $x_2 = -\phi^-\cdot \phi^+ = 1$.  Thus the system has orbit of length 2 and any finite orbit cannot be equidistributed in an interval. \\
+
+However, the hint is implying the writer intended to ask us to show that the following sequence is not equidistributed on $[0,1]$.
+\begin{align*}
+    \left\{\qty(\phi^+)^n\mod 1\right\}_{n=0}^\infty
+\end{align*}
+Note that this is not a dynamical system since it is not recursive.  Let $(u_n)_n$ be a sequence defined by
+\begin{align*}
+    u_n = \qty(\phi^+)^n + \qty(\phi^-)^n
+\end{align*}
+Note that this sequence satisfies the recursion relation
+\begin{align*}
+    u_{n+1} = u_n + u_{n-1}
+\end{align*}
+since
+\begin{align*}
+    u_n + u_{n-1} &= \qty(\phi^+)^n + \qty(\phi^-)^n + \qty(\phi^+)^{n-1} + \qty(\phi^-)^{n-1} \\
+    &= \qty(\phi^+)^{n-1}\qty[1 + \phi^+] + \qty(\phi^-)^{n-1}\qty[1 + \phi^-] \\
+    &= \qty(\phi^+)^{n-1}\qty[\frac{3 + \sqrt{5}}{2}] + \qty(\phi^-)^{n-1}\qty[\frac{3 - \sqrt{5}}{2}] \\
+    &= \qty(\phi^+)^{n+1} + \qty(\phi^-)^{n+1} \\
+    &= u_{n+1}
+\end{align*}
+Since $u_0 = 2$ and $u_1 = 1$, then $u_n \in \mathbb{N}$ for all $n$.  Then note that since $\left|\phi^-\right| < 1$, then $\qty(\phi^-)^n \rightarrow 0$.  Thus for any $\E$, there exists $N_\E$ such that, $\qty(\phi^+)^n \mod 1 \in (0, \E) \cup (1 - \E, 1]$ for all $n \geq N_\E$.  Thus $\#\{u_n\ |\ u_n \in [\E, 1 - \E]\} \leq N_\E$ and so the sequence is not equidistributed in $[0,1]$.
 
 \problem{Hunder and Nachtergaele 7.17}
 \emph{Let $B_n$ and $V_n$ be defined in (7.46) and (7.47).  Prove that $\bigcup_{n=0}^N B_n$ in an orthonormal basis of $V_N$.}
