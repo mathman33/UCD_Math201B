@@ -61,6 +61,8 @@
 \renewcommand{\footrulewidth}{0pt} % Remove footer underlines
 \setlength{\headheight}{25pt} % Customize the height of the header
 
+\newcommand{\VEC}[2]{\left\langle #1, #2 \right\rangle}
+
 \newcommand{\problem}[1]{
 \vspace{.375cm}
 \begin{minipage}{\textwidth}
@@ -155,8 +157,18 @@ Let $x_n = \sin^2 \theta_n$ and $\theta_{n+1} = 2\theta_n$.  Then
     \implies x_{n+1} &= 4\sin^2\theta_n(1 - \sin^2\theta_n) \\
     \implies x_{n+1} &= 4x_n(1 - x_n)
 \end{align*}
-Thus $x_n = \sin^2 \theta_n$, where $\theta_{n+1} = 2\theta_n$
+Thus $x_n = \sin^2 \theta_n$, where $\theta_{n+1} = 2\theta_n$,
 satisfies the logistic map.
+
+FIrst, we show the map $T: [0,1] \rightarrow [0,1]$ by $T\theta = 2\theta \mod 1$ preserves the Lebesgue measure $\mathcal{L}$ for all Borel sets on $[0,1]$.  Consider the $\sigma$-algebra
+\begin{align*}
+    \mathcal{F} = \left\{A\ :\ \mathcal{L}\qty(T^{-1}A) = \mathcal{L}\qty(A)\right\}
+\end{align*}
+It suffices to show all intervals are contained in $\mathcal{F}$ since the Borel $\sigma$-algebra is the smallest $\sigma$-algebra to contain the intervals.  However, for any interval $[a,b] \subset [0,1]$, $T\qty[\frac{a}{2}, \frac{b}{2}] = [a, b]$ and $T\qty[\frac{3a}{2}, \frac{3b}{2}] = [a,b]$ and no other intervals are mapped to $[a,b]$.  Also,
+\begin{align*}
+    \mathcal{L}\qty(T^{-1}[a,b]) = \mathcal{L}\qty(\qty[\frac{a}{2}, \frac{b}{2}] \cup \qty[\frac{3a}{2}, \frac{3b}{2}]) = \mathcal{L}\qty(\qty[\frac{a}{2}, \frac{b}{2}]) + \mathcal{L}\qty(\qty[\frac{3a}{2}, \frac{3b}{2}]) = \frac{b-a}{2} + \frac{b-a}{2} = b - a = \mathcal{L}\qty([a,b])
+\end{align*}
+Thus all intervals are contained in $\mathcal{F}$ and thus $T$ preserves the Lebesgue measure for any Borel set on $[0,1]$.
 
 \problem{Hunder and Nachtergaele 7.15}
 \emph{Consider the dynamical system on $\mathbb{T}$, $$x_{n+1} = \alpha x_n \mod 1,$$ where $\alpha = (1 + \sqrt{5})/2$ is the golden ration.  Show that the orbit with initial value $x_0 = 1$ is not equidistributed on the circle, meaning that it does not satisy (7.39).}
@@ -188,21 +200,150 @@ since
 Since $u_0 = 2$ and $u_1 = 1$, then $u_n \in \mathbb{N}$ for all $n$.  Then note that since $\left|\phi^-\right| < 1$, then $\qty(\phi^-)^n \rightarrow 0$.  Thus for any $\E$, there exists $N_\E$ such that, $\qty(\phi^+)^n \mod 1 \in (0, \E) \cup (1 - \E, 1]$ for all $n \geq N_\E$.  Thus $\#\{u_n\ |\ u_n \in [\E, 1 - \E]\} \leq N_\E$ and so the sequence is not equidistributed in $[0,1]$.
 
 \problem{Hunder and Nachtergaele 7.17}
-\emph{Let $B_n$ and $V_n$ be defined in (7.46) and (7.47).  Prove that $\bigcup_{n=0}^N B_n$ in an orthonormal basis of $V_N$.}
+\emph{Let $B_n$ and $V_n$ be defined in (7.46) and (7.47).  Prove that $\bigcup_{n=0}^N B_n$ is an orthonormal basis of $V_N$.}
 
-\emph{HINT.  Prove that the set is orthonormal and count its elements.}
+\emph{HINT.  Prove that the set is orthonormal and count its elements.} \\
+
+Let $V_n$ be the finite dimensional subspace of $L^2[0,1]$
+\begin{align*}
+    V_n = \left\{f\ :\ f \text{ is constant on } \left[\frac{k}{2^n}, \frac{k+1}{2^n}\right) \text{ for } k = 0, \dots, 2^n - 1\right\}
+\end{align*}
+and define subsets $B_n$ of $V_n$ by
+\begin{align*}
+    B_0 = \{\phi_{0,0}\},\qquad B_{n+1} = \{\psi_{n,k}\ |\ k = 0, 1, \dots, 2^n - 1\}
+\end{align*}
+where
+\begin{align*}
+    \phi_{n,k}(x) = 2^{\frac{n}{2}}\phi(2^n - k), \qquad \psi_{n,k}(x) = 2^{\frac{n}{2}}\psi(2^n x - k)
+\end{align*}
+and
+\begin{align*}
+    \phi(x) = \begin{cases}
+        1 & \text{ if } 0 \leq x < 1, \\
+        0 & \text{ otherwise}
+    \end{cases} \qquad \text{and} \qquad \psi(x) = \begin{cases}
+        1 & \text{ if } 0 \leq x \leq \frac{1}{2} \\
+        -1 & \text{ if } \frac{1}{2} \leq x < 1 \\
+        0 & \text{ otherwise}
+    \end{cases}
+\end{align*}
+
+First define $e_k$, $k = 0, 1, \dots, 2^N - 1$ by
+\begin{align*}
+    e_k(x) = \begin{cases}
+        1 & \text{ if } x \in \left[\frac{k}{2^n}, \frac{k+1}{2^n}\right) \\
+        0 & \text{ otherwise }
+    \end{cases}
+\end{align*}
+and note $E = \big\{e_k\big\}_{k=0}^{2^N-1}$ is a basis since if $f \in V_N$ then $f$ is constant on each interval and hence can be written as a linear combination of elements of $E$.  Thus $\dim(V_N) = 2^N$.
+
+Next define $B = \bigcup_{n=0}^N B_N$ and note $\#B = 2^N$.  Next we show that $\#B$ is an orthonormal set.  Fix $n$ and $k \in \mathbb{Z}\cap[0, 2^n -1]$.  Then
+\begin{align*}
+    \VEC{\psi_{n,k}}{\psi_{n,k}}_{L^2} = \int_0^1 \psi_{n,k}^2 \dd x = \int_{\frac{k}{2^n}}^{\frac{k+1}{2^n}} \qty(2^{\frac{n}{2}})^2 = 2^n\qty(\frac{1}{2^n}) = 1
+\end{align*}
+Also, the support of $\psi_{n,k_1}$ is disjoint from the support of $\psi_{n,k_2}$, thus
+\begin{align*}
+    \VEC{\psi_{n,k_1}}{\psi_{n,k_2}} = \int_0^1 \psi_{n, k_1}\psi_{n,k_2}\dd x = 0
+\end{align*}
+For $n_2 > n_1$, then the support of $\psi_{n_2, k_2}$ is either (i) disjoint from the support of $\psi_{n_1, k_1}$ or (ii) contained in either the left or right halves of the support of $\psi_{n_1, k_1}$.  If (i), then their inner product is zero since their supports are disjoint.  If (ii), then without loss of generality suppose the support of $\psi_{n_2,k_2}$ is contained in the right half of the support of $\psi_{n_1,k_1}$.  Then
+\begin{align*}
+    \VEC{\psi_{n_1, k_1}}{\psi_{n_2, k_2}} = \int_0^1 \psi_{n_1,k_1}\psi_{n_2,k_2} \dd x = \int_{\frac{k_2}{2^{n_2}}}^{\frac{k_2+1}{2^{n_2}}}2^{\frac{n_1}{2}}\psi_{n_2,k_2}\dd x = 2^{\frac{n_1}{2}}\int_{\frac{2k_2}{2^{n_2 + 1}}}^{\frac{2k_2 + 1}{2^{n_2 + 1}}} 2^{\frac{n_2}{2}} \dd x + 2^{\frac{n_1}{2}}\int_{\frac{2k_2 + 1}{2^{n_2 + 1}}}^{\frac{2k_2 + 2}{2^{n_2 + 1}}} \qty(-2^{\frac{n_2}{2}}) \dd x = 0
+\end{align*}
+Thus $B$ is an orthonormal set.  Also, $B \subset V_N$ since each $b \in B$ is constant on each of the required intervals.  Thus $B$ is an orthonormal basis of $V_N$.
 
 \problem{Hunder and Nachtergaele 7.18}
 \emph{Suppose that $B = \{e_n(x)\}_{n=1}^\infty$ is an orthonormal basis for $L^2([0,1])$.  Prove the following:}
 \begin{enumerate}[ (a)]
     \item
-        \emph{For any $a \in \Rl$, the set $B_a = \{e_n(x - a)\}_{n=1}^\infty$ is an orthonormal basis for $L^2([a, a+1])$.}
+        \emph{For any $a \in \Rl$, the set $B_a = \left\{e_n(x - a)\right\}_{n=1}^\infty$ is an orthonormal basis for $L^2([a, a+1])$.} \\
+
+        Since $e_n(x-a)$ is a horizontal shift then
+        \begin{align*}
+            \VEC{e_n(x-a)}{e_n(x-a)}_{L^2([a, a+1])} = \int_a^{a+1}(e_n(x-a))^2\dd x = \int_0^1 (e_n(x))^2 \dd x = \VEC{e_n(x)}{e_n(x)}_{L^2([0, 1])} = 1
+        \end{align*}
+        Similarly,
+        \begin{align*}
+            \VEC{e_n(x-a)}{e_m(x-a)}_{L^2([a, a+1])} = \int_a^{a+1}e_n(x-a)e_m(x-a)\dd x = \int_0^1e_n(x)e_m(x) = \VEC{e_n(x)}{e_m(x)}_{L^2([0,1])} = 0
+        \end{align*}
+        Thus $\left\{e_n(x-a)\right\}_{n=1}^\infty$ is orthonormal.  Suppose $\VEC{f(x-a)}{e_n(x-a)}_{L^2([a, a+1])} = 0$ for all $n = 1, 2, \dots$.  Then
+        \begin{align*}
+            0 = \int_a^{a+1}f(x-a)e_n(x-a)\dd x = \int_0^1 f(x)e_n(x)\dd x = \VEC{f(x)}{e_n(x)}_{L^2([0,1])}
+        \end{align*}
+        for all $n$.  Since $\left\{e_n(x)\right\}_{n=1}^\infty$ is a basis of $L^2([0,1])$, then $f(x) \equiv 0$.  Thus $f(x-a) \equiv 0$, proving $\left\{e_n(x-a)\right\}_{n=1}^\infty$ is a basis of $L^2([a, a+1])$.
     \item
-        \emph{For any $c > 0$, the set $B^C = \{\sqrt{c}e_n(cx)\}_{n=1}^\infty$ is an orthonormal basis for $L^2([0, c^{-1]]})$.}
+        \emph{For any $c > 0$, the set $B^C = \left\{\sqrt{c}e_n(cx)\right\}_{n=1}^\infty$ is an orthonormal basis for $L^2\qty(\qty[0, c^{-1}])$.} \\
+
+        Since $e_n(cx)$ is a horizontal compression,
+        \begin{align*}
+            \VEC{\sqrt{c}e_n(cx)}{\sqrt{c}e_n(cx)}_{L^2\qty(\qty[0, c^{-1}])} = c\int_0^{c^{-1}} (e_n(cx))^2 \dd x = c\cdot c^{-1}\int_0^1 (e_n(x))^2\dd x = \VEC{e_n(x)}{e_n(x)}_{L^2([0,1])} = 1
+        \end{align*}
+        Similarly,
+        \begin{align*}
+            \VEC{\sqrt{c}e_n(cx)}{\sqrt{c}e_m(cx)}_{L^2\qty(\qty[0, c^{-1}])} = c\int_0^{c^{-1}} e_n(cx)e_m(cx) \dd x = c\cdot c^{-1}\int_0^1 e_n(x)e_m(x)\dd x = \VEC{e_n(x)}{e_m(x)}_{L^2([0,1])} = 0
+        \end{align*}
+        Thus $B^C$ is orthonormal.  Suppose $\VEC{\sqrt{c}f(cx)}{\sqrt{c}e_n(cx)} = 0$ for all $n = 1, 2, \dots$.  Then
+        \begin{align*}
+            0 = c\int_0^{c^{-1}}f(cx)e_n(cx)\dd x = c\cdot c^{-1}\int_0^1 f(x)e_n(x)\dd x = \VEC{f(x)}{e_n(x)}_{L^2([0,1])}
+        \end{align*}
+        for all $n$.  Since $\left\{e_n(x)\right\}_{n=1}^\infty$ is a basis of $L^2([0,1])$, then $f(x) \equiv 0$.  Thus $\sqrt{c}f(cx) \equiv 0$, proving $B^C$ is a basis of $L^2\qty(\qty[0, c^{-1}])$.
     \item
-        \emph{With the convention that functions are extended to a larger domain than their original domain by setting them equal to $0$, prove that $B \cup B_1$ is an orthonormal basis for $L^2([0,1])$.}
+        \emph{With the convention that functions are extended to a larger domain than their original domain by setting them equal to $0$, prove that $B \cup B_1$ is an orthonormal basis for $L^2([0,2])$.} \\
+
+        We know $B$ is an orthonormal basis of $L^2([0,1])$ and by part (a), $B_1$ is an orthonormal basis of $L^2([1,2])$.  Then let $e_n \in B$ and $e_m \in B_1$.  Then $e_n(x) = 0$ for $x \in (1,2 )$ and $e_m(x) = 0$ for $x \in (0, 1)$.  Thus
+        \begin{align*}
+            \VEC{e_n}{e_m}_{L^2([0,2])} = \int_0^2 e_n e_m \dd x = \int_0^1 e_n e_m \dd x + \int_1^2 e_n e_m \dd x = 0
+        \end{align*}
+        Thus $B \cup B_1$ is an orthonormal set.  Let $f \in L^2([0,2])$.  Then $f = f_1 + f_2$ where
+        \begin{align*}
+            f_1(x) = \begin{cases}
+                f(x) & \text{ if } x \in [0,1) \\
+                0 & \text{ if } x \in [1, 2]
+            \end{cases} \qquad \text{and} \qquad f_2(x) = \begin{cases}
+                0 & \text{ if } x \in [0, 1) \\
+                f(x) & \text{ if } x \in [1, 2]
+            \end{cases}
+        \end{align*}
+        Thus $f_1 \in L^2([0,1])$ and $f_2 \in L^2([1,2])$, and so
+        \begin{align*}
+            f_1(x) = \sum_{i=1}^\infty \alpha_i e_{n_i}(x) \qquad \text{and} \qquad f_2(x) = \sum_{j=1}^\infty \beta_j e_{n_j}(x-1)
+        \end{align*}
+        which implies
+        \begin{align*}
+            f = f_1 + f_2 = \sum_{i=1}^\infty \alpha_i e_{n_i}(x) + \sum_{j=1}^\infty \beta_j e_{n_j}(x-1)
+        \end{align*}
+        This shows $f$ can be written as a linear combination of elements of $B \cup B_1$ and thus $B \cup B_1$ is a basis of $L^2([0,2])$.
     \item
-        \emph{Prove that $\bigcup_{k\in\mathbb{Z}} B_k$ is an orthonormal basis for $L^2(\Rl)$}
+        \emph{Prove that $\bigcup_{k\in\mathbb{Z}} B_k$ is an orthonormal basis for $L^2(\Rl)$.} \\
+
+        By part (a), each $B_k$ is an orthonormal basis of $L^2([k, k+1])$.  Also, for $k_1 < k_2$, let $e_n(x - k_1) \in B_{k_1}$ and $e_m(x - k_2) \in B_{k_2}$.  Then
+        \begin{align*}
+            \VEC{e_n(x-k_1)}{e_m(x-k_2)}_{L^2(\Rl)} &= \int_\Rl e_n(x-k_1)e_m(x-k_2)\dd x \\
+            &= \cancelto{0}{\int_{-\infty}^{k_1} e_n(x-k_1)e_m(x-k_2)\dd x} + \int_{k_1}^{k_1+1} e_n(x-k_1)e_m(x-k_2)\dd x \\
+            &\qquad\qquad + \cancelto{0}{\int_{k_1+1}^{k_2} e_n(x-k_1)e_m(x-k_2)\dd x} + \int_{k_2}^{k_2+1}e_n(x-k_1)e_m(x-k_2)\dd x \\
+            &\qquad\qquad + \cancelto{0}{\int_{k_2+1}^\infty e_n(x-k_1)e_m(x-k_2)\dd x} \\
+            &= \int_{k_1}^{k_1+1}e_n(x-k_1)\cdot 0 \dd x + \int_{k_2}^{k_2+1}0\cdot e_m(x-k_2)\dd x \\
+            &= 0
+        \end{align*}
+        Thus $\bigcup_{k\in\mathbb{Z}}$ is orthonormal.  Then let $f \in L^2(\Rl)$.  Then
+        \begin{align*}
+            f = \sum_{k\in\mathbb{Z}}f_k
+        \end{align*}
+        where $f_k \in B_k$ and for each $k$,
+        \begin{align*}
+            f_k(x) = \begin{cases}
+                f(x) & \text{ if } x \in [k, k+1) \\
+                0 & \text{ otherwise}
+            \end{cases}
+        \end{align*}
+        Then since $f_k \in B_k$,
+        \begin{align*}
+            f_k = \sum_{i_k = 1}^\infty \alpha_{i_k} e_{n_{i_k}}(x - k)
+        \end{align*}
+        since $\left\{e_n(x-k)\right\}_{n=1}^\infty$ is a basis for $B_k$.  Thus,
+        \begin{align*}
+            f = \sum_{k \in\mathbb{Z}}f_k = \sum_{k\in\mathbb{Z}}\qty[\sum_{i_k = 1}^\infty \qty(\alpha_{i_k} e_{n_{i_k}}(x-k))]
+        \end{align*}
+        and thus $f$ can be written as a linear combination of elements of $\bigcup_{k\in\mathbb{Z}}B_k$.  Thus $\bigcup_{k\in\mathbb{Z}}$ is a basis of $L^2(\Rl)$.
 \end{enumerate}
 
 
