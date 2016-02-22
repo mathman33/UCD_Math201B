@@ -1,0 +1,298 @@
+\documentclass{article} % A4 paper and 11pt font size
+\setcounter{secnumdepth}{0}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{color}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[makeroom]{cancel}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\E}{\varepsilon}
+\def\Rl{\mathbb{R}}
+\def\Cx{\mathbb{C}}
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancy} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead[L]{\bf Sam Fleischer}
+\fancyhead[C]{\bf UC Davis \\ Analysis (MAT201B)} % No page header - if you want one, create it in the same way as the footers below
+\fancyhead[R]{\bf Winter 2016}
+
+\fancyfoot[L]{\bf } % Empty left footer
+\fancyfoot[C]{\bf \thepage} % Empty center footer
+\fancyfoot[R]{\bf } % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{25pt} % Customize the height of the header
+
+\newcommand{\VEC}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\ran}{\text{\rm ran }}
+
+\newcommand{\problem}[1]{
+\vspace{.375cm}
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \noindent\rule{5cm}{1pt}
+    \end{center}
+    \section{\bf #1}
+    \begin{center}
+        \noindent\rule{5cm}{1pt}
+    \end{center}
+    \vspace{0.25cm}
+\end{minipage}
+}
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\normalfont \normalsize 
+\textsc{UC Davis, Analysis (MAT201B), Winter 2016} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{2pt} \\[0.4cm] % Thin top horizontal rule
+\Huge Homework \#5 \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{\huge Sam Fleischer} % Your name
+
+\date{February 21, 2016} % Today's date or a custom date
+
+\begin{document}\thispagestyle{empty}
+
+\maketitle % Print the title
+
+\makeatletter
+\@starttoc{toc}
+\makeatother
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.2}
+\emph{If $\mathcal{H} = \mathcal{M} \oplus \mathcal{N}$ is an orthogonal direct sum, show that $\mathcal{M}^\perp = \mathcal{N}$ and $\mathcal{N}^\perp = \mathcal{M}$.}
+
+\begin{proof}
+    Suppose $x \in \mathcal{M}^\perp$.  Then $x \in \mathcal{H} \implies \exists!y, z$ such that $x = y + z$ where $y \in \mathcal{M}$ and $z \in \mathcal{N}$.  Then
+    \begin{align*}
+        \VEC{x}{x} = \cancelto{0}{\VEC{x}{y}} + \VEC{x}{z} = \VEC{x}{z} \implies \VEC{x}{x-z} = 0 \implies x = z
+    \end{align*}
+    which shows $x \in \mathcal{N}$, i.e.~$\mathcal{M}^\perp \subset \mathcal{N}$.
+
+    Now suppose $x \not\in \mathcal{M}^\perp$.  Then $x \in \mathcal{M}$ and $x \neq 0$.  Thus $x \not\in \mathcal{N}$ since a direct sum implies $\mathcal{N} \cap \mathcal{M} = \{0\}$.  Thus $\mathcal{N} \subset \mathcal{M}^\perp \subset \mathcal{N} \implies \mathcal{N} = \mathcal{M}^\perp$.
+
+    Switching $\mathcal{N}$ and $\mathcal{M}$ in the above paragraphs shows $\mathcal{M} = \mathcal{N}^\perp$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.3}
+\emph{Let $\mathcal{M}$, $\mathcal{N}$ be closed subspaces of a Hilbert space $\mathcal{H}$ and $P$, $Q$ the orthogonal projections with $\ran P = \mathcal{M}$, $\ran Q = \mathcal{N}$.  Prove that the following conditions are equivalent: (a) $\mathcal{M} \subset \mathcal{N}$; (b) $QP = P$; (c) $PQ = P$; (d) $\norm{Px} \leq \norm{Qx}$ for all $x \in \mathcal{H}$; (e) $\VEC{x}{Px} \leq \VEC{x}{Qx}$ for all $x \in \mathcal{H}$.}
+
+\begin{proof}
+    We will show \emph{(a) $\rightarrow$ (b) $\rightarrow$ (c) $\rightarrow$ (d) $\rightarrow$ (e) $\rightarrow$ (a)}, which proves the statements' equivalence.
+    \begin{enumerate}
+        \item[\it (a) $\rightarrow$ (b). ]
+            Let $\mathcal{M} \subset \mathcal{N}$ and let $x \in \mathcal{H}$.  Then $Px \in \mathcal{M} \subset \mathcal{N} \implies Q(Px) = Px \implies QP = P$.
+        \item[\it (b) $\rightarrow$ (c). ]
+            Let $QP = P$.  Then
+            \begin{align*}
+                \VEC{x}{Py} = \VEC{Px}{y} = \VEC{QPx}{y} = \VEC{Px}{Qy} = \VEC{x}{PQy} \implies \VEC{x}{Py - PQy} = 0 \qquad \forall x, y \in \mathcal{H}.
+            \end{align*}
+            Thus $Py - PQy = 0$ for all $y \in \mathcal{H}$, i.e.~$PQ = P$.
+        \item[\it (c) $\rightarrow$ (d). ]
+            Let $PQ = P$.  First note $\norm{Px} \leq \norm{x}$ for all $x \in \mathcal{H}$ because
+            \begin{align*}
+                \norm{Px} = \frac{\norm{Px}^2}{\norm{Px}} = \frac{\VEC{Px}{Px}}{\norm{Px}} = \frac{\VEC{x}{P^2x}}{\norm{Px}} = \frac{\VEC{x}{Px}}{\norm{Px}} \leq \norm{x}
+            \end{align*}
+            by the Cauchy-Schwarz inequality.  Thus,
+            \begin{align*}
+                \norm{Px} = \norm{PQx} = \norm{P(Qx)} \leq \norm{Qx} \qquad \forall x \in \mathcal{H}
+            \end{align*}
+        \item[\it (d) $\rightarrow$ (e). ]
+            Let $\norm{Px} \leq \norm{Qx}$.
+            \begin{align*}
+                \norm{Px}^2 \leq \norm{Qx}^2 \implies \VEC{Px}{Px} \leq \VEC{Qx}{Qx} \implies \VEC{x}{P^2x} \leq \VEC{x}{Q^2x} \implies \VEC{x}{Px} \leq \VEC{x}{Qx} \qquad \forall x \in \mathcal{H}
+            \end{align*}
+        \item[\it (e) $\rightarrow$ (a). ]
+            Let $\VEC{x}{Px} \leq \VEC{x}{Qx}$ and suppose $x \in M$.  Then $Px = x$.  Then $\norm{x}^2 = \VEC{x}{x} = \VEC{x}{Px} \leq \VEC{x}{Qx}$.  However, since $\norm{Qx} \leq \norm{x}$ for all $x$, then $\VEC{x}{Qx} \leq \norm{x}\norm{Qx} \leq \norm{x}^2$, which shows $\VEC{x}{Qx} = \norm{x}^2$.  Thus $Qx = x$, which shows $x \in \mathcal{N}$, proving $\mathcal{M} \subset \mathcal{N}$.
+    \end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.4}
+\emph{Suppose that $(P_n)$ is a sequence of orthogonal projections on a Hilbert space $\mathcal{H}$ such that $$\ran P_{n+1} \supset \ran P_n, \qquad \bigcup_{n=1}^\infty \ran P_n = \mathcal{H}.$$  Prove that $(P_n)$ converges strongly to the identity operator $I$ as $n \rightarrow \infty$.  Show that $(P_n)$ does not converge to the identity operator with respect to the operator norm unless $P_n = I$ for all sufficiently large $n$.} \\
+
+\begin{proof}
+    Let $x \in \mathcal{H}$.  Then $\exists N$ such that $x \in \ran P_N$.  Thus $x \in \ran P_n$ for all $n \geq N$.  Since each $P_n$ is an orthogonal projection, then $x = P_n x$ for all $n \geq N$.  Thus
+    \begin{align*}
+        \lim_{n\rightarrow \infty}P_n x = \lim_{n \rightarrow \infty} x = x = I x
+    \end{align*}
+    where $I$ is the identity operator.  Thus $(P_n)$ converges strongly to $I$.
+
+    If $P_n = I$ for all sufficiently large $n$, then obviously
+    \begin{align*}
+        \lim_{n\rightarrow \infty} \norm{P_n} = \lim_{n\rightarrow \infty}\norm{I} = \norm{I}
+    \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.6}
+\emph{Show that a linear operator $U\ :\ \mathcal{H}_1 \rightarrow \mathcal{H}_2$ is unitary if and only if it is an isometric isomorphism of normed linear spaces.  Show that an invertible linear map is unitary if and only if its inverse is.}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.7}
+\emph{If $\phi_y$ is the bounded linear functional defined in (8.5)}
+\begin{equation}
+    \tag{\it 8.5}
+    \phi_y(x) = \VEC{y}{x}
+\end{equation}
+\emph{Prove that $\norm{\phi_y} = \norm{y}$.} \\
+
+\begin{proof}
+    First we prove $\norm{\phi_y}$ is bounded above by $\norm{y}$.
+    \begin{align*}
+        \norm{\phi_y} = \sup_{\norm{x} = 1}\norm{\phi_y(x)} = \sup_{\norm{x} = 1}\VEC{y}{x} \leq \sup_{\norm{x} = 1}\norm{y}\norm{x} = \norm{y}
+    \end{align*}
+    Next, consider $x = \frac{y}{\norm{y}}$ (note $\norm{x} = 1$):
+    \begin{align*}
+        \norm{\phi_y(x)} = \norm{\VEC{y}{x}} = \norm{\frac{\VEC{y}{y}}{\norm{y}}} = \norm{\frac{\norm{y}^2}{\norm{y}}} = \norm{y}
+    \end{align*}
+    and thus $\norm{\phi_y} \geq \norm{y}$, which proves $\norm{\phi_y} = \norm{y}$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.8}
+\emph{Prove that $\mathcal{H}^*$ is a Hilbert space with the inner product defined by $$ \VEC{\phi_x}{\phi_y}_{\mathcal{H}^*} = \VEC{y}{x}_\mathcal{H}.$$}
+
+\begin{proof}
+    First note $\VEC{\cdot}{\cdot}_{\mathcal{H}^*}$ is a well-defined inner product since $\VEC{\cdot}{\cdot}_\mathcal{H}$ is a well-defined inner product (i.e.~the properties of inner product hold).  It suffices to show $\mathcal{H}^*$ is closed.  Let $(\phi_n)$ be a convergent sequence of linear functionals in $\mathcal{H}^*$.  By the Riesz Representation Theorem, for all $n$, $\exists y_n$ such that $\phi_n(x) = \VEC{y_n}{x}_\mathcal{H}$ for all $x \in \mathcal{H}$.  Since $(\phi_n)$ converges, then $\forall x \in \mathcal{H}$, $\VEC{y_n}{x}_\mathcal{H}$ converges.  By continuity of inner product, then $y_n$ converges to some $y$.  By completeness of $\mathcal{H}$, $y \in \mathcal{H}$.  Again by the Riesz Representation Theorem, $\exists \phi \in \mathcal{H}^*$ such that $\phi(x) = \VEC{y}{x}_\mathcal{H}$ for all $x \in \mathcal{H}$.  Moreover,
+    \begin{align*}
+        \lim_{n\rightarrow\infty}\phi_n = \lim_{n\rightarrow \infty}\VEC{y_n}{\cdot}_\mathcal{H} = \VEC{y}{\cdot}_\mathcal{H} = \phi_y
+    \end{align*}
+    Thus $\mathcal{H}^*$ is closed, which proves $\mathcal{H}^*$ is a Hilbert space.
+\end{proof}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.9}
+\emph{Let $A \subset \mathcal{H}$ be such that $$\mathcal{M} = \left\{x \in \mathcal{H}\ |\ x \text{ is a finite linear combination of elements in $A$}\right\}$$ is a dense linear subspace of $\mathcal{H}$.  Prove that any bounded linear functional on $\mathcal{H}$ is uniquely determined by its values on $A$.  If $\{u_\alpha\}$ is an orthonormal basis, find a necessary and sufficient condition on a family of complex numbers $c_\alpha$ for there to be a bounded linear functional $\phi$ such that $\phi_{u_\alpha} = c_\alpha$.}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.11}
+\emph{Prove that if $A\ :\ \mathcal{H} \rightarrow \mathcal{H}$ is a linear map and $\dim \mathcal{H} < \infty$, then $$\dim \ker A + \dim \ran A = \dim \mathcal{H}.$$  Prove that, if $\dim \mathcal{H} < \infty$, then $\dim \ker A = \dim \ker A^*$.  In particular, $\ker A = \{0\}$ if and only if $\ker A^* = \{0\}$.}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.12}
+\emph{Suppose that $A\ :\ \mathcal{H} \rightarrow \mathcal{H}$ is a bounded, self-adjoint linear operator such that there is a constant $c > 0$ with $$c\norm{x} \leq \norm{Ax} \qquad \text{for all } x \in \mathcal{H}.$$  Prove that there is a unique solution $x$ of the equation $Ax = y$ for every $y \in \mathcal{H}$.}
+
+
+
+\end{document}
