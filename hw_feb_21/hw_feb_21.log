@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  22 FEB 2016 17:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  23 FEB 2016 10:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1418,30 +1418,41 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_below_intertext_sep=\dimen165
 \l_MT_above_shortintertext_sep=\dimen166
 \l_MT_below_shortintertext_sep=\dimen167
+) (/usr/local/texlive/2015/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box45
+\UL@hyphenbox=\box46
+\UL@skip=\skip90
+\UL@hook=\toks28
+\UL@height=\dimen168
+\UL@pe=\count151
+\UL@pixel=\dimen169
+\ULC@box=\box47
+Package: ulem 2012/05/18
+\ULdepth=\dimen170
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2015/03/04 v2.20.2
-\thm@style=\toks28
-\thm@bodyfont=\toks29
-\thm@headfont=\toks30
-\thm@notefont=\toks31
-\thm@headpunct=\toks32
-\thm@preskip=\skip90
-\thm@postskip=\skip91
-\thm@headsep=\skip92
-\dth@everypar=\toks33
+\thm@style=\toks29
+\thm@bodyfont=\toks30
+\thm@headfont=\toks31
+\thm@notefont=\toks32
+\thm@headpunct=\toks33
+\thm@preskip=\skip91
+\thm@postskip=\skip92
+\thm@headsep=\skip93
+\dth@everypar=\toks34
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/us
 r/local/texlive/2015/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/te
 xlive/2015/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
-\pgfutil@everybye=\toks34
-\pgfutil@tempdima=\dimen168
-\pgfutil@tempdimb=\dimen169
+\pgfutil@everybye=\toks35
+\pgfutil@tempdima=\dimen171
+\pgfutil@tempdimb=\dimen172
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
 sts.tex))
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box45
+\pgfutil@abb=\box48
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 )) (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.te
@@ -1454,30 +1465,30 @@ local/texlive/2015/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2013/11/30 v3.0.0 (rcs-revision 1.47)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks35
-\pgfkeys@temptoks=\toks36
+\pgfkeys@pathtoks=\toks36
+\pgfkeys@temptoks=\toks37
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
 ode.tex
-\pgfkeys@tmptoks=\toks37
+\pgfkeys@tmptoks=\toks38
 ))
-\pgf@x=\dimen170
-\pgf@y=\dimen171
-\pgf@xa=\dimen172
-\pgf@ya=\dimen173
-\pgf@xb=\dimen174
-\pgf@yb=\dimen175
-\pgf@xc=\dimen176
-\pgf@yc=\dimen177
+\pgf@x=\dimen173
+\pgf@y=\dimen174
+\pgf@xa=\dimen175
+\pgf@ya=\dimen176
+\pgf@xb=\dimen177
+\pgf@yb=\dimen178
+\pgf@xc=\dimen179
+\pgf@yc=\dimen180
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count151
-\c@pgf@countb=\count152
-\c@pgf@countc=\count153
-\c@pgf@countd=\count154
-\t@pgf@toka=\toks38
-\t@pgf@tokb=\toks39
-\t@pgf@tokc=\toks40
+\c@pgf@counta=\count152
+\c@pgf@countb=\count153
+\c@pgf@countc=\count154
+\c@pgf@countd=\count155
+\t@pgf@toka=\toks39
+\t@pgf@tokb=\toks40
+\t@pgf@tokc=\toks41
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
@@ -1494,8 +1505,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count155
-\pgfsyssoftpath@bigbuffer@items=\count156
+\pgfsyssoftpath@smallbuffer@items=\count156
+\pgfsyssoftpath@bigbuffer@items=\count157
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
 code.tex
@@ -1523,12 +1534,12 @@ Package: pgfcore 2010/04/11 v3.0.0 (rcs-revision 1.7)
 /local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/
 local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen178
-\pgfmath@count=\count157
-\pgfmath@box=\box46
-\pgfmath@toks=\toks41
-\pgfmath@stack@operand=\toks42
-\pgfmath@stack@operation=\toks43
+\pgfmath@dimen=\dimen181
+\pgfmath@count=\count158
+\pgfmath@box=\box49
+\pgfmath@toks=\toks42
+\pgfmath@stack@operand=\toks43
+\pgfmath@stack@operation=\toks44
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
 tex
@@ -1549,57 +1560,57 @@ code.tex)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
 erarithmetics.code.tex))) (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/m
 ath/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count158
+\c@pgfmathroundto@lastzeros=\count159
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
 de.tex
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
-\pgf@picminx=\dimen179
-\pgf@picmaxx=\dimen180
-\pgf@picminy=\dimen181
-\pgf@picmaxy=\dimen182
-\pgf@pathminx=\dimen183
-\pgf@pathmaxx=\dimen184
-\pgf@pathminy=\dimen185
-\pgf@pathmaxy=\dimen186
-\pgf@xx=\dimen187
-\pgf@xy=\dimen188
-\pgf@yx=\dimen189
-\pgf@yy=\dimen190
-\pgf@zx=\dimen191
-\pgf@zy=\dimen192
+\pgf@picminx=\dimen182
+\pgf@picmaxx=\dimen183
+\pgf@picminy=\dimen184
+\pgf@picmaxy=\dimen185
+\pgf@pathminx=\dimen186
+\pgf@pathmaxx=\dimen187
+\pgf@pathminy=\dimen188
+\pgf@pathmaxy=\dimen189
+\pgf@xx=\dimen190
+\pgf@xy=\dimen191
+\pgf@yx=\dimen192
+\pgf@yy=\dimen193
+\pgf@zx=\dimen194
+\pgf@zy=\dimen195
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
 ruct.code.tex
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
-\pgf@path@lastx=\dimen193
-\pgf@path@lasty=\dimen194
+\pgf@path@lastx=\dimen196
+\pgf@path@lasty=\dimen197
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
 .code.tex
 File: pgfcorepathusage.code.tex 2013/12/13  (rcs-revision 1.23)
-\pgf@shorten@end@additional=\dimen195
-\pgf@shorten@start@additional=\dimen196
+\pgf@shorten@end@additional=\dimen198
+\pgf@shorten@start@additional=\dimen199
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
 de.tex
 File: pgfcorescopes.code.tex 2013/10/09  (rcs-revision 1.44)
-\pgfpic=\box47
-\pgf@hbox=\box48
-\pgf@layerbox@main=\box49
-\pgf@picture@serial@count=\count159
+\pgfpic=\box50
+\pgf@hbox=\box51
+\pgf@layerbox@main=\box52
+\pgf@picture@serial@count=\count160
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
 ate.code.tex
 File: pgfcoregraphicstate.code.tex 2013/09/19  (rcs-revision 1.11)
-\pgflinewidth=\dimen197
+\pgflinewidth=\dimen200
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
 ations.code.tex
 File: pgfcoretransformations.code.tex 2013/10/10  (rcs-revision 1.17)
-\pgf@pt@x=\dimen198
-\pgf@pt@y=\dimen199
-\pgf@pt@temp=\dimen200
+\pgf@pt@x=\dimen201
+\pgf@pt@y=\dimen202
+\pgf@pt@temp=\dimen203
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
 e.tex
@@ -1616,13 +1627,13 @@ File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
 de.tex
 File: pgfcorearrows.code.tex 2013/11/07  (rcs-revision 1.40)
-\pgfarrowsep=\dimen201
+\pgfarrowsep=\dimen204
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
 e.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
-\pgf@max=\dimen202
-\pgf@sys@shading@range@num=\count160
+\pgf@max=\dimen205
+\pgf@sys@shading@range@num=\count161
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
 e.tex
@@ -1631,7 +1642,7 @@ File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
 code.tex
 File: pgfcoreexternal.code.tex 2013/07/15  (rcs-revision 1.20)
-\pgfexternal@startupbox=\box50
+\pgfexternal@startupbox=\box53
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
 de.tex
@@ -1648,7 +1659,7 @@ File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
 e.tex
 File: pgfmoduleshapes.code.tex 2013/10/31  (rcs-revision 1.34)
-\pgfnodeparttextbox=\box51
+\pgfnodeparttextbox=\box54
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
 tex
@@ -1657,8 +1668,8 @@ File: pgfmoduleplot.code.tex 2013/07/31  (rcs-revision 1.12)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -0-65.sty
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.0 (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen203
-\pgf@nodesepend=\dimen204
+\pgf@nodesepstart=\dimen206
+\pgf@nodesepend=\dimen207
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -1-18.sty
@@ -1671,10 +1682,10 @@ l/texlive/2015/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/local/texlive/20
 texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2013/12/13 v3.0.0 (rcs-revision 1.25)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen205
-\pgffor@skip=\dimen206
-\pgffor@stack=\toks44
-\pgffor@toks=\toks45
+\pgffor@iter=\dimen208
+\pgffor@skip=\dimen209
+\pgffor@stack=\toks45
+\pgffor@toks=\toks46
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
 e.tex
@@ -1683,32 +1694,32 @@ Package: tikz 2013/12/13 v3.0.0 (rcs-revision 1.142)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
 dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.0 (rcs-revision 1.20)
-\pgf@plot@mark@count=\count161
-\pgfplotmarksize=\dimen207
+\pgf@plot@mark@count=\count162
+\pgfplotmarksize=\dimen210
 )
-\tikz@lastx=\dimen208
-\tikz@lasty=\dimen209
-\tikz@lastxsaved=\dimen210
-\tikz@lastysaved=\dimen211
-\tikzleveldistance=\dimen212
-\tikzsiblingdistance=\dimen213
-\tikz@figbox=\box52
-\tikz@figbox@bg=\box53
-\tikz@tempbox=\box54
-\tikz@tempbox@bg=\box55
-\tikztreelevel=\count162
-\tikznumberofchildren=\count163
-\tikznumberofcurrentchild=\count164
-\tikz@fig@count=\count165
+\tikz@lastx=\dimen211
+\tikz@lasty=\dimen212
+\tikz@lastxsaved=\dimen213
+\tikz@lastysaved=\dimen214
+\tikzleveldistance=\dimen215
+\tikzsiblingdistance=\dimen216
+\tikz@figbox=\box55
+\tikz@figbox@bg=\box56
+\tikz@tempbox=\box57
+\tikz@tempbox@bg=\box58
+\tikztreelevel=\count163
+\tikznumberofchildren=\count164
+\tikznumberofcurrentchild=\count165
+\tikz@fig@count=\count166
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
 e.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count166
-\pgfmatrixcurrentcolumn=\count167
-\pgf@matrix@numberofcolumns=\count168
+\pgfmatrixcurrentrow=\count167
+\pgfmatrixcurrentcolumn=\count168
+\pgf@matrix@numberofcolumns=\count169
 )
-\tikz@expandcount=\count169
+\tikz@expandcount=\count170
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
@@ -1725,18 +1736,18 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.0 (rcs-revision 1.1)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
 code.tex
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.0 (rcs-revision 1.16)
-\arrowsize=\dimen214
+\arrowsize=\dimen217
 )) (/usr/local/texlive/2015/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/usr/lo
 cal/texlive/2015/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2015/05/02 v1.12.1 Data Visualization (1.12.1)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (/us
 r/local/texlive/2015/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
-\t@pgfplots@toka=\toks46
-\t@pgfplots@tokb=\toks47
-\t@pgfplots@tokc=\toks48
-\pgfplots@tmpa=\dimen215
-\c@pgfplots@coordindex=\count170
-\c@pgfplots@scanlineindex=\count171
+\t@pgfplots@toka=\toks47
+\t@pgfplots@tokb=\toks48
+\t@pgfplots@tokc=\toks49
+\pgfplots@tmpa=\dimen218
+\c@pgfplots@coordindex=\count171
+\c@pgfplots@scanlineindex=\count172
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric
 .code.tex))
@@ -1752,7 +1763,7 @@ Package pgfplots: loading complementary arithmetics for your pgf version...
 soldpgfsupp_pgflibraryfpu.code.tex)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplot
 soldpgfsupp_pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count172
+\c@pgfmathroundto@lastzeros=\count173
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplot
 soldpgfsupp_trig_format.code.tex))
@@ -1764,14 +1775,14 @@ liststructure.code.tex)
 liststructureext.code.tex)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
 array.code.tex
-\c@pgfplotsarray@tmp=\count173
+\c@pgfplotsarray@tmp=\count174
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
 matrix.code.tex)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable
 shared.code.tex
-\c@pgfplotstable@counta=\count174
-\t@pgfplotstable@a=\toks49
+\c@pgfplotstable@counta=\count175
+\t@pgfplotstable@a=\toks50
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
 deque.code.tex)
@@ -1783,7 +1794,7 @@ ta.code.tex))
 .code.tex)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplot
 s.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count175
+\c@pgfplotslibrarysurf@no=\count176
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots
 .surfshading.pgfsys-pdftex.def)))
@@ -1813,16 +1824,16 @@ x)
 s/tikzlibrarydecorations.code.tex
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmoduledecoration
 s.code.tex
-\pgfdecoratedcompleteddistance=\dimen216
-\pgfdecoratedremainingdistance=\dimen217
-\pgfdecoratedinputsegmentcompleteddistance=\dimen218
-\pgfdecoratedinputsegmentremainingdistance=\dimen219
-\pgf@decorate@distancetomove=\dimen220
-\pgf@decorate@repeatstate=\count176
-\pgfdecorationsegmentamplitude=\dimen221
-\pgfdecorationsegmentlength=\dimen222
+\pgfdecoratedcompleteddistance=\dimen219
+\pgfdecoratedremainingdistance=\dimen220
+\pgfdecoratedinputsegmentcompleteddistance=\dimen221
+\pgfdecoratedinputsegmentremainingdistance=\dimen222
+\pgf@decorate@distancetomove=\dimen223
+\pgf@decorate@repeatstate=\count177
+\pgfdecorationsegmentamplitude=\dimen224
+\pgfdecorationsegmentlength=\dimen225
 )
-\tikz@lib@dec@box=\box56
+\tikz@lib@dec@box=\box59
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarydecorations.pathmorphing.code.tex
@@ -1832,13 +1843,13 @@ brarydecorations.pathmorphing.code.tex))
 s/tikzlibrarydecorations.pathreplacing.code.tex
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
 brarydecorations.pathreplacing.code.tex))
-\pgfplots@numplots=\count177
-\pgfplots@xmin@reg=\dimen223
-\pgfplots@xmax@reg=\dimen224
-\pgfplots@ymin@reg=\dimen225
-\pgfplots@ymax@reg=\dimen226
-\pgfplots@zmin@reg=\dimen227
-\pgfplots@zmax@reg=\dimen228
+\pgfplots@numplots=\count178
+\pgfplots@xmin@reg=\dimen226
+\pgfplots@xmax@reg=\dimen227
+\pgfplots@ymin@reg=\dimen228
+\pgfplots@ymax@reg=\dimen229
+\pgfplots@zmin@reg=\dimen230
+\pgfplots@zmax@reg=\dimen231
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryplotmarks.code.tex
@@ -1851,8 +1862,8 @@ File: pgflibraryplotmarks.code.tex 2013/07/20 v3.0.0 (rcs-revision 1.13)
 Package: bigints 2010/02/15 Writing big integrals
 Package bigints Info: This is Bigints by Merciadri Luca. on input line 5.
 )
-\c@theorem=\count178
-\c@lemma=\count179
+\c@theorem=\count179
+\c@lemma=\count180
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def
@@ -2000,8 +2011,8 @@ Package: babel 2014/09/25 3.9l The Babel package
 Language: english 2012/08/20 v3.3p English support from the babel system
 (/usr/local/texlive/2015/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2014/09/25 3.9l Babel common definitions
-\babel@savecnt=\count180
-\U@D=\dimen229
+\babel@savecnt=\count181
+\U@D=\dimen232
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
@@ -2010,77 +2021,77 @@ File: babel.def 2014/09/25 3.9l Babel common definitions
 Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
 les
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip93
-\f@ncyO@elh=\skip94
-\f@ncyO@erh=\skip95
-\f@ncyO@olh=\skip96
-\f@ncyO@orh=\skip97
-\f@ncyO@elf=\skip98
-\f@ncyO@erf=\skip99
-\f@ncyO@olf=\skip100
-\f@ncyO@orf=\skip101
+\fancy@headwidth=\skip94
+\f@ncyO@elh=\skip95
+\f@ncyO@erh=\skip96
+\f@ncyO@olh=\skip97
+\f@ncyO@orh=\skip98
+\f@ncyO@elf=\skip99
+\f@ncyO@erf=\skip100
+\f@ncyO@olf=\skip101
+\f@ncyO@orf=\skip102
 ) (/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.aux)
 \openout1 = `hw_feb_21.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 101.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 101.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 102.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 102.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 101.
-LaTeX Font Info:    Try loading font information for FML+futm on input line 101
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 102.
+LaTeX Font Info:    Try loading font information for FML+futm on input line 102
 .
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 101.
-LaTeX Font Info:    Try loading font information for FMS+futm on input line 101
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 102.
+LaTeX Font Info:    Try loading font information for FMS+futm on input line 102
 .
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fourier/fmsfutm.fd
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
 )
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 101.
-LaTeX Font Info:    Try loading font information for FMX+futm on input line 101
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 102.
+LaTeX Font Info:    Try loading font information for FMX+futm on input line 102
 .
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fourier/fmxfutm.fd
 File: fmxfutm.fd futm-extension
 )
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Try loading font information for T1+futs on input line 101.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Try loading font information for T1+futs on input line 102.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fourier/t1futs.fd
 File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
 ) (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count181
-\scratchdimen=\dimen230
-\scratchbox=\box57
-\nofMPsegments=\count182
-\nofMParguments=\count183
-\everyMPshowfont=\toks50
-\MPscratchCnt=\count184
-\MPscratchDim=\dimen231
-\MPnumerator=\count185
-\makeMPintoPDFobject=\count186
-\everyMPtoPDFconversion=\toks51
+\scratchcounter=\count182
+\scratchdimen=\dimen233
+\scratchbox=\box60
+\nofMPsegments=\count183
+\nofMParguments=\count184
+\everyMPshowfont=\toks51
+\MPscratchCnt=\count185
+\MPscratchDim=\dimen256
+\MPnumerator=\count186
+\makeMPintoPDFobject=\count187
+\everyMPtoPDFconversion=\toks52
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 (/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -2128,18 +2139,18 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box58
-Package hyperref Info: Link coloring OFF on input line 101.
+\AtBeginShipoutBox=\box61
+Package hyperref Info: Link coloring OFF on input line 102.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count187
+\c@section@level=\count188
 )
-LaTeX Info: Redefining \ref on input line 101.
-LaTeX Info: Redefining \pageref on input line 101.
-LaTeX Info: Redefining \nameref on input line 101.
+LaTeX Info: Redefining \ref on input line 102.
+LaTeX Info: Redefining \pageref on input line 102.
+LaTeX Info: Redefining \nameref on input line 102.
 (/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.out) (/User
 s/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.out)
 \@outlinefile=\write4
@@ -2150,30 +2161,30 @@ Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.12}).
 
 LaTeX Font Info:    Try loading font information for FML+futmi on input line 10
-4.
+5.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fourier/fmlfutmi.fd
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 104.
+(Font)              scaled to size 11.03998pt on input line 105.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 104.
+(Font)              scaled to size 8.27998pt on input line 105.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 6.43999pt on input line 104.
-LaTeX Font Info:    Try loading font information for U+msa on input line 104.
+(Font)              scaled to size 6.43999pt on input line 105.
+LaTeX Font Info:    Try loading font information for U+msa on input line 105.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 104.
+LaTeX Font Info:    Try loading font information for U+msb on input line 105.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 11.03998pt on input line 104.
+(Font)              scaled to size 11.03998pt on input line 105.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 8.27998pt on input line 104.
+(Font)              scaled to size 8.27998pt on input line 105.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 6.43999pt on input line 104.
+(Font)              scaled to size 6.43999pt on input line 105.
 (/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.toc
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10> not available
 (Font)              Font shape `T1/futs/b/n' tried instead on input line 2.
@@ -2197,48 +2208,53 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 112.
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 113.
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--206
+Underfull \hbox (badness 10000) in paragraph at lines 210--212
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 232--234
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
+Underfull \hbox (badness 10000) in paragraph at lines 250--252
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 301--302
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 
  []
 
-[5] [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 353.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 353.
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 328--329
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 376--377
+
+ []
+
+[7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 384.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 384.
 (/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 353.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 353.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 384.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 384.
 Package rerunfilecheck Info: File `hw_feb_21.out' has not changed.
 (rerunfilecheck)             Checksum: 113016F834E94D776471A7112CC7D006;570.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 353.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 384.
  ) 
 Here is how much of TeX's memory you used:
- 34366 strings out of 493089
- 778984 string characters out of 6134842
- 952817 words of memory out of 5000000
- 37254 multiletter control sequences out of 15000+600000
- 122677 words of font info for 121 fonts, out of 8000000 for 9000
+ 34445 strings out of 493089
+ 779769 string characters out of 6134842
+ 953665 words of memory out of 5000000
+ 37327 multiletter control sequences out of 15000+600000
+ 122783 words of font info for 122 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,18n,83p,10464b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -2247,15 +2263,16 @@ xlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-mcl.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy6.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
 Output written on /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_f
-eb_21.pdf (6 pages, 91166 bytes).
+eb_21.pdf (7 pages, 100143 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
- 18 named destinations out of 1000 (max. 500000)
+ 136 PDF objects out of 1000 (max. 8388607)
+ 115 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
  85 words of extra memory for PDF output out of 10000 (max. 10000000)
 

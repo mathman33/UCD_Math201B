@@ -3,8 +3,8 @@
 \contentsline {section}{\bf Hunter and Nachtergaele 8.3}{2}{section*.2}
 \contentsline {section}{\bf Hunter and Nachtergaele 8.4}{3}{section*.3}
 \contentsline {section}{\bf Hunter and Nachtergaele 8.6}{3}{section*.4}
-\contentsline {section}{\bf Hunter and Nachtergaele 8.7}{3}{section*.5}
-\contentsline {section}{\bf Hunter and Nachtergaele 8.8}{4}{section*.7}
-\contentsline {section}{\bf Hunter and Nachtergaele 8.9}{4}{section*.8}
-\contentsline {section}{\bf Hunter and Nachtergaele 8.11}{5}{section*.9}
-\contentsline {section}{\bf Hunter and Nachtergaele 8.12}{6}{section*.10}
+\contentsline {section}{\bf Hunter and Nachtergaele 8.7}{4}{section*.5}
+\contentsline {section}{\bf Hunter and Nachtergaele 8.8}{5}{section*.7}
+\contentsline {section}{\bf Hunter and Nachtergaele 8.9}{5}{section*.8}
+\contentsline {section}{\bf Hunter and Nachtergaele 8.11}{6}{section*.9}
+\contentsline {section}{\bf Hunter and Nachtergaele 8.12}{7}{section*.10}

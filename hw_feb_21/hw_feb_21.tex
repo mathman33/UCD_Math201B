@@ -19,6 +19,7 @@
 \usepackage{alltt}
 \usepackage{physics}
 \usepackage{mathtools}
+\usepackage[normalem]{ulem}
 \usepackage{amsthm}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -188,8 +189,13 @@
 
     If $P_n = I$ for all sufficiently large $n$, then obviously
     \begin{align*}
-        \lim_{n\rightarrow \infty} \norm{P_n} = \lim_{n\rightarrow \infty}\norm{I} = \norm{I}
+        \lim_{n\rightarrow \infty} \norm{P_n - I} = \lim_{n\rightarrow \infty}\norm{I - I} = \norm{0} = 0
     \end{align*}
+    Thus $P_n$ converges to $I$ with respect to the operator norm.  If it is not true that $P_n = I$ for all sufficiently large $n$, then $\ran P_n \subset P_{n+1}\ \forall n \implies P_n \not\equiv I$ for any $n$.  Then $\forall n$, $\ker P_n \neq \{0\}$, i.e.~$\dim \ker P_n > 0$, and so $\exists e_n \in \ker P_n$ with $\norm{e_n} = 1$.  Then $P_ne_n = 0$ and $\forall n$,
+    \begin{align*}
+        \norm{P_n - I} \geq \norm{(P_n - I)e_n} = \norm{e_n} = 1 \implies \lim_{n\rightarrow \infty}\norm{P_n - I} \geq 1
+    \end{align*}
+    which shows $P_n$ does not converge to the identity operator with respect to the operator norm.
 \end{proof}
 
 
@@ -211,7 +217,19 @@
     \end{align*}
     Thus $U$ preserves norms and is thus an isometric isomorphism.
 
-    Now suppose $U$ is an isometric isomorphism.  Then $\norm{Ux}_{\mathcal{H}_2} = \norm{x}_{\mathcal{H}_1}$ for all $x \in \mathcal{H}_1$.
+    Now suppose $U\ :\ \mathcal{H}_1 \rightarrow \mathcal{H}_2$ is an isometric isomorphism.  By the definition of isomorphism, $U^{-1}$ exists and $\norm{Ux}_{\mathcal{H}_2} = \norm{x}_{\mathcal{H}_1}$ (or $\VEC{Ux}{Ux} = \VEC{x}{x}$) for all $x \in \mathcal{H}_1$.  Also,
+    \begin{align*}
+        \VEC{x}{y} &= \frac{1}{4}\qty(\norm{x + y}^2 - \norm{x - y}^2 - i \norm{x + iy}^2 + i\norm{x - iy}^2) \\
+        &= \frac{1}{4}\qty(\VEC{x + y}{x + y} - \VEC{x - y}{x - y} - i \VEC{x + iy}{x + iy} + i\VEC{x - iy}{x - iy}) \\
+        &= \frac{1}{4}\qty(\VEC{Ux + Uy}{Ux + Uy} - \VEC{Ux - Uy}{Ux - Uy} - i \VEC{Ux + iUy}{Ux + iUy} + i\VEC{Ux - iUy}{Ux - iUy}) \\
+        &= \frac{1}{4}\Bigg(\qty[\uwave{\norm{Ux}^2} + \VEC{Ux}{Uy} + \underline{\VEC{Uy}{Ux}} + \uwave{\underline{\norm{Uy}^2}}] - \qty[\uwave{\norm{Ux}^2} - \VEC{Ux}{Uy} - \underline{\VEC{Uy}{Ux}} + \uwave{\underline{\norm{Uy}^2}}] \\
+        & \qquad - i\qty[\uwave{\norm{Ux}^2} + i\VEC{Ux}{Uy} - i\underline{\VEC{Uy}{Ux}} - \uwave{\underline{\norm{Uy}^2}}] + i\qty[\uwave{\norm{Ux}^2} - i\VEC{Ux}{Uy} + i\underline{\VEC{Uy}{Ux}} - \uwave{\underline{\norm{Uy}^2}}]\Bigg) \\
+        &= \frac{1}{4}\qty(4\VEC{Ux}{Uy}) \\
+        &= \VEC{Ux}{Uy}
+    \end{align*}
+    Thus $U$ is unitary.
+
+    Suppose $U$ is an invertible, unitary map.  Then $\VEC{Ux}{Uy} = \VEC{x}{y}\ \forall x, y \in \mathcal{H}$.  The invertibility of $U$ implies $\VEC{x}{y} = \VEC{U(U^{-1}(x))}{U(U^{-1}(y))} = \VEC{U^{-1}(x)}{U^{-1}(y)}\ \forall x, y \in \mathcal{H}$.  Thus $U^{-1}$ is unitary.  Similarly, suppose $U$ is invertible and $U^{-1}$ is unitary.  Then $\VEC{x}{y} = \VEC{U^{-1}(U(x))}{U^{-1}(U(y))} = \VEC{Ux}{Uy}$.  Then $U$ is unitary.  Thus, an invertible linear map is unitary if and only if its inverse is.
 \end{proof}
 
 
@@ -235,7 +253,7 @@
 \begin{proof}
     First we prove $\norm{\phi_y}$ is bounded above by $\norm{y}$.
     \begin{align*}
-        \norm{\phi_y} = \sup_{\norm{x} = 1}\norm{\phi_y(x)} = \sup_{\norm{x} = 1}\VEC{y}{x} \leq \sup_{\norm{x} = 1}\norm{y}\norm{x} = \norm{y}
+        \norm{\phi_y} = \sup_{\norm{x} = 1}\norm{\phi_y(x)} = \sup_{\norm{x} = 1}\left|\VEC{y}{x}\right| \leq \sup_{\norm{x} = 1}\norm{y}\norm{x} = \norm{y}
     \end{align*}
     Next, consider $x = \frac{y}{\norm{y}}$ (note $\norm{x} = 1$):
     \begin{align*}
@@ -285,6 +303,15 @@
         \phi_1(x) = \VEC{y_1}{x} = \lim_{i\rightarrow \infty}\VEC{y_1}{m_i} = \lim_{i\rightarrow \infty}\phi_1(m_i) = \lim_{i \rightarrow \infty}\phi_2(m_i) = \lim_{i \rightarrow \infty}\VEC{y_2}{m_i} = \VEC{y_2}{x} = \phi_2(x) \qquad \forall x \in \mathcal{H}.
     \end{align*}
     Thus $\phi_1 \equiv \phi_2$, i.e.~bounded linear functionals are uniqueley determined by their values on $A$.
+
+    Let $\{u_\alpha\}$ is an orthonormal basis on $\mathcal{H}$.  Then if $\exists \phi \in \mathcal{H}^*$ such that $\phi(u_\alpha) = c_\alpha$ then by the Riesz Representation Theorem, $\exists y \in \mathcal{H}$ such that $\VEC{y}{u_\alpha} = c_\alpha$.  Then $y = \sum_{\alpha}c_\alpha u_\alpha$.  Thus the necessary condition $\sum_\alpha \left|c_\alpha\right|^2 < \infty$.
+
+    Suppose $\sum_\alpha\left|c_\alpha\right|^2 < \infty$.  Then define $y = \sum_\alpha c_\alpha u_\alpha$.  Since $\{u_\alpha\}$ is an orthonormal basis, then $c_\alpha = \VEC{y}{u_\alpha}$.  Then by the Riesz Representation Theorem, $\exists \phi \in \mathcal{H}^*$ such that $\phi(x) = \VEC{y}{x}\ \forall x \in \mathcal{H}$.  In particular, $\phi(u_\alpha) = c_\alpha$.
+
+    Thus, given a family of complex numbers $\{c_\alpha\}$,
+    \begin{align*}
+        \sum_\alpha \left|c_\alpha\right|^2 < \infty \iff \exists \phi \in \mathcal{H}^* \text{ such that } \phi(u_\alpha) = c_\alpha
+    \end{align*}
 \end{proof}
 
 
@@ -346,7 +373,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \problem{Hunter and Nachtergaele 8.12}
-\emph{Suppose that $A\ :\ \mathcal{H} \rightarrow \mathcal{H}$ is a bounded, self-adjoint linear operator such that there is a constant $c > 0$ with $$c\norm{x} \leq \norm{Ax} \qquad \text{for all } x \in \mathcal{H}.$$  Prove that there is a unique solution $x$ of the equation $Ax = y$ for every $y \in \mathcal{H}$.}
+\emph{Suppose that $A\ :\ \mathcal{H} \rightarrow \mathcal{H}$ is a bounded, self-adjoint linear operator such that there is a constant $c > 0$ with $$c\norm{x} \leq \norm{Ax} \qquad \text{for all } x \in \mathcal{H}.$$  Prove that there is a unique solution $x$ of the equation $Ax = y$ for every $y \in \mathcal{H}$.} \\
+
+\begin{proof}
+    Let $x \neq 0$.  Then $\norm{x} > 0$.  Then $\frac{\norm{Ax}}{c} \geq \norm{x} > 0 \implies \norm{Ax} > 0$, which shows $Ax \neq 0$, and thus $\ker A = \{0\}$.  Since $A$ is self-adjoint, then $A = A^*$ and thus $\ker A^* = \{0\}$.  Since $\VEC{y}{0} = 0\ \forall y \in \mathcal{H}$, then $y \perp \ker A^*$.  Then by Theorem 8.18 in Hunter Nachtergaele, $\exists x \in \mathcal{H}$ such that $y = Ax$.  Suppose $y = Ax_1 = Ax_2$.  Then $A(x_1 - x_2) = 0$, which implies $x_1 - x_2 \in \ker A = \{0\}$, thus $x_1 = x_2$, i.e.~the solution to $y = Ax$ is unique.
+\end{proof}
 
 
 
