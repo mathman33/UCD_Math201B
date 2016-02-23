@@ -121,7 +121,7 @@
 
     Now suppose $x \not\in \mathcal{M}^\perp$.  Then $x \in \mathcal{M}$ and $x \neq 0$.  Thus $x \not\in \mathcal{N}$ since a direct sum implies $\mathcal{N} \cap \mathcal{M} = \{0\}$.  Thus $\mathcal{N} \subset \mathcal{M}^\perp \subset \mathcal{N} \implies \mathcal{N} = \mathcal{M}^\perp$.
 
-    Switching $\mathcal{N}$ and $\mathcal{M}$ in the above paragraphs shows $\mathcal{M} = \mathcal{N}^\perp$.
+    Switching $\mathcal{N}$ and $\mathcal{M}$ shows $\mathcal{M} = \mathcal{N}^\perp$.
 \end{proof}
 
 
@@ -202,7 +202,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \problem{Hunter and Nachtergaele 8.6}
-\emph{Show that a linear operator $U\ :\ \mathcal{H}_1 \rightarrow \mathcal{H}_2$ is unitary if and only if it is an isometric isomorphism of normed linear spaces.  Show that an invertible linear map is unitary if and only if its inverse is.}
+\emph{Show that a linear operator $U\ :\ \mathcal{H}_1 \rightarrow \mathcal{H}_2$ is unitary if and only if it is an isometric isomorphism of normed linear spaces.  Show that an invertible linear map is unitary if and only if its inverse is.} \\
+
+\begin{proof}
+    Let $U\ :\ \mathcal{H}_1 \rightarrow \mathcal{H}_2$ be unitary.  Then $U$ is invertible and $\VEC{Ux}{Uy}_{\mathcal{H}_2} = \VEC{x}{y}_{\mathcal{H}_1}$ for all $x, y \in \mathcal{H}_1$.  Thus
+    \begin{align*}
+        \norm{Ux}_{\mathcal{H}_2}^2 = \VEC{Ux}{Ux}_{\mathcal{H}_2} = \VEC{x}{x}_{\mathcal{H}_1} = \norm{x}_{\mathcal{H}_1}^2
+    \end{align*}
+    Thus $U$ preserves norms and is thus an isometric isomorphism.
+
+    Now suppose $U$ is an isometric isomorphism.  Then $\norm{Ux}_{\mathcal{H}_2} = \norm{x}_{\mathcal{H}_1}$ for all $x \in \mathcal{H}_1$.
+\end{proof}
 
 
 
@@ -215,12 +225,12 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \problem{Hunter and Nachtergaele 8.7}
-\emph{If $\phi_y$ is the bounded linear functional defined in (8.5)}
+\emph{If $\phi_y$ is the bounded linear functional defined in (8.5),}
 \begin{equation}
     \tag{\it 8.5}
     \phi_y(x) = \VEC{y}{x}
 \end{equation}
-\emph{Prove that $\norm{\phi_y} = \norm{y}$.} \\
+\emph{prove that $\norm{\phi_y} = \norm{y}$.} \\
 
 \begin{proof}
     First we prove $\norm{\phi_y}$ is bounded above by $\norm{y}$.
@@ -248,11 +258,13 @@
 \emph{Prove that $\mathcal{H}^*$ is a Hilbert space with the inner product defined by $$ \VEC{\phi_x}{\phi_y}_{\mathcal{H}^*} = \VEC{y}{x}_\mathcal{H}.$$}
 
 \begin{proof}
-    First note $\VEC{\cdot}{\cdot}_{\mathcal{H}^*}$ is a well-defined inner product since $\VEC{\cdot}{\cdot}_\mathcal{H}$ is a well-defined inner product (i.e.~the properties of inner product hold).  It suffices to show $\mathcal{H}^*$ is closed.  Let $(\phi_n)$ be a convergent sequence of linear functionals in $\mathcal{H}^*$.  By the Riesz Representation Theorem, for all $n$, $\exists y_n$ such that $\phi_n(x) = \VEC{y_n}{x}_\mathcal{H}$ for all $x \in \mathcal{H}$.  Since $(\phi_n)$ converges, then $\forall x \in \mathcal{H}$, $\VEC{y_n}{x}_\mathcal{H}$ converges.  By continuity of inner product, then $y_n$ converges to some $y$.  By completeness of $\mathcal{H}$, $y \in \mathcal{H}$.  Again by the Riesz Representation Theorem, $\exists \phi \in \mathcal{H}^*$ such that $\phi(x) = \VEC{y}{x}_\mathcal{H}$ for all $x \in \mathcal{H}$.  Moreover,
+    First note that for $\phi_{y_1}$, $\phi_{y_2} \in \mathcal{H}^*$, $\norm{\phi_{y_1} + \phi_{y_2}}_{\mathcal{H}^*} = \norm{y_1 + y_2}_{\mathcal{H}}$ where $y_1$ and $y_2$ are the associated vectors in $\mathcal{H}$ guaranteed in the Riesz Representation Theorem.  This is true because $\phi_{y_1}(x) = \VEC{y_1}{x}_{\mathcal{H}}$ and $\phi_{y_2}(x) = \VEC{y_2}{x}_{\mathcal{H}}$ imply
     \begin{align*}
-        \lim_{n\rightarrow\infty}\phi_n = \lim_{n\rightarrow \infty}\VEC{y_n}{\cdot}_\mathcal{H} = \VEC{y}{\cdot}_\mathcal{H} = \phi_y
+         \phi_{y_1 + y_2}(x) = \VEC{y_1 + y_2}{x}_{\mathcal{H}} = \VEC{y_1}{x}_{\mathcal{H}} + \VEC{y_2}{x}_{\mathcal{H}} = \phi_{y_1}(x) + \phi_{y_2}(x)
     \end{align*}
-    Thus $\mathcal{H}^*$ is closed, which proves $\mathcal{H}^*$ is a Hilbert space.
+    and since $\norm{\phi_{y_1 + y_2}}_{\mathcal{H}^*} = \norm{y_1 + y_2}_{\mathcal{H}}$ by (Hunter and Nachtergaele 8.7), then $\norm{\phi_{y_1} + \phi_{y_2}}_{\mathcal{H}^*} = \norm{y_1 + y_2}_{\mathcal{H}}$.
+
+    Let $(\phi_n)$ be a Cauchy sequence in $\mathcal{H}^*$.  Then $\forall \E > 0$, $\exists N$ such that $\norm{\phi_m - \phi_n}_{\mathcal{H}^*} < \E$ for $m, n \geq N$.  By the Riesz Representation Theorem, $\exists (y_n)_n \in \mathcal{H}$ such that for every $n$, $\phi_n(x) = \VEC{y_n}{x}\ \forall x \in \mathcal{H}$.  $(y_n)_n$ is Cauchy since given $\E > 0$ we can find $N$ such that $\norm{y_n - y_m}_{\mathcal{H}} = \norm{\phi_n - \phi_m}_{\mathcal{H}^*} < \E$.  Since $\mathcal{H}$ is a Hilbert space, then $(y_n)_n$ is convergent to some $y \in \mathcal{H}$.  By the Riesz Representation Theorem, $\exists \phi \in \mathcal{H}^*$ such that $\phi(x) = \VEC{y}{x}\ \forall x \in \mathcal{H}$.  Then $(\phi_n)_n$ converges to $\phi$ because $\norm{\phi_n - \phi}_{\mathcal{H}^*} = \norm{y_n - y}_\mathcal{H}$, which can be made arbitrary small by the definition of convergence.  Thus $\mathcal{H}^*$ is complete.  Also, $\VEC{\cdot}{\cdot}_{\mathcal{H}^*}$ is a well-defined inner product since $\VEC{\cdot}{\cdot}_\mathcal{H}$ is a well-defined inner product (i.e.~the properties of inner product hold).  Thus $\mathcal{H}^*$ is a Hilbert space.
 \end{proof}
 
 
@@ -265,7 +277,15 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \problem{Hunter and Nachtergaele 8.9}
-\emph{Let $A \subset \mathcal{H}$ be such that $$\mathcal{M} = \left\{x \in \mathcal{H}\ |\ x \text{ is a finite linear combination of elements in $A$}\right\}$$ is a dense linear subspace of $\mathcal{H}$.  Prove that any bounded linear functional on $\mathcal{H}$ is uniquely determined by its values on $A$.  If $\{u_\alpha\}$ is an orthonormal basis, find a necessary and sufficient condition on a family of complex numbers $c_\alpha$ for there to be a bounded linear functional $\phi$ such that $\phi_{u_\alpha} = c_\alpha$.}
+\emph{Let $A \subset \mathcal{H}$ be such that $$\mathcal{M} = \left\{x \in \mathcal{H}\ |\ x \text{ is a finite linear combination of elements in $A$}\right\}$$ is a dense linear subspace of $\mathcal{H}$.  Prove that any bounded linear functional on $\mathcal{H}$ is uniquely determined by its values on $A$.  If $\{u_\alpha\}$ is an orthonormal basis, find a necessary and sufficient condition on a family of complex numbers $c_\alpha$ for there to be a bounded linear functional $\phi$ such that $\phi(u_\alpha) = c_\alpha$.} \\
+
+\begin{proof}
+    Suppose $\phi_1$ and $\phi_2$ are two bounded linear functionals such that $\phi_1(a) = \phi_2(a)$ for all $a \in A$.  Let $x \in \mathcal{H}$.  By denisty of $\mathcal{M}$, $\exists m_i \in \mathcal{M}$ such that $m_i \rightarrow x$.  By linearity of $\phi_1$ and $\phi_2$, $\phi_1(m_i) = \phi_2(m_i)$ for all $i = 1, 2, \dots$.  By the Riesz Representation Theorem, $\exists y_1, y_2$ such that $\phi_1(x) = \VEC{y_1}{x}$ and $\phi_2(x) = \VEC{y_2}{x}$ for all $x \in \mathcal{H}$.  Thus by continuity of inner products,
+    \begin{align*}
+        \phi_1(x) = \VEC{y_1}{x} = \lim_{i\rightarrow \infty}\VEC{y_1}{m_i} = \lim_{i\rightarrow \infty}\phi_1(m_i) = \lim_{i \rightarrow \infty}\phi_2(m_i) = \lim_{i \rightarrow \infty}\VEC{y_2}{m_i} = \VEC{y_2}{x} = \phi_2(x)
+    \end{align*}
+    Thus $\phi_1 \equiv \phi_2$, i.e.~bounded linear functionals are uniqueley determined by their values on $A$.
+\end{proof}
 
 
 
@@ -278,7 +298,42 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \problem{Hunter and Nachtergaele 8.11}
-\emph{Prove that if $A\ :\ \mathcal{H} \rightarrow \mathcal{H}$ is a linear map and $\dim \mathcal{H} < \infty$, then $$\dim \ker A + \dim \ran A = \dim \mathcal{H}.$$  Prove that, if $\dim \mathcal{H} < \infty$, then $\dim \ker A = \dim \ker A^*$.  In particular, $\ker A = \{0\}$ if and only if $\ker A^* = \{0\}$.}
+\emph{Prove that if $A\ :\ \mathcal{H} \rightarrow \mathcal{H}$ is a linear map and $\dim \mathcal{H} < \infty$, then $$\dim \ker A + \dim \ran A = \dim \mathcal{H}.$$  Prove that if $\dim \mathcal{H} < \infty$, then $\dim \ker A = \dim \ker A^*$.  In particular, $\ker A = \{0\}$ if and only if $\ker A^* = \{0\}$.} \\
+
+\begin{proof}
+    Let $\dim \mathcal{H} < \infty$ (say $\dim \mathcal{H} = n$).  Then $\dim \ker A < \infty$ and $\dim \ran A < \infty$ since $\ker A$ and $\ran A$ are subspaces of $\mathcal{H}$.  Let $\dim \ker A = m \leq n$ and let $\left\{u_1, u_2, \dots, u_m\right\}$ be a basis of $\ker A$.  Since $\ker A$ is a subspace of $\mathcal{H}$, this basis can be extended to a basis $\mathcal{U}$ of $\mathcal{H}$: $\mathcal{U} = \left\{u_1, u_2, \dots, u_m, v_{m+1}, v_{m+2}, \dots, v_{n}, \right\}$.  Let $x \in \mathcal{H}$.  Then
+    \begin{align*}
+        x &= a_1u_1 + a_2u_2 + \dots + a_mu_m + a_{m+1}v_{m+1} + a_{m+2}v_{m+2} + \dots + a_nv_n \\
+        \implies Ax &= \cancelto{0}{a_1Au_1} + \cancelto{0}{a_2Au_2} + \dots + \cancelto{0}{a_mAu_m} + a_{m+1}Av_{m+1} + a_{m+2}Av_{m+2} + \dots + a_nAv_n \\
+        &= a_{m+1}Av_{m+1} + a_{m+2}Av_{m+2} + \dots + a_nAv_n
+    \end{align*}
+    since $u_i \in \ker A$ for $i = 1, 2, \dots, m$.  Thus, $\left\{Av_{m+1}, Av_{m+2}, \dots, Av_n\right\}$ spans $\ran A$.  However it is also linearly independent since
+    \begin{align*}
+        c_{m+1}Av_{m+1} + c_{m+2}Av_{m+2} + \dots + c_nAv_n &= 0 \\
+        \implies A\qty(c_{m+1}v_{m+1} + c_{m+2}v_{m+2} + \dots + c_nv_n) &= 0 \\
+        \implies c_{m+1}v_{m+1} + c_{m+2}v_{m+2} + \dots + c_nv_n &\in \ker A \\
+        \implies c_{m+1}v_{m+1} + c_{m+2}v_{m+2} + \dots + c_nv_n &= d_1u_1 + d_2u_2 + \dots + d_mu_m \qquad \text{for some $d_i \in \Cx$} \\
+        \implies d_1 = d_2 = \dots = d_m = c_{m+1} = c_{m+2} = \dots = c_n &= 0 \qquad \text{since $\mathcal{U}$ is a basis}
+    \end{align*}
+    Thus $\left\{Av_{m+1}, Av_{m+2}, \dots, Av_n\right\}$ is linearly independent.  Since it also spans $\ran A$ then it is a basis of $\ran A$.  Thus $\dim \ran A = n - m$.  Thus, since $m + (n - m) = n$, then
+    \begin{align*}
+        \dim \ker A + \dim \ran A = \dim \mathcal{H}.
+    \end{align*}
+
+    Let $x \in \mathcal{H}$.  Then
+    \begin{align*}
+        x \in \ker A^* &\iff A^*x = 0 \\
+        &\iff \VEC{y}{A^*x} = 0 \qquad \forall y \in \mathcal{H} \\
+        &\iff \VEC{Ay}{x} = 0 \qquad \forall y \in \mathcal{H} \\
+        &\iff x \perp Ay \qquad \forall y \in \mathcal{H} \\
+        &\iff x \perp (\ran A) \\
+        &\iff x \in (\ran A)^\perp
+    \end{align*}
+    Thus $\ker A^* = (\ran A)^\perp$ and $\dim \ker A^* = \dim (\ran A)^\perp$.  However since $\dim \ker A + \dim \ran A = \dim \mathcal{H}$ and $\dim \ran A + \dim (\ran A)^\perp = \dim \mathcal{H}$, then $\dim (\ran A)^\perp = \dim \ker A$.  Thus,
+    \begin{align*}
+        \dim \ker A = \dim \ker A^*.
+    \end{align*}
+\end{proof}
 
 
 
