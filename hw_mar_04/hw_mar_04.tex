@@ -211,6 +211,29 @@
 
 \begin{proof}
     If $\VEC{x}{Ay} = \VEC{x}{By}$, then $\VEC{x}{(A-B)y} = 0$ for all $x, y \in \Hilb$.  Then $A - B = 0$, i.e.~$A = B$.
+
+    Let $\VEC{x}{Ax} = \VEC{x}{Bx}$ for all $x \in \Hilb$.  Then
+    \begin{align*}
+        0 = \VEC{x}{(A-B)x} &= \frac{1}{4}\Big[\norm{x + (A-B)x}^2 - \norm{x - (A-B)x}^2 - i\norm{x + i(A-B)x}^2 + i\norm{x - i(A-B)x}^2\Big]
+    \end{align*}
+    Since norms are always positive, this implies the real and imaginary parts of the right hand side must each equal zero.  Thus,
+    \begin{align*}
+        \norm{x + (A-B)x}^2 &= \norm{x - (A-B)x}^2 \\
+        \implies \VEC{x + (A-B)x}{x + (A-B)x} &= \VEC{x - (A-B)x}{x - (A-B)x} \\
+        \implies \norm{x}^2 + \VEC{x}{(A-B)x} + \VEC{(A-B)x}{x} + \norm{(A-B)x}^2 &= \norm{x}^2 - \VEC{x}{(A-B)x} - \VEC{(A-B)x}{x} + \norm{(A-B)x}^2 \\
+        \implies \VEC{x}{(A-B)x} + \VEC{(A-B)x}{x} & = 0 \\
+        \implies \VEC{x}{(A-B)x} + \overline{\VEC{x}{(A-B)x}} &= 0 \\
+        \implies \Re\qty[\VEC{x}{(A-B)x}] &= 0
+    \end{align*}
+    Also,
+    \begin{align*}
+        \norm{x - i(A-B)x}^2 &= \norm{x + i(A-B)x}^2 \\
+        \implies \norm{x}^2 - i\VEC{x}{(A-B)x} + i\VEC{(A-B)x}{x} - \norm{(A-B)x}^2 &= \norm{x}^2 + i\VEC{x}{(A-B)x} - i\VEC{(A-B)x}{x} - \norm{(A-B)x}^2 \\
+        \implies i\qty[\VEC{x}{(A-B)x} - \overline{\VEC{x}{(A-B)x}}] &= 0 \\
+        \implies \VEC{x}{(A-B)x} - \overline{\VEC{x}{(A-B)x}} &= 0 \\
+        \implies \Im\qty[\VEC{x}{(A-B)x}] = 0
+    \end{align*}
+    Thus $\VEC{x}{(A-B)x} = 0$ for all $x \in \Hilb$.  Thus $A = B$.
 \end{proof}
 
 
