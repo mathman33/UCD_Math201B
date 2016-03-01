@@ -1,0 +1,356 @@
+\documentclass{article} % A4 paper and 11pt font size
+\setcounter{secnumdepth}{0}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{color}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[makeroom]{cancel}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage[normalem]{ulem}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\E}{\varepsilon}
+\def\Rl{\mathbb{R}}
+\def\Cx{\mathbb{C}}
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancy} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead[L]{\bf Sam Fleischer}
+\fancyhead[C]{\bf UC Davis \\ Analysis (MAT201B)} % No page header - if you want one, create it in the same way as the footers below
+\fancyhead[R]{\bf Winter 2016}
+
+\fancyfoot[L]{\bf } % Empty left footer
+\fancyfoot[C]{\bf \thepage} % Empty center footer
+\fancyfoot[R]{\bf } % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{25pt} % Customize the height of the header
+
+\newcommand{\VEC}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\ran}{\text{\rm ran }}
+\newcommand{\Hilb}{\mathcal{H}}
+
+\newcommand{\problem}[1]{
+\vspace{.375cm}
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \noindent\rule{5cm}{1pt}
+    \end{center}
+    \section{\bf #1}
+    \begin{center}
+        \noindent\rule{5cm}{1pt}
+    \end{center}
+    \vspace{0.25cm}
+\end{minipage}
+}
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\normalfont \normalsize 
+\textsc{UC Davis, Analysis (MAT201B), Winter 2016} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{2pt} \\[0.4cm] % Thin top horizontal rule
+\Huge Homework \#6 \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{\huge Sam Fleischer} % Your name
+
+\date{March 4, 2016} % Today's date or a custom date
+
+\begin{document}\thispagestyle{empty}
+
+\maketitle % Print the title
+
+\makeatletter
+\@starttoc{toc}
+\makeatother
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.1}
+\emph{If $M$ is a linear subspace of a linear space $X$, then the \emph{quotient space} $X/M$ is the set $\{x + M\ |\ x + y \in M\}$ of affine spaces $$x + M = \{x + y\ |\ y \in M\}$$ parallel to $M$.}
+\begin{enumerate}[\it (a)]
+    \item
+        \emph{Show that $X/M$ is a linear space with respect to the operations $$\lambda(x + M) = \lambda x + M, \qquad (x + M) + (y + M) = (x + y) + M.$$}
+        \begin{proof}
+            Since $X$ is a linear space, then $\alpha x + \beta y \in X$ for every $x,y \in X$, $\alpha, \beta \in \mathbb{F}$.  Then
+            \begin{align*}
+                \alpha(x + M) + \beta(x + M) = (\alpha x + \beta y) + M \in X/M
+            \end{align*}
+            Define the ``zero'' vector in $X/M$ by $0 + M$ where $0$ is the ``zero'' vector in $X$.  Then
+            \begin{align*}
+                (0 + M) + (x + M) = (0 + x) + M = x + M = (x + 0) + M = (x + M) + (0 + M)
+            \end{align*}
+            Also, the ``one'' in $\mathbb{F}$ ($1$) is the ``one'' in $X/M$ since
+            \begin{align*}
+                1(x + M) = 1x + M = x + M
+            \end{align*}
+            Thus $X/M$ is a vector space.
+        \end{proof}
+    \item
+        \emph{Suppose that $X = M \oplus N$.  Show that $N$ is linearly isomorphic to $X/M$.}
+        \begin{proof}
+            Define $T\ :\ N \rightarrow X/M$ by
+            \begin{align*}
+                Tn = n + M
+            \end{align*}
+            For any $x, y \in N$, then if $Tx = Ty$, then $x + M = y + M \implies (x - y) + M = 0 + M \implies x - y \in M$.  But since $N$ is a vector space, then $x - y \in N$.  Since $X = M \oplus N$, then $M \cap N = \{0\}$, which means $x = y$.  Thus $T$ is injective.
+            Now choose $x + M \in X/M$.  Then note $P_Nx \in N$ and
+            \begin{align*}
+                T(P_Nx) = P_Nx + M = (P_Nx + M) + (P_Mx + M) = (P_Nx + P_Mx) + M = x + M
+            \end{align*}
+            Thus $T$ is surjective.  Thus $T$ is a bijection.  Also, $T$ is a linear map since
+            \begin{align*}
+                T(\alpha x + \beta y) = (\alpha x + \beta y) + M = \alpha(x + M) + \beta(y + M) = \alpha Tx + \beta Ty
+            \end{align*}
+            Thus $N$ is linearly isomorphic to $X/M$.
+        \end{proof}
+    \item
+        \emph{The \emph{codimension} of $M$ in $X$ is the dimension of $X/M$.  Is a subspace of a Banach space with finite codimension necessarily closed?}
+        \begin{proof}
+        \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.10}
+\emph{Let $\{u_\alpha\}$ be an orthonormal basis of $\Hilb$.  Prove that $\{\phi_{u_\alpha}\}$ is an orthnormal basis of $\Hilb^*$.}
+
+\begin{proof}
+    First note $\{\phi_{u_\alpha}\}$ is an orthonormal set since
+    \begin{align*}
+        \VEC{\phi_{u_1}}{\phi_{u_2}} = \VEC{u_2}{u_1} = \delta_{u_2,u_1} = \begin{cases}
+            1 & \text{ if } u_1 = u_2 \\
+            0 & \text{ if } u_1 \neq n_2
+        \end{cases}
+    \end{align*}
+    Next let $\phi \in \Hilb^*$.  By the Riesz Representation Theorem, $\exists u \in \Hilb$ such that $\phi(x) = \VEC{x}{u}$ for all $x \in \Hilb$.  Then since $\{u_\alpha\}$ is an orthonormal basis of $\Hilb$, then $\exists \{c_\alpha\}$ such that $\sum_{\alpha}|c_\alpha|^2 < \infty$ and $u = \sum_{\alpha}c_\alpha u_\alpha$.  Then
+    \begin{align*}
+        \phi(x) = \VEC{x}{u} = \VEC{x}{\sum_\alpha c_\alpha u_\alpha} = \sum_\alpha c_\alpha\VEC{x}{u_\alpha} = \sum_\alpha c_\alpha \phi_{u_\alpha}
+    \end{align*}
+    where $\phi_{u_\alpha}$ is the functional in $\Hilb^*$ such that $\phi_{u_\alpha}(x) = \VEC{x}{u_\alpha}$ for all $x \in \Hilb$.  Thus $\{\phi_{u_\alpha}\}$ spans $\Hilb^*$, and hence $\{\phi_{u_\alpha}\}$ is an orthonormal basis of $\Hilb^*$.
+\end{proof}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.13}
+\emph{Prove that an orthonormal set of vectors $\{u_\alpha\ |\ \alpha \in \mathcal{A}\}$ is a Hilbert space $\Hilb$ is an orthonormal basis if and only if $$\sum_{\alpha \in \mathcal{A}} u_\alpha \otimes u_\alpha = I.$$}
+
+\begin{proof}
+    Let $\{u_\alpha\}$ be an orthonormal basis of $\Hilb$.  Then $\forall x \in \Hilb$, $x = \sum_\alpha \VEC{u_\alpha}{x}u_\alpha$.  However, the projection $P_{u_\alpha}$ is defined as
+    \begin{align*}
+        P_{u_\alpha}x = \VEC{u_\alpha}{x}u_\alpha
+    \end{align*}
+    and hence, for every $x \in \Hilb$, $I x = x = \sum_\alpha \VEC{u_\alpha}{x}u_\alpha = \sum_\alpha P_{u_\alpha}x = \sum_\alpha (u_\alpha \otimes u_\alpha) x$.  In other words, $I = \sum_\alpha u_\alpha \otimes u_\alpha$.  Now let $\sum_\alpha u_\alpha \otimes u_\alpha = I$.  Then $x = \sum_\alpha P_{u_\alpha}x = \sum_\alpha \VEC{u_\alpha}{x}u_\alpha$.  Thus $\{u_\alpha\}$ is an orthonormal basis of $\Hilb$.
+\end{proof}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.14}
+\emph{Suppose that $A, B \in \mathcal{B}(\Hilb)$ satisfy $$\VEC{x}{Ay} = \VEC{x}{By} \qquad \text{for all } x, y \in \Hilb.$$  Prove that $A = B$.  Use a polarization-type identity to prove that if $\Hilb$ is a complex Hilbert space and $$\VEC{x}{Ax} = \VEC{x}{Bx} \qquad \text{for all } x \in \Hilb,$$ then $A = B$.  What can you say about $A$ and $B$ for real Hilbert spaces?}
+
+\begin{proof}
+    If $\VEC{x}{Ay} = \VEC{x}{By}$, then $\VEC{x}{(A-B)y} = 0$ for all $x, y \in \Hilb$.  Then $A - B = 0$, i.e.~$A = B$.
+\end{proof}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.15}
+\emph{Prove that for all $A,B \in \mathcal{B}(\Hilb)$, and $\lambda \in \Cx$, we have (a) $A^{**} = A$; (b) $(AB)^* = B^*A^*$; (c) $(\lambda A)^* = \overline{\lambda}A^*$; (d) $(A + B)^* = A^* + B^*$; (e) $\norm{A^*} = \norm{A}$.}
+
+\begin{proof}
+    \begin{enumerate}[\it (a)]
+        \item For all $x,y \in \Hilb$, $\VEC{x}{Ay} = \VEC{A^*x}{y} = \VEC{x}{(A^{*})^*y}$.  Thus $\VEC{x}{(A - A^{**})y} = 0$ for all $x, y \in \Hilb$.  Thus $A = A^{**}$.
+        \item For all $x,y \in \Hilb$, $\VEC{x}{(AB)^*y} = \VEC{ABx}{y} = \VEC{Bx}{A^*y} = \VEC{x}{B^*A^*y} \implies \VEC{x}{\qty((AB)^* - B^*A^*)y} = 0$ for all $x, y \in \Hilb$.  Thus $(AB)^* = B^*A^*$.
+        \item For all $x,y \in \Hilb$, $\VEC{x}{(\lambda A)^*y} = \VEC{\lambda Ax}{y} = \overline{\lambda}\VEC{Ax}{y} = \overline{\lambda}\VEC{x}{A^*y} \implies \VEC{x}{(\qty(\lambda A)^* - \overline{\lambda} A^*)y} = 0$ for all $x, y \in \Hilb$.  Thus $(\lambda A)^* = \overline{\lambda}A^*$.
+        \item For all $x,y \in \Hilb$, $\VEC{x}{(A + B)^*y} = \VEC{(A + B)x}{y} = \VEC{Ax}{y} + \VEC{Bx}{y} = \VEC{x}{A^*y} + \VEC{x}{B^*y} = \VEC{x}{(A^* + B^*)y} \implies \VEC{x}{(\qty(A + B)^* - (A^* + B^*))y} = 0$ for all $x, y \in \Hilb$.  Thus $(A + B)^* = A^* + B^*$.
+        \item First define $M \in \Hilb^*$ by $Mx = \VEC{y}{Ax}$.  Then $M$ is a bounded linear functional since
+        \begin{align*}
+            M(ax_1 + bx_2) = \VEC{y}{A(ax_1 + bx_2)} = \VEC{y}{aAx_1} + \VEC{y}{bAx_2} = a\VEC{y}{Ax_1} + b\VEC{y}{Ax_2} = aMx_1 + bMx_2
+        \end{align*}
+        and
+        \begin{align*}
+            \norm{M} = \sup_{\norm{x} = 1}\VEC{y}{Ax} \leq \sup_{\norm{x} = 1}\norm{y}\norm{Ax} \leq \norm{y}\norm{A}
+        \end{align*}
+        and since $A \in \mathcal{B}(\Hilb)$, then $\norm{M} < \infty$.  Then since $M \in \Hilb^*$, The Riesz Representation Theorem guarantees a unique vector $v \in \Hilb$ such that
+        \begin{align*}
+            Mx = \VEC{v}{x} = \VEC{y}{Ax} = \VEC{A^*y}{x}
+        \end{align*}
+        Thus $v = A^*y$.  Finally,
+        \begin{align*}
+            \norm{A^*y} = \sup_{\norm{x}=1}\left|\VEC{v}{x}\right| = \sup_{\norm{x}=1}\left|\VEC{y}{Ax}\right| \leq \sup_{\norm{x}=1}\norm{y}{\norm{Ax}} \leq \sup_{\norm{x}=1}\norm{y}\norm{A}\norm{x} = \norm{y}\norm{A}
+        \end{align*}
+        Thus $\norm{A^*} \leq \norm{A}$.  This also implies $\norm{A} = \norm{A^{**}} = \norm{(A^*)^*} \leq \norm{A^*}$.  Thus, $\norm{A} = \norm{A^*}$.
+    \end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.16}
+Let $U\ :\ L^2(\Omega, P) \rightarrow L^2(\Omega, P)$ by
+\begin{equation}
+    \tag{8.16}
+    Uf = f \circ T \qquad
+\end{equation}
+\emph{where $T\ :\ (\Omega, P) \rightarrow (\Omega, P)$ is measure preserving, i.e.~$P(A) = P(T^{-1}A)$ $\forall$ measurable $A \subset \Omega$.  Prove that the operator $U$ defined in (8.16) is unitary.}
+
+\begin{proof}
+    % Since $T$ is measure-preserving, then $\forall$ measurable $A \subset \Omega$, $\mathcal{X}_A \circ T = \mathcal{X}_{T^{-1}(A)} = \mathcal{X}_A$, where $\mathcal{X}_{G}$ is the characteristic function on $G$
+    % \begin{align*}
+    %     \mathcal{X}_{G}(x) = \begin{cases}
+    %         1 & \text{ if } x \in G \\
+    %         0 & \text{ if } x \not\in G
+    %     \end{cases}
+    % \end{align*}
+    Since $T$ is measure-preserving, then $T$ is bijective (by definition) and for any $f \in L^2(\Omega, P)$, we have $\mathcal{X}f = \mathcal{X}f \circ T$ (where $\mathcal{X}$ is the characteristic function), or
+    \begin{align*}
+        \int_\Omega f \dd P = \int_\Omega f \circ T \dd P
+    \end{align*}
+    Then since $\overline{f}g \in L^2(\Omega, P)$, then
+    \begin{align*}
+        \int_\Omega \overline{f}g \dd P = \int_\Omega (\overline{f}g) \circ T \dd P
+    \end{align*}
+    Thus,
+    \begin{align*}
+        \VEC{Uf}{Ug} = \int_\Omega \overline{f\qty(T\qty(\omega))}g\qty(T\qty(\omega))\dd P\qty(\omega) = \int_\Omega \qty(\qty(\overline{f}g) \circ T)(\omega) \dd P\qty(\omega) = \int_\Omega \qty(\overline{f}g)(\omega) \dd P\qty(\omega) = \VEC{f}{g}
+    \end{align*}
+    Also, since $T$ is bijective, $T^{-1}$ exists and $U^{-1}f$ can be defined as
+    \begin{align*}
+        U^{-1}f = f \circ T^{-1}
+    \end{align*}
+    Clearly
+    \begin{align*}
+        U^{-1}(Uf) = U^{-1}(f \circ T) = (f \circ T) \circ T^{-1} = f \circ (T \circ T^{-1}) = f \circ \mathbb{1} = f
+    \end{align*}
+    and
+    \begin{align*}
+        U(U^{-1}f) = U(f \circ T^{-1}) = (f \circ T^{-1}) \circ T = f \circ (T^{-1} \circ T) = f \circ \mathbb{1} = f
+    \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.17}
+\emph{Prove that strong convergence implies weak convergence.  Also prove that strong and weak convergence are equivalent in a finite-dimensional Hilbert space.}
+
+\begin{proof}
+    Let $x_n \rightarrow x$ strongly, i.e.~$\norm{x_n - x} \rightarrow 0$.  Then
+    \begin{align*}
+        \VEC{x_n}{y} - \VEC{x}{y} = \VEC{x_n - x}{y} \leq \norm{x_n - x}{y} \rightarrow 0 \qquad \forall y \in \Hilb
+    \end{align*}
+    Then $x_n \rightarrow x$ weakly.  Suppose $\dim \Hilb = n < \infty$ and $x_n \rightarrow x$ weakly.  Let $\{e_i\}_{i=1}^n$ be an orthonormal basis of $\Hilb$.  Then $x = \sum_{i=1}^nc_ie_i$ where $c_i = \VEC{e_i}{x}$.  Next, define the $\ell^1$ norm by
+    \begin{align*}
+        \norm{x}_1 = \sum_{i=1}^n\left|c_i\right|
+    \end{align*}
+    Since $x_n \rightarrow x$ weakly, then $\VEC{x_n}{y} \rightarrow \VEC{x}{y}$ for all $y \in \Hilb$.  This implies $\VEC{e_i}{x_n} \rightarrow \VEC{e_i}{x}$ for each $i = 1, \dots, n$.  Also, $x_n - x = \sum_{i=1}^n \VEC{e_i}{x_n - x}e_i$, and thus
+    \begin{align*}
+        \norm{x_n - x}_1 = \sum_{i=1}^n \left|\VEC{e_i}{x_n - x}\right| = \sum_{i=1}^n \left|\VEC{e_i}{x_n} - \VEC{e_i}{x}\right| \rightarrow 0
+    \end{align*}
+    However, $\norm{\cdot}_1 \equiv \norm{\cdot}_\Hilb$ since all norms are equivalent in finite-dimensional spaces, and thus $x_n \rightarrow x$ strongly.
+\end{proof}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.18}
+\emph{Let $(u_n)$ be a sequence of orthonormal vectors in a Hilbert space.  Prove that $u_n \rightharpoonup 0$ weakly.}
+
+\begin{proof}
+\end{proof}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 8.19}
+\emph{Prove that a strongly lower-semicontinuous convex function $f\ :\ \Hilb \rightarrow \Rl$ on a Hilbert space $\Hilb$ is weakly lower-semicontinuous.}
+
+\begin{proof}
+\end{proof}
+
+
+
+
+\end{document}

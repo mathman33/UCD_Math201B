@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  23 FEB 2016 10:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  24 FEB 2016 14:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.tex
-(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.tex
+**/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_24/hw_feb_24.tex
+(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_24/hw_feb_24.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
@@ -2030,8 +2030,8 @@ les
 \f@ncyO@erf=\skip100
 \f@ncyO@olf=\skip101
 \f@ncyO@orf=\skip102
-) (/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.aux)
-\openout1 = `hw_feb_21.aux'.
+) (/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_24/hw_feb_24.aux)
+\openout1 = `hw_feb_24.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
 LaTeX Font Info:    ... okay on input line 102.
@@ -2151,10 +2151,10 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 102.
 LaTeX Info: Redefining \pageref on input line 102.
 LaTeX Info: Redefining \nameref on input line 102.
-(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.out) (/User
-s/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.out)
+(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_24/hw_feb_24.out) (/User
+s/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_24/hw_feb_24.out)
 \@outlinefile=\write4
-\openout4 = `hw_feb_21.out'.
+\openout4 = `hw_feb_24.out'.
 
 ABD: EveryShipout initializing macros
 Package pgfplots notification 'compat/show suggested version=true': document ha
@@ -2185,7 +2185,7 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 8.27998pt on input line 105.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 6.43999pt on input line 105.
-(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.toc
+(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_24/hw_feb_24.toc
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10> not available
 (Font)              Font shape `T1/futs/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
@@ -2202,7 +2202,7 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 5.51999pt on input line 2.
 )
 \tf@toc=\write5
-\openout5 = `hw_feb_21.toc'.
+\openout5 = `hw_feb_24.toc'.
 
 [1
 
@@ -2242,10 +2242,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 376--377
 [7]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 384.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 384.
-(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_feb_21.aux)
+(/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_24/hw_feb_24.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 384.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 384.
-Package rerunfilecheck Info: File `hw_feb_21.out' has not changed.
+Package rerunfilecheck Info: File `hw_feb_24.out' has not changed.
 (rerunfilecheck)             Checksum: 113016F834E94D776471A7112CC7D006;570.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 384.
  ) 
@@ -2268,8 +2268,8 @@ l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr
 /local/texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/
 texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive
 /2015/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_21/hw_f
-eb_21.pdf (7 pages, 100143 bytes).
+Output written on /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_feb_24/hw_f
+eb_24.pdf (7 pages, 100143 bytes).
 PDF statistics:
  136 PDF objects out of 1000 (max. 8388607)
  115 compressed objects within 2 object streams
