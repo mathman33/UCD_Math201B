@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  1 MAR 2016 00:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  3 MAR 2016 22:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2210,37 +2210,45 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/futs/b/n' tried instead on input line 114.
 [2] [3]
-Overfull \hbox (7.87755pt too wide) in paragraph at lines 235--235
+Overfull \hbox (16.86913pt too wide) in paragraph at lines 238--238
 [] 
  []
 
-
-Overfull \hbox (22.42487pt too wide) in paragraph at lines 254--255
+[4]
+Overfull \hbox (22.42487pt too wide) in paragraph at lines 265--266
 []\T1/futs/m/n/10 For all $\FML/futmi/m/it/10 x; y \FMS/futm/m/n/10 2 H$\T1/fut
 s/m/n/10 , $[] \FMS/futm/m/n/10  []  [] € []  [] € []  []  [])
  []
 
-[4] [5]
-Overfull \hbox (2.65195pt too wide) in paragraph at lines 346--348
+[5]
+Overfull \hbox (2.65195pt too wide) in paragraph at lines 357--359
 \T1/futs/m/n/10 However, $[][] \FMS/futm/m/n/10 ^^Q [][]$ \T1/futs/m/n/10 since
  all norms are equiv-a-lent in finite-dimensional spaces, and thus $\FML/futmi/
 m/it/10 x[] \FMS/futm/m/n/10 ! \FML/futmi/m/it/10 x$ \T1/futs/m/n/10 strongly.
  []
 
-[6] [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 379.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 379.
+[6]
+Overfull \hbox (2.32588pt too wide) in paragraph at lines 396--398
+\T1/futs/m/n/10 and $\FML/futmi/m/it/10 z[] \FMS/futm/m/n/10 ! \T1/futs/m/n/10 
+0$ strongly (the limit is $0$ since the weak limit of $\FML/futmi/m/it/10 y[]$ 
+\T1/futs/m/n/10 is $0$). Since $\FML/futmi/m/it/10 f$ \T1/futs/m/n/10 is strong
+ly lower-semicontinuous,
+ []
+
+[7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 415.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 415.
 (/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_mar_04/hw_mar_04.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 379.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 379.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 415.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 415.
 Package rerunfilecheck Info: File `hw_mar_04.out' has not changed.
 (rerunfilecheck)             Checksum: AF6BFBCFEBD09C9B6C6A42C83521B195;576.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 379.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 415.
  ) 
 Here is how much of TeX's memory you used:
  34436 strings out of 493089
  779506 string characters out of 6134842
- 953663 words of memory out of 5000000
+ 950665 words of memory out of 5000000
  37311 multiletter control sequences out of 15000+600000
  108095 words of font info for 107 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2256,7 +2264,7 @@ live/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/20
 15/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2015/texm
 f-dist/fonts/type1/adobe/utopia/putri8a.pfb>
 Output written on /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_mar_04/hw_m
-ar_04.pdf (7 pages, 94965 bytes).
+ar_04.pdf (7 pages, 101536 bytes).
 PDF statistics:
  141 PDF objects out of 1000 (max. 8388607)
  121 compressed objects within 2 object streams

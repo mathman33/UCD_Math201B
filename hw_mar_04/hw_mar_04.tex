@@ -152,6 +152,17 @@
     \item
         \emph{The \emph{codimension} of $M$ in $X$ is the dimension of $X/M$.  Is a subspace of a Banach space with finite codimension necessarily closed?}
         \begin{proof}
+            Let $\phi$ be an unbounded linear functional.  Then let $M = \ker\phi$ and consider $X/(\ker \phi)$.  Define the bijection $T\ :\ X/(\ker \phi) \rightarrow \Cx$ by
+            \begin{align*}
+                T(x + \ker \phi) = \phi(x)
+            \end{align*}
+            Injectivity: If $T(x + \ker\phi) = T(y + \ker\phi)$, then $\phi(x) = \phi(y)$, then since $\phi$ is linear, $\phi(x - y) = 0$, i.e.~$x - y \in \ker \phi$.  Thus $x - y + \ker \phi = 0 + \ker \phi$, and so $x + \ker \phi = (y + \ker \phi) + (0 + \ker \phi) = y + \ker \phi$.  Thus $T$ is injective.  Sujectivity: If $\lambda \in \Cx$, then choose $y \in X$ with $y \not\in \ker\phi$ and note
+            \begin{align*}
+                T\qty(\lambda\frac{y}{\phi(y)} + \ker \phi) = \phi\qty(\lambda\frac{y}{\phi(y)}) = \frac{\lambda}{\phi(y)}\phi(y) = \lambda
+            \end{align*}
+            Thus $T$ is surjective, which shows $T$ is bijective, and so $\dim(X/(\ker\phi)) = \dim(\Cx) = 1 < \infty$.  Also, $\ker\phi \neq \overline{\ker\phi}$ ($\ker\phi$ is not closed) since $\phi$ is unbounded (proven below).  Thus the codimension of $M$ is finite ($\dim(X/\ker\phi) = 1$) and $M$ is not closed.
+
+            Since $\phi$ is unbounded, $\exists x_n$ such that $\norm{x_n} = 1$ and $\phi(x_n) \rightarrow \infty$.  Then consider $y_n = \frac{x_n}{\phi(x_n)}$.  Then $y_n \rightarrow 0$ but $\phi(y_n) = \frac{1}{\phi(x_n)}\phi(x_n) = 1$ for $n = 1, 2, \dots$.  Choose any $\tilde{z} \in X$ and define $z = \frac{\tilde{z}}{\phi(\tilde{z})}$.  Then $\phi(z) = 1$.  Then $\phi(z - y_n) = \phi(z) - \phi(y_n) = 0$ for $n = 1, 2, \dots$.  However, $z - y_n \rightarrow z$ since $y_n \rightarrow 0$.  Thus $(z - y_n) \in \ker\phi$ for all $n$ but $\lim_n(z - y_n) = z \not\in\ker\phi$ since $\phi(z) \neq 0$.  Thus $\ker\phi$ is not closed.
         \end{proof}
 \end{enumerate}
 
@@ -212,28 +223,28 @@
 \begin{proof}
     If $\VEC{x}{Ay} = \VEC{x}{By}$, then $\VEC{x}{(A-B)y} = 0$ for all $x, y \in \Hilb$.  Then $A - B = 0$, i.e.~$A = B$.
 
-    Let $\VEC{x}{Ax} = \VEC{x}{Bx}$ for all $x \in \Hilb$.  Then
+    Let $\VEC{x}{Ax} = \VEC{x}{Bx}$ for all $x \in \Hilb$.  Then $\VEC{x}{(A-B)x} = 0$ for all $x \in \Hilb$.  Thus,
     \begin{align*}
-        0 = \VEC{x}{(A-B)x} &= \frac{1}{4}\Big[\norm{x + (A-B)x}^2 - \norm{x - (A-B)x}^2 - i\norm{x + i(A-B)x}^2 + i\norm{x - i(A-B)x}^2\Big]
-    \end{align*}
-    Since norms are always positive, this implies the real and imaginary parts of the right hand side must each equal zero.  Thus,
-    \begin{align*}
-        \norm{x + (A-B)x}^2 &= \norm{x - (A-B)x}^2 \\
-        \implies \VEC{x + (A-B)x}{x + (A-B)x} &= \VEC{x - (A-B)x}{x - (A-B)x} \\
-        \implies \norm{x}^2 + \VEC{x}{(A-B)x} + \VEC{(A-B)x}{x} + \norm{(A-B)x}^2 &= \norm{x}^2 - \VEC{x}{(A-B)x} - \VEC{(A-B)x}{x} + \norm{(A-B)x}^2 \\
-        \implies \VEC{x}{(A-B)x} + \VEC{(A-B)x}{x} & = 0 \\
-        \implies \VEC{x}{(A-B)x} + \overline{\VEC{x}{(A-B)x}} &= 0 \\
-        \implies \Re\qty[\VEC{x}{(A-B)x}] &= 0
+        0 &= \VEC{x + y}{(A-B)(x+y)} = \VEC{x}{(A-B)x} + \VEC{y}{(A-B)x} + \VEC{x}{(A-B)y} + \VEC{y}{(A-B)y} \\
+        &= \VEC{y}{(A-B)x} + \VEC{x}{(A-B)y} \\
+        \implies \VEC{y}{(A-B)x} &= -\VEC{x}{(A-B)y}
     \end{align*}
     Also,
     \begin{align*}
-        \norm{x - i(A-B)x}^2 &= \norm{x + i(A-B)x}^2 \\
-        \implies \norm{x}^2 - i\VEC{x}{(A-B)x} + i\VEC{(A-B)x}{x} - \norm{(A-B)x}^2 &= \norm{x}^2 + i\VEC{x}{(A-B)x} - i\VEC{(A-B)x}{x} - \norm{(A-B)x}^2 \\
-        \implies i\qty[\VEC{x}{(A-B)x} - \overline{\VEC{x}{(A-B)x}}] &= 0 \\
-        \implies \VEC{x}{(A-B)x} - \overline{\VEC{x}{(A-B)x}} &= 0 \\
-        \implies \Im\qty[\VEC{x}{(A-B)x}] = 0
+        0 &= \VEC{x + iy}{(A-B)(x + iy)} = \VEC{x}{(A-B)x} + \VEC{iy}{(A-B)x} + \VEC{x}{(A-B)(iy)} + \VEC{iy}{(A-B)(iy)} \\
+        &= -i\VEC{y}{(A-B)x} + i\VEC{x}{(A-B)(y)} \\
+        \implies \VEC{y}{(A-B)x} &= \VEC{x}{(A-B)y} = -\VEC{y}{(A-B)x} \\
+        \implies \VEC{y}{(A-B)x} &= 0 \qquad \forall x,y \in \Hilb
     \end{align*}
-    Thus $\VEC{x}{(A-B)x} = 0$ for all $x \in \Hilb$.  Thus $A = B$.
+    Thus, $A-B \equiv 0$, or $A \equiv B$.  For real Hilbert spaces, it is possible for $\VEC{x}{Ax} = \VEC{x}{Bx}$ for all $x$ but $A \not\equiv B$.  Consider $A,B\in\mathcal{B}(\Rl^n)$ by
+    \begin{align*}
+        A(x_1, \dots, x_n) = (-x_2, x_1, x_3, x_4, \dots, x_n) \qquad \text{and} \qquad B(x_1, \dots, x_n) = (x_2, -x_1, x_3, x_4, \dots, x_n)
+    \end{align*}
+    Then
+    \begin{align*}
+        \VEC{x}{Ax} = \sum_{i=3}^n x_i^2 = \VEC{x}{Bx} \qquad \forall x \in \Rl^n
+    \end{align*}
+    but clearly $A \not\equiv B$.
 \end{proof}
 
 
@@ -358,6 +369,10 @@ Let $U\ :\ L^2(\Omega, P) \rightarrow L^2(\Omega, P)$ by
 \emph{Let $(u_n)$ be a sequence of orthonormal vectors in a Hilbert space.  Prove that $u_n \rightharpoonup 0$ weakly.}
 
 \begin{proof}
+    Let $y \in \Hilb$.  Then by Bessel's inequality, $\norm{y} \geq \norm{\sum_{n=0}^\infty c_n u_n}$ where $\sum_{n=0}^\infty |c_n|^2 < \infty$ and $c_n = \VEC{u_n}{y}$ for $n = 0, 1, \dots$.  Thus, $|c_n| \rightarrow 0 \implies \VEC{c_n}{y} \rightarrow 0$, and thus
+    \begin{align*}
+        \forall y \in \Hilb,\qquad \VEC{u_n}{y} \rightarrow 0 \qquad \implies \qquad \VEC{u_n}{y} \rightarrow \VEC{0}{y} \qquad \implies \qquad u_n \rightharpoonup 0 \text{ weakly.}
+    \end{align*}
 \end{proof}
 
 
@@ -371,6 +386,27 @@ Let $U\ :\ L^2(\Omega, P) \rightarrow L^2(\Omega, P)$ by
 \emph{Prove that a strongly lower-semicontinuous convex function $f\ :\ \Hilb \rightarrow \Rl$ on a Hilbert space $\Hilb$ is weakly lower-semicontinuous.}
 
 \begin{proof}
+    Let $f$ be a strongly lower-semicontinuous function on a Hilbert space $\Hilb$, $f\ :\ \Hilb\rightarrow\mathbb{R}$.  Let $u_n \in \Hilb$ such that $u_n \rightharpoonup u$ weakly.  Then define $y_n = u_n - u$, $y_n \rightharpoonup 0$ weakly.  Assume
+    \begin{align*}
+        f(0) > \underline{\lim}_n f(y_n)
+    \end{align*}
+    This assumption will lead to a contradiction, which will prove $f$ is weakly lower-semicontinuous.  The assumption implies $\exists$ a subsequence $y_{n_k}$ such that $f(0) - \epsilon > f(y_{n_k})$.  Note $y_{n_k} \rightharpoonup 0$ since $y_n \rightharpoonup 0$.  By Mazur's Theorem, $\exists$ subsequence of $y_{n_k}$ (call it $y_{n_{k_\ell}}$) and $z_\ell$ defined by
+    \begin{align*}
+        z_\ell = \frac{1}{\ell}\qty(y_{n_{k_1}} + y_{n_{k_2}} + \dots + y_{n_{k_\ell}})
+    \end{align*}
+    and $z_\ell \rightarrow 0$ strongly (the limit is $0$ since the weak limit of $y_{n_k}$ is $0$).  Since $f$ is strongly lower-semicontinuous, then
+    \begin{align*}
+        f(0) \leq \underline{\lim}_\ell f\qty(z_\ell) = \underline{\lim}_\ell f\qty(\frac{1}{\ell}\sum_{i=1}^\ell y_{n_{k_i}})
+    \end{align*}
+    Convexity of $f$ implies
+    \begin{align*}
+        \underline{\lim}_\ell f\qty(\sum_{i=1}^\ell y_{n_{k_i}}) \leq \underline{\lim}_\ell \sum_{i=1}^\ell \frac{1}{\ell}f\qty(y_{n_{k_i}})
+    \end{align*}
+    However, since $y_{n_{k_i}}$ is a subsequence of $f_{n_k}$, then
+    \begin{align*}
+        f(0) \leq \underline{\lim}_\ell \sum_{i=1}^\ell \frac{1}{\ell}f\qty(y_{n_{k_i}}) \leq \underline{\lim}_\ell \sum_{i=1}^\ell \frac{1}{\ell}f\qty(y_{n_k}) < \underline{\lim}_\ell \sum_{i=1}^\ell \frac{1}{\ell} f(0) - \epsilon
+    \end{align*}
+    which is a contradiction.  Thus $f(0) \leq \underline{\lim}_n f(y_n)$, which means $f$ is weakly lower-semicontinuous for the sequence $y_n$.  Thus $f$ is weakly lower-semicontinuous for the sequence $u_n$, and since $u_n$ was an arbitrary weakly convergent sequence, then $f$ is weakly lower-semicontinuous.
 \end{proof}
 
 
