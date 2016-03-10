@@ -1,0 +1,297 @@
+\documentclass{article} % A4 paper and 11pt font size
+\setcounter{secnumdepth}{0}
+
+\usepackage{amssymb, amsmath, amsfonts}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{graphics}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{color}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{array}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[makeroom]{cancel}
+\usepackage{bbold}
+\usepackage{alltt}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage[normalem]{ulem}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\usepackage{bigints}
+\allowdisplaybreaks
+\pgfplotsset{compat=1.12}
+
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\E}{\varepsilon}
+\def\Rl{\mathbb{R}}
+\def\Cx{\mathbb{C}}
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancy} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead[L]{\bf Sam Fleischer}
+\fancyhead[C]{\bf UC Davis \\ Analysis (MAT201B)} % No page header - if you want one, create it in the same way as the footers below
+\fancyhead[R]{\bf Winter 2016}
+
+\fancyfoot[L]{\bf } % Empty left footer
+\fancyfoot[C]{\bf \thepage} % Empty center footer
+\fancyfoot[R]{\bf } % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{25pt} % Customize the height of the header
+
+\newcommand{\VEC}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\ran}{\text{\rm ran }}
+\newcommand{\Hilb}{\mathcal{H}}
+
+\newcommand{\problem}[1]{
+\vspace{.375cm}
+\begin{minipage}{\textwidth}
+    \begin{center}
+        \noindent\rule{5cm}{1pt}
+    \end{center}
+    \section{\bf #1}
+    \begin{center}
+        \noindent\rule{5cm}{1pt}
+    \end{center}
+    \vspace{0.25cm}
+\end{minipage}
+}
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{ 
+\normalfont \normalsize 
+\textsc{UC Davis, Analysis (MAT201B), Winter 2016} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{2pt} \\[0.4cm] % Thin top horizontal rule
+\Huge Homework \#7 \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{\huge Sam Fleischer} % Your name
+
+\date{March 14, 2016} % Today's date or a custom date
+
+\begin{document}\thispagestyle{empty}
+
+\maketitle % Print the title
+
+\makeatletter
+\@starttoc{toc}
+\makeatother
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 9.1}
+\emph{Prove that $\rho(A^*) = \overline{\rho(A)}$, where $\overline{\rho(A)}$ is the set $\{\lambda \in \Cx\ |\ \overline{\lambda} \in \rho(A)\}$.}
+\begin{proof}
+    First note
+    \begin{align*}
+        (A^* - \lambda I) = (A^* - (\overline{\lambda}I)^*) = (A - \overline{\lambda}I)^*,
+    \end{align*}
+    and since $(A - \overline{\lambda}I) \in \mathcal{B}(\Hilb)$, then $(A - \overline{\lambda}I)$ is invertible if and only if $(A - \overline{\lambda}I)^*$ is invertible.  Thus
+    \begin{align*}
+        \lambda \in \rho(A^*) &\iff (A^* - \lambda I) \text{ invertible} \\
+        &\iff (A - \overline{\lambda}I)^* \text{ invertible} \\
+        &\iff (A - \overline{\lambda} I) \text{ invertible} \\
+        &\iff \overline{\lambda} \in \rho(A) \\
+        &\iff \lambda \in \overline{\rho(A)}
+    \end{align*}
+    Thus, $\rho(A^*) = \overline{\rho(A)}$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 9.3}
+\emph{Suppose that $A$ is a bounded linear operator on a Hilbert space and $\lambda,\mu \in \rho(A)$.  Prove that the resolvent $R_\lambda$ of $A$ satisfies the \emph{resolvent equation} $$R_\lambda - R_\mu = (\mu - \lambda)R_\lambda R_\mu.$$}
+\begin{proof}
+    \begin{align*}
+        \qty(\mu I - A) - \qty(\lambda I - A) &= (\mu - \lambda)I \\
+        \implies \qty(\lambda I - A)^{-1}\qty[\qty(\mu I - A) - \qty(\lambda I - A)]\qty(\mu I - A)^{-1} &= \qty(\lambda I - A)^{-1}\qty[(\mu - \lambda)I]\qty(\mu I - A)^{-1} \\
+        \implies \qty(\lambda I - A)^{-1} - \qty(\mu I - A)^{-1} &= \qty(\mu - \lambda)(\lambda I - A)^{-1}\qty(\mu I - A)^{-1} \\
+        \implies R_\lambda - R_\mu &= (\mu - \lambda)R_\lambda R_\mu
+    \end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 9.4}
+\emph{Prove that the spectrum of an orthogonal projection $P$ is either $\{0\}$, in which case $P = 0$, or $\{1\}$, in which case $P = I$, or else $\{0,1\}$.}
+\begin{proof}
+    Let $\lambda$ be an eigenvalue.  Then $Px = \lambda x$ for some nonzero vector $x$.  Clearly if $P \equiv 0$, then $0 = Px = \lambda x$ for some $x \neq 0$, which implies $\lambda = 0$.  Also, if $P \equiv I$, then $x = Px = \lambda x \implies (1 - \lambda)x = 0$ for some $x \neq 0$.  Thus $\lambda = 1$.  In general, suppose $P \not\equiv 0$ and $P \not\equiv 1$, then for $x \in \ran P$, $x = Px = \lambda x \implies \lambda = 1$.  For $x \not\in \ran P$, then since $P$ is an orthogonal projection, $x = y + z$ for some $y \in \ran P$ (i.e.~$Py = y$) and $z \in \ker P$ (i.e.~$Pz = 0$).  Thus $Py + Pz = y = \lambda x$.  Since $x \not\in \ran P$, $\lambda x \in \ran P$ only if $\lambda = 0$.  Thus the only eigenvalues of $P$ are $0$ and $1$ (i.e.~the point spectrum of $P$ is contained in $\{0,1\}$).
+
+    Since orthogonal projections are bounded and self adjoint, then the residual specturm of $P$ is empty.
+
+    {\color{red} talk about the continuous spectrum and prove its empty.}
+\end{proof}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 9.5}
+\emph{Let $A$ be a bounded, nonnegative operator on a complex Hilbert space.  Prove that $\sigma(A) \subset [0, \infty)$.}
+\begin{proof}
+    Since $A$ is nonnegative, then $\VEC{x}{Ax} \geq 0$ for all $x \in \Hilb$ and $A = A^*$.  Since $A$ is self-adjoint, its eigenvalues are real and $\sigma(A) \subset \qty[-\norm{A}, \norm{A}]$.  Let $\lambda$ be an eigenvalue.  Then for some $x \neq 0$,
+    \begin{align*}
+        0 \leq \VEC{x}{Ax} = \VEC{x}{\lambda x} = \lambda \VEC{x}{x} = \lambda \norm{x}^2 \\
+        \implies 0 \leq \lambda
+    \end{align*}
+    Thus all eigenvalues are positive (i.e.~the point spectrum is contained in $[0, \infty)$).  Let $\lambda < 0$.  Then if $(A - \lambda I)x_1 = (A - \lambda I)x_2$, then $(A - \lambda I)(x_1 - x_2) = 0$.  If $x_1 - x_2 \neq 0$, then $\lambda$ is an eigenvalue, but this is not possible since $\lambda < 0$.  Thus $x_1 - x_2 = 0$, or $x_1 = x_2$.  This shows $(A - \lambda I)$ is one-to-one.
+    {\color{red} show that $(A - \lambda I)$ is onto for $\lambda < 0$.}
+\end{proof}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 9.6}
+\emph{Let $G$ be a multiplication operator on $L^2(\Rl)$ defined by $$Gf(x) = g(x)f(x),$$ where $g$ is continuous and bounded.  Prove that $G$ is a bounded linear operator on $L^2(\Rl)$ and that its spectrum is given by $$\sigma(G) = \overline{\{g(x)\ :\ x \in \Rl\}}.$$  Can an operator of this form have eigenvalues?}
+\begin{proof}
+\end{proof}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 9.7}
+\emph{Let $K\ :\ L^2([0,1]) \rightarrow L^2([0,1])$ be the integral operator defined by $$Kf(x) = \int_0^x f(y) \dd y.$$}
+\begin{enumerate}[\it a)]
+    \item
+        \emph{Find the adjoint operator $K^*$.}
+        \begin{proof}
+        \end{proof}
+    \item
+        \emph{Show that $norm{K} = \frac{2}{\pi}$.}
+        \begin{proof}
+        \end{proof}
+    \item
+        \emph{Show that the spectral radius of $K$ is equal to zero.}
+        \begin{proof}
+        \end{proof}
+    \item
+        \emph{Show that $0$ belongs to the continuous spectrum of $K$.}
+        \begin{proof}
+        \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 9.8}
+\emph{Define the right shift operator $S$ on $\ell^2(\mathbb{Z})$ by $$S(x)_k = x_{k-1} \qquad \text{for all }k \in \mathbb{Z},$$ where $x = (x_k)_{k=-\infty}^\infty$ is in $\ell^2(\mathbb{Z})$.  Prove the following facts.}
+\begin{enumerate}[\it a)]
+    \item
+        \emph{The point spectrum of $S$ is empty.}
+        \begin{proof}
+        \end{proof}
+    \item
+        \emph{$\ran(\lambda I - S) = \ell^2(\mathbb{Z})$ for every $\lambda \in \Cx$ with $|\lambda| > 1$.}
+        \begin{proof}
+        \end{proof}
+    \item
+        \emph{$\ran(\lambda I - S) = \ell^2(\mathbb{Z})$ for every $\lambda \in \Cx$ with $|\lambda| < 1$.}
+        \begin{proof}
+        \end{proof}
+    \item
+        \emph{The spectrum of $S$ consists of the unit circle $\{\lambda \in \Cx\ :\ |\lambda| = 1\}$ and is purely continuous.}
+        \begin{proof}
+        \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problem{Hunter and Nachtergaele 9.18}
+\emph{Let $P_1, \dots, P_N$ be orthogonal projections with orthogonal ranges.  Let $$A = \sum_{n=1}^N\lambda_n P_n$$ be a finite linear combination of these projections.  Let $\tilde{f}\ :\ \sigma(A) \rightarrow \Cx$ be a continuous function and define $f\ :\ \mathcal{B}(\Hilb) \rightarrow \mathcal{B}(\Hilb)$ by}
+\begin{equation}
+    \tag{9.23}
+    f(A) = \sum_{n=1}^\infty \tilde{f}(\lambda_n)P_n.
+    \label{9.23}
+\end{equation}
+\emph{Suppose that $A$ is a compact self-adjoint operator.  Let $f \in C(\sigma(A))$ and consider $f(A)$ defined by (\ref{9.23}).  Prove that $$\norm{f(A)} = \sup\{|\tilde{f}(\lambda_n)\ |\ n \in \mathbb{N}\}.$$  Let $(\tilde{q}_N)$ be a sequence of polynomials of degree $N$, converging uniformly to $\tilde{f}$ on $\sigma(A)$.  The existence of such a sequence is a consequence of the Weierstrass approximation theorem.  Prove that $(q_N(A))$ converges in norm, and that its limit equals $f(A)$ as defined in (\ref).}
+\begin{proof}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
