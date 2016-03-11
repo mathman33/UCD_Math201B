@@ -165,7 +165,17 @@
 
     Since orthogonal projections are bounded and self adjoint, then the residual specturm of $P$ is empty.
 
-    {\color{red} talk about the continuous spectrum and prove its empty.}
+    Let $a \in \ran P$.  Then $(1 - \lambda)a \in \ran (P - \lambda I)$ (since $(P - \lambda I)a = Pa - \lambda a = (1 - \lambda)a$).  If $\lambda \neq 1$ then $a \in \ran (P - \lambda I)$ since $\ran(P - \lambda I)$ is closed under scalar multiplication.  Let $b \in \ker P$.  Then $-\lambda b \in \ran (P - \lambda I)$ (since $(P - \lambda I)b = Pb - \lambda b = -\lambda b$).  If $\lambda \neq 0$, then $b \in \ran (P - \lambda I)$ since $\ran(P - \lambda I)$ is closed under scalar multiplication.  Thus for $\lambda \in \Cx\setminus \{0,1\}$,
+    \begin{align*}
+        \ran P \cup \ker P \subset \ran (P - \lambda I)
+    \end{align*}
+    Since $P$ is an orthogonal projection,
+    \begin{align*}
+        \Hilb \subset \ran (P - \lambda I) \subset \Hilb
+    \end{align*}
+    and thus $\ran (P - \lambda I)$ is closed.  Thus the continuous specturm of $P$ is empty.
+
+    Thus, $\sigma(P) = \{0,1\}$.
 \end{proof}
 
 
@@ -201,6 +211,10 @@
 \problem{Hunter and Nachtergaele 9.6}
 \emph{Let $G$ be a multiplication operator on $L^2(\Rl)$ defined by $$Gf(x) = g(x)f(x),$$ where $g$ is continuous and bounded.  Prove that $G$ is a bounded linear operator on $L^2(\Rl)$ and that its spectrum is given by $$\sigma(G) = \overline{\{g(x)\ :\ x \in \Rl\}}.$$  Can an operator of this form have eigenvalues?}
 \begin{proof}
+    % If $\lambda \not \in \ran g$, then $g(x) - \lambda \neq 0$ for all $x$.  Then define $(G - \lambda I)^{-1}$ as
+    % \begin{align*}
+    %     (G - \lambda I)(f)(x) = \frac{1}{(G - \lambda I)(f)}(x) = \frac{1}{(g(x) - \lambda)f()}
+    % \end{align*}
 \end{proof}
 
 
@@ -218,9 +232,22 @@
     \item
         \emph{Find the adjoint operator $K^*$.}
         \begin{proof}
+            \begin{align*}
+                \VEC{f}{Kg} &= \int_0^1 \overline{f}(x)\int_0^x g(y)\dd y \dd x \\
+                &= \int_0^1 \overline{f}(x)\int_0^1 g(y)\mathcal{X}_{0 < y < x < 1}\dd y \dd x, \qquad \text{where $\mathcal{X}$ is the characteristic function} \\
+                &= \int_0^1 \int_0^1 \overline{f}(x)g(y)\mathcal{X}_{0<y<x<1}\dd y \dd x \\
+                &= \int_0^1 g(y) \int_0^1 \overline{f}(x)\mathcal{X}_{0<y<x<1}\dd x \dd y \\
+                &= \int_0^1 \qty[\int_y^1 \overline{f}(x)\dd x]g(y) \dd y \\
+                &= \int_0^1 \overline{\qty[\int_y^1 f(x)\dd x]}g(y) \dd y \\
+                &= \VEC{K^* f}{g}
+            \end{align*}
+            Thus,
+            \begin{align*}
+                K^*f(x) = \int_x^1 f(y)\dd y
+            \end{align*}
         \end{proof}
     \item
-        \emph{Show that $norm{K} = \frac{2}{\pi}$.}
+        \emph{Show that $\norm{K} = \frac{2}{\pi}$.}
         \begin{proof}
         \end{proof}
     \item
@@ -230,6 +257,7 @@
     \item
         \emph{Show that $0$ belongs to the continuous spectrum of $K$.}
         \begin{proof}
+            $K$ is not onto since $K$ is the integral operator, and thus the range of $K$ is equal to the set of differentiable functions.  However, not all functions in $L^2$ are differentiable.  Thus $K$ is not onto.  However, differentiable functions are dense in $L^2$, and thus $0$ is in the continuous spectrum of $K$.
         \end{proof}
 \end{enumerate}
 
@@ -249,6 +277,11 @@
     \item
         \emph{The point spectrum of $S$ is empty.}
         \begin{proof}
+            Suppose $\lambda$ is in the point specturm of $S$.  The for $Sx = \lambda x$ for some nonzero $x \in \ell^2(\mathbb{Z})$.  If $\lambda = 0$, the $x \equiv 0$, which is a contradiction.  If $\lambda = 1$, then $x_k = e_j$ for all $k,j \in \mathbb{Z}$, i.e. $x$ is constant.  However constant bi-infinite sequences are not in $\ell^2$ unless they are uniformly $0$.  This is a contradiction since eigenvectors are nonzero.  If $|\lambda| > 1$ and $0 < |\lambda| < 1$, then for all $k in \mathbb{Z}$, $x_k$, $Sx_k = \lambda x_{k-1}$, and thus for all $n \in \mathbb{Z}$,
+            \begin{align*}
+                x_k &= \lambda^{k-n} x_n, \qquad \forall n \in \mathbb{Z}.
+            \end{align*}
+            Thus $x_k$ can be made arbitrarily large, which is a contradiction since this is true for all $k \in \mathbb{Z}$.  Thus there are no eigenvalues of $S$ (i.e.~the point spectrum is empty).
         \end{proof}
     \item
         \emph{$\ran(\lambda I - S) = \ell^2(\mathbb{Z})$ for every $\lambda \in \Cx$ with $|\lambda| > 1$.}
@@ -280,7 +313,7 @@
     f(A) = \sum_{n=1}^\infty \tilde{f}(\lambda_n)P_n.
     \label{9.23}
 \end{equation}
-\emph{Suppose that $A$ is a compact self-adjoint operator.  Let $f \in C(\sigma(A))$ and consider $f(A)$ defined by (\ref{9.23}).  Prove that $$\norm{f(A)} = \sup\{|\tilde{f}(\lambda_n)\ |\ n \in \mathbb{N}\}.$$  Let $(\tilde{q}_N)$ be a sequence of polynomials of degree $N$, converging uniformly to $\tilde{f}$ on $\sigma(A)$.  The existence of such a sequence is a consequence of the Weierstrass approximation theorem.  Prove that $(q_N(A))$ converges in norm, and that its limit equals $f(A)$ as defined in (\ref).}
+\emph{Suppose that $A$ is a compact self-adjoint operator.  Let $f \in C(\sigma(A))$ and consider $f(A)$ defined by (\ref{9.23}).  Prove that $$\norm{f(A)} = \sup\{|\tilde{f}(\lambda_n)\ |\ n \in \mathbb{N}\}.$$  Let $(\tilde{q}_N)$ be a sequence of polynomials of degree $N$, converging uniformly to $\tilde{f}$ on $\sigma(A)$.  The existence of such a sequence is a consequence of the Weierstrass approximation theorem.  Prove that $(q_N(A))$ converges in norm, and that its limit equals $f(A)$ as defined in (\ref{9.23}).}
 \begin{proof}
 \end{proof}
 
