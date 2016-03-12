@@ -212,27 +212,46 @@
 \problem{Hunter and Nachtergaele 9.6}
 \emph{Let $G$ be a multiplication operator on $L^2(\Rl)$ defined by $$Gf(x) = g(x)f(x),$$ where $g$ is continuous and bounded.  Prove that $G$ is a bounded linear operator on $L^2(\Rl)$ and that its spectrum is given by $$\sigma(G) = \overline{\{g(x)\ :\ x \in \Rl\}}.$$  Can an operator of this form have eigenvalues?}
 \begin{proof}
-    First consider $\lambda$ such that $\mu\qty(\left\{x\ :\ g(x) = \lambda\right\}) > 0$.  Then $\lambda$ is an eigenvalue of $G$ where any function $f$ such that $\text{supp} f \subset \left\{x\ :\ g(x) = \lambda\right\}$ is an eigenvector since
+    Let $\lambda \not\in \overline{\{g(x)\ :\ x \in \Rl\}}$.  Then $\exists \E$ such that $|g(x) - \lambda| > \E$ for all $x \in \Rl$.  Thus $\frac{1}{g(x) - \lambda}$ is well-defined and we can define the inverse of $(G - \lambda I)$ as
+    \begin{align*}
+        \qty(\qty(G - \lambda I)^{-1}f)(x) = \frac{1}{g(x) - \lambda}f(x)
+    \end{align*}
+    because $\forall f \in L^2(\Rl)$,
+    \begin{align*}
+        \qty(\qty(G - \lambda I)\qty(G - \lambda I)^{-1})f = \qty(\qty(G - \lambda I)^{-1}\qty(G - \lambda I))f = f
+    \end{align*}
+    Thus $\lambda \in \rho(G)$, i.e.~$\lambda \not\in\sigma(G)$, which shows
+    \begin{align*}
+        \sigma(G) \subset \overline{\{g(x)\ :\ x \in \Rl\}}
+    \end{align*}
+
+    Next, consider $\lambda \in \{g(x)\ :\ x \in \Rl\}$.  Then $\exists x_0 \in \Rl$ such that $g(x_0) = \lambda$.  Then consider the characteristic function on $\{x\ :\ |x - x_0| < 1\}$,
+    \begin{align*}
+        \mathcal{X}(x) = \begin{cases}
+            1 & \text{ if } |x - x_0| < 1 \\
+            0 & \text{ otherwise}
+        \end{cases}
+    \end{align*}
+    Then $\mathcal{X} \not\in\ran(G - \lambda I)$ since the only candidate function $\mathcal{C}$ to map to $\mathcal{X}$ is
+    \begin{align*}
+        \mathcal{C}(x) = \frac{\mathcal{X}(x)}{g(x) - \lambda}
+    \end{align*}
+    but this function is not square-integrable, i.e.~$\mathcal{C} \not\in L^2(\Rl)$.  Thus $(G - \lambda I)$ is not surjective, which shows $\lambda \in \sigma(G)$.  Thus
+    \begin{align*}
+        \{g(x)\ :\ x\in\Rl\} \subset \sigma(G)
+    \end{align*}
+    However, since $\sigma(G)$ is closed (all spectrums are closed), then any closure of a subset of $\sigma(G)$ is also a subset of $\sigma(G)$.  Thus
+    \begin{align*}
+        \overline{\{g(x)\ :\ x\in\Rl\}} \subset \sigma(G)
+    \end{align*}
+    which shows
+    \begin{align*}
+        \overline{\{g(x)\ :\ x\in\Rl\}} = \sigma(G)
+    \end{align*}
+
+    It is possible for $G$ to have eigenvalues.  Consider a function $g$ and $\lambda \in \Rl$ such that $\mu\qty(\left\{x\ :\ g(x) = \lambda\right\}) > 0$.  Then $\lambda$ is an eigenvalue of $G$ and any function $f$ such that $\text{supp} f \subset \left\{x\ :\ g(x) = \lambda\right\}$ is an eigenvector with respect to $\lambda$ since
     \begin{align*}
         (Gf)(x) = g(x)f(x) = \mathcal{X}_{\text{supp} f}g(x) f(x) + \cancelto{0}{\mathcal{X}_{\Rl\setminus\text{supp}f}g(x) f(x)} = \lambda f(x)
-    \end{align*}
-    Thus all $\lambda$ such that $\mu(\{x\ :\ g(x) = \lambda\}) > 0$ are eigenvalues.
-
-    Now consider $\lambda$ such that $\mu\qty(\left\{x\ :\ g(x) = \lambda\right\}) = 0$ for all $\lambda$.  Then $(G - \lambda I)$ is injective.  If $(G - \lambda I)$ is surjective, however, then $\exists f \in L^2(\Rl)$ such that $(G - \lambda I)f = \mathcal{X}_{\left|x-\lambda\right|<\E}$ (where $\mathcal{X}$ is the characteristic function).  But
-    \begin{align*}
-        ((G - \lambda I)f)(x) = g(x)f(x) - \lambda f(x) = (g(x) - \lambda)f(x)
-    \end{align*}
-    and so the only candidate function $f$ is
-    \begin{align*}
-        f(x) = \frac{\mathcal{X}_{\left|x - \lambda\right| < 1}}{g(x) - \lambda}
-    \end{align*}
-    but this function is square integrable (i.e.~not in $L^2(\Rl)$).  Thus $(G - \lambda I)$ is not surjective.  Next we show $\ran(G - \lambda I)$ is dense in $\Hilb$.  First note that $(g(x) - \lambda)^n \in \ran(G - \lambda I)$ for $n \geq 1$ since $(G - \lambda I)(g(x) - \lambda)^{n-1} = (g(x) - \lambda)^n$.  Also, for every $n \in \mathbb{N}$, the characteristic function
-    \begin{align*}
-        X_n = \mathcal{X}_{2^{-n} < \left|x - \lambda\right| < 1}
-    \end{align*}
-    is in the range and $X_n \rightarrow f$ in $L^2$ norm.  Thus $\ran(G - \lambda I)$ is dense in $\Hilb$, i.e.
-    \begin{align*}
-        \sigma(G) = \overline{\{g(x)\ :\ x \in \Rl\}}
     \end{align*}
 \end{proof}
 

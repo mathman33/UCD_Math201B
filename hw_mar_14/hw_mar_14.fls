@@ -1,4 +1,4 @@
-PWD /Users/samuelfleischer/School/UCD/UCD_Math201B
+PWD /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_mar_14
 INPUT /usr/local/texlive/2015/texmf.cnf
 INPUT /usr/local/texlive/2015/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -448,14 +448,6 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futmi.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futmi.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-bb.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-bb.tfm
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/fourier/futsy.vf
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-ms.tfm
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-mcl.tfm
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futr8r.tfm
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/fourier/futmii.vf
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-mlit.tfm
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/fourier-ml.tfm
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futri8r.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futri8t.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/fourier/futri8t.tfm
 INPUT /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_mar_14/hw_mar_14.aux
