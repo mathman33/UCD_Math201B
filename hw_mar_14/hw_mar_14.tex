@@ -141,6 +141,7 @@
 \problem{Hunter and Nachtergaele 9.3}
 \emph{Suppose that $A$ is a bounded linear operator on a Hilbert space and $\lambda,\mu \in \rho(A)$.  Prove that the resolvent $R_\lambda$ of $A$ satisfies the \emph{resolvent equation} $$R_\lambda - R_\mu = (\mu - \lambda)R_\lambda R_\mu.$$}
 \begin{proof}
+    If the resolvent $R_\lambda$ is defined as $R_\lambda = (\lambda I - A)^{-1}$, then
     \begin{align*}
         \qty(\mu I - A) - \qty(\lambda I - A) &= (\mu - \lambda)I \\
         \implies \qty(\lambda I - A)^{-1}\qty[\qty(\mu I - A) - \qty(\lambda I - A)]\qty(\mu I - A)^{-1} &= \qty(\lambda I - A)^{-1}\qty[(\mu - \lambda)I]\qty(\mu I - A)^{-1} \\
@@ -211,10 +212,28 @@
 \problem{Hunter and Nachtergaele 9.6}
 \emph{Let $G$ be a multiplication operator on $L^2(\Rl)$ defined by $$Gf(x) = g(x)f(x),$$ where $g$ is continuous and bounded.  Prove that $G$ is a bounded linear operator on $L^2(\Rl)$ and that its spectrum is given by $$\sigma(G) = \overline{\{g(x)\ :\ x \in \Rl\}}.$$  Can an operator of this form have eigenvalues?}
 \begin{proof}
-    % If $\lambda \not \in \ran g$, then $g(x) - \lambda \neq 0$ for all $x$.  Then define $(G - \lambda I)^{-1}$ as
-    % \begin{align*}
-    %     (G - \lambda I)(f)(x) = \frac{1}{(G - \lambda I)(f)}(x) = \frac{1}{(g(x) - \lambda)f()}
-    % \end{align*}
+    First consider $\lambda$ such that $\mu\qty(\left\{x\ :\ g(x) = \lambda\right\}) > 0$.  Then $\lambda$ is an eigenvalue of $G$ where any function $f$ such that $\text{supp} f \subset \left\{x\ :\ g(x) = \lambda\right\}$ is an eigenvector since
+    \begin{align*}
+        (Gf)(x) = g(x)f(x) = \mathcal{X}_{\text{supp} f}g(x) f(x) + \cancelto{0}{\mathcal{X}_{\Rl\setminus\text{supp}f}g(x) f(x)} = \lambda f(x)
+    \end{align*}
+    Thus all $\lambda$ such that $\mu(\{x\ :\ g(x) = \lambda\}) > 0$ are eigenvalues.
+
+    Now consider $\lambda$ such that $\mu\qty(\left\{x\ :\ g(x) = \lambda\right\}) = 0$ for all $\lambda$.  Then $(G - \lambda I)$ is injective.  If $(G - \lambda I)$ is surjective, however, then $\exists f \in L^2(\Rl)$ such that $(G - \lambda I)f = \mathcal{X}_{\left|x-\lambda\right|<\E}$ (where $\mathcal{X}$ is the characteristic function).  But
+    \begin{align*}
+        ((G - \lambda I)f)(x) = g(x)f(x) - \lambda f(x) = (g(x) - \lambda)f(x)
+    \end{align*}
+    and so the only candidate function $f$ is
+    \begin{align*}
+        f(x) = \frac{\mathcal{X}_{\left|x - \lambda\right| < 1}}{g(x) - \lambda}
+    \end{align*}
+    but this function is square integrable (i.e.~not in $L^2(\Rl)$).  Thus $(G - \lambda I)$ is not surjective.  Next we show $\ran(G - \lambda I)$ is dense in $\Hilb$.  First note that $(g(x) - \lambda)^n \in \ran(G - \lambda I)$ for $n \geq 1$ since $(G - \lambda I)(g(x) - \lambda)^{n-1} = (g(x) - \lambda)^n$.  Also, for every $n \in \mathbb{N}$, the characteristic function
+    \begin{align*}
+        X_n = \mathcal{X}_{2^{-n} < \left|x - \lambda\right| < 1}
+    \end{align*}
+    is in the range and $X_n \rightarrow f$ in $L^2$ norm.  Thus $\ran(G - \lambda I)$ is dense in $\Hilb$, i.e.
+    \begin{align*}
+        \sigma(G) = \overline{\{g(x)\ :\ x \in \Rl\}}
+    \end{align*}
 \end{proof}
 
 
@@ -286,10 +305,25 @@
     \item
         \emph{$\ran(\lambda I - S) = \ell^2(\mathbb{Z})$ for every $\lambda \in \Cx$ with $|\lambda| > 1$.}
         \begin{proof}
+            If $\norm{(x)_n} = 1$, then $\norm{S(x)_n} = \norm{(x)_{n+1}} = \norm{(x)_n} = 1$.  Thus $\norm{S} = 1$.  Then any $\lambda \in \Cx$ such that $|\lambda| > 1$ has $\lambda \in \rho(S)$, and thus $\lambda I - S$ is bijective.  Thus $\ran (\lambda I - S) = \ell^2(\mathbb{Z})$.
         \end{proof}
     \item
         \emph{$\ran(\lambda I - S) = \ell^2(\mathbb{Z})$ for every $\lambda \in \Cx$ with $|\lambda| < 1$.}
         \begin{proof}
+            Let $(y_n) \in \ell^2(\mathbb{Z})$.  Then since $\ell^2(\mathbb{Z}) \cong L^2(\mathbb{T})$, let $\mathcal{F}\ :\ \ell^2(\mathbb{Z}) \rightarrow L^2(\mathbb{T})$ be an isomorphism.  So $\exists (a_n)_n$ such that $\mathcal{F}((y_n)) = \sum_{n\in\mathbb{Z}} a_n e^{inx}$.  Then
+            \begin{align*}
+                \mathcal{F}(S(y)_n) = \tilde{S}\qty(\sum_{n\in\mathbb{Z}} a_n e^{inx}) = e^{ix}\sum_{n\in\mathbb{Z}}a_ne^{inx} = \sum_{n\in\mathbb{Z}}a_ne^{i(n+1)x}
+            \end{align*}
+            where $\tilde{S}$ is the shift operator in $L^2(\mathbb{T})$ ($\tilde{S} = \mathcal{F}\circ S$).
+            Let $|\lambda| < 1$.  Then $\qty(\tilde{S} - \lambda I)g = \sum_{n\in\mathbb{Z}}a_ne^{inx}$ where $g$ is defined as
+            \begin{align*}
+                g = \frac{\sum_{n\in\mathbb{Z}}a_n e^{inx}}{e^{ix} - \lambda}
+            \end{align*}
+            since
+            \begin{align*}
+                \qty(\tilde{S} - \lambda I)\qty(\frac{\sum_{n\in\mathbb{Z}}a_n e^{inx}}{e^{ix} - \lambda}) = \frac{e^{ix}\sum_{n\in\mathbb{Z}}a_n e^{inx} - \lambda\sum_{n\in\mathbb{Z}}a_n e^{inx}}{e^{ix} - \lambda} = \sum_{n\in\mathbb{Z}}a_n e^{inx}
+            \end{align*}
+            Thus $(\tilde{S} - \lambda I)$ is surjective, which shows $(S - \lambda I)$ is surjective.
         \end{proof}
     \item
         \emph{The spectrum of $S$ consists of the unit circle $\{\lambda \in \Cx\ :\ |\lambda| = 1\}$ and is purely continuous.}
