@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  12 MAR 2016 10:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  13 MAR 2016 22:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2210,21 +2210,39 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/futs/b/n' tried instead on input line 114.
 [2] [3] [4] [5] [6] [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 383.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 383.
+Overfull \hbox (17.56085pt too wide) in paragraph at lines 410--411
+[]\T1/futs/m/n/10 If $\FMS/futm/m/n/10 j\FML/futmi/m/it/10 ^^U\FMS/futm/m/n/10 
+j Å \T1/futs/m/n/10 1$, then $\FML/futmi/m/it/10 ^^U \FMS/futm/m/n/10 Å \FML/fu
+tmi/m/it/10 e[]$ \T1/futs/m/n/10 for some $\FML/futmi/m/it/10 ^^R \FMS/futm/m/n
+/10 2 \T1/futs/m/n/10 [0\FML/futmi/m/it/10 ; \T1/futs/m/n/10 2\FML/futmi/m/it/1
+0 ^^Y\T1/futs/m/n/10 )$. Then $[]$ is a mul-ti-pli-ca-tion op-er-a-tor, $[](\FM
+L/futmi/m/it/10 x\T1/futs/m/n/10 ) \FMS/futm/m/n/10 Å
+ []
+
+[8]
+Overfull \hbox (4.36198pt too wide) in paragraph at lines 454--455
+[]\T1/futs/m/n/10 The def-i-ni-tion of op-er-a-tor norm guar-an-tees that $\FMS
+/futm/m/n/10 8\FML/futmi/m/it/10 "$\T1/futs/m/n/10 , $\FMS/futm/m/n/10 9\FML/fu
+tmi/m/it/10 u$ \T1/futs/m/n/10 with $[] \FMS/futm/m/n/10 Å \T1/futs/m/n/10 1$ s
+uch that $[][] \FMS/futm/m/n/10 ^^T [] Ä
+ []
+
+[9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 494.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 494.
 (/Users/samuelfleischer/School/UCD/UCD_Math201B/hw_mar_14/hw_mar_14.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 383.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 383.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 494.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 494.
 Package rerunfilecheck Info: File `hw_mar_14.out' has not changed.
 (rerunfilecheck)             Checksum: 6E4045B948F971AAA44B2234E67F2190;505.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 383.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 494.
  ) 
 Here is how much of TeX's memory you used:
- 34449 strings out of 493089
- 779765 string characters out of 6134842
- 949665 words of memory out of 5000000
+ 34456 strings out of 493089
+ 779823 string characters out of 6134842
+ 951665 words of memory out of 5000000
  37328 multiletter control sequences out of 15000+600000
- 121939 words of font info for 118 fonts, out of 8000000 for 9000
+ 123325 words of font info for 123 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,18n,83p,10464b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -2238,10 +2256,10 @@ al/texlive/2015/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texl
 ive/2015/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/201
 5/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
 Output written on /Users/samuelfleischer/School/UCD/UCD_Math201B/hw_mar_14/hw_m
-ar_14.pdf (7 pages, 98390 bytes).
+ar_14.pdf (9 pages, 110231 bytes).
 PDF statistics:
- 138 PDF objects out of 1000 (max. 8388607)
- 118 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
+ 146 PDF objects out of 1000 (max. 8388607)
+ 124 compressed objects within 2 object streams
+ 28 named destinations out of 1000 (max. 500000)
  77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

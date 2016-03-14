@@ -196,8 +196,22 @@
         0 \leq \VEC{x}{Ax} = \VEC{x}{\lambda x} = \lambda \VEC{x}{x} = \lambda \norm{x}^2 \\
         \implies 0 \leq \lambda
     \end{align*}
-    Thus all eigenvalues are positive (i.e.~the point spectrum is contained in $[0, \infty)$).  Let $\lambda < 0$.  Then if $(A - \lambda I)x_1 = (A - \lambda I)x_2$, then $(A - \lambda I)(x_1 - x_2) = 0$.  If $x_1 - x_2 \neq 0$, then $\lambda$ is an eigenvalue, but this is not possible since $\lambda < 0$.  Thus $x_1 - x_2 = 0$, or $x_1 = x_2$.  This shows $(A - \lambda I)$ is one-to-one.
-    {\color{red} show that $(A - \lambda I)$ is onto for $\lambda < 0$.}
+    Thus all eigenvalues are positive (i.e.~the point spectrum is contained in $[0, \infty)$).  Let $\lambda \in $ continuous spectrum.  Then $\ran(A - \lambda I)$ is dense $\in \Hilb$.  Then there is a sequence $(y_n) \in \ran(A - \lambda I)$ such that $y_n \rightarrow 0$.  Then there is a sequence $(x_n) \in \Hilb$ such that $(A - \lambda I)x_n = y_n$.  Then
+    \begin{align*}
+        \lim_{n\rightarrow \infty}\VEC{x_n}{(A - \lambda I)x_n} = \lim_{n\rightarrow \infty}\VEC{x_n}{y_n} = \VEC{\lim_{n\rightarrow\infty}x_n}{\lim_{n\rightarrow\infty}y_n} = \VEC{\lim_{n\rightarrow\infty}}{0} = 0.
+    \end{align*}
+    Also,
+    \begin{align*}
+        \VEC{x_n}{(A - \lambda I)x_n} = \VEC{x_n}{Ax_n} - \lambda \norm{x_n}^2 = b_n - \lambda \norm{x_n}^2.
+    \end{align*}
+    where $b_n = \VEC{x_n}{Ax_n} \geq 0$ for all $n$.  But
+    \begin{align*}
+        b_n - \lambda \norm{x_n}^2 \rightarrow 0
+    \end{align*}
+    and $\norm{x_n} \geq 0$ for all $n$, which implies $\lambda \geq 0$.  Thus the continuous spectrum is contained in $[0, \infty)$.  Thus,
+    \begin{align*}
+        \sigma(A) \subset [0, \infty).
+    \end{align*}
 \end{proof}
 
 
@@ -287,10 +301,56 @@
     \item
         \emph{Show that $\norm{K} = \frac{2}{\pi}$.}
         \begin{proof}
+            Define $f \in L^2([0,1])$ by
+            \begin{align*}
+                f(x) = \sqrt{2}\cos\frac{\pi}{2}x.
+            \end{align*}
+            Note $\norm{f}_{L^2} = 1$ since
+            \begin{align*}
+                \int_0^1 \cos^2\frac{\pi}{2}x = \int_0^1 \frac{1 + \cos \pi x}{2}\dd x = \frac{1}{2}
+            \end{align*}
+            Then
+            \begin{align*}
+                \norm{Kf}^2 &= \int_0^1\qty(\int_0^x \sqrt{2}\cos\frac{\pi}{2}y \dd y)^2 \dd x = 2\int_0^1\sin^2\frac{\pi}{2}x\dd x = \frac{4}{\pi^2}
+            \end{align*}
+            and thus $\norm{K} \geq \dfrac{2}{\pi}$.  
+            
+            Let $\norm{f} = 1$.  Then
+            \begin{align*}
+                \norm{Kf}^2 &= \int_0^1 (Kf)^2\dd x = \int_0^1 \qty(\int_0^x|f(y)|\dd y)^2\dd x = \int_0^1 \qty(\int_0^x\sqrt{\cos\frac{\pi}{2}y}\frac{|f(y)|}{\sqrt{\cos\frac{\pi}{2}}}\dd y)^2\dd x \\
+                &\leq \int_0^1 \qty(\int_0^1 \cos \frac{\pi}{2}y\dd y)\qty(\int_0^x\frac{|f(y)|^2}{\cos\frac{\pi}{2}y})\dd x = \frac{2}{\pi}\int_0^1 \sin\qty(\frac{\pi}{2}x)\qty(\int_0^x \frac{|f(y)|^2}{\cos\frac{\pi}{2}y}\dd y)\dd x \\
+                &= \frac{2}{\pi}\int_0^1 \frac{|f(y)|^2}{\cos\frac{\pi}{2}y}\qty(\int_y^1 \sin\qty(\frac{\pi}{2}x)\dd x)\dd y = \frac{4}{\pi^2}\int_0^1 |f(y)|^2 \dd y \\
+                &= \frac{4}{\pi^2}\norm{f}^2 = \frac{4}{\pi^2}
+            \end{align*}
+            Thus $\norm{K} \leq \dfrac{2}{\pi}$.  Thus,
+            \begin{align*}
+                \norm{K} = \frac{2}{\pi}.
+            \end{align*}
         \end{proof}
     \item
         \emph{Show that the spectral radius of $K$ is equal to zero.}
         \begin{proof}
+            Let $|\lambda| > 0$ and note $L^2([0,1]) = \overline{\ran(K - \lambda I}) \oplus \ker(K - \lambda I)^*$.  Note $(K - \lambda I)^* = (K^* - \overline{\lambda}I)$ where $K^*$ is defined above.  If $(K^* - \overline{\lambda}I)f_1 = (K^* - \overline{\lambda}I)f_2$ then $\forall x \in [0,1]$,
+            \begin{align*}
+                \int_x^1f_1(y) \dd y &= \int_x^1 f_2(y) \dd y \\
+                \implies F_1(1) - F_1(x) &= F_2(1) - F_2(x)
+            \end{align*}
+            where $F_1' = f_1$ and $F_2' = f_2$.  Thus $f_1 \equiv f_2$.  This shows $(K^* - \overline{\lambda}I)$ is injective, which shows $\ker(K^* - \overline{\lambda}I) = \{0\}$.  Thus,
+            \begin{align*}
+                L^2([0,1]) = \overline{\ran(K - \lambda I)}
+            \end{align*}
+            i.e.~$\ran(K - \lambda I)$ is dense in $L^2([0,1])$.  Thus showing $\ran(K - \lambda I)$ is closed will imply it is surjective.
+
+            Let $(g_n)_n \in \ran(K - \lambda I)$ be such that $g_n \rightarrow g$.  Then  $\exists f_n$ such that $(K - \lambda I)f_n = g_n$.  Since $g_n \rightarrow g$, then by continuity (boundedness) of $(K - \lambda I)$, $\exists f$ such that $f_n \rightarrow f$.  Then
+            \begin{align*}
+                (K - \lambda I)f &= \int_0^x f(y) \dd y - \lambda f(x) \\
+                &= \int_0^x \lim_{n \rightarrow \infty}f_n(y) \dd y - \lambda \lim_{n \rightarrow \infty}\lambda f_n(x) \\
+                &= \lim_{n \rightarrow \infty} \qty[\int_0^x f_n(y) \dd y - \lambda f_n(x)], \qquad \text{by Lebesgue's Dominated Convergence Theorem} \\
+                &= \lim_{n\rightarrow \infty}(K - \lambda I)f_n\\
+                &= \lim_{n \rightarrow \infty}g_n \\
+                &= g
+            \end{align*}
+            Thus $g \in \ran(K - \lambda I)$, i.e.~$\ran(K - \lambda I)$ is closed, and since $\ran(K - \lambda I)$ is dense in $L^2([0,1])$, then $(K - \lambda I)$ is surjective.  Thus $(K - \lambda I)$ is bijective, proving $\lambda \in \rho(K)$.  Thus the spectral radius of $K$, $r(K)$, is equal to $0$.
         \end{proof}
     \item
         \emph{Show that $0$ belongs to the continuous spectrum of $K$.}
@@ -347,6 +407,29 @@
     \item
         \emph{The spectrum of $S$ consists of the unit circle $\{\lambda \in \Cx\ :\ |\lambda| = 1\}$ and is purely continuous.}
         \begin{proof}
+            If $|\lambda| = 1$, then $\lambda = e^{i\theta}$ for some $\theta \in [0, 2\pi)$.  Then $\qty(\tilde{S} - \lambda I)$ is a multiplication operator, $\qty(\qty(\tilde{S} - \lambda I)f)(x) = \qty(e^{ix} - e^{i\theta})f(x)$.  Let $f \in L^2(\mathbb{T})$.  Define $g_n \in L^2(\mathbb{T})$ by
+            \begin{align*}
+                g_n(x) = \begin{cases}
+                    \dfrac{f}{e^{ix} - e^{i\theta}} & \text{ if } x \in [0, 2\pi) \setminus [\theta - \E_n, \theta + \E_n] \\
+                    0 & \text{ otherwise}
+                \end{cases}
+            \end{align*}
+            Then define $f_n = \qty(\tilde{S} - \lambda I)g_n$.  Then
+            \begin{align*}
+                f_n = \begin{cases}
+                    f & \text{ if } x \in [0, 2\pi) \setminus [\theta - \E_n, \theta + \E_n] \\
+                    0 & \text{ otherwise}
+                \end{cases}
+            \end{align*}
+            Let $\E_n \rightarrow 0$.  Then
+            \begin{align*}
+                \norm{f_n - f}^2 = \cancelto{0}{\int_0^{\theta - \E_n} |f - f|^2\dd x} + \int_{\theta-\E_n}^{\theta+\E_n} |0 - f|^2\dd x + \cancelto{0}{\int_{\theta + \E_n}^{2\pi} |f - f|^2\dd x} &= \int_{\theta-\E_n}^{\theta+\E_n}f^2\dd x \rightarrow 0 \text{ as } \E_n \rightarrow 0
+            \end{align*}
+            Thus $f_n \rightarrow f$ in $L^2(\mathbb{T})$.  Thus $\ran\qty(\tilde{S} - \lambda I)$ is dense in $L^2(\mathbb{T})$.  However $\qty(\tilde{S} - \lambda I)$ is not surjective since the only candidate function $g$ that would be mapped by $\qty(\tilde{S} - \lambda I)$ to $f$ is
+            \begin{align*}
+                g(x) = \frac{f}{e^{ix} - e^{i\theta}}
+            \end{align*}
+            but $g \not\in L^2(\mathbb{T})$.  Thus for $|\lambda| = 1$, $\lambda \in \sigma(\tilde{S})$ and the spectrum is purely continuous.
         \end{proof}
 \end{enumerate}
 
@@ -368,6 +451,34 @@
 \end{equation}
 \emph{Suppose that $A$ is a compact self-adjoint operator.  Let $f \in C(\sigma(A))$ and consider $f(A)$ defined by (\ref{9.23}).  Prove that $$\norm{f(A)} = \sup\{|\tilde{f}(\lambda_n)\ |\ n \in \mathbb{N}\}.$$  Let $(\tilde{q}_N)$ be a sequence of polynomials of degree $N$, converging uniformly to $\tilde{f}$ on $\sigma(A)$.  The existence of such a sequence is a consequence of the Weierstrass approximation theorem.  Prove that $(q_N(A))$ converges in norm, and that its limit equals $f(A)$ as defined in (\ref{9.23}).}
 \begin{proof}
+    The definition of operator norm guarantees that $\forall \E$, $\exists u$ with $\norm{u} = 1$ such that $\norm{f(A)}_{\text{op}} \leq \norm{f(A)u} + \E$.  But by the spectral theorem,
+    \begin{align*}
+        u = \sum_{n=1}^\infty \VEC{\phi_n}{u}\phi_n
+    \end{align*}
+    where $\{\phi_n\}$ is an orthonormal basis of eigenvectors of $f(A)$ with eigenvalues $\lambda_n$, respectively.  Thus, for any $\E > 0$,
+    \begin{align*}
+        \norm{f(A)}_{\text{op}} &\leq \norm{f(A)u} + \E \\
+        &= \norm{f(A)\sum_{n=1}^\infty \VEC{\phi_n}{u}\phi_n} + \E
+    \end{align*}
+    However, since $f(A) \in \mathcal{B}(\Hilb)$, then
+    \begin{align*}
+        \norm{f(A)\sum_{n\in\mathbb{Z}} \VEC{\phi_n}{u}\phi_n}^2 = \norm{\sum_{n\in\mathbb{Z}} \VEC{\phi_n}{u}f(A)\phi_n}^2 &= \norm{\sum_{n\in\mathbb{Z}} \VEC{\phi_n}{u}\lambda_n\phi_n}^2 \\
+        &\leq \sup_{n\in\mathbb{Z}}\left\{|\lambda_n|\right\}^2\norm{\sum_{n\in\mathbb{Z}}\VEC{\phi_n}{u}\phi_n}^2 \\
+        &= \sup_{n\in\mathbb{Z}}\left\{|\lambda_n|\right\}^2\norm{u}^2, \qquad \text{by Parseval's Identity} \\
+        &= \sup_{n\in\mathbb{Z}}\left\{|\lambda_n|\right\}^2
+    \end{align*}
+    Since $\E$ is arbitrarily small,
+    \begin{align*}
+        \norm{f(A)}_\text{op} \leq \sup_{n\in\mathbb{Z}}\left\{|\lambda_n|\right\}
+    \end{align*}
+    Also note, by the Spectral Mapping Theorem, that $\sigma(f(A)) = \tilde{f}(\sigma(A))$, and thus
+    \begin{align*}
+        \sup_{n\in\mathbb{Z}}\left\{\left|\lambda_n\right|\right\} = r(f(A)) \leq \norm{f(A)}_\text{op},
+    \end{align*}
+    which proves
+    \begin{align*}
+        \norm{f(A)}_\text{op} = \sup_{n\in\mathbb{Z}}\left\{|\lambda_n|\right\}
+    \end{align*}
 \end{proof}
 
 
